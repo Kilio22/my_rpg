@@ -152,15 +152,15 @@ void outside(myBool_t *myBool, obj_t **obj, house_t **house)
 
 void character_orientation(obj_t *obj, sfVector2f oldPos, sfVector2f newPos)
 {
-    if (oldPos.x < newPos.x)
-        obj->sprite_rect.top = 64;
-    else if (oldPos.x > newPos.x)
-        obj->sprite_rect.top = 0;
-    else if (oldPos.y < newPos.y) {
+    if (oldPos.y < newPos.y) {
         obj->sprite_rect.top = 192;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
     }
+    else if (oldPos.x < newPos.x)
+        obj->sprite_rect.top = 64;
+    else if (oldPos.x > newPos.x)
+        obj->sprite_rect.top = 0;
     else if (oldPos.y > newPos.y) {
         obj->sprite_rect.top = 128;
         if (obj->sprite_rect.left >= 128)
