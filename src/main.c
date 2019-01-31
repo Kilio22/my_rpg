@@ -257,7 +257,7 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 2);
+    wind->wind = create_window("test window", 1);
     wind->view = sfView_createFromRect((sfFloatRect){400, 400, 400, 400});
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
