@@ -268,7 +268,7 @@ int main(void)
     house[0] = create_house("assets/maison 1.png", (sfVector2f){400, 200}, (sfIntRect){0, 0, 192, 320});
     house[1] = create_house("assets/maison 2.png", (sfVector2f){100, 100}, (sfIntRect){0, 0, 256, 256});
 
-    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 68});
+    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 58});
 
     myBool->keyUp = 0;
     myBool->keyDown = 0;
