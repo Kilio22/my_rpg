@@ -39,11 +39,10 @@ typedef struct obj_s {
 
 typedef struct house_s {
     sfImage *image;
-    sfTexture *texture;
+    sfTexture *houseTexture;
+    sfTexture *doorTexture;
+    sfSprite *interior;
     sfSprite *wall;
     sfSprite *roof;
-    sfSprite *interior;
-    sfSprite *interior2;
-    sfRectangleShape *door;
-    sfFloatRect door_rect;
+    sfSprite *door;
 } house_t;

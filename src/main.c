@@ -15,7 +15,7 @@
 
 sfRenderWindow *create_window(char *title, float scale)
 {
-    sfVideoMode mode = {1000 * scale, 1000 * scale, 32};
+    sfVideoMode mode = {256 * scale, 144 * scale, 32};
     sfRenderWindow *wind = sfRenderWindow_create(
     mode, title, sfDefaultStyle, NULL);
     sfRenderWindow_setVerticalSyncEnabled(wind, sfTrue);
@@ -25,18 +25,16 @@ sfRenderWindow *create_window(char *title, float scale)
     return (wind);
 }
 
-house_t *create_house(char *Path, sfVector2f pos, sfIntRect rect)
+void house_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 {
-    house_t *house = malloc(sizeof(house_t));
-
-    house->image = sfImage_createFromFile(Path);
-    house->texture = sfTexture_createFromFile(Path, NULL);
+    house->image = sfImage_createFromFile(path);
+    house->houseTexture = sfTexture_createFromFile(path, NULL);
     house->interior = sfSprite_create();
     house->wall = sfSprite_create();
     house->roof = sfSprite_create();
-    sfSprite_setTexture(house->interior, house->texture, sfTrue);
-    sfSprite_setTexture(house->wall, house->texture, sfTrue);
-    sfSprite_setTexture(house->roof, house->texture, sfTrue);
+    sfSprite_setTexture(house->interior, house->houseTexture, sfTrue);
+    sfSprite_setTexture(house->wall, house->houseTexture, sfTrue);
+    sfSprite_setTexture(house->roof, house->houseTexture, sfTrue);
     sfSprite_setTextureRect(house->interior, rect);
     rect.left += rect.width;
     sfSprite_setTextureRect(house->roof, rect);
@@ -45,6 +43,42 @@ house_t *create_house(char *Path, sfVector2f pos, sfIntRect rect)
     sfSprite_setPosition(house->interior, pos);
     sfSprite_setPosition(house->wall, pos);
     sfSprite_setPosition(house->roof, pos);
+}
+
+void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
+{
+    house->door = sfSprite_create();
+    house->doorTexture = sfTexture_createFromFile(path, NULL);
+    sfSprite_setTexture(house->door, house->doorTexture, sfTrue);
+    sfSprite_setPosition(house->door, pos);
+    sfSprite_setTextureRect(house->door, rect);
+}
+
+house_t *create_house(int type, sfVector2f housePos)
+{
+    house_t *house = malloc(sizeof(house_t));
+    char *housePath;
+    char *doorPath;
+    sfIntRect houseRect;
+    sfIntRect doorRect;
+    sfVector2f doorPos;
+
+    if (type == 1) {
+        housePath = "assets/maison 1.png";
+        doorPath = "assets/door1.png";
+        houseRect = (sfIntRect){0, 0, 192, 320};
+        doorRect = (sfIntRect){0, 0, 96, 96};
+        doorPos = (sfVector2f){housePos.x + 0, housePos.y + 256};
+    }
+    else if (type == 2) {
+        housePath = "assets/maison 2.png";
+        doorPath = "assets/door1.png";
+        houseRect = (sfIntRect){0, 0, 256, 256};
+        doorRect = (sfIntRect){0, 0, 96, 96};
+        doorPos = (sfVector2f){housePos.x + 0, housePos.y + 192};
+    }
+    house_creation(house, housePath, housePos, houseRect);
+    door_creation(house, doorPath, doorPos, doorRect);
     return (house);
 }
 
@@ -71,18 +105,19 @@ obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool cente
 
 void display(wind_t *wind, obj_t **obj, house_t **house)
 {
+        
     sfRenderWindow_setView(wind->wind, wind->view);
     sfRenderWindow_drawSprite(wind->wind, obj[0]->sprite, NULL);
     // sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL);
-    sfRenderWindow_drawSprite(wind->wind, house[0]->interior, NULL);
-    sfRenderWindow_drawSprite(wind->wind, house[1]->interior, NULL);
-    // sfRenderWindow_drawSprite(wind->wind, house[0]->wall, NULL);
-    // sfRenderWindow_drawSprite(wind->wind, house[1]->wall, NULL);
-    sfRenderWindow_drawSprite(wind->wind, obj[3]->sprite, NULL);
-    sfRenderWindow_drawSprite(wind->wind, obj[4]->sprite, NULL);
+    for (int i = 0; house[i] != NULL; i++)
+        sfRenderWindow_drawSprite(wind->wind, house[i]->interior, NULL);
+    for (int i = 0; house[i] != NULL; i++)
+        sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL);
+    for (int i = 0; house[i] != NULL; i++)
+        sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL);
     sfRenderWindow_drawSprite(wind->wind, obj[2]->sprite, NULL);
-    // sfRenderWindow_drawSprite(wind->wind, house[0]->roof, NULL);
-    // sfRenderWindow_drawSprite(wind->wind, house[1]->roof, NULL);
+    for (int i = 0; house[i] != NULL; i++)
+        sfRenderWindow_drawSprite(wind->wind, house[i]->roof, NULL);
     sfRenderWindow_display(wind->wind);
     sfRenderWindow_clear(wind->wind, sfBlack);
 }
@@ -97,11 +132,9 @@ void animation(sfIntRect *rect, int start, int offset, int max_value)
 
 sfBool all_world_hitBox(obj_t **obj, house_t **house)
 {
-    if (pp_intersect(obj[1]->sprite, house[0]->interior, obj[1]->image, house[0]->image) == 1 ||
-        pp_intersect(obj[1]->sprite, house[1]->interior, obj[1]->image, house[1]->image) == 1)
-        return (1);
-    else
-        return (0);
+    for (int i = 0; house[i] != NULL; i++)
+        if (pp_intersect(obj[1]->sprite, house[i]->interior, obj[1]->image, house[i]->image) == 1)
+            return (1);
 }
 
 void inside(myBool_t *myBool, obj_t **obj, house_t **house)
@@ -176,7 +209,7 @@ void character_animation(obj_t *obj)
     static sfVector2f newPos = {0, 0};
     sfVector2f oldPos = sfSprite_getPosition(obj->sprite);
 
-    if (i == 10) {
+    if (i == 8) {
         animation(&obj->sprite_rect, 32, 32, 160);
         i = 0;
     }
@@ -257,18 +290,20 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 1);
-    wind->view = sfView_createFromRect((sfFloatRect){400, 400, 400, 400});
+    wind->wind = create_window("test window", 7);
+    sfVector2u windowSize = sfRenderWindow_getSize(wind->wind);
+    wind->view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
-    obj[1] = create_object("assets/test_32.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 32}, sfTrue);
+    obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[2] = create_object("assets/hero.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/door1.png", (sfVector2f){148, 340}, (sfIntRect){0, 0, 96, 96}, sfTrue);
-    obj[4] = create_object("assets/door1.png", (sfVector2f){448, 504}, (sfIntRect){0, 0, 96, 96}, sfTrue);
-    house[0] = create_house("assets/maison 1.png", (sfVector2f){400, 200}, (sfIntRect){0, 0, 192, 320});
-    house[1] = create_house("assets/maison 2.png", (sfVector2f){100, 100}, (sfIntRect){0, 0, 256, 256});
+    house[0] = create_house(1, (sfVector2f){0, 0});
+    house[1] = create_house(2, (sfVector2f){200, 0});
+    house[2] = create_house(1, (sfVector2f){500, 0});
+    house[3] = create_house(2, (sfVector2f){0, 300});
+    house[4] = create_house(1, (sfVector2f){300, 300});
 
-    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 58});
+    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
 
     myBool->keyUp = 0;
     myBool->keyDown = 0;

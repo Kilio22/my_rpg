@@ -50,7 +50,6 @@ OBJ	=	$(SRCS:.c=.o)
 
 CFLAGS	=	-Wall \
 			-W \
-			-Werror \
 			-I $(INCL_PATH) \
 			-L$(LIB_PATH) -l$(LIB_NAME) \
 			-L$(LIBG_PATH) -l$(LIBG_NAME) \
