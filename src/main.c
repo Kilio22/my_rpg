@@ -13,7 +13,7 @@
 #include "proto.h"
 #include "struct.h"
 
-sfRenderWindow *create_window(char *title, int scale)
+sfRenderWindow *create_window(char *title, float scale)
 {
     sfVideoMode mode = {1000 * scale, 1000 * scale, 32};
     sfRenderWindow *wind = sfRenderWindow_create(
@@ -257,7 +257,7 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 1);
+    wind->wind = create_window("test window", 3);
     wind->view = sfView_createFromRect((sfFloatRect){400, 400, 400, 400});
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
