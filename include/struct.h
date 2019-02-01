@@ -29,12 +29,12 @@ typedef struct myBool_s {
 } myBool_t;
 
 typedef struct obj_s {
+    sfImage *image;
     sfTexture *texture;
     sfSprite *sprite;
-    sfImage *image;
-    sfVector2f pos;
     sfIntRect sprite_rect;
-    int id;
+    sfVector2f pos;
+    sfBool outside;
 } obj_t;
 
 typedef struct house_s {

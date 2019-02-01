@@ -41,7 +41,8 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	event.c
+SRC	=	event.c	\
+		create_house.c
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) \
 			$(SRC_PATH)/main.c
