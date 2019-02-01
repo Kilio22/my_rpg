@@ -122,14 +122,6 @@ void display(wind_t *wind, obj_t **obj, house_t **house)
     sfRenderWindow_clear(wind->wind, sfBlack);
 }
 
-void animation(sfIntRect *rect, int start, int offset, int max_value)
-{
-    if (rect->left >= (max_value - offset))
-        rect->left = start;
-    else
-        rect->left += offset;
-}
-
 sfBool all_world_hitBox(obj_t **obj, house_t **house)
 {
     for (int i = 0; house[i] != NULL; i++)

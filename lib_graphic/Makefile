@@ -31,7 +31,8 @@ COLOR_THEME	=	$(MAGEN_C)
 MY_PATH	=	.
 INCLUDE_PATH	=	../include
 
-SRC_MY	=	pp_hitbox.c
+SRC_MY	=	pp_hitbox.c	\
+			animation.c
 
 CFLAGS	=	-Wall \
 			-W \
