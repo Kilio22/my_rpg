@@ -70,6 +70,7 @@ sfBool all_world_hitBox(obj_t **obj, house_t **house)
     for (int i = 0; house[i] != NULL; i++)
         if (pp_intersect(obj[1]->sprite, house[i]->interior, obj[1]->image, house[i]->image) == 1)
             return (1);
+    return (0);
 }
 
 void inside(myBool_t *myBool, obj_t **obj, house_t **house)

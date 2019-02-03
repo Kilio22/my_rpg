@@ -5,6 +5,7 @@
 ** create_house
 */
 
+#include <stdlib.h>
 #include "struct.h"
 
 void house_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
