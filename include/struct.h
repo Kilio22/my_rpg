@@ -24,17 +24,21 @@ typedef struct wind_s {
     sfView *view;
 } wind_t;
 
+enum {
+    KEYUP = 0,
+    KEYDOWN,
+    KEYLEFT,
+    KEYRIGHT,
+    KEYSPACE,
+    ZOOM,
+    DEZOOM,
+    KEYY
+};
+
 typedef struct controls_s {
-    sfBool keyUp;
-    sfBool keyDown;
-    sfBool keyLeft;
-    sfBool keyRight;
-    sfBool keySpace;
-    sfBool keyY;
-    sfBool zoom;
-    sfBool deZoom;
-    sfVector2f mousePos;
     int *keys;
+    sfBool *bools;
+    sfVector2f mousePos;
 } controls_t;
 
 typedef struct obj_s {

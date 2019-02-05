@@ -12,28 +12,28 @@
 void mouse_wheel_management(wind_t *wind, controls_t *control)
 {
     if (wind->event.mouseWheel.delta == 1)
-        control->zoom = 1;
+        control->bools[ZOOM] = 1;
     else if (wind->event.mouseWheel.delta == -1)
-        control->deZoom = 1;
+        control->bools[DEZOOM] = 1;
 }
 
 void manage_key_pressed(wind_t *wind, controls_t *control)
 {
     if (wind->event.key.code == control->keys[UP])
-        control->keyUp = 1;
+        control->bools[KEYUP] = 1;
     if (wind->event.key.code == control->keys[DOWN])
-        control->keyDown = 1;
+        control->bools[KEYDOWN] = 1;
     if (wind->event.key.code == control->keys[LEFT])
-        control->keyLeft = 1;
+        control->bools[KEYLEFT] = 1;
     if (wind->event.key.code == control->keys[RIGHT])
-        control->keyRight = 1;
+        control->bools[KEYRIGHT] = 1;
     if (wind->event.key.code == sfKeySpace)
-        control->keySpace = 1;
+        control->bools[KEYSPACE] = 1;
     if (wind->event.key.code == sfKeyY) {
-        if (control->keyY == 0)
-            control->keyY = 1;
+        if (control->bools[KEYY] == 0)
+            control->bools[KEYY] = 1;
         else
-            control->keyY = 0;
+            control->bools[KEYY] = 0;
     }
     if (wind->event.key.code == sfKeyEscape)
         sfRenderWindow_close(wind->wind);
@@ -42,15 +42,15 @@ void manage_key_pressed(wind_t *wind, controls_t *control)
 void manage_key_released(wind_t *wind, controls_t *control)
 {
     if (wind->event.key.code == control->keys[UP])
-        control->keyUp = 0;
+        control->bools[KEYUP] = 0;
     if (wind->event.key.code == control->keys[DOWN])
-        control->keyDown = 0;
+        control->bools[KEYDOWN] = 0;
     if (wind->event.key.code == control->keys[LEFT])
-        control->keyLeft = 0;
+        control->bools[KEYLEFT] = 0;
     if (wind->event.key.code == control->keys[RIGHT])
-        control->keyRight = 0;
+        control->bools[KEYRIGHT] = 0;
     if (wind->event.key.code == sfKeySpace)
-        control->keySpace = 0;
+        control->bools[KEYSPACE] = 0;
 }
 
 void event_management(wind_t *wind, controls_t *control)
