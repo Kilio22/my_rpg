@@ -15,8 +15,9 @@
 
 void init_controls(controls_t *controls)
 {
-    controls->keys = malloc(sizeof(int) * 5);
+    char *buff;
 
+    controls->keys = malloc(sizeof(int) * 5);
     controls->keys[UP] = sfKeyZ;
     controls->keys[LEFT] = sfKeyQ;
     controls->keys[DOWN] = sfKeyS;
