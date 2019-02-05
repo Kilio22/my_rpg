@@ -1,23 +1,34 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_revstr
+** task03
 ** File description:
-** reverse a string
+** write a fonction that reverse a string
 */
-#include "my.h"
+
+void my_putchar(char c);
+
+static int strlenght(char *str)
+{
+    int i = 0;
+
+    while (str[i] != '\0') {
+        i++;
+    }
+    i = i - 1;
+    return (i);
+}
 
 char *my_revstr(char *str)
 {
-    int i = my_strlen(str) - 1;
-    int a = 0;
-    char b;
+    char stockage;
+    int i = strlenght(str);
+    int tempo = 0;
 
-    while (a < i) {
-        b = str[a];
-        str[a] = str[i];
-        str[i] = b;
-        a++;
-        i--;
+    while (tempo <= i / 2) {
+        stockage = str[tempo];
+        str[tempo] = str[i - tempo];
+        str[i - tempo] = stockage;
+        tempo++;
     }
     return (str);
 }

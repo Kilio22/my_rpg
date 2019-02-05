@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "get_next_line.h"
 
-char *my_strndup(char *str, int n)
+static char *my_strndup(char *str, int n)
 {
     char *new_str;
     int len = 0;
@@ -28,7 +28,7 @@ char *my_strndup(char *str, int n)
     return (new_str);
 }
 
-char *my_strncat(char *dest, char *str, int n)
+static char *my_strncat(char *dest, char *str, int n)
 {
     char *new_str;
     int str_len = 0;

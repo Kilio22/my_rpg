@@ -1,5 +1,6 @@
-abcdefghij: name
+Antoine: name
 25: UP
 16: LEFT
 18: DOWN
 3: RIGHT
+4: INTER

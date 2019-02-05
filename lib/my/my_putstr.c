@@ -1,10 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_putstr
+** task02
 ** File description:
-** description
+** display one by one the characters of a string
 */
-#include "my.h"
+
+#include <unistd.h>
+
+void my_putchar(char c);
 
 int my_putstr(char const *str)
 {
@@ -14,5 +17,5 @@ int my_putstr(char const *str)
         my_putchar(str[i]);
         i++;
     }
-    return (0);
+    return (i);
 }

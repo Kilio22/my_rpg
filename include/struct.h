@@ -12,8 +12,8 @@
 enum {
     UP = 0,
     LEFT,
-    RIGHT,
     DOWN,
+    RIGHT,
     INTERACT
 };
 

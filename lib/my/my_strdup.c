@@ -1,15 +1,27 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strdup
+** task01
 ** File description:
-** description
+** allocate memory
 */
 
 #include <stdlib.h>
-#include "my.h"
 
-char *my_strdup(char const *str)
+int my_strlen(char const *str);
+
+char *my_strdup(char const *src)
 {
-    char *result = malloc(sizeof(char) * (my_strlen(str)+1));
-    return (result);
+    int i = 0;
+    int f =  my_strlen(src);
+    char *dest;
+
+    if (src == NULL)
+        return (NULL);
+    dest = malloc(sizeof(char) * f + 1);
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+    return (dest);
 }

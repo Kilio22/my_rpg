@@ -13,8 +13,5 @@
 #define GETNEXTLINE_H
 
 char *get_next_line(int fd);
-char *my_strndup(char *str, int n);
-char *my_strncat(char *dest, char *str, int n);
-static char *read_file(int fd, char *str, char **readed);
 
 #endif //GETNEXTLINE_H

@@ -1,15 +1,22 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strlen
+** task03
 ** File description:
-** count the number of characters
+** display the number of characters found in a string
 */
+
+#include <unistd.h>
+
+void my_putchar(char c);
 
 int my_strlen(char const *str)
 {
-    int i = 0;
+    int nbchar = 0;
 
-    while (str[i] != '\0')
-        i++;
-    return (i);
+    if (str == NULL)
+        return (0);
+    while (str[nbchar] != '\0') {
+        nbchar++;
+    }
+    return (nbchar);
 }
