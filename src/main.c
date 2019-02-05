@@ -51,7 +51,7 @@ void display(wind_t *wind, obj_t **obj, house_t **house)
         
     sfRenderWindow_setView(wind->wind, wind->view);
     sfRenderWindow_drawSprite(wind->wind, obj[0]->sprite, NULL);
-    // sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL);
+    sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL);
     for (int i = 0; house[i] != NULL; i++)
         sfRenderWindow_drawSprite(wind->wind, house[i]->interior, NULL);
     for (int i = 0; house[i] != NULL; i++)
@@ -195,6 +195,7 @@ void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
 {
     character_control(control, obj, house);
     camera_control(wind, control, obj[1]->pos);
+    house_interaction(obj[1], house);
     sfSprite_setTextureRect(obj[2]->sprite, obj[2]->sprite_rect);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
 }
@@ -226,7 +227,7 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 7);
+    wind->wind = create_window("test window", 4);
     sfVector2u windowSize = sfRenderWindow_getSize(wind->wind);
     wind->view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 

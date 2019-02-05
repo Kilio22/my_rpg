@@ -6,7 +6,20 @@
 */
 
 #include <stdlib.h>
+#include "proto.h"
 #include "struct.h"
+
+void house_interaction(obj_t *obj, house_t **house)
+{
+    obj->sprite_rect = f_to_i_rect(sfSprite_getGlobalBounds(obj->sprite));
+
+    for (int i = 0; house[i] != NULL; i++) {
+        house[i]->door_rect = f_to_i_rect(sfSprite_getGlobalBounds(house[i]->door));
+        if (sfIntRect_intersects(&obj->sprite_rect, &house[i]->door_rect, NULL) == 1)
+            printf ("touche\n");
+    }
+
+}
 
 void house_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 {

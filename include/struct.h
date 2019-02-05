@@ -22,7 +22,6 @@ typedef struct wind_s {
     sfVector2u windSize;
     sfEvent event;
     sfView *view;
-    sfRectangleShape *house_1;
 } wind_t;
 
 typedef struct controls_s {
@@ -55,6 +54,7 @@ typedef struct house_s {
     sfSprite *wall;
     sfSprite *roof;
     sfSprite *door;
+    sfIntRect door_rect
 } house_t;
 
 #endif //STRUCT_H
