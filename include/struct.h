@@ -54,7 +54,7 @@ typedef struct house_s {
     sfSprite *wall;
     sfSprite *roof;
     sfSprite *door;
-    sfIntRect door_rect
+    sfIntRect door_rect;
 } house_t;
 
 #endif //STRUCT_H
