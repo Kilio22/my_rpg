@@ -73,29 +73,6 @@ sfBool all_world_hitBox(obj_t **obj, house_t **house)
     return (0);
 }
 
-void inside(controls_t *control, obj_t **obj, house_t **house)
-{
-    sfVector2f newPos = {0, 0};
-
-    if (control->keyUp == 1)
-        newPos.y -= 1;
-    if (control->keyDown == 1)
-        newPos.y += 1;
-    sfSprite_move(obj[1]->sprite, newPos);
-    if (all_world_hitBox(obj, house) == 0)
-        newPos.y *= -1;
-    if (control->keyLeft == 1)
-        newPos.x -= 1;
-    if (control->keyRight == 1)
-        newPos.x += 1;
-    sfSprite_move(obj[1]->sprite, newPos);
-    newPos.y = 0;
-    if (all_world_hitBox(obj, house) == 0)
-        newPos.x *= -1;
-    sfSprite_move(obj[1]->sprite, newPos);
-    obj[1]->pos = sfSprite_getPosition(obj[1]->sprite);
-}
-
 void outside(controls_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
@@ -158,7 +135,6 @@ void character_control(controls_t *control, obj_t **obj, house_t **house)
 {
     character_animation(obj[2]);
     outside(control, obj, house);
-    // inside(control, obj, house);
 }
 
 void zoom_gestion(wind_t *wind, controls_t *control)
