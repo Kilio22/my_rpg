@@ -17,9 +17,9 @@ void init_controls(controls_t *controls)
 {
     controls->keys = malloc(sizeof(int) * 5);
 
-    controls->keys[UP] = sfKeyT;
-    controls->keys[LEFT] = sfKeyF;
-    controls->keys[RIGHT] = sfKeyH;
-    controls->keys[DOWN] = sfKeyG;
+    controls->keys[UP] = sfKeyZ;
+    controls->keys[LEFT] = sfKeyQ;
+    controls->keys[DOWN] = sfKeyS;
+    controls->keys[RIGHT] = sfKeyD;
     controls->keys[INTERACT] = sfKeyE;
 }
