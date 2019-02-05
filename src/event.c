@@ -19,13 +19,13 @@ void mouse_wheel_management(wind_t *wind, controls_t *control)
 
 void manage_key_pressed(wind_t *wind, controls_t *control)
 {
-    if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
+    if (wind->event.key.code == control->keys[UP])
         control->keyUp = 1;
-    if (wind->event.key.code == sfKeyS || wind->event.key.code == sfKeyDown)
+    if (wind->event.key.code == control->keys[DOWN])
         control->keyDown = 1;
-    if (wind->event.key.code == sfKeyQ || wind->event.key.code == sfKeyLeft)
+    if (wind->event.key.code == control->keys[LEFT])
         control->keyLeft = 1;
-    if (wind->event.key.code == sfKeyD || wind->event.key.code == sfKeyRight)
+    if (wind->event.key.code == control->keys[RIGHT])
         control->keyRight = 1;
     if (wind->event.key.code == sfKeySpace)
         control->keySpace = 1;
@@ -41,13 +41,13 @@ void manage_key_pressed(wind_t *wind, controls_t *control)
 
 void manage_key_released(wind_t *wind, controls_t *control)
 {
-    if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
+    if (wind->event.key.code == control->keys[UP])
         control->keyUp = 0;
-    if (wind->event.key.code == sfKeyS || wind->event.key.code == sfKeyDown)
+    if (wind->event.key.code == control->keys[DOWN])
         control->keyDown = 0;
-    if (wind->event.key.code == sfKeyQ || wind->event.key.code == sfKeyLeft)
+    if (wind->event.key.code == control->keys[LEFT])
         control->keyLeft = 0;
-    if (wind->event.key.code == sfKeyD || wind->event.key.code == sfKeyRight)
+    if (wind->event.key.code == control->keys[RIGHT])
         control->keyRight = 0;
     if (wind->event.key.code == sfKeySpace)
         control->keySpace = 0;

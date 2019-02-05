@@ -42,7 +42,8 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
 SRC	=	event.c	\
-		create_house.c
+		create_house.c \
+		controls.c
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) \
 			$(SRC_PATH)/main.c

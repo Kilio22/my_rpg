@@ -13,21 +13,13 @@
 #include "proto.h"
 #include "struct.h"
 
-enum {
-    UP = 0,
-    LEFT,
-    RIGHT,
-    DOWN,
-    INTERACT
-};
-
-void setup_controls(controls_t *controls)
+void init_controls(controls_t *controls)
 {
     controls->keys = malloc(sizeof(int) * 5);
 
     controls->keys[UP] = sfKeyZ;
     controls->keys[LEFT] = sfKeyQ;
-    controls->keys[RIGHT] = sfKeyD;
     controls->keys[DOWN] = sfKeyS;
+    controls->keys[RIGHT] = sfKeyD;
     controls->keys[INTERACT] = sfKeyE;
 }
