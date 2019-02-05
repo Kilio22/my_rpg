@@ -77,16 +77,16 @@ void outside(controls_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
 
-    if (control->keyUp == 1)
+    if (control->bools[KEYUP] == 1)
         newPos.y -= 1;
-    if (control->keyDown == 1)
+    if (control->bools[KEYDOWN] == 1)
         newPos.y += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     if (all_world_hitBox(obj, house) == 1)
         newPos.y *= -1;
-    if (control->keyLeft == 1)
+    if (control->bools[KEYLEFT] == 1)
         newPos.x -= 1;
-    if (control->keyRight == 1)
+    if (control->bools[KEYRIGHT] == 1)
         newPos.x += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     newPos.y = 0;
@@ -139,20 +139,20 @@ void character_control(controls_t *control, obj_t **obj, house_t **house)
 
 void zoom_gestion(wind_t *wind, controls_t *control)
 {
-    if (control->zoom == 1) {
+    if (control->bools[ZOOM] == 1) {
         sfView_zoom(wind->view, 0.9);
-        control->zoom = 0;
+        control->bools[ZOOM] = 0;
     }
-    if (control->deZoom == 1) {
+    if (control->bools[DEZOOM] == 1) {
         sfView_zoom(wind->view, 1.1);
-        control->deZoom = 0;
+        control->bools[DEZOOM] = 0;
     }
 }
 
 void camera_control(wind_t *wind, controls_t *control, sfVector2f pos)
 {
     zoom_gestion(wind, control);
-    if (control->keySpace == 1 || control->keyY == 1)
+    if (control->bools[KEYSPACE] == 1 || control->bools[KEYY] == 1)
         sfView_setCenter(wind->view, pos);
     else {
         wind->windSize = sfRenderWindow_getSize(wind->wind);
@@ -217,13 +217,10 @@ int main(void)
     house[4] = create_house(1, (sfVector2f){300, 300});
 
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
-
-    control->keyUp = 0;
-    control->keyDown = 0;
-    control->keyLeft = 0;
-    control->keyRight = 0;   
-    control->keySpace = 0;
-    control->keyY = 1;
+    control->bools = malloc(sizeof(sfBool) * 8);
+    for (int i = 0; i < 7; i++)
+        control->bools[i] = 0;
+    control->bools[KEYY] = 1;
 
     init_controls(control);
     init_game_loop(wind, control, obj, house);
