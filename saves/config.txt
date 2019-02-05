@@ -1,6 +1,6 @@
-Antoine: name
-25: UP
-16: LEFT
-18: DOWN
-3: RIGHT
-4: INTER
+Name: Antoine
+UP: 25
+LEFT: 16
+DOWN: 18
+RIGHT: 3
+INTERACTION: 4

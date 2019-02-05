@@ -28,6 +28,6 @@ void init_controls(controls_t *controls)
     for (int i = 0; i < 5; i++) {
         buff = get_next_line(fd);
         args = my_str_to_word_array(buff, ':');
-        controls->keys[i] = my_getnbr(args[0]);
+        controls->keys[i] = my_getnbr(args[1]);
     }
 }
