@@ -13,11 +13,16 @@
 void house_interaction(obj_t *obj, house_t **house)
 {
     obj->sprite_rect = f_to_i_rect(sfSprite_getGlobalBounds(obj->sprite));
+    sfIntRect rectReset = {0, 0, 0, 0};
 
     for (int i = 0; house[i] != NULL; i++) {
         house[i]->door_rect = f_to_i_rect(sfSprite_getGlobalBounds(house[i]->door));
-        if (sfIntRect_intersects(&obj->sprite_rect, &house[i]->door_rect, NULL) == 1)
-            my_printf ("touche\n");
+        if (sfIntRect_intersects(&obj->sprite_rect, &house[i]->door_rect, NULL) == 1) {
+            sfSprite_setTextureRect(house[i]->roof, rectReset);
+            sfSprite_setTextureRect(house[i]->wall, rectReset);
+            if (house[i]->door_rect.left < 384 - 64)
+                animation(&house[i]->door_rect, 0, 64, 384);
+        }
     }
 }
 
