@@ -16,7 +16,7 @@ typedef struct wind_s {
     sfRectangleShape *house_1;
 } wind_t;
 
-typedef struct control_s {
+typedef struct controls_s {
     sfBool keyUp;
     sfBool keyDown;
     sfBool keyLeft;
@@ -26,7 +26,8 @@ typedef struct control_s {
     sfBool zoom;
     sfBool deZoom;
     sfVector2f mousePos;
-} control_t;
+    int *keys;
+} controls_t;
 
 typedef struct obj_s {
     sfImage *image;

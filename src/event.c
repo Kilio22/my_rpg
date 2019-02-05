@@ -9,7 +9,7 @@
 #include "my.h"
 #include "struct.h"
 
-void mouse_wheel_management(wind_t *wind, control_t *control)
+void mouse_wheel_management(wind_t *wind, controls_t *control)
 {
     if (wind->event.mouseWheel.delta == 1)
         control->zoom = 1;
@@ -17,7 +17,7 @@ void mouse_wheel_management(wind_t *wind, control_t *control)
         control->deZoom = 1;
 }
 
-void manage_key_pressed(wind_t *wind, control_t *control)
+void manage_key_pressed(wind_t *wind, controls_t *control)
 {
     if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
         control->keyUp = 1;
@@ -39,7 +39,7 @@ void manage_key_pressed(wind_t *wind, control_t *control)
         sfRenderWindow_close(wind->wind);
 }
 
-void manage_key_released(wind_t *wind, control_t *control)
+void manage_key_released(wind_t *wind, controls_t *control)
 {
     if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
         control->keyUp = 0;
@@ -53,7 +53,7 @@ void manage_key_released(wind_t *wind, control_t *control)
         control->keySpace = 0;
 }
 
-void event_management(wind_t *wind, control_t *control)
+void event_management(wind_t *wind, controls_t *control)
 {
     if (wind->event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(wind, control);

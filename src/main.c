@@ -73,7 +73,7 @@ sfBool all_world_hitBox(obj_t **obj, house_t **house)
     return (0);
 }
 
-void inside(control_t *control, obj_t **obj, house_t **house)
+void inside(controls_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
 
@@ -96,7 +96,7 @@ void inside(control_t *control, obj_t **obj, house_t **house)
     obj[1]->pos = sfSprite_getPosition(obj[1]->sprite);
 }
 
-void outside(control_t *control, obj_t **obj, house_t **house)
+void outside(controls_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
 
@@ -154,14 +154,14 @@ void character_animation(obj_t *obj)
     newPos = sfSprite_getPosition(obj->sprite);
 }
 
-void character_control(control_t *control, obj_t **obj, house_t **house)
+void character_control(controls_t *control, obj_t **obj, house_t **house)
 {
     character_animation(obj[2]);
     outside(control, obj, house);
     // inside(control, obj, house);
 }
 
-void zoom_gestion(wind_t *wind, control_t *control)
+void zoom_gestion(wind_t *wind, controls_t *control)
 {
     if (control->zoom == 1) {
         sfView_zoom(wind->view, 0.9);
@@ -173,7 +173,7 @@ void zoom_gestion(wind_t *wind, control_t *control)
     }
 }
 
-void camera_control(wind_t *wind, control_t *control, sfVector2f pos)
+void camera_control(wind_t *wind, controls_t *control, sfVector2f pos)
 {
     zoom_gestion(wind, control);
     if (control->keySpace == 1 || control->keyY == 1)
@@ -191,7 +191,7 @@ void camera_control(wind_t *wind, control_t *control, sfVector2f pos)
     }
 }
 
-void game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **house)
+void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
 {
     character_control(control, obj, house);
     camera_control(wind, control, obj[1]->pos);
@@ -199,7 +199,7 @@ void game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **house)
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
 }
 
-void init_game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **house)
+void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
 {
     sfClock *main_clock = sfClock_create();
     sfTime main_time;
@@ -222,7 +222,7 @@ void init_game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **hou
 int main(void)
 {
     wind_t *wind = malloc(sizeof(wind_t));
-    control_t *control = malloc(sizeof(control_t));
+    controls_t *control = malloc(sizeof(controls_t));
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
