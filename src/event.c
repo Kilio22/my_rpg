@@ -9,62 +9,62 @@
 #include "my.h"
 #include "struct.h"
 
-void mouse_wheel_management(wind_t *wind, myBool_t *myBool)
+void mouse_wheel_management(wind_t *wind, control_t *control)
 {
     if (wind->event.mouseWheel.delta == 1)
-        myBool->zoom = 1;
+        control->zoom = 1;
     else if (wind->event.mouseWheel.delta == -1)
-        myBool->deZoom = 1;
+        control->deZoom = 1;
 }
 
-void manage_key_pressed(wind_t *wind, myBool_t *myBool)
+void manage_key_pressed(wind_t *wind, control_t *control)
 {
     if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
-        myBool->keyUp = 1;
+        control->keyUp = 1;
     if (wind->event.key.code == sfKeyS || wind->event.key.code == sfKeyDown)
-        myBool->keyDown = 1;
+        control->keyDown = 1;
     if (wind->event.key.code == sfKeyQ || wind->event.key.code == sfKeyLeft)
-        myBool->keyLeft = 1;
+        control->keyLeft = 1;
     if (wind->event.key.code == sfKeyD || wind->event.key.code == sfKeyRight)
-        myBool->keyRight = 1;
+        control->keyRight = 1;
     if (wind->event.key.code == sfKeySpace)
-        myBool->keySpace = 1;
+        control->keySpace = 1;
     if (wind->event.key.code == sfKeyY) {
-        if (myBool->keyY == 0)
-            myBool->keyY = 1;
+        if (control->keyY == 0)
+            control->keyY = 1;
         else
-            myBool->keyY = 0;
+            control->keyY = 0;
     }
     if (wind->event.key.code == sfKeyEscape)
         sfRenderWindow_close(wind->wind);
 }
 
-void manage_key_released(wind_t *wind, myBool_t *myBool)
+void manage_key_released(wind_t *wind, control_t *control)
 {
     if (wind->event.key.code == sfKeyZ || wind->event.key.code == sfKeyUp)
-        myBool->keyUp = 0;
+        control->keyUp = 0;
     if (wind->event.key.code == sfKeyS || wind->event.key.code == sfKeyDown)
-        myBool->keyDown = 0;
+        control->keyDown = 0;
     if (wind->event.key.code == sfKeyQ || wind->event.key.code == sfKeyLeft)
-        myBool->keyLeft = 0;
+        control->keyLeft = 0;
     if (wind->event.key.code == sfKeyD || wind->event.key.code == sfKeyRight)
-        myBool->keyRight = 0;
+        control->keyRight = 0;
     if (wind->event.key.code == sfKeySpace)
-        myBool->keySpace = 0;
+        control->keySpace = 0;
 }
 
-void event_management(wind_t *wind, myBool_t *myBool)
+void event_management(wind_t *wind, control_t *control)
 {
     if (wind->event.type == sfEvtMouseWheelMoved)
-        mouse_wheel_management(wind, myBool);
+        mouse_wheel_management(wind, control);
     if (wind->event.type == sfEvtMouseMoved) {
-        myBool->mousePos.x = wind->event.mouseMove.x;
-        myBool->mousePos.y = wind->event.mouseMove.y;
+        control->mousePos.x = wind->event.mouseMove.x;
+        control->mousePos.y = wind->event.mouseMove.y;
     }
     if (wind->event.type == sfEvtKeyPressed)
-        manage_key_pressed(wind, myBool);
+        manage_key_pressed(wind, control);
     if (wind->event.type == sfEvtKeyReleased)
-        manage_key_released(wind, myBool);
+        manage_key_released(wind, control);
     if (wind->event.type == sfEvtClosed)
         sfRenderWindow_close(wind->wind);
 }

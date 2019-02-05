@@ -73,20 +73,20 @@ sfBool all_world_hitBox(obj_t **obj, house_t **house)
     return (0);
 }
 
-void inside(myBool_t *myBool, obj_t **obj, house_t **house)
+void inside(control_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
 
-    if (myBool->keyUp == 1)
+    if (control->keyUp == 1)
         newPos.y -= 1;
-    if (myBool->keyDown == 1)
+    if (control->keyDown == 1)
         newPos.y += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     if (all_world_hitBox(obj, house) == 0)
         newPos.y *= -1;
-    if (myBool->keyLeft == 1)
+    if (control->keyLeft == 1)
         newPos.x -= 1;
-    if (myBool->keyRight == 1)
+    if (control->keyRight == 1)
         newPos.x += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     newPos.y = 0;
@@ -96,20 +96,20 @@ void inside(myBool_t *myBool, obj_t **obj, house_t **house)
     obj[1]->pos = sfSprite_getPosition(obj[1]->sprite);
 }
 
-void outside(myBool_t *myBool, obj_t **obj, house_t **house)
+void outside(control_t *control, obj_t **obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
 
-    if (myBool->keyUp == 1)
+    if (control->keyUp == 1)
         newPos.y -= 1;
-    if (myBool->keyDown == 1)
+    if (control->keyDown == 1)
         newPos.y += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     if (all_world_hitBox(obj, house) == 1)
         newPos.y *= -1;
-    if (myBool->keyLeft == 1)
+    if (control->keyLeft == 1)
         newPos.x -= 1;
-    if (myBool->keyRight == 1)
+    if (control->keyRight == 1)
         newPos.x += 1;
     sfSprite_move(obj[1]->sprite, newPos);
     newPos.y = 0;
@@ -154,52 +154,52 @@ void character_animation(obj_t *obj)
     newPos = sfSprite_getPosition(obj->sprite);
 }
 
-void character_control(myBool_t *myBool, obj_t **obj, house_t **house)
+void character_control(control_t *control, obj_t **obj, house_t **house)
 {
     character_animation(obj[2]);
-    outside(myBool, obj, house);
-    // inside(myBool, obj, house);
+    outside(control, obj, house);
+    // inside(control, obj, house);
 }
 
-void zoom_gestion(wind_t *wind, myBool_t *myBool)
+void zoom_gestion(wind_t *wind, control_t *control)
 {
-    if (myBool->zoom == 1) {
+    if (control->zoom == 1) {
         sfView_zoom(wind->view, 0.9);
-        myBool->zoom = 0;
+        control->zoom = 0;
     }
-    if (myBool->deZoom == 1) {
+    if (control->deZoom == 1) {
         sfView_zoom(wind->view, 1.1);
-        myBool->deZoom = 0;
+        control->deZoom = 0;
     }
 }
 
-void camera_control(wind_t *wind, myBool_t *myBool, sfVector2f pos)
+void camera_control(wind_t *wind, control_t *control, sfVector2f pos)
 {
-    zoom_gestion(wind, myBool);
-    if (myBool->keySpace == 1 || myBool->keyY == 1)
+    zoom_gestion(wind, control);
+    if (control->keySpace == 1 || control->keyY == 1)
         sfView_setCenter(wind->view, pos);
     else {
         wind->windSize = sfRenderWindow_getSize(wind->wind);
-        if (myBool->mousePos.x > wind->windSize.x - 10)
+        if (control->mousePos.x > wind->windSize.x - 10)
             sfView_move(wind->view, (sfVector2f){5, 0});
-        if (myBool->mousePos.x < 10)
+        if (control->mousePos.x < 10)
             sfView_move(wind->view, (sfVector2f){-5, 0});
-        if (myBool->mousePos.y > wind->windSize.y - 10)
+        if (control->mousePos.y > wind->windSize.y - 10)
             sfView_move(wind->view, (sfVector2f){0, 5});
-        if (myBool->mousePos.y < 10)
+        if (control->mousePos.y < 10)
             sfView_move(wind->view, (sfVector2f){0, -5});
     }
 }
 
-void game_loop(wind_t *wind, myBool_t *myBool, obj_t **obj, house_t **house)
+void game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **house)
 {
-    character_control(myBool, obj, house);
-    camera_control(wind, myBool, obj[1]->pos);
+    character_control(control, obj, house);
+    camera_control(wind, control, obj[1]->pos);
     sfSprite_setTextureRect(obj[2]->sprite, obj[2]->sprite_rect);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
 }
 
-void init_game_loop(wind_t *wind, myBool_t *myBool, obj_t **obj, house_t **house)
+void init_game_loop(wind_t *wind, control_t *control, obj_t **obj, house_t **house)
 {
     sfClock *main_clock = sfClock_create();
     sfTime main_time;
@@ -210,9 +210,9 @@ void init_game_loop(wind_t *wind, myBool_t *myBool, obj_t **obj, house_t **house
         main_time = sfClock_getElapsedTime(main_clock);
         main_seconds = main_time.microseconds / 10000;
         while (sfRenderWindow_pollEvent(wind->wind, &wind->event))
-            event_management(wind, myBool);
+            event_management(wind, control);
         if (main_seconds > 0) {
-            game_loop(wind, myBool, obj, house);
+            game_loop(wind, control, obj, house);
             sfClock_restart(main_clock);
         }
         display(wind, obj, house);
@@ -222,7 +222,7 @@ void init_game_loop(wind_t *wind, myBool_t *myBool, obj_t **obj, house_t **house
 int main(void)
 {
     wind_t *wind = malloc(sizeof(wind_t));
-    myBool_t *myBool = malloc(sizeof(myBool_t));
+    control_t *control = malloc(sizeof(control_t));
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
@@ -241,13 +241,13 @@ int main(void)
 
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
 
-    myBool->keyUp = 0;
-    myBool->keyDown = 0;
-    myBool->keyLeft = 0;
-    myBool->keyRight = 0;   
-    myBool->keySpace = 0;
-    myBool->keyY = 1;
+    control->keyUp = 0;
+    control->keyDown = 0;
+    control->keyLeft = 0;
+    control->keyRight = 0;   
+    control->keySpace = 0;
+    control->keyY = 1;
 
-    init_game_loop(wind, myBool, obj, house);
+    init_game_loop(wind, control, obj, house);
     return (0);
 }
