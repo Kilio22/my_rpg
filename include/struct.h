@@ -5,8 +5,17 @@
 ** struct
 */
 
-#pragma once
+#ifndef STRUCT_H
+#define STRUCT_H
 #include <SFML/Graphics.h>
+
+enum {
+    UP = 0,
+    LEFT,
+    RIGHT,
+    DOWN,
+    INTERACT
+};
 
 typedef struct wind_s {
     sfRenderWindow *wind;
@@ -47,3 +56,5 @@ typedef struct house_s {
     sfSprite *roof;
     sfSprite *door;
 } house_t;
+
+#endif //STRUCT_H

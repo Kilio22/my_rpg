@@ -248,6 +248,7 @@ int main(void)
     control->keySpace = 0;
     control->keyY = 1;
 
+    init_controls(control);
     init_game_loop(wind, control, obj, house);
     return (0);
 }
