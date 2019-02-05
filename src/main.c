@@ -134,7 +134,8 @@ void character_animation(obj_t *obj)
 void character_control(controls_t *control, obj_t **obj, house_t **house)
 {
     character_animation(obj[2]);
-    outside(control, obj, house);
+    if (control->bools[KEYSPACE] == 1 || control->bools[KEYY] == 1)
+        outside(control, obj, house);
 }
 
 void zoom_gestion(wind_t *wind, controls_t *control)
@@ -155,14 +156,13 @@ void camera_control(wind_t *wind, controls_t *control, sfVector2f pos)
     if (control->bools[KEYSPACE] == 1 || control->bools[KEYY] == 1)
         sfView_setCenter(wind->view, pos);
     else {
-        wind->windSize = sfRenderWindow_getSize(wind->wind);
-        if (control->mousePos.x > wind->windSize.x - 10)
+        if (control->bools[KEYRIGHT] == 1)
             sfView_move(wind->view, (sfVector2f){5, 0});
-        if (control->mousePos.x < 10)
+        if (control->bools[KEYLEFT] == 1)
             sfView_move(wind->view, (sfVector2f){-5, 0});
-        if (control->mousePos.y > wind->windSize.y - 10)
+        if (control->bools[KEYDOWN] == 1)
             sfView_move(wind->view, (sfVector2f){0, 5});
-        if (control->mousePos.y < 10)
+        if (control->bools[KEYUP] == 1)
             sfView_move(wind->view, (sfVector2f){0, -5});
     }
 }
