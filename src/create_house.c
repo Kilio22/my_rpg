@@ -20,6 +20,8 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house)
                 animation(&house[i]->door_rect, 0, 96, 384);
                 house[i]->frame_animation = 0;
             }
+            else if (house[i]->door_rect.left > 384 - 97)
+                control->bools[KEYINTER] = 0;
             house[i]->frame_animation ++;
             sfSprite_setTextureRect(house[i]->roof, rectReset);
             sfSprite_setTextureRect(house[i]->wall, rectReset);
