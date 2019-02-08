@@ -33,7 +33,6 @@ obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool cente
 
 void display(wind_t *wind, obj_t **obj, house_t **house)
 {
-        
     sfRenderWindow_setView(wind->wind, wind->view);
     sfRenderWindow_drawSprite(wind->wind, obj[0]->sprite, NULL); //ground
     sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL); //hero_hitBox
