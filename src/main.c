@@ -94,7 +94,7 @@ int main(void)
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[2] = create_object("assets/hero.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[4] = create_object("assets/stupid_nathan.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     house[0] = create_house(1, (sfVector2f){0, 0});
     house[1] = create_house(2, (sfVector2f){200, 0});
     house[2] = create_house(1, (sfVector2f){500, 0});
