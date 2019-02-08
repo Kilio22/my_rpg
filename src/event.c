@@ -27,6 +27,8 @@ void manage_key_pressed(wind_t *wind, controls_t *control)
         control->bools[KEYLEFT] = 1;
     if (wind->event.key.code == control->keys[RIGHT])
         control->bools[KEYRIGHT] = 1;
+    // if (wind->event.key.code == control->keys[INTERACT])
+    //     control->bools[KEYE] = 1;
     if (wind->event.key.code == sfKeySpace)
         control->bools[KEYSPACE] = 1;
     if (wind->event.key.code == sfKeyY) {
@@ -49,6 +51,8 @@ void manage_key_released(wind_t *wind, controls_t *control)
         control->bools[KEYLEFT] = 0;
     if (wind->event.key.code == control->keys[RIGHT])
         control->bools[KEYRIGHT] = 0;
+    // if (wind->event.key.code == control->keys[INTERACT])
+    //     control->bools[KEYE] = 0;
     if (wind->event.key.code == sfKeySpace)
         control->bools[KEYSPACE] = 0;
 }

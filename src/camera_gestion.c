@@ -26,12 +26,12 @@ void camera_control(wind_t *wind, controls_t *control, sfVector2f pos)
         sfView_setCenter(wind->view, pos);
     else {
         if (control->bools[KEYRIGHT] == 1)
-            sfView_move(wind->view, (sfVector2f){5, 0});
+            sfView_move(wind->view, (sfVector2f){10, 0});
         if (control->bools[KEYLEFT] == 1)
-            sfView_move(wind->view, (sfVector2f){-5, 0});
+            sfView_move(wind->view, (sfVector2f){-10, 0});
         if (control->bools[KEYDOWN] == 1)
-            sfView_move(wind->view, (sfVector2f){0, 5});
+            sfView_move(wind->view, (sfVector2f){0, 10});
         if (control->bools[KEYUP] == 1)
-            sfView_move(wind->view, (sfVector2f){0, -5});
+            sfView_move(wind->view, (sfVector2f){0, -10});
     }
 }

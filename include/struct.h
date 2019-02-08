@@ -30,9 +30,9 @@ enum {
     KEYLEFT,
     KEYRIGHT,
     KEYSPACE,
+    KEYY,
     ZOOM,
-    DEZOOM,
-    KEYY
+    DEZOOM
 };
 
 typedef struct controls_s {
@@ -53,13 +53,13 @@ typedef struct obj_s {
 
 typedef struct house_s {
     sfImage *image;
+    sfImage *door_image;
     sfTexture *houseTexture;
     sfTexture *doorTexture;
     sfSprite *interior;
     sfSprite *wall;
     sfSprite *roof;
     sfSprite *door;
-    sfIntRect door_rect;
 } house_t;
 
 #endif //STRUCT_H

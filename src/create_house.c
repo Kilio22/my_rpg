@@ -10,19 +10,16 @@
 #include "struct.h"
 #include "printf.h"
 
-void house_interaction(obj_t *obj, house_t **house)
+void house_interaction(obj_t *obj, controls_t *control, house_t **house)
 {
-    obj->sprite_rect = f_to_i_rect(sfSprite_getGlobalBounds(obj->sprite));
     sfIntRect rectReset = {0, 0, 0, 0};
 
     for (int i = 0; house[i] != NULL; i++) {
-        house[i]->door_rect = f_to_i_rect(sfSprite_getGlobalBounds(house[i]->door));
-        if (sfIntRect_intersects(&obj->sprite_rect, &house[i]->door_rect, NULL) == 1) {
+        if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1)
+            if (control->bools[KEYY] == 1) {
             sfSprite_setTextureRect(house[i]->roof, rectReset);
             sfSprite_setTextureRect(house[i]->wall, rectReset);
-            if (house[i]->door_rect.left < 384 - 64)
-                animation(&house[i]->door_rect, 0, 64, 384);
-        }
+            }
     }
 }
 
@@ -49,6 +46,7 @@ void house_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 {
     house->door = sfSprite_create();
+    house->door_image = sfImage_createFromFile(path);
     house->doorTexture = sfTexture_createFromFile(path, NULL);
     sfSprite_setTexture(house->door, house->doorTexture, sfTrue);
     sfSprite_setPosition(house->door, pos);

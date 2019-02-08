@@ -37,12 +37,11 @@ void display(wind_t *wind, obj_t **obj, house_t **house)
     sfRenderWindow_setView(wind->wind, wind->view);
     sfRenderWindow_drawSprite(wind->wind, obj[0]->sprite, NULL); //ground
     sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL); //hero_hitBox
-    for (int i = 0; house[i] != NULL; i++)
+    for (int i = 0; house[i] != NULL; i++) {
         sfRenderWindow_drawSprite(wind->wind, house[i]->interior, NULL); //house_Interior
-    for (int i = 0; house[i] != NULL; i++)
         sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL); //house_Wall
-    for (int i = 0; house[i] != NULL; i++)
         sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL); //house_Door
+    }
     for (int i = 2; obj[i] != NULL; i++)
         sfRenderWindow_drawSprite(wind->wind, obj[i]->sprite, NULL); //obj
     for (int i = 0; house[i] != NULL; i++)
