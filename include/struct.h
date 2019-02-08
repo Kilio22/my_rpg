@@ -18,13 +18,6 @@ enum keys {
     STATS
 };
 
-typedef struct wind_s {
-    sfRenderWindow *wind;
-    sfVector2u windSize;
-    sfEvent event;
-    sfView *view;
-} wind_t;
-
 enum bools {
     KEYUP = 0,
     KEYDOWN,
@@ -36,6 +29,13 @@ enum bools {
     KEYINTER,
     KEYY
 };
+
+typedef struct wind_s {
+    sfRenderWindow *wind;
+    sfVector2u windSize;
+    sfEvent event;
+    sfView *view;
+} wind_t;
 
 typedef struct controls_s {
     int *keys;
@@ -62,6 +62,8 @@ typedef struct house_s {
     sfSprite *wall;
     sfSprite *roof;
     sfSprite *door;
+    sfIntRect door_rect;
+    int frame_animation;
 } house_t;
 
 #endif //STRUCT_H

@@ -19,5 +19,5 @@ void event_management(wind_t *wind, controls_t *control);
 void animation(sfIntRect *rect, int start, int offset, int max_value);
 void house_interaction(obj_t *obj, controls_t *control, house_t **house);
 void all_character_animation(obj_t **obj);
-void update_all_rect(obj_t **obj);
+void update_all_rect(obj_t **obj, house_t **house);
 void camera_control(wind_t *wind, controls_t *control, sfVector2f pos);

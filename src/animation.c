@@ -38,8 +38,8 @@ void character_animation(obj_t *obj)
         animation(&obj->sprite_rect, 32, 32, 160);
         obj->frame_animation = 0;
     }
-    character_orientation(obj);
     obj->frame_animation ++;
+    character_orientation(obj);
 }
 
 void all_character_animation(obj_t **obj)
@@ -48,8 +48,10 @@ void all_character_animation(obj_t **obj)
         character_animation(obj[i]);
 }
 
-void update_all_rect(obj_t **obj)
+void update_all_rect(obj_t **obj, house_t **house)
 {
     for (int i = 0; obj[i] != NULL; i++)
-    sfSprite_setTextureRect(obj[i]->sprite, obj[i]->sprite_rect);
+        sfSprite_setTextureRect(obj[i]->sprite, obj[i]->sprite_rect);
+    for (int i = 0; obj[i] != NULL; i++)
+        sfSprite_setTextureRect(house[i]->door, house[i]->door_rect);
 }
