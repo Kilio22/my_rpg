@@ -25,7 +25,7 @@ typedef struct wind_s {
 } wind_t;
 
 enum {
-    KEYUP = 0,
+    KEYUP,
     KEYDOWN,
     KEYLEFT,
     KEYRIGHT,
@@ -47,7 +47,8 @@ typedef struct obj_s {
     sfSprite *sprite;
     sfIntRect sprite_rect;
     sfVector2f pos;
-    sfBool outside;
+    sfVector2f oldPos;
+    int frame_animation;
 } obj_t;
 
 typedef struct house_s {

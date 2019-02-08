@@ -32,7 +32,8 @@ MY_PATH	=	.
 INCLUDE_PATH	=	../include
 
 SRC_MY	=	pp_hitbox.c	\
-			animation.c
+			animation.c	\
+			window_creation.c
 
 CFLAGS	=	-Wall \
 			-W \
