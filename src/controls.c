@@ -23,9 +23,9 @@ void init_controls(controls_t *controls)
     char **args;
     int fd = open("./saves/config.txt", O_RDONLY); //a enlever plus tard, fd arrive en arg
 
-    controls->keys = malloc(sizeof(int) * 5);
+    controls->keys = malloc(sizeof(int) * 6);
     buff = get_next_line(fd);
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 6; i++) {
         buff = get_next_line(fd);
         args = my_str_to_word_array(buff, ':');
         controls->keys[i] = my_getnbr(args[1]);

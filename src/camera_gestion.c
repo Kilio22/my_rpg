@@ -22,7 +22,7 @@ void zoom_gestion(wind_t *wind, controls_t *control)
 void camera_control(wind_t *wind, controls_t *control, sfVector2f pos)
 {
     zoom_gestion(wind, control);
-    if (control->bools[KEYY] == 1)
+    if (control->bools[KEYY] == 0)
         sfView_setCenter(wind->view, pos);
     else {
         if (control->bools[KEYRIGHT] == 1)

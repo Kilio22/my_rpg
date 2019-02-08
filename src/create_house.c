@@ -16,7 +16,7 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house)
 
     for (int i = 0; house[i] != NULL; i++) {
         if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1)
-            if (control->bools[KEYY] == 1) {
+            if (control->bools[KEYINTER] == 1) {
             sfSprite_setTextureRect(house[i]->roof, rectReset);
             sfSprite_setTextureRect(house[i]->wall, rectReset);
             }

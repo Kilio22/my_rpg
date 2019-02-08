@@ -46,7 +46,7 @@ void outside(controls_t *control, obj_t *obj, house_t **house)
 
 void character_control(controls_t *control, obj_t *obj, house_t **house)
 {
-    if (control->bools[KEYY] == 1)
+    if (control->bools[KEYY] == 0)
         outside(control, obj, house);
 }
 
@@ -106,11 +106,9 @@ int main(void)
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
 
-    control->bools = malloc(sizeof(sfBool) * 8);
-    for (int i = 0; i < 7; i++)
+    control->bools = malloc(sizeof(sfBool) * 9);
+    for (int i = 0; i < 9; i++)
         control->bools[i] = 0;
-    control->bools[KEYY] = 1;
-
     init_controls(control);
     init_game_loop(wind, control, obj, house);
     return (0);

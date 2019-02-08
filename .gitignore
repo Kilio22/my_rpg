@@ -84,6 +84,7 @@ dkms.conf
 \#*\#
 
 executable
+.vscode
 
 # End of https://www.gitignore.io/api/c,c++
 

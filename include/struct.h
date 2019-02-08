@@ -9,12 +9,13 @@
 #define STRUCT_H
 #include <SFML/Graphics.h>
 
-enum {
+enum keys {
     UP = 0,
     LEFT,
     DOWN,
     RIGHT,
-    INTERACT
+    INTERACT,
+    STATS
 };
 
 typedef struct wind_s {
@@ -24,15 +25,16 @@ typedef struct wind_s {
     sfView *view;
 } wind_t;
 
-enum {
-    KEYUP,
+enum bools {
+    KEYUP = 0,
     KEYDOWN,
     KEYLEFT,
     KEYRIGHT,
     KEYSPACE,
-    KEYY,
     ZOOM,
-    DEZOOM
+    DEZOOM,
+    KEYINTER,
+    KEYY
 };
 
 typedef struct controls_s {
