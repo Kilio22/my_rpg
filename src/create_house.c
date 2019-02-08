@@ -53,6 +53,7 @@ void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
     house->door_image = sfImage_createFromFile(path);
     house->doorTexture = sfTexture_createFromFile(path, NULL);
     house->door_rect = rect;
+    house->frame_animation = 0;
     sfSprite_setTexture(house->door, house->doorTexture, sfTrue);
     sfSprite_setPosition(house->door, pos);
     sfSprite_setTextureRect(house->door, rect);
