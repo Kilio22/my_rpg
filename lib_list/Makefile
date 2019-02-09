@@ -29,10 +29,12 @@ LINE_RETURN	=	$(ECHO) ""
 NAME	=	list
 COLOR_THEME	=	$(YELLO_C)
 
-SRC_PATH	=	./
+SRC_PATH	=	./list
 INCLUDE_PATH	=	../include
 
-SRC	=	
+SRC	=	double_chain.c \
+		simple_chain.c \
+		my_simple_vector.c
 
 CFLAGS	=	-Wall \
 			-Wextra \

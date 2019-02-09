@@ -29,7 +29,7 @@ LINE_RETURN	=	$(ECHO) ""
 NAME	=	g
 COLOR_THEME	=	$(YELLO_C)
 
-SRC_PATH	=	./graphic/
+SRC_PATH	=	./graphic
 INCLUDE_PATH	=	../include
 
 SRC	=	pp_hitbox.c	\

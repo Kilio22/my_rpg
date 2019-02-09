@@ -48,11 +48,13 @@ SRC	=	event.c	\
 		camera_gestion.c \
 		display_and_obj.c
 
-SRC_LIB	=	my \
-			g
+SRC_LIB	=	my 	\
+			g 	\
+			list
 
 LIB_PATHS	=	lib \
-				lib_graphic
+				lib_graphic \
+				lib_list
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)
