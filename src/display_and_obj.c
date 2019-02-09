@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "proto.h"
 #include "struct.h"
 
@@ -20,6 +21,7 @@ obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool cente
     obj->sprite = sfSprite_create();
     obj->pos = pos;
     obj->sprite_rect = intrect;
+    obj->in_house = 0;
     obj->frame_animation = 0;
     sfSprite_setTexture(obj->sprite, obj->texture, sfTrue);
     sfSprite_setTextureRect(obj->sprite, intrect);

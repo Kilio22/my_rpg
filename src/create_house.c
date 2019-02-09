@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include "proto.h"
 #include "struct.h"
 #include "printf.h"
@@ -13,16 +14,17 @@
 void house_interaction(obj_t *obj, controls_t *control, house_t **house)
 {
     sfIntRect rectReset = {0, 0, 0, 0};
-
     for (int i = 0; house[i] != NULL; i++) {
         if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1 && control->bools[KEYINTER] == 1) {
+            // obj->in_house = 1;
             if (house[i]->frame_animation == 8 && house[i]->door_rect.left < 384 - 96) {
                 animation(&house[i]->door_rect, 0, 96, 384);
                 house[i]->frame_animation = 0;
             }
-            else if (house[i]->door_rect.left > 384 - 97)
-                control->bools[KEYINTER] = 0;
             house[i]->frame_animation ++;
+            if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1)
+                sfSprite_move(obj->sprite, (sfVector2f){0, -1});
+
             sfSprite_setTextureRect(house[i]->roof, rectReset);
             sfSprite_setTextureRect(house[i]->wall, rectReset);
         }
