@@ -24,6 +24,7 @@ simple_vector_t *init_list(void)
         current->x = x;
         current->y = 0;
         simple_vector_push_back(list, current);
+        x++;
     }
     return (list);
 }

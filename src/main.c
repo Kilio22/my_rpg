@@ -85,6 +85,8 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
     sfClock *main_clock = sfClock_create();
     sfTime main_time;
     float main_seconds;
+    sfVector2f one;
+    sfVector2f two;
 
     while (sfRenderWindow_isOpen(wind->wind))
     {
@@ -97,6 +99,9 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
             sfClock_restart(main_clock);
         }
         display(wind, obj, house);
+        one = sfSprite_getPosition(obj[2]->sprite);
+        two = sfSprite_getPosition(obj[3]->sprite);
+        printf("perso: x= %f    y= %f    perso2:  x= %f   y= %f\n", one.x, one.y, two.x, two.y);
     }
 }
 
