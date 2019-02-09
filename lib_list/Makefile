@@ -41,7 +41,7 @@ CFLAGS	=	-Wall \
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 
-SRCS	=	$(SRC_MY:%=$(SRC_PATH)/%)
+SRCS	=	$(SRC:%=$(SRC_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
 
