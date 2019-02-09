@@ -84,7 +84,7 @@ void follower(obj_t **obj, wind_t *wind)
     static sfVector2f oldpos = {0, 0};
     sfVector2f pos = sfSprite_getPosition(obj[1]->sprite);
 
-    if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y || pos.y > oldpos.y) {
+    if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y || pos.y < oldpos.y) {
         sfSprite_setPosition(obj[3]->sprite, *(sfVector2f*)wind->list->start->content);
         modif_list(wind->list, obj[1]);
         sfSprite_setPosition(obj[4]->sprite, *(sfVector2f*)wind->list2->start->content);
