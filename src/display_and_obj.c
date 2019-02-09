@@ -42,7 +42,7 @@ void display(wind_t *wind, obj_t **obj, house_t **house)
         sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL); //house_Wall
         sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL); //house_Door
     }
-    for (int i = 3; obj[i] > 0; i--)
+    for (int i = 3; i > 0; i--)
         sfRenderWindow_drawSprite(wind->wind, obj[i]->sprite, NULL); //obj
     for (int i = 0; house[i] != NULL; i++)
         sfRenderWindow_drawSprite(wind->wind, house[i]->roof, NULL); //house_Roof
