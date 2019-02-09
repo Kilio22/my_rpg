@@ -16,7 +16,7 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house)
     sfIntRect rectReset = {0, 0, 0, 0};
     for (int i = 0; house[i] != NULL; i++) {
         if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1 && control->bools[KEYINTER] == 1) {
-            // obj->in_house = 1;
+            obj->in_house = 1;
             if (house[i]->frame_animation == 8 && house[i]->door_rect.left < 384 - 96) {
                 animation(&house[i]->door_rect, 0, 96, 384);
                 house[i]->frame_animation = 0;

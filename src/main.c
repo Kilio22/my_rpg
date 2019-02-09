@@ -70,12 +70,12 @@ void inside(controls_t *control, obj_t *obj, house_t **house)
 
 void character_control(controls_t *control, obj_t *obj, house_t **house)
 {
-    //printf("test: %d\n", obj->in_house);
+    printf("test: %d\n", obj->in_house);
     if (control->bools[KEYY] == 0) {
-        // if (obj->in_house == 0)
+        if (obj->in_house == 0)
             outside(control, obj, house);
-        // else if (obj->in_house == 0)
-        //     inside(control, obj, house);
+        else
+            inside(control, obj, house);
     }
 }
 
@@ -84,7 +84,7 @@ void follower(obj_t **obj, wind_t *wind)
     static sfVector2f oldpos = {0, 0};
     sfVector2f pos = sfSprite_getPosition(obj[1]->sprite);
 
-    if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y || pos.y > oldpos.y) {
+    if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y || pos.y < oldpos.y) {
         sfSprite_setPosition(obj[3]->sprite, *(sfVector2f*)wind->list->start->content);
         modif_list(wind->list, obj[1]);
         sfSprite_setPosition(obj[4]->sprite, *(sfVector2f*)wind->list2->start->content);
