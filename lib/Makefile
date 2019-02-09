@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2018
 ## Fairefichier
 ## File description:
-## Compiles the libmy.a library binary
+## This is a fairefichier
 ##
 
 ECHO	=	/bin/echo -e
@@ -27,72 +27,70 @@ LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
 NAME	=	my
-COLOR_THEME	=	$(LIGHT_GREEN)
+COLOR_THEME	=	$(YELLO_C)
 
-MY_PATH	=	./my
-PRINTF_PATH	=	./my
+SRC_PATH	=	./my
 INCLUDE_PATH	=	../include
 
-SRC_MY	=	my_swap.c					\
-			my_putstr.c					\
-			my_strlen.c					\
-			my_getnbr.c					\
-			my_strcpy.c					\
-			my_putchar.c				\
-			my_revstr.c					\
-			my_put_nbr.c				\
-			my_intlen.c					\
-			my_check_occur.c			\
-			my_strdup.c					\
-			my_strncpy.c				\
-			my_strcmp.c					\
-			my_strlowcase.c				\
-			my_get_one_nbr.c			\
-			my_int_to_char.c			\
-			get_next_line.c				\
-			my_str_to_word_array.c		\
-			my_str_isalpha.c			\
-			my_str_islower.c			\
-			my_str_isprintable.c		\
-			my_str_isupper.c			\
-			my_strcat.c					\
-			my_strncat.c				\
-			my_strncmp.c				\
-			my_strstr.c					\
-			my_strupcase.c				\
-			my_strxdup.c				\
-			my_swap.c					\
-			my_compute_power_rec.c		\
-			my_compute_square_root.c	\
-			my_is_prime.c				\
-			my_isneg.c					\
-			my_tab_len.c				\
-			my_put_err.c				\
-			my_str_isnum.c				\
-			my_is_alpha_num.c			\
-			randomiser.c				\
-			my_realloc.c				\
-			my_itoa.c 					\
-			my_atoi.c
-
-SRC_PRINTF	=	my_printf.c			\
-				binary.c			\
-				hexa.c				\
-				octal.c				\
-				put_pointers.c		\
-				put_unsig.c			\
-				print_binary.c		\
-				print_hexa.c		\
-				print_octal.c		\
-				print_pointers.c	\
-				print_str.c			\
-				print_nbr.c			\
-				print_unsig.c		\
-				print_str_s.c		\
-				print_char.c		\
-				list.c				\
-				putstr_s.c			\
-				octal2.c
+SRC	=	my_swap.c					\
+		my_putstr.c					\
+		my_strlen.c					\
+		my_getnbr.c					\
+		my_strcpy.c					\
+		my_putchar.c				\
+		my_revstr.c					\
+		my_put_nbr.c				\
+		my_intlen.c					\
+		my_check_occur.c			\
+		my_strdup.c					\
+		my_strncpy.c				\
+		my_strcmp.c					\
+		my_strlowcase.c				\
+		my_get_one_nbr.c			\
+		my_int_to_char.c			\
+		get_next_line.c				\
+		my_str_to_word_array.c		\
+		my_str_isalpha.c			\
+		my_str_islower.c			\
+		my_str_isprintable.c		\
+		my_str_isupper.c			\
+		my_strcat.c					\
+		my_strncat.c				\
+		my_strncmp.c				\
+		my_strstr.c					\
+		my_strupcase.c				\
+		my_strxdup.c				\
+		my_swap.c					\
+		my_compute_power_rec.c		\
+		my_compute_square_root.c	\
+		my_is_prime.c				\
+		my_isneg.c					\
+		my_tab_len.c				\
+		my_put_err.c				\
+		my_str_isnum.c				\
+		my_is_alpha_num.c			\
+		randomiser.c				\
+		my_realloc.c				\
+		my_itoa.c 					\
+		my_atoi.c					\
+		my_printf.c					\
+		binary.c					\
+		hexa.c						\
+		octal.c						\
+		put_pointers.c				\
+		put_unsig.c					\
+		print_binary.c				\
+		print_hexa.c				\
+		print_octal.c				\
+		print_pointers.c			\
+		print_str.c					\
+		print_nbr.c					\
+		print_unsig.c				\
+		print_str_s.c				\
+		print_char.c				\
+		list.c						\
+		putstr_s.c					\
+		octal2.c
 
 CFLAGS	=	-Wall \
 			-Wextra \
@@ -101,8 +99,7 @@ CFLAGS	=	-Wall \
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 
-SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
-SRCS	+=	$(SRC_PRINTF:%=$(PRINTF_PATH)/%)
+SRCS	=	$(SRC:%=$(SRC_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
 
@@ -146,4 +143,4 @@ debug: all
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 
-.PHONY: all $(NAME) message clean fclean re debug
+.PHONY: all $(NAME) message clean fclean re debug 

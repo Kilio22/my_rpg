@@ -1,8 +1,8 @@
 ##
 ## EPITECH PROJECT, 2018
-## Makefile
+## Fairefichier
 ## File description:
-## Makefile that does the tests_run rule
+## Fairefichier that does the tests_run rule
 ##
 
 ECHO	=	/bin/echo -e
@@ -27,47 +27,46 @@ LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
 NAME	=	unit_tests
-LIB_NAME	=	my
+
+ROOT_PATH	=	../
 SRC_NAME	=	src
 INCL_NAME	=	include
 TESTS_NAME	=	tests
-
-ROOT_PATH	=	../
-LIB_PATH	=	../lib
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
 SRC_TESTS	=	
 
-SRCS	=	$(SRC:%=$(SRC_PATH)/%) \
-			$(SRC_TESTS)
-
+SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_TESTS)
 OBJ	=	$(SRCS:.c=.test_o)
+LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
 CFLAGS	=	-Wall \
-			-W \
+			-Wextra \
 			-Werror \
 			-I $(INCL_PATH) \
-			-L$(LIB_PATH) -l$(LIB_NAME) \
-			-lcriterion \
+			$(LIB_PATHS_FLAG) \
+			$(LIBRARIES)
+CFLAGS	+=	-lcriterion \
 			--coverage
 
 all:	message $(NAME)
 
-$(NAME): $(OBJ)
-	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) && \
-		$(ECHO) $(BOLD_T)$(GREEN_C)"\nCOMPILED:" $(DEFAULT)$(LIGHT_GREEN) "$(NAME)"$(DEFAULT)"\n" || \
-		$(ECHO) $(BOLD_T)$(UNDLN_T)$(RED_C)"BUILD FAILED:" $(LIGHT_RED) "$(NAME)"$(DEFAULT)"\n"
-	@./$(NAME)
-
 message:
+	@$(LINE_RETURN)
 	@$(ECHO) $(BOLD_T)\\$(COLOR_THEME)" _   _       _ _     _____         _"$(DEFAULT)
 	@$(ECHO) $(BOLD_T)\\$(COLOR_THEME)"| | | |_ __ (_) |_  |_   _|__  ___| |_ ___"$(DEFAULT)
 	@$(ECHO) $(BOLD_T)\\$(COLOR_THEME)"| | | | '_ \| | __|   | |/ _ \/ __| __/ __|"$(DEFAULT)
 	@$(ECHO) $(BOLD_T)\\$(COLOR_THEME)'| |_| | | | | | |_    | |  __/\__ \ |_\__ \\'$(DEFAULT)
 	@$(ECHO) $(BOLD_T)\\$(COLOR_THEME)" \___/|_| |_|_|\__|   |_|\___||___/\__|___/\n"$(DEFAULT)
 	@$(LINE_RETURN)
+
+$(NAME): $(OBJ)
+	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) && \
+		$(ECHO) $(BOLD_T)$(GREEN_C)"\n[✔] COMPILED:" $(DEFAULT)$(LIGHT_GREEN) "$(NAME)\n"$(DEFAULT) || \
+		$(ECHO) $(RED_C)$(BOLD_T)"[✘] "$(UNDLN_T)"BUILD FAILED:" $(LIGHT_RED) "$(NAME)\n"$(DEFAULT)
+	@./$(NAME)
 
 clean:
 	@$(RM) $(OBJ:%=%.gcno)

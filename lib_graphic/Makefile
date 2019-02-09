@@ -1,8 +1,8 @@
 ##
 ## EPITECH PROJECT, 2018
-## Makefile
+## Fairefichier
 ## File description:
-## Compiles the libmy.a library binary
+## This is a fairefichier
 ##
 
 ECHO	=	/bin/echo -e
@@ -27,39 +27,42 @@ LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
 NAME	=	g
-COLOR_THEME	=	$(MAGEN_C)
-MY_PATH	=	.
+COLOR_THEME	=	$(YELLO_C)
+
+SRC_PATH	=	./graphic/
 INCLUDE_PATH	=	../include
 
-SRC_MY	=	pp_hitbox.c	\
-			animation.c	\
-			window_creation.c
+SRC	=	pp_hitbox.c	\
+		animation.c	\
+		window_creation.c
 
 CFLAGS	=	-Wall \
-			-W \
+			-Wextra \
 			-Werror \
 			-I $(INCLUDE_PATH)
 
-SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
+DEBUG_FLAGS	=	-g3 -gdwarf-4
+
+SRCS	=	$(SRC:%=$(SRC_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
 
 all:	message $(NAME)
 
-$(NAME):	$(OBJ)
-	@ar rc ./lib$(NAME).a $(OBJ) && \
-		$(ECHO) $(BOLD_T)$(GREEN_C)"\nCOMPILED:" $(DEFAULT)$(LIGHT_GREEN) "lib$(NAME).a\n" $(DEFAULT) || \
-		$(ECHO) $(RED_C)$(UNDLN_T)$(BOLD_T)"BUILD FAILED:" $(LIGHT_RED) "lib$(NAME).a"$(DEFAULT)"\n"
-
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"  ____                 _     _      " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" / ___|_ __ __ _ _ __ | |__ (_) ___ " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |  _| '__/ _\` | '_ \| '_ \| |/ __|" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |_| | | | (_| | |_) | | | | | (__ " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" \____|_|  \__,_| .__/|_| |_|_|\___|" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                |_|                 " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _ _                          " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   (_) |__  _ __ __ _ _ __ _   _ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | | '_ \| '__/ _\` | '__| | | |" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| | |_) | | | (_| | |  | |_| |" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_|_.__/|_|  \__,_|_|   \__, |" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                              |___/ " $(DEFAULT)
 	@$(LINE_RETURN)
+
+$(NAME):	$(OBJ)
+	@ar rc ./lib$(NAME).a $(OBJ) && \
+		$(ECHO) $(BOLD_T)$(GREEN_C)"\n[✔] COMPILED:" $(DEFAULT)$(LIGHT_GREEN) "lib$(NAME).a" $(DEFAULT) || \
+		$(ECHO) $(RED_C)$(BOLD_T)"[✘] "$(UNDLN_T)"BUILD FAILED:" $(LIGHT_RED) "lib$(NAME).a"$(DEFAULT)
 
 clean:
 	@$(RM) $(OBJ)
@@ -75,9 +78,13 @@ fclean:	clean
 
 re:		fclean all
 
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: COLOR_THEME = $(CYAN_C)
+debug: all
+
 %.o: %.c
 	@$(CC) -c $(CFLAGS) -o $@ $< && \
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 
-.PHONY: all $(NAME) message clean fclean re
+.PHONY: all $(NAME) message clean fclean re debug 
