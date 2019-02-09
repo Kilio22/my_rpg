@@ -72,6 +72,8 @@ void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
     if (movable == 1) {
         sfSprite_setPosition(obj[3]->sprite, *(sfVector2f*)wind->list->start->content);
         modif_list(wind->list, obj[1]);
+        sfSprite_setPosition(obj[4]->sprite, *(sfVector2f*)wind->list2->start->content);
+        modif_list(wind->list2, obj[3]);
     }
     all_character_animation(obj);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
@@ -85,8 +87,6 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
     sfClock *main_clock = sfClock_create();
     sfTime main_time;
     float main_seconds;
-    sfVector2f one;
-    sfVector2f two;
 
     while (sfRenderWindow_isOpen(wind->wind))
     {
@@ -99,9 +99,6 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
             sfClock_restart(main_clock);
         }
         display(wind, obj, house);
-        one = sfSprite_getPosition(obj[2]->sprite);
-        two = sfSprite_getPosition(obj[3]->sprite);
-        printf("perso: x= %f    y= %f    perso2:  x= %f   y= %f\n", one.x, one.y, two.x, two.y);
     }
 }
 
@@ -120,7 +117,8 @@ int main(void)
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[2] = create_object("assets/hero.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[3] = create_object("assets/hero.png", (sfVector2f){-50, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[4] = NULL;
+    obj[4] = create_object("assets/hero.png", (sfVector2f){-100, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[5] = NULL;
     house[0] = create_house(1, (sfVector2f){0, 0});
     house[1] = create_house(2, (sfVector2f){200, 0});
     house[2] = create_house(1, (sfVector2f){500, 0});
@@ -130,11 +128,13 @@ int main(void)
 
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
+    sfSprite_setOrigin(obj[4]->sprite, (sfVector2f){16, 60});
 
     control->bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
         control->bools[i] = 0;
-    wind->list = init_list();
+    wind->list = init_list(-50);
+    wind->list2 = init_list(-100);
     init_controls(control);
     init_game_loop(wind, control, obj, house);
     return (0);

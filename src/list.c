@@ -15,11 +15,12 @@
 #include "proto.h"
 #include "struct.h"
 
-simple_vector_t *init_list(void)
+simple_vector_t *init_list(int x)
 {
     simple_vector_t *list = simple_vector_create();
+    int max = x + 50;
 
-    for (int x = -49; x < 0; x++) { //alloc
+    for (; x < max; x++) { //alloc
         sfVector2f *current = malloc(sizeof(sfVector2f));
         current->x = x;
         current->y = 0;

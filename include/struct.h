@@ -37,6 +37,7 @@ typedef struct wind_s {
     sfEvent event;
     sfView *view;
     simple_vector_t *list; //a retirer plus tard
+    simple_vector_t *list2; //a retirer plus tard
 } wind_t;
 
 typedef struct controls_s {
