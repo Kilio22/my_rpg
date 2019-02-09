@@ -8,6 +8,7 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 #include <SFML/Graphics.h>
+#include "my_vector.h"
 
 enum keys {
     UP = 0,
@@ -35,6 +36,7 @@ typedef struct wind_s {
     sfVector2u windSize;
     sfEvent event;
     sfView *view;
+    simple_vector_t *list; //a retirer plus tard
 } wind_t;
 
 typedef struct controls_s {

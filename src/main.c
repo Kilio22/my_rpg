@@ -12,6 +12,7 @@
 #include "pp_hitbox.h"
 #include "proto.h"
 #include "struct.h"
+#include "my_vector.h"
 
 sfBool all_world_hitBox(obj_t *obj, house_t **house)
 {
@@ -21,40 +22,57 @@ sfBool all_world_hitBox(obj_t *obj, house_t **house)
     return (0);
 }
 
-void outside(controls_t *control, obj_t *obj, house_t **house)
+int outside(controls_t *control, obj_t *obj, house_t **house)
 {
     sfVector2f newPos = {0, 0};
+    int movable = 1; //a enlever
 
     if (control->bools[KEYUP] == 1)
         newPos.y -= 1;
     if (control->bools[KEYDOWN] == 1)
         newPos.y += 1;
     sfSprite_move(obj->sprite, newPos);
-    if (all_world_hitBox(obj, house) == 1)
+    if (all_world_hitBox(obj, house) == 1) {
         newPos.y *= -1;
+        movable = 0;
+    }
     if (control->bools[KEYLEFT] == 1)
         newPos.x -= 1;
     if (control->bools[KEYRIGHT] == 1)
         newPos.x += 1;
     sfSprite_move(obj->sprite, newPos);
     newPos.y = 0;
-    if (all_world_hitBox(obj, house) == 1)
+    if (all_world_hitBox(obj, house) == 1) {
         newPos.x *= -1;
+        movable = 0;
+    }
     sfSprite_move(obj->sprite, newPos);
     obj->pos = sfSprite_getPosition(obj->sprite);
+    if (control->bools[KEYUP] == 0 && control->bools[KEYDOWN] == 0 && control->bools[KEYLEFT] == 0 && control->bools[KEYRIGHT] == 0)
+        movable = 0;
+    return (movable);
 }
 
-void character_control(controls_t *control, obj_t *obj, house_t **house)
+int character_control(controls_t *control, obj_t *obj, house_t **house)
 {
+    int movable = 0;
+
     if (control->bools[KEYY] == 0)
-        outside(control, obj, house);
+        movable = outside(control, obj, house);
+    return (movable);
 }
 
 void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
 {
+    int movable = 0;
+
     if (control->bools[KEYSPACE] == 1)          // setPosition of the character on camera
         sfSprite_setPosition(obj[1]->sprite, sfView_getCenter(wind->view));
-    character_control(control, obj[1], house);
+    movable = character_control(control, obj[1], house);
+    if (movable == 1) {
+        sfSprite_setPosition(obj[3]->sprite, *(sfVector2f*)wind->list->start->content);
+        modif_list(wind->list, obj[1]);
+    }
     all_character_animation(obj);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
     house_interaction(obj[1], control, house);
@@ -96,7 +114,7 @@ int main(void)
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[2] = create_object("assets/hero.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){-40, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){-50, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[4] = NULL;
     house[0] = create_house(1, (sfVector2f){0, 0});
     house[1] = create_house(2, (sfVector2f){200, 0});
@@ -111,6 +129,7 @@ int main(void)
     control->bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
         control->bools[i] = 0;
+    wind->list = init_list();
     init_controls(control);
     init_game_loop(wind, control, obj, house);
     return (0);

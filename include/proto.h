@@ -7,6 +7,7 @@
 
 #pragma once
 #include "struct.h"
+#include "my_vector.h"
 
 sfBool pp_intersect(const sfSprite *a, const sfSprite *b, const sfImage *imgA, const sfImage *imgB);
 sfIntRect f_to_i_rect(sfFloatRect f);
@@ -21,3 +22,5 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house);
 void all_character_animation(obj_t **obj);
 void update_all_rect(obj_t **obj, house_t **house);
 void camera_control(wind_t *wind, controls_t *control, sfVector2f pos);
+simple_vector_t *init_list(void);
+void modif_list(simple_vector_t *pos, obj_t *obj);
