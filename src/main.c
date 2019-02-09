@@ -56,8 +56,8 @@ void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
         sfSprite_setPosition(obj[1]->sprite, sfView_getCenter(wind->view));
     character_control(control, obj[1], house);
     all_character_animation(obj);
-    house_interaction(obj[1], control, house);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
+    house_interaction(obj[1], control, house);
     camera_control(wind, control, obj[1]->pos);
     update_all_rect(obj, house);
 }
