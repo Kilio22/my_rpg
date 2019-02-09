@@ -70,7 +70,6 @@ void inside(controls_t *control, obj_t *obj, house_t **house)
 
 void character_control(controls_t *control, obj_t *obj, house_t **house)
 {
-    printf("test: %d\n", obj->in_house);
     if (control->bools[KEYY] == 0) {
         if (obj->in_house == 0)
             outside(control, obj, house);
