@@ -20,7 +20,7 @@ simple_vector_t *init_list(int x)
     simple_vector_t *list = simple_vector_create();
     int max = x + 50;
 
-    for (; x < max; x++) { //alloc
+    for (; x < max; x++) {
         sfVector2f *current = malloc(sizeof(sfVector2f));
         current->x = x;
         current->y = 0;
