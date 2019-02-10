@@ -67,6 +67,7 @@ typedef struct house_s {
     sfSprite *roof;
     sfSprite *door;
     sfIntRect door_rect;
+    sfBool display_house;
     int frame_animation;
 } house_t;
 

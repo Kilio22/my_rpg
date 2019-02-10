@@ -40,13 +40,16 @@ void display(wind_t *wind, obj_t **obj, house_t **house)
     sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL); //hero_hitBox
     for (int i = 0; house[i] != NULL; i++) {
         sfRenderWindow_drawSprite(wind->wind, house[i]->interior, NULL); //house_Interior
-        sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL); //house_Wall
-        sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL); //house_Door
+        if (house[i]->display_house == 1) {
+            sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL); //house_Wall
+            sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL); //house_Door
+        }
     }
     for (int i = 4; i > 1; i--)
         sfRenderWindow_drawSprite(wind->wind, obj[i]->sprite, NULL); //obj
     for (int i = 0; house[i] != NULL; i++)
-        sfRenderWindow_drawSprite(wind->wind, house[i]->roof, NULL); //house_Roof
+        if (house[i]->display_house == 1)
+            sfRenderWindow_drawSprite(wind->wind, house[i]->roof, NULL); //house_Roof
     sfRenderWindow_display(wind->wind);
     sfRenderWindow_clear(wind->wind, sfBlack);
 }
