@@ -21,7 +21,7 @@ void init_controls(controls_t *controls)
 {
     char *buff;
     char **args;
-    int fd = open("./saves/config.txt", O_RDONLY); //a enlever plus tard, fd arrive en arg
+    int fd = open("./saves/save1.txt", O_RDONLY); //a enlever plus tard, fd arrive en arg
 
     controls->keys = malloc(sizeof(int) * 6);
     buff = get_next_line(fd);

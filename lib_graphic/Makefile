@@ -51,12 +51,12 @@ all:	message $(NAME)
 
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _ _                          " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   (_) |__  _ __ __ _ _ __ _   _ " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | | '_ \| '__/ _\` | '__| | | |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| | |_) | | | (_| | |  | |_| |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_|_.__/|_|  \__,_|_|   \__, |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                              |___/ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _ _                                                    _     _      " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   (_) |__  _ __ __ _ _ __ _   _      __ _ _ __ __ _ _ __ | |__ (_) ___ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | | '_ \| '__/ _\` | '__| | | |    / _\` | '__/ _\` | '_ \| '_ \| |/ __|" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| | |_) | | | (_| | |  | |_| |   | (_| | | | (_| | |_) | | | | | (__ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_|_.__/|_|  \__,_|_|   \__, |    \__, |_|  \__,_| .__/|_| |_|_|\___|" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                              |___/     |___/          |_|" $(DEFAULT)
 	@$(LINE_RETURN)
 
 $(NAME):	$(OBJ)

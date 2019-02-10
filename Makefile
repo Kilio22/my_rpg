@@ -80,11 +80,11 @@ all:	build_libs message $(NAME)
 
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" ____        _ _     _"$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| __ ) _   _(_) | __| |"$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|  _ \| | | | | |/ _\` |"$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |_) | |_| | | | (_| |"$(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|____/ \__,_|_|_|\__,_|"$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _____   ____  _____ ____ _____   ____  ____   ____ "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | ____| | __ )| ____/ ___|_   _| |  _ \|  _ \ / ___|"$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   |  _|   |  _ \|  _| \___ \ | |   | |_) | |_) | |  _ "$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| |___  | |_) | |___ ___) || |   |  _ <|  __/| |_| |"$(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_____| |____/|_____|____/ |_|   |_| \_\_|    \____|"$(DEFAULT)
 	@$(LINE_RETURN)
 
 $(NAME): $(OBJ)

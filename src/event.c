@@ -28,7 +28,7 @@ void manage_key_pressed(wind_t *wind, controls_t *control)
     if (wind->event.key.code == control->keys[RIGHT])
         control->bools[KEYRIGHT] = 1;
     //if (wind->event.key.code == control->keys[STATS])
-    //    my_putstr("yes\n");
+    //    my_putstr("GOOD SHIT\n");
     if (wind->event.key.code == control->keys[INTERACT])
         control->bools[KEYINTER] = 1;
     if (wind->event.key.code == sfKeySpace)
