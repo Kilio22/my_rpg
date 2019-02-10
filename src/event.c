@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include "proto.h"
 #include "my.h"
 #include "struct.h"
 
@@ -18,7 +19,7 @@ void mouse_wheel_management(wind_t *wind, controls_t *control)
         control->bools[DEZOOM] = 1;
 }
 
-void manage_key_pressed(wind_t *wind, controls_t *control)
+void manage_key_pressed(wind_t *wind, controls_t *control, obj_t **obj)
 {
     if (wind->event.key.code == control->keys[UP])
         control->bools[KEYUP] = 1;
@@ -28,8 +29,8 @@ void manage_key_pressed(wind_t *wind, controls_t *control)
         control->bools[KEYLEFT] = 1;
     if (wind->event.key.code == control->keys[RIGHT])
         control->bools[KEYRIGHT] = 1;
-    //if (wind->event.key.code == control->keys[STATS])
-    //    my_putstr("GOOD SHIT\n");
+    if (wind->event.key.code == control->keys[STATS])
+        print_stats(obj);
     if (wind->event.key.code == control->keys[INTERACT])
         control->bools[KEYINTER] = 1;
     if (wind->event.key.code == sfKeySpace)
@@ -58,7 +59,7 @@ void manage_key_released(wind_t *wind, controls_t *control)
         control->bools[KEYSPACE] = 0;
 }
 
-void event_management(wind_t *wind, controls_t *control)
+void event_management(wind_t *wind, controls_t *control, obj_t **obj)
 {
     if (wind->event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(wind, control);
@@ -67,7 +68,7 @@ void event_management(wind_t *wind, controls_t *control)
         control->mousePos.y = wind->event.mouseMove.y;
     }
     if (wind->event.type == sfEvtKeyPressed)
-        manage_key_pressed(wind, control);
+        manage_key_pressed(wind, control, obj);
     if (wind->event.type == sfEvtKeyReleased)
         manage_key_released(wind, control);
     if (wind->event.type == sfEvtClosed)

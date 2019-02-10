@@ -38,7 +38,7 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
         main_time = sfClock_getElapsedTime(main_clock);
         main_seconds = main_time.microseconds / 10000;
         while (sfRenderWindow_pollEvent(wind->wind, &wind->event))
-            event_management(wind, control);
+            event_management(wind, control, obj);
         if (main_seconds > 0) {
             game_loop(wind, control, obj, house);
             sfClock_restart(main_clock);
@@ -50,7 +50,7 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
 int main(void)
 {
     wind_t *wind = malloc(sizeof(wind_t));
-    controls_t *control = malloc(sizeof(controls_t));
+    controls_t *controls = malloc(sizeof(controls_t));
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
@@ -75,12 +75,12 @@ int main(void)
     sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[4]->sprite, (sfVector2f){16, 60});
 
-    control->bools = malloc(sizeof(sfBool) * 9);
+    controls->bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
-        control->bools[i] = 0;
+        controls->bools[i] = 0;
     wind->list = init_list(-50);
     wind->list2 = init_list(-100);
-    init_controls(control);
-    init_game_loop(wind, control, obj, house);
+    init_save(controls, wind, obj);
+    init_game_loop(wind, controls, obj, house);
     return (0);
 }

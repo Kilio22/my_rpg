@@ -43,7 +43,7 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
 SRC	=	event.c	\
 		create_house.c \
-		controls.c	\
+		init.c	\
 		animation.c	\
 		camera_gestion.c \
 		display_and_obj.c \

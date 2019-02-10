@@ -39,7 +39,7 @@ enum stats {
 };
 
 typedef struct char_stats_s {
-    int *stats
+    int *stats;
 } char_stats_t;
 
 typedef struct wind_s {
@@ -49,6 +49,7 @@ typedef struct wind_s {
     sfView *view;
     simple_vector_t *list; //a retirer plus tard
     simple_vector_t *list2; //a retirer plus tard
+    int fd; //a retirer plus tard
 } wind_t;
 
 typedef struct controls_s {
@@ -65,6 +66,7 @@ typedef struct obj_s {
     sfVector2f pos;
     sfVector2f oldPos;
     int frame_animation;
+    char_stats_t *stats;
 } obj_t;
 
 typedef struct house_s {
