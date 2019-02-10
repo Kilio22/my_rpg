@@ -16,14 +16,12 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house)
     sfIntRect rectReset = {0, 0, 0, 0};
     for (int i = 0; house[i] != NULL; i++) {
         if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1 && control->bools[KEYINTER] == 1) {
-            obj->in_house = 1;
+            sfSprite_move(obj->sprite, (sfVector2f){0, -2});
             if (house[i]->frame_animation == 8 && house[i]->door_rect.left < 384 - 96) {
                 animation(&house[i]->door_rect, 0, 96, 384);
                 house[i]->frame_animation = 0;
             }
             house[i]->frame_animation ++;
-            if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1)
-                sfSprite_move(obj->sprite, (sfVector2f){0, -1});
 
             sfSprite_setTextureRect(house[i]->roof, rectReset);
             sfSprite_setTextureRect(house[i]->wall, rectReset);
@@ -35,17 +33,25 @@ void house_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 {
     house->image = sfImage_createFromFile(path);
     house->houseTexture = sfTexture_createFromFile(path, NULL);
+    house->hitbox = sfSprite_create();
     house->interior = sfSprite_create();
     house->wall = sfSprite_create();
     house->roof = sfSprite_create();
+
+    sfSprite_setTexture(house->hitbox, house->houseTexture, sfTrue);
     sfSprite_setTexture(house->interior, house->houseTexture, sfTrue);
     sfSprite_setTexture(house->wall, house->houseTexture, sfTrue);
     sfSprite_setTexture(house->roof, house->houseTexture, sfTrue);
+
+    sfSprite_setTextureRect(house->hitbox, rect);
+    rect.left += rect.width;
     sfSprite_setTextureRect(house->interior, rect);
     rect.left += rect.width;
-    sfSprite_setTextureRect(house->roof, rect);
-    rect.left += rect.width;
     sfSprite_setTextureRect(house->wall, rect);
+    rect.left += rect.width;
+    sfSprite_setTextureRect(house->roof, rect);
+
+    sfSprite_setPosition(house->hitbox, pos);
     sfSprite_setPosition(house->interior, pos);
     sfSprite_setPosition(house->wall, pos);
     sfSprite_setPosition(house->roof, pos);

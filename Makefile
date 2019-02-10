@@ -47,7 +47,8 @@ SRC	=	event.c	\
 		animation.c	\
 		camera_gestion.c \
 		display_and_obj.c \
-		list.c
+		list.c	\
+		character_gestion.c
 
 SRC_LIB	=	my 	\
 			g 	\

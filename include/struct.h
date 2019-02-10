@@ -53,7 +53,6 @@ typedef struct obj_s {
     sfIntRect sprite_rect;
     sfVector2f pos;
     sfVector2f oldPos;
-    sfBool in_house;
     int frame_animation;
 } obj_t;
 
@@ -63,6 +62,7 @@ typedef struct house_s {
     sfTexture *houseTexture;
     sfTexture *doorTexture;
     sfSprite *interior;
+    sfSprite *hitbox;
     sfSprite *wall;
     sfSprite *roof;
     sfSprite *door;

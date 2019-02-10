@@ -34,7 +34,7 @@ void character_orientation(obj_t *obj)
 
 void character_animation(obj_t *obj)
 {
-    if (obj->frame_animation == 8) {
+    if (obj->frame_animation > 8) {
         animation(&obj->sprite_rect, 32, 32, 160);
         obj->frame_animation = 0;
     }

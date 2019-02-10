@@ -24,3 +24,5 @@ void update_all_rect(obj_t **obj, house_t **house);
 void camera_control(wind_t *wind, controls_t *control, sfVector2f pos);
 simple_vector_t *init_list(int x);
 void modif_list(simple_vector_t *pos, obj_t *obj);
+void follower(obj_t **obj, wind_t *wind);
+void character_control(controls_t *control, obj_t *obj, house_t **house);
