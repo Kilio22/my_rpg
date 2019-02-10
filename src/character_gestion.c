@@ -24,9 +24,9 @@ sfBool all_world_hitBox(obj_t *obj, house_t **house)
 
 void character_control(controls_t *control, obj_t *obj, house_t **house)
 {
-    if (control->bools[KEYY] == 0) {
-        sfVector2f newPos = {0, 0};
+    sfVector2f newPos = {0, 0};
 
+    if (control->bools[KEYY] == 0) {
         if (control->bools[KEYUP] == 1)
             newPos.y -= 1;
         if (control->bools[KEYDOWN] == 1)
