@@ -31,6 +31,17 @@ enum bools {
     KEYY
 };
 
+enum stats {
+    LEVEL = 0,
+    HP,
+    ATK,
+    DEF
+};
+
+typedef struct char_stats_s {
+    int *stats
+} char_stats_t;
+
 typedef struct wind_s {
     sfRenderWindow *wind;
     sfVector2u windSize;

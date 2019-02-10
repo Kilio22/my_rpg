@@ -4,6 +4,7 @@
 ** File description:
 ** manage event
 */
+
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include "my.h"
