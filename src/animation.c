@@ -44,7 +44,7 @@ void character_animation(obj_t *obj)
 
 void all_character_animation(obj_t **obj)
 {
-    for (int i = 0; obj[i] != NULL; i ++)
+    for (int i = 2; obj[i] != NULL; i ++)
         character_animation(obj[i]);
 }
 

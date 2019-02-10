@@ -70,7 +70,6 @@ void inside(controls_t *control, obj_t *obj, house_t **house)
 
 void character_control(controls_t *control, obj_t *obj, house_t **house)
 {
-    printf("test: %d\n", obj->in_house);
     if (control->bools[KEYY] == 0) {
         if (obj->in_house == 0)
             outside(control, obj, house);
@@ -133,15 +132,15 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 10);
+    wind->wind = create_window("test window", 13);
     sfVector2u windowSize = sfRenderWindow_getSize(wind->wind);
     wind->view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[2] = create_object("assets/hero.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/hero.png", (sfVector2f){-50, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[4] = create_object("assets/hero.png", (sfVector2f){-100, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){-50, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[4] = create_object("assets/stupid_nathan.png", (sfVector2f){-100, 0}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[5] = NULL;
     house[0] = create_house(1, (sfVector2f){0, 0});
     house[1] = create_house(2, (sfVector2f){200, 0});
