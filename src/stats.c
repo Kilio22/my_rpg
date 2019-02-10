@@ -18,4 +18,5 @@ void print_stats(obj_t **obj)
         my_printf("ATK: %d\n", obj[i]->stats->stats[2]);
         my_printf("DEF: %d\n", obj[i]->stats->stats[3]);
     }
+    my_printf("\n");
 }
