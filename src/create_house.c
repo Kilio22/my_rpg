@@ -9,23 +9,22 @@
 #include <stdio.h>
 #include "rpg.h"
 
-void house_interaction(obj_t *obj, controls_t *control, house_t **house)
+void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
-        if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1 && control->bools[KEYINTER] == 1) {
+        if (pp_intersect(obj->sprite, house[i]->door, obj->image, house[i]->door_image) == 1 && CONTROLS.bools[KEYINTER] == 1) {
             if (house[i]->display_house == 1) {
                 if (house[i]->frame_animation > 8 && house[i]->door_rect.left < 384 - 96) {
                     animation(&house[i]->door_rect, 0, 96, 384);
                     house[i]->frame_animation = 0;
                 }
                 house[i]->frame_animation ++;
-
                 if (house[i]->door_rect.left > 384 - 97) {
                     sfSprite_move(obj->sprite, (sfVector2f){0, -1});
                     if (pp_intersect(obj->sprite, house[i]->hitbox, obj->image, house[i]->image) == 0) {
                         house[i]->door_rect.left = 0;
                         house[i]->display_house = 0;
-                        control->bools[KEYINTER] = 0;
+                        CONTROLS.bools[KEYINTER] = 0;
                     }
                 }
             }
@@ -34,7 +33,7 @@ void house_interaction(obj_t *obj, controls_t *control, house_t **house)
                     sfSprite_move(obj->sprite, (sfVector2f){0, 1});
                 if (pp_intersect(obj->sprite, house[i]->hitbox, obj->image, house[i]->image) == 0) {
                     house[i]->display_house = 1;
-                    control->bools[KEYINTER] = 0;
+                    CONTROLS.bools[KEYINTER] = 0;
                 }
             }
         }

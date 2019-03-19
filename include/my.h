@@ -5,7 +5,8 @@
 ** all proto of libmy.a
 */
 
-#pragma once
+#ifndef MY_H_
+#define MY_H_
 
 #include <unistd.h>
 #include <stdlib.h>
@@ -54,3 +55,5 @@ int my_atoi(char *input);
 char *my_itoa(int nb, char *result);
 char *my_realloc(char *input_str, int nb);
 int randomiser(int max);
+
+#endif /* !MY_H_ */

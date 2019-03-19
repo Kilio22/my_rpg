@@ -8,7 +8,8 @@
 #include <SFML/Graphics.h>
 #include "pp_hitbox.h"
 
-sfIntRect f_to_i_rect(sfFloatRect f) {
+sfIntRect f_to_i_rect(sfFloatRect f)
+{
     sfIntRect i = {f.left, f.top, f.width, f.height};
     return (i);
 }

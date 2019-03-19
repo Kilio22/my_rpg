@@ -8,7 +8,7 @@
 #include <SFML/Graphics.h>
 #include "rpg.h"
 
-void character_orientation(obj_t *obj)
+static void character_orientation(obj_t *obj)
 {
     obj->oldPos = sfSprite_getPosition(obj->sprite);
 
@@ -31,7 +31,7 @@ void character_orientation(obj_t *obj)
     obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
-void character_animation(obj_t *obj)
+static void character_animation(obj_t *obj)
 {
     if (obj->frame_animation > 8) {
         animation(&obj->sprite_rect, 32, 32, 160);

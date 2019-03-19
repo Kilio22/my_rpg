@@ -10,4 +10,4 @@
 
 extern const char save_path[3][15];
 
-#endif //GLOBALS_H_
+#endif /* !GLOBALS_H_ */

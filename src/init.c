@@ -13,21 +13,21 @@
 #include <stdio.h>
 #include "rpg.h"
 
-void init_controls(rpg_t *rpg, int fd)
+static void init_controls(rpg_t *rpg, int fd)
 {
     char *buff;
     char **args;
 
-    rpg->controls.keys = malloc(sizeof(int) * 6);
+    CONTROLS.keys = malloc(sizeof(int) * 6);
     buff = get_next_line(fd);
     for (int i = 0; i < 6; i++) {
         buff = get_next_line(fd);
         args = my_str_to_word_array(buff, ':');
-        rpg->controls.keys[i] = my_getnbr(args[1]);
+        CONTROLS.keys[i] = my_getnbr(args[1]);
     }
 }
 
-void init_stats(obj_t *obj, int fd)
+static void init_stats(obj_t *obj, int fd)
 {
     char *buff;
     char **args;
@@ -42,11 +42,11 @@ void init_stats(obj_t *obj, int fd)
     }
 }
 
-void init_save(wind_t *wind, obj_t **obj, rpg_t *rpg)
+void init_save(obj_t **obj, rpg_t *rpg)
 {
-    wind->fd = open(save_path[rpg->game.nb_save], O_RDONLY); 
-    init_controls(rpg, wind->fd);
-    init_stats(obj[2], wind->fd);
-    init_stats(obj[3], wind->fd);
-    init_stats(obj[4], wind->fd);
+    WIND.fd = open(save_path[GAME.nb_save], O_RDONLY);
+    init_controls(rpg, WIND.fd);
+    init_stats(obj[2], WIND.fd);
+    init_stats(obj[3], WIND.fd);
+    init_stats(obj[4], WIND.fd);
 }

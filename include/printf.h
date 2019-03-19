@@ -5,8 +5,9 @@
 ** h
 */
 
-#pragma once
 
+#ifndef PRINTF_H_
+#define PRINTF_H_
 #include <stdarg.h>
 
 int put_unsign(unsigned int nb);
@@ -28,3 +29,5 @@ int check(char c);
 int printer(char c, va_list list);
 int my_printf(char *str, ...);
 int put_octal_d(int nb);
+
+#endif /* !PRINTF_H_ */

@@ -5,8 +5,8 @@
 ** struct
 */
 
-#ifndef STRUCT_H
-#define STRUCT_H
+#ifndef STRUCT_H_
+#define STRUCT_H_
 #include <SFML/Graphics.h>
 #include "my_vector.h"
 
@@ -91,6 +91,7 @@ typedef struct game_s {
 typedef struct rph_s {
     controls_t controls;
     game_t game;
+    wind_t wind;
 } rpg_t;
 
-#endif //STRUCT_H
+#endif /* !STRUCT_H_ */

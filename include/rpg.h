@@ -18,5 +18,6 @@
 #include "pp_hitbox.h"
 #include "my_chained.h"
 #include "get_next_line.h"
+#include "graphic.h"
 
-#endif //RPG_H_
+#endif /* !RPG_H_ */

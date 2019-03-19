@@ -5,7 +5,9 @@
 ** pp_hitbox
 */
 
-#pragma once
+#ifndef PP_HITBOX_H_
+#define PP_HITBOX_H_
+
 #include <SFML/Graphics.h>
 
 typedef struct pp_s {
@@ -21,3 +23,5 @@ typedef struct pp_s {
     int idxA;
     int idxB;
 } pp_t;
+
+#endif /* !PP_HITBOX_H_ */

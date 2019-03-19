@@ -10,49 +10,47 @@
 #include <stdio.h>
 #include "rpg.h"
 
-void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
+static void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    if (control->bools[KEYSPACE] == 1)          // setPosition of the character on camera
-        sfSprite_setPosition(obj[1]->sprite, sfView_getCenter(wind->view));
-    character_control(control, obj[1], house);
-    follower(obj, wind);
+    if (CONTROLS.bools[KEYSPACE] == 1) // setPosition of the character on camera
+        sfSprite_setPosition(obj[1]->sprite, sfView_getCenter(WIND.view));
+    character_control(rpg, obj[1], house);
+    follower(obj, rpg);
     all_character_animation(obj);
     sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
-    house_interaction(obj[1], control, house);
-    camera_control(wind, control, obj[1]->pos);
+    house_interaction(obj[1], house, rpg);
+    camera_control(rpg, obj[1]->pos);
     update_all_rect(obj, house);
 }
 
-void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
+static void init_game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfClock *main_clock = sfClock_create();
     sfTime main_time;
     float main_seconds;
 
-    while (sfRenderWindow_isOpen(wind->wind))
-    {
+    while (sfRenderWindow_isOpen(WIND.wind)) {
         main_time = sfClock_getElapsedTime(main_clock);
         main_seconds = main_time.microseconds / 10000;
-        while (sfRenderWindow_pollEvent(wind->wind, &wind->event))
-            event_management(wind, control, obj);
+        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
+            event_management(rpg, obj);
         if (main_seconds > 0) {
-            game_loop(wind, control, obj, house);
+            game_loop(rpg, obj, house);
             sfClock_restart(main_clock);
         }
-        display(wind, obj, house);
+        display(rpg, obj, house);
     }
 }
 
 int main(void)
 {
-    wind_t *wind = malloc(sizeof(wind_t));
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    wind->wind = create_window("test window", 8);
-    sfVector2u windowSize = sfRenderWindow_getSize(wind->wind);
-    wind->view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
+    rpg.wind.wind = create_window("test window", 8);
+    sfVector2u windowSize = sfRenderWindow_getSize(rpg.wind.wind);
+    rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
@@ -75,9 +73,9 @@ int main(void)
     rpg.controls.bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
         rpg.controls.bools[i] = 0;
-    wind->list = init_list(-50);
-    wind->list2 = init_list(-100);
-    init_save(wind, obj, &rpg);
-    init_game_loop(wind, &rpg.controls, obj, house);
+    rpg.wind.list = init_list(-50);
+    rpg.wind.list2 = init_list(-100);
+    init_save(obj, &rpg);
+    init_game_loop(&rpg, obj, house);
     return (0);
 }

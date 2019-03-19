@@ -10,7 +10,8 @@
 #include <stdio.h>
 #include "rpg.h"
 
-obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool centered)
+obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
+sfBool centered)
 {
     obj_t *obj = malloc(sizeof(obj_t));
     sfFloatRect rect;
@@ -32,23 +33,23 @@ obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool cente
     return (obj);
 }
 
-void display(wind_t *wind, obj_t **obj, house_t **house)
+void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    sfRenderWindow_setView(wind->wind, wind->view);
-    sfRenderWindow_drawSprite(wind->wind, obj[0]->sprite, NULL); //ground
-    sfRenderWindow_drawSprite(wind->wind, obj[1]->sprite, NULL); //hero_hitBox
+    sfRenderWindow_setView(WIND.wind, WIND.view);
+    sfRenderWindow_drawSprite(WIND.wind, obj[0]->sprite, NULL); //ground
+    sfRenderWindow_drawSprite(WIND.wind, obj[1]->sprite, NULL); //hero_hitBox
     for (int i = 0; house[i] != NULL; i++) {
-        sfRenderWindow_drawSprite(wind->wind, house[i]->interior, NULL); //house_Interior
+        sfRenderWindow_drawSprite(WIND.wind, house[i]->interior, NULL); //house_Interior
         if (house[i]->display_house == 1) {
-            sfRenderWindow_drawSprite(wind->wind, house[i]->wall, NULL); //house_Wall
-            sfRenderWindow_drawSprite(wind->wind, house[i]->door, NULL); //house_Door
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->wall, NULL); //house_Wall
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->door, NULL); //house_Door
         }
     }
     for (int i = 4; i > 1; i--)
-        sfRenderWindow_drawSprite(wind->wind, obj[i]->sprite, NULL); //obj
+        sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL); //obj
     for (int i = 0; house[i] != NULL; i++)
         if (house[i]->display_house == 1)
-            sfRenderWindow_drawSprite(wind->wind, house[i]->roof, NULL); //house_Roof
-    sfRenderWindow_display(wind->wind);
-    sfRenderWindow_clear(wind->wind, sfBlack);
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->roof, NULL); //house_Roof
+    sfRenderWindow_display(WIND.wind);
+    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
