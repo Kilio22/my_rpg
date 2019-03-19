@@ -56,9 +56,9 @@ SRC_LIB	=	my 	\
 			g 	\
 			list
 
-LIB_PATHS	=	lib \
-				lib_graphic \
-				lib_list
+LIB_PATHS	=	lib/lib_my \
+				lib/lib_graphic \
+				lib/lib_list
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)

@@ -30,7 +30,7 @@ NAME	=	my
 COLOR_THEME	=	$(YELLO_C)
 
 SRC_PATH	=	./my
-INCLUDE_PATH	=	../include
+INCLUDE_PATH	=	../../include
 
 SRC	=	my_swap.c					\
 		my_putstr.c					\

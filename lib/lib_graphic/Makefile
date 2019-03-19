@@ -26,15 +26,15 @@ LIGHT_MAGEN	=	"\e[95m"
 LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
-NAME	=	list
+NAME	=	g
 COLOR_THEME	=	$(YELLO_C)
 
-SRC_PATH	=	./list
-INCLUDE_PATH	=	../include
+SRC_PATH	=	./graphic
+INCLUDE_PATH	=	../../include
 
-SRC	=	double_chain.c \
-		simple_chain.c \
-		my_simple_vector.c
+SRC	=	pp_hitbox.c	\
+		animation.c	\
+		window_creation.c
 
 CFLAGS	=	-Wall \
 			-Wextra \
@@ -51,12 +51,12 @@ all:	message $(NAME)
 
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _ _                              _ _     _   " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   (_) |__  _ __ __ _ _ __ _   _    | (_)___| |_ " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | | '_ \| '__/ _\` | '__| | | |   | | / __| __|" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| | |_) | | | (_| | |  | |_| |   | | \__ \ |_ " $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_|_.__/|_|  \__,_|_|   \__, |   |_|_|___/\__|" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                              |___/" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)" _     _ _                                                    _     _      " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   (_) |__  _ __ __ _ _ __ _   _      __ _ _ __ __ _ _ __ | |__ (_) ___ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |   | | '_ \| '__/ _\` | '__| | | |    / _\` | '__/ _\` | '_ \| '_ \| |/ __|" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"| |___| | |_) | | | (_| | |  | |_| |   | (_| | | | (_| | |_) | | | | | (__ " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"|_____|_|_.__/|_|  \__,_|_|   \__, |    \__, |_|  \__,_| .__/|_| |_|_|\___|" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"                              |___/     |___/          |_|" $(DEFAULT)
 	@$(LINE_RETURN)
 
 $(NAME):	$(OBJ)
