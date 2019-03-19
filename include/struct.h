@@ -84,4 +84,13 @@ typedef struct house_s {
     int frame_animation;
 } house_t;
 
+typedef struct game_s {
+    int nb_save;
+} game_t;
+
+typedef struct rph_s {
+    controls_t controls;
+    game_t game;
+} rpg_t;
+
 #endif //STRUCT_H

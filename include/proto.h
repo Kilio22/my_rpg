@@ -16,8 +16,8 @@ obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool cente
 house_t *create_house(int type, sfVector2f housePos);
 void display(wind_t *wind, obj_t **obj, house_t **house);
 void init_stats(obj_t *obj, int fd);
-void init_controls(controls_t *controls, int fd);
-void init_save(controls_t *controls, wind_t *wind, obj_t **obj);
+void init_controls(rpg_t *rpg, int fd);
+void init_save(wind_t *wind, obj_t **obj, rpg_t *rpg);
 void event_management(wind_t *wind, controls_t *control, obj_t **obj);
 void animation(sfIntRect *rect, int start, int offset, int max_value);
 void house_interaction(obj_t *obj, controls_t *control, house_t **house);

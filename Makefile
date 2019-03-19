@@ -49,7 +49,8 @@ SRC	=	event.c	\
 		display_and_obj.c \
 		list.c	\
 		character_gestion.c \
-		stats.c
+		stats.c \
+		globals.c
 
 SRC_LIB	=	my 	\
 			g 	\

@@ -46,7 +46,7 @@ void init_game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **ho
 int main(void)
 {
     wind_t *wind = malloc(sizeof(wind_t));
-    controls_t *controls = malloc(sizeof(controls_t));
+    rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
@@ -71,12 +71,13 @@ int main(void)
     sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[4]->sprite, (sfVector2f){16, 60});
 
-    controls->bools = malloc(sizeof(sfBool) * 9);
+    rpg.game.nb_save = 0;
+    rpg.controls.bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
-        controls->bools[i] = 0;
+        rpg.controls.bools[i] = 0;
     wind->list = init_list(-50);
     wind->list2 = init_list(-100);
-    init_save(controls, wind, obj);
-    init_game_loop(wind, controls, obj, house);
+    init_save(wind, obj, &rpg);
+    init_game_loop(wind, &rpg.controls, obj, house);
     return (0);
 }

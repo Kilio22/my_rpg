@@ -8,14 +8,15 @@
 #ifndef RPG_H_
 #define RPG_H_
 
-#include "get_next_line.h"
-#include "my_chained.h"
-#include "my_vector.h"
 #include "my.h"
-#include "pp_hitbox.h"
-#include "printf.h"
 #include "proto.h"
-#include "struct.h"
 #include "macros.h"
+#include "printf.h"
+#include "struct.h"
+#include "globals.h"
+#include "my_vector.h"
+#include "pp_hitbox.h"
+#include "my_chained.h"
+#include "get_next_line.h"
 
 #endif //RPG_H_
