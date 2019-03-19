@@ -8,11 +8,7 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "my.h"
-#include "pp_hitbox.h"
-#include "proto.h"
-#include "struct.h"
-#include "my_vector.h"
+#include "rpg.h"
 
 void game_loop(wind_t *wind, controls_t *control, obj_t **obj, house_t **house)
 {

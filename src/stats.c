@@ -5,9 +5,7 @@
 ** stats
 */
 
-#include "my.h"
-#include "struct.h"
-#include "printf.h"
+#include "rpg.h"
 
 void print_stats(obj_t **obj)
 {

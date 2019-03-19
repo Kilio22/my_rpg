@@ -8,12 +8,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/System.h>
 #include <stdlib.h>
-#include <stdio.h>
-#include "my_vector.h"
-#include "my.h"
-#include "pp_hitbox.h"
-#include "proto.h"
-#include "struct.h"
+#include "rpg.h"
 
 simple_vector_t *init_list(int x)
 {

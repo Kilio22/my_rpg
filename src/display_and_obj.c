@@ -8,8 +8,7 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "proto.h"
-#include "struct.h"
+#include "rpg.h"
 
 obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect, sfBool centered)
 {

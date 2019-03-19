@@ -5,7 +5,7 @@
 ** camera_gestion
 */
 
-#include "struct.h"
+#include "rpg.h"
 
 void zoom_gestion(wind_t *wind, controls_t *control)
 {

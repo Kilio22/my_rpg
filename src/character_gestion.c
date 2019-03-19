@@ -8,11 +8,7 @@
 #include <SFML/Graphics.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "my.h"
-#include "pp_hitbox.h"
-#include "proto.h"
-#include "struct.h"
-#include "my_vector.h"
+#include "rpg.h"
 
 sfBool all_world_hitBox(obj_t *obj, house_t **house)
 {

@@ -7,9 +7,7 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
-#include "proto.h"
-#include "my.h"
-#include "struct.h"
+#include "rpg.h"
 
 void mouse_wheel_management(wind_t *wind, controls_t *control)
 {

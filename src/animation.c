@@ -6,8 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
-#include "proto.h"
-#include "struct.h"
+#include "rpg.h"
 
 void character_orientation(obj_t *obj)
 {

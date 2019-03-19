@@ -7,9 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "proto.h"
-#include "struct.h"
-#include "printf.h"
+#include "rpg.h"
 
 void house_interaction(obj_t *obj, controls_t *control, house_t **house)
 {

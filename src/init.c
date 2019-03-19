@@ -11,11 +11,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include "my.h"
-#include "pp_hitbox.h"
-#include "proto.h"
-#include "struct.h"
-#include "get_next_line.h"
+#include "rpg.h"
 
 void init_controls(controls_t *controls, int fd)
 {
