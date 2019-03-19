@@ -66,7 +66,6 @@ LIB_PATHS_FLAG	=	$(LIB_PATHS:%=-L$(ROOT_PATH)%)
 
 CFLAGS	=	-Wall \
 			-Wextra \
-			-Werror \
 			-I $(INCL_PATH) \
 			$(LIB_PATHS_FLAG) \
 			$(LIBRARIES) \
@@ -78,7 +77,7 @@ DEBUG_FLAGS	=	-g3 -gdwarf-4
 MAKE_RULE	=	all
 CLEAN_RULE	=	clean
 
-all:	build_libs message $(NAME)
+all:	build_libs message $(NAME) clean
 
 message:
 	@$(LINE_RETURN)
