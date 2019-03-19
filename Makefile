@@ -29,7 +29,7 @@ LIGHT_MAGEN	=	"\e[95m"
 LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
-NAME	=	executable
+NAME	=	my_rpg
 COLOR_THEME	=	$(BLUE_C)
 TESTS_COLOR_THEME	=	$(RED_C)
 
