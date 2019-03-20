@@ -46,6 +46,8 @@ typedef struct char_stats_s {
 typedef struct wind_s {
     sfRenderWindow *wind;
     sfVector2u windSize;
+    sfVector2f mouse_pos;
+    bool click;
     sfEvent event;
     sfView *view;
     simple_vector_t *list; //a retirer plus tard

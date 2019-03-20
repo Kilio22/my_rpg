@@ -44,9 +44,14 @@ static void init_stats(obj_t *obj, int fd)
 
 void init_save(obj_t **obj, rpg_t *rpg)
 {
+    printf("%d\n", GAME.nb_save);
+    printf("%s\n", save_path[GAME.nb_save]);
     WIND.fd = open(save_path[GAME.nb_save], O_RDONLY);
+    printf("fd: %d\n", WIND.fd);
     init_controls(rpg, WIND.fd);
     init_stats(obj[2], WIND.fd);
     init_stats(obj[3], WIND.fd);
     init_stats(obj[4], WIND.fd);
+    while (get_next_line(WIND.fd) != NULL);
+    close(WIND.fd);
 }

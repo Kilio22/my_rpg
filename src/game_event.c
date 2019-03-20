@@ -30,7 +30,7 @@ static void manage_key_pressed2(rpg_t *rpg)
             CONTROLS.bools[KEYY] = 0;
     }
     if (WIND.event.key.code == sfKeyEscape)
-        sfRenderWindow_close(WIND.wind);
+        MENU.menu_on = 0;
 }
 
 static void manage_key_pressed(rpg_t *rpg, obj_t **obj)
