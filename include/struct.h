@@ -9,6 +9,7 @@
 #define STRUCT_H_
 #include <SFML/Graphics.h>
 #include "my_vector.h"
+#include "stdbool.h"
 
 enum keys {
     UP = 0,
@@ -88,10 +89,15 @@ typedef struct game_s {
     int nb_save;
 } game_t;
 
+typedef struct menu_s {
+    bool menu_on;
+} menu_t;
+
 typedef struct rph_s {
     controls_t controls;
     game_t game;
     wind_t wind;
+    menu_t menu;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */
