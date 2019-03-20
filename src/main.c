@@ -10,38 +10,6 @@
 #include <stdio.h>
 #include "rpg.h"
 
-static void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    if (CONTROLS.bools[KEYSPACE] == 1) // setPosition of the character on camera
-        sfSprite_setPosition(obj[1]->sprite, sfView_getCenter(WIND.view));
-    character_control(rpg, obj[1], house);
-    follower(obj, rpg);
-    all_character_animation(obj);
-    sfSprite_setPosition(obj[2]->sprite, sfSprite_getPosition(obj[1]->sprite));
-    house_interaction(obj[1], house, rpg);
-    camera_control(rpg, obj[1]->pos);
-    update_all_rect(obj, house);
-}
-
-static void init_game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    sfClock *main_clock = sfClock_create();
-    sfTime main_time;
-    float main_seconds;
-
-    while (sfRenderWindow_isOpen(WIND.wind)) {
-        main_time = sfClock_getElapsedTime(main_clock);
-        main_seconds = main_time.microseconds / 10000;
-        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            event_management(rpg, obj);
-        if (main_seconds > 0) {
-            game_loop(rpg, obj, house);
-            sfClock_restart(main_clock);
-        }
-        display(rpg, obj, house);
-    }
-}
-
 int main(void)
 {
     rpg_t rpg;
@@ -51,6 +19,7 @@ int main(void)
     rpg.wind.wind = create_window("test window", 8);
     sfVector2u windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
+    rpg.menu.menu_on = 1;
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
     obj[1] = create_object("assets/hero_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 32, 16}, sfTrue);
@@ -75,7 +44,6 @@ int main(void)
         rpg.controls.bools[i] = 0;
     rpg.wind.list = init_list(-50);
     rpg.wind.list2 = init_list(-100);
-    init_save(obj, &rpg);
-    init_game_loop(&rpg, obj, house);
+    init_menu(&rpg, obj, house);
     return (0);
 }

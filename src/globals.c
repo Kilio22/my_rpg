@@ -5,7 +5,7 @@
 ** globals
 */
 
-const char save_path[3][16] = {
+const char *save_path[3] = {
     "saves/save1.txt",
     "saves/save2.txt",
     "saves/save3.txt"

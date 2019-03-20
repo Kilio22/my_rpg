@@ -8,6 +8,6 @@
 #ifndef GLOBALS_H_
 #define GLOBALS_H_
 
-extern const char save_path[3][15];
+extern const char *save_path[3];
 
 #endif /* !GLOBALS_H_ */
