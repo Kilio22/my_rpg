@@ -19,7 +19,7 @@ static void zoom_gestion(rpg_t *rpg)
     }
 }
 
-void camera_control(rpg_t *rpg, sfVector2f pos)
+void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj)
 {
     zoom_gestion(rpg);
     if (CONTROLS.bools[KEYY] == 0)
@@ -34,4 +34,6 @@ void camera_control(rpg_t *rpg, sfVector2f pos)
         if (CONTROLS.bools[KEYUP] == 1)
             sfView_move(WIND.view, (sfVector2f){0, -10});
     }
+    if (CONTROLS.bools[KEYSPACE] == 1) // setPosition of the character on camera
+        sfSprite_setPosition(obj[HERO_HB]->sprite, sfView_getCenter(WIND.view));
 }

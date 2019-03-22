@@ -16,7 +16,7 @@ void all_character_animation(obj_t **obj);
 void update_all_rect(obj_t **obj, house_t **house);
 
 //camera_gestion.c
-void camera_control(rpg_t *rpg, sfVector2f pos);
+void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 
 //character_gestion.c
 void follower(obj_t **obj, rpg_t *rpg);
@@ -35,9 +35,12 @@ void free_save(obj_t **obj, rpg_t *rpg);
 
 //game_display.c
 void init_game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
+void house_display(rpg_t *rpg, house_t **house);
 
 //game_event.c
 void event_management(rpg_t *rpg, obj_t **obj);
+void manage_key_released(rpg_t *rpg);
+void manage_key_pressed(rpg_t *rpg, obj_t **obj);
 
 //game_init.c
 void init_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -54,6 +57,7 @@ void init_menu_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //menu_event.c
 void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
+void analyse_menu_key(int code, rpg_t *rpg, obj_t **obj, house_t **house);
 
 //menu_init.c
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);

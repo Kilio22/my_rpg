@@ -11,6 +11,19 @@
 #include "my_vector.h"
 #include "stdbool.h"
 
+enum obj_type {
+    GROUND,
+    HERO_HB
+};
+
+enum house_parts {
+    HITBOX,
+    INTERIOR,
+    WALL,
+    ROOF,
+    DOOR
+};
+
 enum keys {
     UP = 0,
     LEFT,
@@ -75,13 +88,8 @@ typedef struct obj_s {
 typedef struct house_s {
     sfImage *image;
     sfImage *door_image;
-    sfTexture *houseTexture;
     sfTexture *doorTexture;
-    sfSprite *interior;
-    sfSprite *hitbox;
-    sfSprite *wall;
-    sfSprite *roof;
-    sfSprite *door;
+    sfSprite *tab[5];
     sfIntRect door_rect;
     sfBool display_house;
     int frame_animation;
