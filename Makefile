@@ -51,12 +51,12 @@ SRC	=	characters_animation.c	\
 		game_event.c	\
 		game_init.c \
 		globals.c	\
-		init.c 	\
+		init_game.c 	\
 		list.c 	\
 		menu_display.c	\
 		menu_event.c 	\
 		menu_init.c	\
-		stats.c	\
+		characters_stats.c	\
 		analyse_menu_key.c	\
 		house_display.c	\
 		analyse_game_key.c
