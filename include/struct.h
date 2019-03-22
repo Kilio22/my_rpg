@@ -95,7 +95,7 @@ typedef struct menu_s {
     bool menu_on;
 } menu_t;
 
-typedef struct rph_s {
+typedef struct rpg_s {
     controls_t controls;
     game_t game;
     wind_t wind;

@@ -16,9 +16,9 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
     house_t **house = malloc(sizeof(house_t *) * 10);
 
-    rpg.wind.wind = create_window("test window", 8);
+    rpg.wind.wind = create_window("test window", 10);
     sfVector2u windowSize = sfRenderWindow_getSize(rpg.wind.wind);
-    rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
+    rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x * 0.6, windowSize.y * 0.6});
     rpg.menu.menu_on = 1;
 
     obj[0] = create_object("assets/demo_map.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 620, 620}, sfFalse);
