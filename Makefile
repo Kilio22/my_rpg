@@ -50,15 +50,20 @@ SRC	=	event.c	\
 		list.c	\
 		character_gestion.c \
 		stats.c \
-		globals.c
+		globals.c \
+		items/item.c
 
 SRC_LIB	=	my 	\
 			g 	\
-			list
+			list \
+			graphmy \
+			stringmy
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
-				lib/lib_list
+				lib/lib_list \
+				lib/graphmy_lib \
+				lib/stringmy_lib
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)

@@ -7,6 +7,7 @@
 
 #ifndef STRUCT_H_
 #define STRUCT_H_
+
 #include <SFML/Graphics.h>
 #include "my_vector.h"
 
