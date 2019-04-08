@@ -26,6 +26,13 @@ enum items {
     SHIELD
 };
 
+struct item {
+    char *name;
+    int id;
+    int type;
+    sfSprite *sprite;
 
+};
+typedef struct item item_t;
 
 #endif /* !INVENTORY_H_ */
