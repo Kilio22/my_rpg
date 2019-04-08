@@ -49,5 +49,6 @@ void dragndrop_event(dragndrop_t *drag, sfRenderWindow *window);
 // accessor
 my_bool_t dragndrop_ispendingDrag(dragndrop_t *drag);
 sfVector2i dragndrop_getpendingDrag(dragndrop_t *drag);
+void dragndrop_set_size(dragndrop_t *drag, int x, int y);
 
 #endif /* !MY_DRANDROP_H_ */

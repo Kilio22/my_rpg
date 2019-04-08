@@ -22,6 +22,7 @@ int main()
     sfRenderWindow *window = init_window();
     sfTexture *t = sfTexture_createFromFile("sword.png", NULL);
     item_t *item = item_create("test", t, t, t);
+    dragndrop_set_size(item->display, 50, 50);
 
     while (sfRenderWindow_isOpen(window)) {
         item_event(item, window);
@@ -30,8 +31,8 @@ int main()
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(window);
         }
-
         sfRenderWindow_clear(window, sfBlack);
+        show_debug_grid(window);
         item_display(window, item);
         sfRenderWindow_display(window);
     }

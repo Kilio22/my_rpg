@@ -51,7 +51,8 @@ SRC	=	event.c	\
 		character_gestion.c \
 		stats.c \
 		globals.c \
-		items/item.c
+		items/item.c \
+		inventory/debug_grid.c
 
 SRC_LIB	=	my 	\
 			g 	\

@@ -21,3 +21,19 @@ sfVector2i dragndrop_getpendingDrag(dragndrop_t *drag)
     drag->last_pos_released = (sfVector2i){-1, -1};
     return (pos);
 }
+
+static sfVector2f get_scale(sfSprite *s, int width, int height)
+{
+    sfFloatRect bounds = sfSprite_getGlobalBounds(s);
+    sfVector2f new;
+
+    new.x = width / bounds.width;
+    new.y = height / bounds.height;
+    return (new);
+}
+
+void dragndrop_set_size(dragndrop_t *drag, int x, int y)
+{
+    drag->scale_bt = get_scale(drag->state_img[0], x, y);
+    drag->scale_dragged = get_scale(drag->drag_img, x, y);
+}
