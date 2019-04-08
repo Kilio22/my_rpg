@@ -21,7 +21,7 @@ sfText *create_text(char *font_fp, char *str, unsigned int size, sfVector2f pos)
     return (new_text);
 }
 
-static void display_menu(rpg_t *rpg, obj_t **obj)
+static void display_menu(rpg_t *rpg)
 {
     sfText *text = sfText_create();
     sfText *text2 = sfText_create();
@@ -37,9 +37,7 @@ static void display_menu(rpg_t *rpg, obj_t **obj)
     sfText_setColor(text2, sfRed);
     sfText_setString(text, "F1 SAVE 1, F2 SAVE 2");
     sfText_setString(text2, "F3 START GAME");
-    sfView_setCenter(WIND.view, V2F(320, 320));
     sfRenderWindow_setView(WIND.wind, WIND.view);
-    sfRenderWindow_drawSprite(WIND.wind, obj[0]->sprite, NULL);
     sfRenderWindow_drawText(WIND.wind, text, NULL);
     sfRenderWindow_drawText(WIND.wind, text2, NULL);
     sfRenderWindow_display(WIND.wind);
@@ -50,7 +48,14 @@ void init_menu_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            menu_event_management(rpg, obj, house);
-        display_menu(rpg, obj);
+            menu_event_management(rpg);
+        if (MENU.launch_game == 1) {
+            MENU.launch_game = 0;
+            sfRenderWindow_clear(WIND.wind, sfBlack);
+            sfRenderWindow_drawSprite(WIND.wind, MENU.loading_screen, NULL);
+            sfRenderWindow_display(WIND.wind);
+            init_game(rpg, obj, house);
+        }
+        display_menu(rpg);
     }
 }

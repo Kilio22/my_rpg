@@ -51,16 +51,16 @@ void character_control(rpg_t *rpg, obj_t *obj, house_t **house)
 void follower(obj_t **obj, rpg_t *rpg)
 {
     static sfVector2f oldpos = {0, 0};
-    sfVector2f pos = sfSprite_getPosition(obj[1]->sprite);
+    sfVector2f pos = sfSprite_getPosition(obj[0]->sprite);
 
     if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y ||
 pos.y < oldpos.y) {
+        sfSprite_setPosition(obj[2]->sprite,
+*(sfVector2f*)GAME.follower->start->content);
+        modif_list(GAME.follower, obj[0]);
         sfSprite_setPosition(obj[3]->sprite,
-*(sfVector2f*)WIND.list->start->content);
-        modif_list(WIND.list, obj[1]);
-        sfSprite_setPosition(obj[4]->sprite,
-*(sfVector2f*)WIND.list2->start->content);
-        modif_list(WIND.list2, obj[3]);
+*(sfVector2f*)GAME.follower2->start->content);
+        modif_list(GAME.follower2, obj[2]);
     }
-    oldpos = sfSprite_getPosition(obj[1]->sprite);
+    oldpos = sfSprite_getPosition(obj[0]->sprite);
 }

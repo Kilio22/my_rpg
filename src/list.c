@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include "rpg.h"
 
-simple_vector_t *init_list(int x)
+simple_vector_t *init_list(int x, int y)
 {
     simple_vector_t *list = simple_vector_create();
     int max = x + 50;
@@ -18,7 +18,7 @@ simple_vector_t *init_list(int x)
     for (; x < max; x++) {
         sfVector2f *current = malloc(sizeof(sfVector2f));
         current->x = x;
-        current->y = 0;
+        current->y = y;
         simple_vector_push_back(list, current);
         x++;
     }
@@ -29,7 +29,7 @@ void modif_list(simple_vector_t *pos, obj_t *obj)
 {
     sfVector2f *current = malloc(sizeof(sfVector2f));
     sfVector2f position = sfSprite_getPosition(obj->sprite);
-    
+
     current->x = position.x;
     current->y = position.y;
     simple_vector_push_back(pos, current);
@@ -41,9 +41,9 @@ void modif_list(simple_vector_t *pos, obj_t *obj)
 // pour ajouter a la fin de la liste (simple_vector_push_back)
 // pour supprimer au debut de la liste (simple_vector_pop_top)
 
-/*     
+/*
     -----------------------------------
-    
+
     while (list->start != 0) { //free all
         free(list->start->content);
         simple_vector_pop_top(list);

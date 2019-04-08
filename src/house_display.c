@@ -50,6 +50,7 @@ void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg)
 house[i]->door_image) == 1 && CONTROLS.bools[KEYINTER] == 1)
             check_house_display(obj, house[i], rpg);
 }
+
 void house_display(rpg_t *rpg, house_t **house)
 {
     for (int i = 0; house[i] != NULL; i++) {

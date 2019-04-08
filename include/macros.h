@@ -15,5 +15,6 @@
 #define CONTROLS rpg->controls
 #define WIND rpg->wind
 #define MENU rpg->menu
+#define MAP rpg->map
 
 #endif /* !MACROS_H_ */

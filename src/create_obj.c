@@ -22,6 +22,7 @@ sfBool centered)
     obj->pos = pos;
     obj->sprite_rect = intrect;
     obj->frame_animation = 0;
+    obj->clock = sfClock_create();
     sfSprite_setTexture(obj->sprite, obj->texture, sfTrue);
     sfSprite_setTextureRect(obj->sprite, intrect);
     sfSprite_setPosition(obj->sprite, pos);

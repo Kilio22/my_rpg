@@ -41,25 +41,31 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	characters_animation.c	\
+SRC	=	analyse_game_key.c	\
+		analyse_menu_key.c	\
 		camera_gestion.c	\
 		character_gestion.c \
+		characters_animation.c	\
+		characters_stats.c	\
 		create_house.c	\
 		create_obj.c	\
+		fill_map.c	\
 		free_save.c	\
 		game_display.c	\
 		game_event.c	\
 		game_init.c \
 		globals.c	\
-		init_game.c 	\
+		house_display.c	\
+		layout_init.c 	\
+		init_save.c	\
 		list.c 	\
+		map_init.c	\
 		menu_display.c	\
 		menu_event.c 	\
 		menu_init.c	\
-		characters_stats.c	\
-		analyse_menu_key.c	\
-		house_display.c	\
-		analyse_game_key.c
+		my_utils.c	\
+		print_map.c	\
+		time_gestion.c
 
 SRC_LIB	=	my 	\
 			g 	\
