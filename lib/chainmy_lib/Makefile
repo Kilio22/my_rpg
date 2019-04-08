@@ -29,7 +29,7 @@ LINE_RETURN	=	$(ECHO) ""
 NAME	=	chainmy
 COLOR_THEME	=	$(MAGEN_C)
 MY_PATH	=	.
-INCLUDE_PATH	=	../include
+INCLUDE_PATH	=	../../include
 
 SRC_MY	=	my_chained/double_chain_push.c \
 			my_chained/double_chain_pop.c \

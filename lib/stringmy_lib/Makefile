@@ -31,12 +31,13 @@ COLOR_THEME	=	$(MAGEN_C)
 MY_PATH	=	.
 INCLUDE_PATH	=	../../include
 
-SRC_MY	=	src/my_char_is.c \
+SRC_MY	=	src/my_strcut_to_word_array.c \
+		src/my_strmod_to_word_array.c \
+		src/my_char_is.c \
 		src/my_count_line.c \
 		src/my_getnbr.c \
 		src/my_line_lenght.c \
 		src/my_revstr.c \
-		src/my_strcat.c \
 		src/my_strcmp.c \
 		src/my_strcpy.c \
 		src/my_strdup.c \
@@ -48,7 +49,8 @@ SRC_MY	=	src/my_char_is.c \
 		src/my_str_to_line_arr.c \
 		src/my_str_to_word_arr.c \
 		src/my_atoi.c \
-		src/my_itoa.c
+		src/my_itoa.c \
+		src/my_strcat.c
 
 CFLAGS	=	-Wall \
 			-W \

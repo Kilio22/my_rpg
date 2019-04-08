@@ -13,7 +13,7 @@ static int ini_line_str_len(ini_line_t *entity)
     double_chained_t *current = entity->value->start;
 
     while (current != 0) {
-        size += my_strlen((char *)current->content);
+        size += my_strlen((char*)current->content);
         current = current->next;
     }
     return (size);
@@ -31,8 +31,8 @@ char *ini_line_to_str(ini_line_t *entity)
     line[size_write] = '[';
     size_write++;
     while (current != 0) {
-        my_strcpy(line + size_write, (char *)current->content);
-        size_write += my_strlen((char *)current->content) + 1;
+        my_strcpy(line + size_write, (char*)current->content);
+        size_write += my_strlen((char*)current->content) + 1;
         line[size_write - 1] = ';';
         current = current->next;
     }

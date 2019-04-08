@@ -7,7 +7,7 @@
 
 #include "my_ini.h"
 
-ini_file_t *ini_file_create(void )
+ini_file_t *ini_file_create(void)
 {
     ini_file_t *new = malloc(sizeof(ini_file_t));
 

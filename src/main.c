@@ -6,6 +6,7 @@
 */
 
 #include "inventory.h"
+#include "my_ini.h"
 
 sfRenderWindow *init_window()
 {
@@ -19,5 +20,7 @@ sfRenderWindow *init_window()
 
 int main()
 {
+    ini_file_t *file = ini_file_create_from_file("map2.ini");
+
     
 }

@@ -20,7 +20,7 @@ char *ini_line_getstr_from_col(ini_line_t *entity, int col)
         return (NULL);
     for (int i = 0; i < col; i++)
         current = current->next;
-    return ((char *)current->content);
+    return ((char*)current->content);
 }
 
 double_chained_t *ini_line_getchain_from_col(ini_line_t *entity, int col)

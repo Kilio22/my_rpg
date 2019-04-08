@@ -16,6 +16,15 @@
 #include <stdlib.h>
 #include "macros.h"
 #include "my_str.h"
+#include "my_ini.h"
+
+enum data_mapping {
+    NAME,
+    TYPE,
+    ASSET,
+    HP,
+    ATTACK
+};
 
 enum items {
     WEAPON = 0,
@@ -31,8 +40,14 @@ struct item {
     int id;
     int type;
     sfSprite *sprite;
-
+    int hp;
+    int attack;
 };
 typedef struct item item_t;
+
+// item.c
+item_t *item(int id, ini_file_t *data);
+void item_show_debug(int id, ini_file_t *data);
+void item_destroy(item_t *item);
 
 #endif /* !INVENTORY_H_ */

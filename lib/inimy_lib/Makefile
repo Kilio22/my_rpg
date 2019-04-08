@@ -31,7 +31,7 @@ NAME	=	inimy
 COLOR_THEME	=	$(GREEN_C)
 
 SRC_PATH	=	./
-INCLUDE_PATH	=	../include
+INCLUDE_PATH	=	../../include
 
 SRC		=	src/ini_line_mem.c \
 			src/ini_line_op.c \

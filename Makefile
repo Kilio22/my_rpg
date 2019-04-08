@@ -41,34 +41,25 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	event.c	\
-		create_house.c \
-		init.c	\
-		animation.c	\
-		camera_gestion.c \
-		display_and_obj.c \
-		list.c	\
-		character_gestion.c \
-		stats.c \
-		globals.c \
-		items/item.c \
-		inventory/debug_grid.c \
-		inventory/inventory_display.c \
-		inventory/inventory_op.c \
-		inventory/inventory.c \
-		inventory/inventory_loop.c
+SRC	=	
 
 SRC_LIB	=	my 	\
+			inimy \
 			g 	\
 			list \
 			graphmy \
+			filemy \
+			chainmy \
 			stringmy
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
 				lib/lib_list \
 				lib/graphmy_lib \
-				lib/stringmy_lib
+				lib/stringmy_lib \
+				lib/chainmy_lib \
+				lib/inimy_lib \
+				lib/filemy_lib
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)

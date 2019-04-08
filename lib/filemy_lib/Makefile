@@ -30,7 +30,7 @@ NAME	=	filemy
 COLOR_THEME	=	$(YELLO_C)
 
 SRC_PATH	=	./
-INCLUDE_PATH	=	../include
+INCLUDE_PATH	=	../../include
 
 SRC	=	my_file/my_file_readall.c \
 		my_file/my_file_size.c \
