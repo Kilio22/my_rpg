@@ -22,7 +22,7 @@ int main()
     sfRenderWindow *window = init_window();
     sfTexture *t = sfTexture_createFromFile("sword.png", NULL);
     item_t *item = item_create("test", t, t, t);
-    dragndrop_set_size(item->display, 50, 50);
+    inventory_t *inv = inventory_create(window, t);
 
     while (sfRenderWindow_isOpen(window)) {
         item_event(item, window);
@@ -33,7 +33,7 @@ int main()
         }
         sfRenderWindow_clear(window, sfBlack);
         show_debug_grid(window);
-        item_display(window, item);
+        inventory_draw(inv);
         sfRenderWindow_display(window);
     }
 }

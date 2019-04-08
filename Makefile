@@ -52,7 +52,11 @@ SRC	=	event.c	\
 		stats.c \
 		globals.c \
 		items/item.c \
-		inventory/debug_grid.c
+		inventory/debug_grid.c \
+		inventory/inventory_display.c \
+		inventory/inventory_op.c \
+		inventory/inventory.c \
+		inventory/inventory_loop.c
 
 SRC_LIB	=	my 	\
 			g 	\
