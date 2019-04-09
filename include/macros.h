@@ -16,5 +16,6 @@
 #define WIND rpg->wind
 #define MENU rpg->menu
 #define MAP rpg->map
+#define MENU_FONT "assets/menu_font_h.ttf"
 
 #endif /* !MACROS_H_ */

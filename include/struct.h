@@ -11,6 +11,11 @@
 #include "my_vector.h"
 #include "stdbool.h"
 
+enum menu_type {
+    BACK,
+    LOAD
+};
+
 enum obj_type {
     HERO_HB
 };
@@ -98,10 +103,17 @@ typedef struct game_s {
     simple_vector_t *follower2;
 } game_t;
 
+typedef struct button_s {
+    sfText *text;
+    sfVector2f pos;
+    int status;
+} button_t;
+
 typedef struct menu_s {
     bool menu_on;
-    bool launch_game;
-    sfSprite *loading_screen;
+    sfSprite *menu_sprite[2];
+    button_t buttons[6];
+    int highlight;
 } menu_t;
 
 typedef struct first_gid_s

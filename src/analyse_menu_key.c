@@ -7,7 +7,16 @@
 
 #include "rpg.h"
 
-void analyse_menu_key(int code, rpg_t *rpg)
+void analyse_menu_key_released(int code, rpg_t *rpg, obj_t **obj, house_t **h)
+{
+    if (code == sfKeyReturn) {
+        MENU.buttons[MENU.highlight].status = 0;
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
+        menu[MENU.highlight](rpg, obj, h);
+    }
+}
+
+void analyse_menu_key_pressed(int code, rpg_t *rpg)
 {
     if (code == sfKeyEscape)
         sfRenderWindow_close(WIND.wind);
@@ -15,6 +24,18 @@ void analyse_menu_key(int code, rpg_t *rpg)
         GAME.nb_save = 0;
     if (code == sfKeyF2)
         GAME.nb_save = 1;
-    if (code == sfKeyF3)
-        MENU.launch_game = 1;
+    if (code == sfKeyDown && MENU.highlight < 5) {
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfRed);
+        MENU.highlight++;
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
+    }
+    if (code == sfKeyUp && MENU.highlight > 0) {
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfRed);
+        MENU.highlight--;
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
+    }
+    if (code == sfKeyReturn) {
+        MENU.buttons[MENU.highlight].status = 1;
+        sfText_setColor(MENU.buttons[MENU.highlight].text, sfBlue);
+    }
 }

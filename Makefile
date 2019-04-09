@@ -43,6 +43,7 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
 SRC	=	analyse_game_key.c	\
 		analyse_menu_key.c	\
+		analyse_menu_mouse.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
@@ -56,12 +57,13 @@ SRC	=	analyse_game_key.c	\
 		game_init.c \
 		globals.c	\
 		house_display.c	\
-		layout_init.c 	\
 		init_save.c	\
+		layout_init.c 	\
 		list.c 	\
 		map_init.c	\
 		menu_display.c	\
 		menu_event.c 	\
+		menu_fcts.c	\
 		menu_init.c	\
 		my_utils.c	\
 		print_map.c	\
