@@ -43,5 +43,7 @@ int main(void)
     create_music(&rpg);
     init_menu(&rpg, obj, house);
     sfMusic_destroy(rpg.game.back_music);
+    free_house(house);
+    free_obj(obj);
     return (0);
 }

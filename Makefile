@@ -51,6 +51,7 @@ SRC	=	analyse_game_key.c	\
 		create_obj.c	\
 		fill_map.c	\
 		free_save.c	\
+		free.c 	\
 		game_display.c	\
 		game_event.c	\
 		game_init.c \
