@@ -65,6 +65,8 @@ void create_map(rpg_t *rpg);
 
 //menu_display.c
 void init_menu_loop(rpg_t *rpg, obj_t **obj, house_t **house);
+sfText *create_text(const char *font_fp, const char *str,
+unsigned int size,sfVector2f pos);
 
 //menu_event.c
 void menu_event_management(rpg_t *rpg);

@@ -7,6 +7,52 @@
 
 #include "rpg.h"
 
+static void display_auberge(rpg_t *rpg, sfVector2f pos)
+{
+    sfText *text = create_text("assets/Augusta.ttf", auberge_dial[0], 25, V2F(pos.x - 175, pos.y - 180));
+    sfText *text1 = create_text("assets/Augusta.ttf", auberge_dial[1], 25, V2F(pos.x - 125, pos.y - 160));
+    sfText *text2 = create_text("assets/Augusta.ttf", auberge_dial[2], 25, V2F(pos.x - 85, pos.y - 140));
+    sfText *text3 = create_text("assets/Augusta.ttf", auberge_dial[3], 25, V2F(pos.x - 95, pos.y - 120));
+    sfText *text4 = create_text("assets/Augusta.ttf", auberge_dial[4], 25, V2F(pos.x - 44, pos.y - 100));
+
+    sfRenderWindow_drawText(WIND.wind, text, NULL);
+    sfRenderWindow_drawText(WIND.wind, text1, NULL);
+    sfRenderWindow_drawText(WIND.wind, text2, NULL);
+    sfRenderWindow_drawText(WIND.wind, text3, NULL);
+    sfRenderWindow_drawText(WIND.wind, text4, NULL);
+    sfText_destroy(text);
+    sfText_destroy(text1);
+    sfText_destroy(text2);
+    sfText_destroy(text3);
+    sfText_destroy(text4);
+}
+
+static void display_auberge2(rpg_t *rpg, sfVector2f pos)
+{
+    sfVector2f new_pos;
+    sfText *text;
+
+    if (GAME.auberge == 2) {
+        new_pos.x = pos.x - 190;
+        new_pos.y = pos.y - 180;
+    }
+    if (GAME.auberge == 3) {
+        new_pos.x = pos.x - 260;
+        new_pos.y = pos.y - 180;
+    }
+    text = create_text("assets/Augusta.ttf", auberge_action[GAME.auberge - 2], 25, new_pos);
+    sfRenderWindow_drawText(WIND.wind, text, NULL);
+    sfText_destroy(text);
+}
+
+static void other_display(rpg_t *rpg, sfVector2f pos)
+{
+    if (GAME.auberge == 1)
+        display_auberge(rpg, pos);
+    if (GAME.auberge > 1)
+        display_auberge2(rpg, pos);
+}
+
 static void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     (void) house;
@@ -14,6 +60,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     print_map(MAP.sprite, obj, rpg->wind);
     //sfRenderWindow_drawSprite(WIND.wind, obj[HERO_HB]->sprite, NULL);
     house_display(rpg, house);
+    other_display(rpg, obj[1]->pos);
     for (int i = 3; i > 0; i--)
         sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     for (int i = 0; house[i] != NULL; i++)

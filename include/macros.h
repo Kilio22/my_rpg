@@ -16,5 +16,6 @@
 #define WIND rpg->wind
 #define MENU rpg->menu
 #define MAP rpg->map
+#define L(str) L(str)
 
 #endif /* !MACROS_H_ */

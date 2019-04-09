@@ -7,7 +7,8 @@
 
 #include "rpg.h"
 
-sfText *create_text(char *font_fp, char *str, unsigned int size, sfVector2f pos)
+sfText *create_text(const char *font_fp, const char *str,
+unsigned int size,sfVector2f pos)
 {
     sfText *new_text = sfText_create();
     sfFont *font = sfFont_createFromFile(font_fp);
@@ -17,7 +18,6 @@ sfText *create_text(char *font_fp, char *str, unsigned int size, sfVector2f pos)
     sfText_setPosition(new_text, pos);
     sfText_setColor(new_text, sfRed);
     sfText_setString(new_text, str);
-    sfFont_destroy(font);
     return (new_text);
 }
 

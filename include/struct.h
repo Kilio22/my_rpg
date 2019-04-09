@@ -96,6 +96,7 @@ typedef struct house_s {
 
 typedef struct game_s {
     int nb_save;
+    int auberge;
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
