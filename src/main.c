@@ -20,7 +20,7 @@ sfRenderWindow *init_window()
 
 int main()
 {
-    ini_file_t *file = ini_file_create_from_file("map2.ini");
-
-    
+    ini_file_t *file = ini_file_create_from_file("assets_data.ini");
+    item_t *item = item_create(0, file);
+    item_show_debug(item);
 }

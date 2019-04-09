@@ -41,16 +41,16 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC	=	
+SRC			=	item/item.c
 
-SRC_LIB	=	my 	\
-			inimy \
+SRC_LIB	=	inimy \
 			g 	\
 			list \
 			graphmy \
 			filemy \
 			chainmy \
-			stringmy
+			stringmy \
+			dispmy
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
@@ -59,7 +59,8 @@ LIB_PATHS	=	lib/lib_my \
 				lib/stringmy_lib \
 				lib/chainmy_lib \
 				lib/inimy_lib \
-				lib/filemy_lib
+				lib/filemy_lib \
+				lib/dispmy_lib
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)

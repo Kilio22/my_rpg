@@ -7,51 +7,52 @@
 
 #include "my_str.h"
 
-char *remove_stars(char **str)
+static long counter_set(int nb)
 {
-    my_revstr(*str);
-    int size = my_strlen(*str);
-    int i = 0;
-    char *new_str;
+    long counter = 10000000000000;
 
-    while ((*str)[i] == '*' && (*str)[i] != '\0'){
-        i++;
-    }
-    new_str = malloc(sizeof(char) * (size + 1));
-    my_strncpy(new_str, *str + i, size);
-    new_str[size] = '\0';
-    my_revstr(new_str);
-    free(*str);
-    *str = new_str;
-    return *str;
+    while (counter > nb)
+        counter = counter / 10;
+    return (counter);
 }
 
-static void counter_downgrade(int nb, long *counter)
+static int malloc_size(int nb)
 {
-    while (*counter > nb)
-        *counter = *counter / 10;
+    int size = 0;
+
+    if (nb == 0)
+        return (1);
+    if (nb < 0) {
+        nb = nb * -1;
+        size++;
+    }
+    while (nb != 0) {
+        size++;
+        nb = nb / 10;
+    }
+    return (size);
 }
 
 char *my_itoa(int nb)
 {
-    char *new_str = my_strdup("***************");
-    int i = 0;
-    long counter = 10000000000000;
+    char *buff = malloc(sizeof(int) * (malloc_size(nb) + 1));
+    int i = (nb < 0) ? 1 : 0;
+    long counter = counter_set(nb);
 
-    if (nb == 0)
-        return "0";
-    if (nb < 0){
-        nb = nb * -1;
-        i++;
-        new_str[0] = '-';
+    if (!buff)
+        return (NULL);
+    if (nb < 0)
+        buff[0] = '-';
+    if (nb == 0) {
+        buff[0] = '0';
+        buff[1] = '\0';
+        return (buff);
     }
-    counter_downgrade(nb, &counter);
-    while (counter > 0){
-        new_str[i] = nb / counter + 48;
+    for (; counter != 0; i++) {
+        buff[i] = nb / counter + 48;
         nb = nb - (nb / counter * counter);
         counter = counter / 10;
-        i++;
     }
-    remove_stars(&new_str);
-    return (new_str);
+    buff[i] = '\0';
+    return (buff);
 }

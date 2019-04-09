@@ -26,30 +26,21 @@ LIGHT_MAGEN	=	"\e[95m"
 LIGHT_CYAN	=	"\e[96m"
 LINE_RETURN	=	$(ECHO) ""
 
-NAME	=	stringmy
+NAME	=	dispmy
 COLOR_THEME	=	$(MAGEN_C)
 MY_PATH	=	.
 INCLUDE_PATH	=	../../include
 
-SRC_MY	=	src/my_char_is.c \
-		src/my_count_line.c \
-		src/my_line_lenght.c \
-		src/my_revstr.c \
-		src/my_strcat.c \
-		src/my_strcmp.c \
-		src/my_strcpy.c \
-		src/my_strdup.c \
-		src/my_str_isneg.c \
-		src/my_str_isnum.c \
-		src/my_strlen.c \
-		src/my_strreplace.c \
-		src/my_strstr.c \
-		src/my_atoi.c \
-		src/my_itoa.c \
-		src/my_strtok.c
+SRC_MY	=	src/my_put_errchar.c \
+			src/my_put_errstr.c \
+			src/my_putchar.c \
+			src/my_putfloat.c \
+			src/my_putnbr.c \
+			src/my_putstr.c
 
 CFLAGS	=	-Wall \
 			-W \
+			-Werror \
 			-I $(INCLUDE_PATH)
 
 SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
@@ -65,12 +56,12 @@ $(NAME):	$(OBJ)
 
 message:
 	@$(LINE_RETURN)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"     ______________________________ .___  _______     ________        _____  _____.___." $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"    /   _____/\__    ___/\______   \|   | \      \   /  _____/       /     \ \__  |   |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"    \_____  \   |    |    |       _/|   | /   |   \ /   \  ___      /  \ /  \ /   |   |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"    /        \  |    |    |    |   \|   |/    |    \\    \_\  \    /    Y    \\____   |" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"   /_______  /  |____|    |____|_  /|___|\____|__  / \______  /    \____|__  // ______|" $(DEFAULT)
-	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"           \/                    \/              \/         \/             \/ \/       " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"  ________  .___  ___________________     _____         " $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"  \______ \ |   |/   _____/\______   \   /     \ ___.__." $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"   |    |  \|   |\_____  \  |     ___/  /  \ /  <   |  |" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"   |        \   |/        \ |    |     /    Y    \___  |" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"  /_______  /___/_______  / |____|     \____|__  / ____|" $(DEFAULT)
+	@$(ECHO) $(BOLD_T)$(COLOR_THEME)"          \/            \/                     \/\/     " $(DEFAULT)
 	@$(LINE_RETURN)
 
 clean:

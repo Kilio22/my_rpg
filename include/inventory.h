@@ -17,6 +17,10 @@
 #include "macros.h"
 #include "my_str.h"
 #include "my_ini.h"
+#include "my_display.h"
+
+#define INVENTORY_SIZE_X 4
+#define INVENTORY_SIZE_Y 4
 
 enum data_mapping {
     NAME,
@@ -39,15 +43,28 @@ struct item {
     char *name;
     int id;
     int type;
-    sfSprite *sprite;
+    sfTexture *t;
     int hp;
     int attack;
 };
 typedef struct item item_t;
 
+struct inventory {
+    item_t *stock[INVENTORY_SIZE_X * INVENTORY_SIZE_Y];
+    item_t *stuff[6];
+    sfRenderWindow *window;
+};
+typedef struct inventory inventory_t;
+
 // item.c
-item_t *item(int id, ini_file_t *data);
-void item_show_debug(int id, ini_file_t *data);
+item_t *item_create(int id, ini_file_t *data);
+void item_show_debug(item_t *item);
 void item_destroy(item_t *item);
 
+// inventory.c
+inventory_t *inventory_create(sfRenderWindow *window);
+void inventory_destroy(inventory_t *inv);
+
+// inventory_op.c
+void inventory_add_item(inventory_t *inv, item_t *item);
 #endif /* !INVENTORY_H_ */

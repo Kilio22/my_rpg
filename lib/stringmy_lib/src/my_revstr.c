@@ -14,6 +14,8 @@ char *my_revstr(char *str)
     int i = size - 1;
     int j = 0;
 
+    if (!dest)
+        return (NULL);
     while (dest[j] != '\0'){
         str[j] = dest[i];
         j++;
