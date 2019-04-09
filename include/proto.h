@@ -73,6 +73,10 @@ void analyse_menu_key(int code, rpg_t *rpg);
 //menu_init.c
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 
+//music.c
+void set_music(rpg_t *rpg);
+void create_music(rpg_t *rpg);
+
 //my_utils.c
 int my_equal_len(char *str);
 int layer_len(layer_t **layers);

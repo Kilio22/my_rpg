@@ -6,6 +6,7 @@
 */
 
 #include <SFML/Graphics.h>
+#include <SFML/Audio.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "rpg.h"
@@ -39,6 +40,8 @@ int main(void)
         rpg.controls.bools[i] = 0;
     rpg.game.follower = init_list(9950, 1280);
     rpg.game.follower2 = init_list(9900, 1280);
+    create_music(&rpg);
     init_menu(&rpg, obj, house);
+    sfMusic_destroy(rpg.game.back_music);
     return (0);
 }

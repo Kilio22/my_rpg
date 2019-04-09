@@ -17,4 +17,6 @@ void analyse_menu_key(int code, rpg_t *rpg)
         GAME.nb_save = 1;
     if (code == sfKeyF3)
         MENU.launch_game = 1;
+    if (code == sfKeyF5)
+        set_music(rpg);
 }

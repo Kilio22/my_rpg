@@ -63,6 +63,7 @@ SRC	=	analyse_game_key.c	\
 		menu_display.c	\
 		menu_event.c 	\
 		menu_init.c	\
+		music.c \
 		my_utils.c	\
 		print_map.c	\
 		time_gestion.c
@@ -87,7 +88,8 @@ CFLAGS	=	-Wall \
 			$(LIBRARIES) \
 			-lcsfml-graphics \
 			-lcsfml-window \
-			-lcsfml-system
+			-lcsfml-system \
+			-lcsfml-audio
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 MAKE_RULE	=	all
