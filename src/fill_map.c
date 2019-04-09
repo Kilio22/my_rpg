@@ -16,7 +16,7 @@ void create_sprite(sprite_t **oui, char *path, int id, sfIntRect rect)
     oui[j] = malloc(sizeof(sprite_t));
     sfTexture *text = sfTexture_createFromFile(path, NULL);
     oui[j]->sprite = sfSprite_create();
-    sfSprite_setTexture(oui[j]->sprite, text, sfFalse);
+    sfSprite_setTexture(oui[j]->sprite, text, sfTrue);
     sfSprite_setTextureRect(oui[j]->sprite, rect);
     oui[j]->id = id;
 }
