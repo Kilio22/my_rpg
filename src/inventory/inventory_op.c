@@ -35,6 +35,7 @@ void inventory_remove_item_from_stock(inventory_t *inv, item_t *item)
             inv->stock[i] = NULL;
             return;
         }
+        i++;
     }
 }
 
@@ -45,7 +46,7 @@ void inventory_add_item_to_stuff(inventory_t *inv, item_t *item, int type)
     inv->stuff[type] = item;
 }
 
-void inventory_remove_item_from_stuff(inventory_t *inv, item_t *item, int type)
+void inventory_remove_item_from_stuff(inventory_t *inv, int type)
 {
     if (inv->stuff[type] == NULL)
         return;

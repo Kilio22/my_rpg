@@ -44,7 +44,8 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 SRC			=	item/item.c \
 				inventory/inventory_debug.c \
 				inventory/inventory_op.c \
-				inventory/inventory.c
+				inventory/inventory.c \
+				inventory/inventory_swap.c
 
 SRC_LIB	=	inimy \
 			g 	\

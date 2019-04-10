@@ -24,6 +24,9 @@ int main()
     inventory_t *inv = inventory_create(init_window());
     item_t *item = item_create(0, file);
 
-    inventory_add_item_to_stock(inv, item);
+    inventory_add_item_to_stuff(inv, item, 2);
+    inventory_swap_to_stock(inv, 2);
+    inventory_swap_to_stuff(inv, item, 0);
+    printf("finish operations\n");
     inventory_show_debug(inv);
 }
