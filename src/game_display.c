@@ -15,6 +15,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     house_display(rpg, house);
     for (int i = 3; i > 0; i--)
         sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    print_map2(MAP.sprite, obj, rpg->wind);
     for (int i = 0; house[i] != NULL; i++)
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);

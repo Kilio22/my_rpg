@@ -111,6 +111,7 @@ unsigned int size, sfVector2f pos);
 
 //print_map.c
 void print_map(sprite_t **sprites, obj_t **obj, wind_t wind);
+void print_map2(sprite_t **sprites, obj_t **obj, wind_t wind);
 
 //stats.c
 void print_stats(obj_t **obj);
