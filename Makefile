@@ -69,8 +69,7 @@ SRC	=	analyse_game_key.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-		time_gestion.c	\
-		dialogue/french.c
+		time_gestion.c
 
 SRC_LIB	=	my 	\
 			g 	\

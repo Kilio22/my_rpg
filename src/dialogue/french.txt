@@ -1,0 +1,12 @@
+type=0
+home_msg=
+Bienvenue dans mon auberge !
+Que puis-je faire pour vous ?
+propositions=
+1- Deposer un allie
+2- Recuperer un allie
+3- Partir
+answers=
+1- Tres bien! Quel allie souhaite tu deposer ?
+2- Pas de probleme! Quel est celui qui rejoint ton equipe ?
+3- Bonne continuation !
