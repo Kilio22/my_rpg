@@ -14,8 +14,6 @@ extern const sfIntRect house_rects[2];
 extern const char *door_path[2];
 extern const sfIntRect door_rects;
 extern const int door_pos[2];
-extern const char *auberge_action[2];
-const char *auberge_dial[5];
 extern const char *menu_path[2];
 extern const char *menu_str[6];
 extern const sfVector2f menu_pos[6];
