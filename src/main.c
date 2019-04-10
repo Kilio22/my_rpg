@@ -21,6 +21,9 @@ sfRenderWindow *init_window()
 int main()
 {
     ini_file_t *file = ini_file_create_from_file("assets_data.ini");
+    inventory_t *inv = inventory_create(init_window());
     item_t *item = item_create(0, file);
-    item_show_debug(item);
+
+    inventory_add_item_to_stock(inv, item);
+    inventory_show_debug(inv);
 }

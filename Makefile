@@ -41,7 +41,10 @@ INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 
-SRC			=	item/item.c
+SRC			=	item/item.c \
+				inventory/inventory_debug.c \
+				inventory/inventory_op.c \
+				inventory/inventory.c
 
 SRC_LIB	=	inimy \
 			g 	\

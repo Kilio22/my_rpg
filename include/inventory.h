@@ -21,6 +21,7 @@
 
 #define INVENTORY_SIZE_X 4
 #define INVENTORY_SIZE_Y 4
+#define INVENTORY_SIZE (4 * 4)
 
 enum data_mapping {
     NAME,
@@ -36,7 +37,8 @@ enum items {
     ARMOR,
     PANTS,
     BOOTS,
-    SHIELD
+    SHIELD,
+    OTHER
 };
 
 struct item {
@@ -66,5 +68,16 @@ inventory_t *inventory_create(sfRenderWindow *window);
 void inventory_destroy(inventory_t *inv);
 
 // inventory_op.c
-void inventory_add_item(inventory_t *inv, item_t *item);
+int inventory_add_item_to_stock(inventory_t *inv, item_t *item); //0 if fail
+void inventory_remove_item_from_stock(inventory_t *inv, item_t *item);
+void inventory_add_item_to_stuff(inventory_t *inv, item_t *item, int type);
+void inventory_remove_item_from_stuff(inventory_t *inv, item_t *item, int type);
+
+//inventory_swap.c
+
+//inventory_debug.c
+void inventory_show_debug(inventory_t *inv);
+void inventory_show_debug_stuff(inventory_t *inv);
+void inventory_show_debug_stock(inventory_t *inv);
+
 #endif /* !INVENTORY_H_ */
