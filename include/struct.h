@@ -139,6 +139,7 @@ typedef struct sprite_s
     int id;
     sfSprite *sprite;
     sfVector2f **pos;
+    int end_layout[5];
 } sprite_t;
 
 typedef struct map_s {

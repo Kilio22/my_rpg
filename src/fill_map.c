@@ -19,6 +19,8 @@ void create_sprite(sprite_t **oui, char *path, int id, sfIntRect rect)
     sfSprite_setTexture(oui[j]->sprite, text, sfTrue);
     sfSprite_setTextureRect(oui[j]->sprite, rect);
     oui[j]->id = id;
+    for (int i = 0; i < 5; i++)
+        oui[j]->end_layout[i] = 0;
 }
 
 void fill_sprite(sprite_t **oui, sfVector2f pos)

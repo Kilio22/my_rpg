@@ -45,11 +45,27 @@ MAP.gid[l]->path, layers->map[y][x], posRect);
     }
 }
 
+void set_end_layout(int layout, sprite_t **sprite)
+{
+    int j;
+
+    for (int i = 0; sprite[i] != NULL; i++) {
+        for (j = 0; sprite[i]->pos[j] != NULL; j++);
+        sprite[i]->end_layout[layout] = j - 1;
+    }
+}
+
 void create_map(rpg_t *rpg)
 {
     for (int i = 0; MAP.layers[i] != NULL; i++) {
         for (int y = 0; y < MAP.layers[i]->height; y++) {
             tilemaping(MAP.layers[i], rpg, y);
         }
+        set_end_layout(i, MAP.sprite);
     }
+    for (int j = 0; MAP.sprite[j] != NULL; j++)
+        MAP.sprite[j]->end_layout[4] = -1;
+    printf("id: %d\n", MAP.sprite[6]->id);
+    for (int k = 0; MAP.sprite[6]->end_layout[k] != -1; k++)
+        printf("%d\n", MAP.sprite[6]->end_layout[k]);
 }

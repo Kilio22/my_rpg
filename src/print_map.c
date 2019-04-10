@@ -9,7 +9,7 @@
 
 void check_sprite_position(sprite_t *sprites, obj_t **obj, wind_t wind)
 {
-    for (int j = 0; sprites->pos[j] != NULL; j++) {
+    for (int j = 0; j <= sprites->end_layout[2]; j++) {
         if (sprites->pos[j]->x < (obj[1]->pos.x - 416) ||
             sprites->pos[j]->x > (obj[1]->pos.x + 416) ||
             sprites->pos[j]->y < (obj[1]->pos.y - 256) ||
