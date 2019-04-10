@@ -52,6 +52,7 @@ SRC	=	analyse_game_key.c	\
 		create_obj.c	\
 		fill_map.c	\
 		free_save.c	\
+		free.c 	\
 		game_display.c	\
 		game_event.c	\
 		game_init.c \
@@ -65,9 +66,11 @@ SRC	=	analyse_game_key.c	\
 		menu_event.c 	\
 		menu_fcts.c	\
 		menu_init.c	\
+		music.c \
 		my_utils.c	\
 		print_map.c	\
-		time_gestion.c
+		time_gestion.c	\
+		dialogue/french.c
 
 SRC_LIB	=	my 	\
 			g 	\
@@ -89,7 +92,8 @@ CFLAGS	=	-Wall \
 			$(LIBRARIES) \
 			-lcsfml-graphics \
 			-lcsfml-window \
-			-lcsfml-system
+			-lcsfml-system \
+			-lcsfml-audio
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4
 MAKE_RULE	=	all

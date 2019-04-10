@@ -34,6 +34,8 @@ layer_t **add_layer(char *str, layer_t *layers[5], int fd)
         layers[i]->map[a] = malloc(sizeof(int) * (layers[i]->width));
         for (int x = 0; x < layers[i]->width; x++)
             layers[i]->map[a][x] = my_atoi(array[x]);
+        free_array(array);
+        free(line);
     }
     layers[++i] = NULL;
     return (layers);

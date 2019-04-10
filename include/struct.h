@@ -5,6 +5,8 @@
 ** struct
 */
 
+#include <SFML/Audio.h>
+
 #ifndef STRUCT_H_
 #define STRUCT_H_
 #include <SFML/Graphics.h>
@@ -99,6 +101,8 @@ typedef struct house_s {
 
 typedef struct game_s {
     int nb_save;
+    int auberge;
+    sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
 } game_t;

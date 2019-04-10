@@ -47,6 +47,12 @@ void create_sprite(sprite_t **oui, char *path, int id, sfIntRect rect);
 //free_save.c
 void free_save(obj_t **obj, rpg_t *rpg);
 
+//free.c
+void free_map(map_t map);
+void free_obj(obj_t **obj);
+void free_array(char **array);
+void free_house(house_t **house);
+
 //game_display.c
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 void house_display(rpg_t *rpg, house_t **house);
@@ -82,6 +88,10 @@ void check_button_hovered(rpg_t *rpg);
 
 //menu_init.c
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
+
+//music.c
+void set_music(rpg_t *rpg);
+void create_music(rpg_t *rpg);
 
 //menu_fcts.c
 void menu_close_window(rpg_t *rpg, obj_t **obj, house_t **house);
