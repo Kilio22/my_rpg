@@ -46,6 +46,7 @@ struct item {
     int id;
     int type;
     sfTexture *t;
+    dragndrop_t *display;
     int hp;
     int attack;
 };
@@ -67,6 +68,11 @@ void item_destroy(item_t *item);
 inventory_t *inventory_create(sfRenderWindow *window);
 void inventory_destroy(inventory_t *inv);
 
+// inventory_core.c
+void inventory_compute(inventory_t *inv);
+void inventory_draw(inventory_t *inv);
+void inventory_event(inventory_t *inv);
+
 // inventory_op.c
 int inventory_add_item_to_stock(inventory_t *inv, item_t *item); //0 if fail
 void inventory_remove_item_from_stock(inventory_t *inv, item_t *item);
@@ -81,5 +87,11 @@ void inventory_swap_to_stock(inventory_t *inv, int type);
 void inventory_show_debug(inventory_t *inv);
 void inventory_show_debug_stuff(inventory_t *inv);
 void inventory_show_debug_stock(inventory_t *inv);
+void inventory_draw_debug_grid(inventory_t *inv);
+
+static const sfVector2f stuff_grid[6] = {
+{130, 100}, {210, 100},
+{130, 190}, {210, 190},
+{130, 270}, {210, 270}};
 
 #endif /* !INVENTORY_H_ */

@@ -45,7 +45,8 @@ SRC			=	item/item.c \
 				inventory/inventory_debug.c \
 				inventory/inventory_op.c \
 				inventory/inventory.c \
-				inventory/inventory_swap.c
+				inventory/inventory_swap.c \
+				inventory/inventory_core.c
 
 SRC_LIB	=	inimy \
 			g 	\

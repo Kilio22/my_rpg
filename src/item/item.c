@@ -20,6 +20,7 @@ item_t *item_create(int id, ini_file_t *data)
     new->type = my_atoi(ini_line_get_value_from_col(line, TYPE));
     new->hp = my_atoi(ini_line_get_value_from_col(line, HP));
     new->t = sfTexture_createFromFile(path , NULL);
+    new->display = dragndrop_create(new->t, new->t, new->t);
     if (new->t == NULL)
         return (NULL);
     new->attack = my_atoi(ini_line_get_value_from_col(line, ATTACK));

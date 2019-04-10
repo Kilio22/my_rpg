@@ -22,11 +22,15 @@ int main()
 {
     ini_file_t *file = ini_file_create_from_file("assets_data.ini");
     inventory_t *inv = inventory_create(init_window());
-    item_t *item = item_create(0, file);
 
-    inventory_add_item_to_stuff(inv, item, 2);
-    inventory_swap_to_stock(inv, 2);
-    inventory_swap_to_stuff(inv, item, 0);
-    printf("finish operations\n");
-    inventory_show_debug(inv);
+    while (sfRenderWindow_isOpen(inv->window)) {
+        sfEvent event;
+        while (sfRenderWindow_pollEvent(inv->window, &event)) {
+            if (event.type == sfEvtClosed)
+                sfRenderWindow_close(inv->window);
+        }
+        sfRenderWindow_clear(inv->window, sfBlack);
+        inventory_compute(inv);
+        sfRenderWindow_display(inv->window);
+    }
 }
