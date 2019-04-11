@@ -72,8 +72,8 @@ SRC	=	analyse_game_key.c	\
 		time_gestion.c
 
 SRC_LIB	=	my 	\
-			g 	\
-			list
+		graphic 	\
+		list
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
