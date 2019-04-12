@@ -23,9 +23,9 @@ int main(void)
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 16}, sfTrue);
-    obj[1] = create_object("assets/hero.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[2] = create_object("assets/stupid_nathan.png", (sfVector2f){9950, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/normal_dummy.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[1] = create_object("assets/perso_blanc.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[2] = create_object("assets/hero.png", (sfVector2f){9950, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11776, 2560}, sfFalse);
     obj[5] = NULL;
     //house[0] = create_house(1, (sfVector2f){10100, 1050});
