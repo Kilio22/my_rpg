@@ -17,5 +17,7 @@
 #define MENU rpg->menu
 #define MAP rpg->map
 #define MENU_FONT "assets/menu_font_h.ttf"
+#define BACK_SETT "assets/settings.png"
+#define BACK_CTRL "assets/skyfullofstar.png"
 
 #endif /* !MACROS_H_ */

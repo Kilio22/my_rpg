@@ -31,6 +31,13 @@ void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void follower(obj_t **obj, rpg_t *rpg);
 void character_control(rpg_t *rpg, obj_t *obj, house_t **house);
 
+//controls_events.c
+int manage_control_events(rpg_t *rpg, int *high);
+
+//controls_init.c
+void init_controls_menu(rpg_t *rpg);
+int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb);
+
 //create_house.c
 house_t *create_house(int type, sfVector2f housePos);
 void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
@@ -92,6 +99,7 @@ void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 //music.c
 void set_music(rpg_t *rpg);
 void create_music(rpg_t *rpg);
+void set_volume(rpg_t *rpg, int high, settings_t *settings);
 
 //menu_fcts.c
 void menu_close_window(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -111,6 +119,19 @@ unsigned int size, sfVector2f pos);
 
 //print_map.c
 void print_map(sprite_t **sprites, obj_t **obj, wind_t wind);
+
+//settings_init.c
+settings_t init_settings(rpg_t *rpg);
+
+//settings_menu.c
+int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);
+
+//settings_events.c
+void analyse_settings_move(rpg_t *rpg, settings_t *settings);
+void analyse_button_press_setting(rpg_t *rpg, settings_t *settings, int code);
+void analyse_button_real_setting(settings_t *settings, int code);
+int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
+int check_high_controls(int i);
 
 //stats.c
 void print_stats(obj_t **obj);

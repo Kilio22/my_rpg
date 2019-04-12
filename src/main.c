@@ -35,6 +35,7 @@ int main(void)
     sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
 
     rpg.game.nb_save = 0;
+    rpg.game.language = 0;
     rpg.controls.bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
         rpg.controls.bools[i] = 0;

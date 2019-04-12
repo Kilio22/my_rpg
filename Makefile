@@ -48,6 +48,8 @@ SRC	=	analyse_game_key.c	\
 		character_gestion.c \
 		characters_animation.c	\
 		characters_stats.c	\
+		controls_events.c	\
+		controls_init.c	\
 		create_house.c	\
 		create_obj.c	\
 		fill_map.c	\
@@ -69,6 +71,9 @@ SRC	=	analyse_game_key.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
+		settings_events.c	\
+		settings_init.c	\
+		settings_menu.c	\
 		time_gestion.c	\
 		dialogue/french.c
 
