@@ -11,7 +11,9 @@ inventory_t *inventory_create(sfRenderWindow *window)
 {
     inventory_t *new = malloc(sizeof(inventory_t));
 
+    new->item_dragging = NULL;
     new->window = window;
+    new->item_pos = NOTHING;
     for (int i = 0; i < INVENTORY_SIZE_X * INVENTORY_SIZE_Y; i++)
         new->stock[i] = NULL;
     for (int i = 0; i < 6; i++)

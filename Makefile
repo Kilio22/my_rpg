@@ -46,7 +46,9 @@ SRC			=	item/item.c \
 				inventory/inventory_op.c \
 				inventory/inventory.c \
 				inventory/inventory_swap.c \
-				inventory/inventory_core.c
+				inventory/inventory_core.c \
+				inventory/inventory_stock.c \
+				inventory/inventory_stuff.c
 
 SRC_LIB	=	inimy \
 			g 	\
@@ -150,7 +152,7 @@ tests_run: build_libs
 	@$(ECHO) $(DEFAULT)
 
 %.o: %.c
-	@$(CC) -c $(CFLAGS) -o $@ $< && \
+	@$(CC) -c $(CFLAGS) -g3 -o $@ $< && \
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 

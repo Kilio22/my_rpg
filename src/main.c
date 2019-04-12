@@ -22,7 +22,11 @@ int main()
 {
     ini_file_t *file = ini_file_create_from_file("assets_data.ini");
     inventory_t *inv = inventory_create(init_window());
+    item_t *item = item_create(0, file);
+    item_t *item2 = item_create(1, file);
 
+    inventory_add_item_to_stock(inv, item);
+    inventory_add_item_to_stock(inv, item2);
     while (sfRenderWindow_isOpen(inv->window)) {
         sfEvent event;
         while (sfRenderWindow_pollEvent(inv->window, &event)) {

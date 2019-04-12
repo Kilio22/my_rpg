@@ -41,6 +41,12 @@ enum items {
     OTHER
 };
 
+enum item_pos {
+    NOTHING,
+    STUFF,
+    STOCK
+};
+
 struct item {
     char *name;
     int id;
@@ -55,6 +61,8 @@ typedef struct item item_t;
 struct inventory {
     item_t *stock[INVENTORY_SIZE_X * INVENTORY_SIZE_Y];
     item_t *stuff[6];
+    item_t *item_dragging;
+    int item_pos;
     sfRenderWindow *window;
 };
 typedef struct inventory inventory_t;
@@ -88,6 +96,15 @@ void inventory_show_debug(inventory_t *inv);
 void inventory_show_debug_stuff(inventory_t *inv);
 void inventory_show_debug_stock(inventory_t *inv);
 void inventory_draw_debug_grid(inventory_t *inv);
+
+//inventory_stock;c
+void inventory_draw_stock(inventory_t *inv);
+void inventory_event_stock(inventory_t *inv);
+int inventory_is_under_dragging(inventory_t *inv);
+
+//inventory_stuff.c
+void inventory_draw_stuff(inventory_t *inv);
+void inventory_event_stuff(inventory_t *inv);
 
 static const sfVector2f stuff_grid[6] = {
 {130, 100}, {210, 100},
