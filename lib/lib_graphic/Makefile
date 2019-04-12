@@ -87,4 +87,4 @@ debug: all
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 
-.PHONY: all $(NAME) message clean fclean re debug 
+.PHONY: all $(NAME) message clean fclean re debug

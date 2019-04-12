@@ -74,6 +74,7 @@ SRC	=	analyse_game_key.c	\
 		settings_events.c	\
 		settings_init.c	\
 		settings_menu.c	\
+		settings_utils.c	\
 		time_gestion.c	\
 		dialogue/french.c
 

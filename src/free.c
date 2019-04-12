@@ -14,7 +14,8 @@ void free_map(map_t map)
         for (int j = 0; map.sprite[i]->pos[j] != NULL; j++)
             free(map.sprite[i]->pos[j]);
         free(map.sprite[i]->pos);
-        sfTexture_destroy((sfTexture *)sfSprite_getTexture(map.sprite[i]->sprite));
+        sfTexture_destroy((sfTexture *)sfSprite_getTexture(
+map.sprite[i]->sprite));
         sfSprite_destroy(map.sprite[i]->sprite);
         free(map.sprite[i]);
     }

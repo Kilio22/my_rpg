@@ -133,6 +133,9 @@ void analyse_button_real_setting(settings_t *settings, int code);
 int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
 int check_high_controls(int i);
 
+//settings_utils.c
+int check_high_controls(int i);
+
 //stats.c
 void print_stats(obj_t **obj);
 

@@ -40,7 +40,8 @@ void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
     if (WIND.event.type == sfEvtMouseButtonPressed)
         analyse_menu_mouse_press(rpg, WIND.event.mouseButton.button);
     if (WIND.event.type == sfEvtMouseButtonReleased)
-        analyse_menu_mouse_released(rpg, WIND.event.mouseButton.button, obj, house);
+        analyse_menu_mouse_released(rpg, WIND.event.mouseButton.button,
+obj, house);
     if (WIND.event.type == sfEvtMouseMoved)
         analyse_menu_mouse_move(rpg);
     if (WIND.event.type == sfEvtClosed)

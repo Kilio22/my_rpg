@@ -19,6 +19,18 @@ sfRectangleShape *create_rect(void)
     return (rect);
 }
 
+void init_texts(settings_t *settings)
+{
+    for (int i = 0; i < 4; i++) {
+        if (i == 1)
+            settings->text[i].text =
+create_text(MENU_FONT, my_int_to_char(settings->volume), 80, settings_pos[i]);
+        else
+            settings->text[i].text =
+create_text(MENU_FONT, settings_str[i], 80, settings_pos[i]);
+    }
+}
+
 settings_t init_settings(rpg_t *rpg)
 {
     settings_t settings;
@@ -33,14 +45,7 @@ settings_t init_settings(rpg_t *rpg)
         sfSprite_setPosition(settings.buttons[i].sprite, settings_spr_pos[i]);
         settings.buttons[i].state = 0;
     }
-    for (int i = 0; i < 4; i++) {
-        if (i == 1)
-            settings.text[i].text =
-create_text(MENU_FONT, my_int_to_char(settings.volume), 80, settings_pos[i]);
-        else
-            settings.text[i].text =
-create_text(MENU_FONT, settings_str[i], 80, settings_pos[i]);
-    }
+    init_texts(&settings);
     settings.high = 0;
     return (settings);
 }

@@ -7,16 +7,6 @@
 
 #include "rpg.h"
 
-int check_high_controls(int i)
-{
-    static int value = 0;
-
-    if (i == -1)
-        return (value);
-    value = i;
-    return (-1);
-}
-
 int check_text_settings(settings_t *settings, int j)
 {
     sfText_setColor(settings->text[3].text, sfRed);
