@@ -26,9 +26,10 @@ int main(void)
     obj[1] = create_object("assets/hero.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[2] = create_object("assets/stupid_nathan.png", (sfVector2f){9950, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[3] = create_object("assets/normal_dummy.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[4] = NULL;
-    house[0] = create_house(1, (sfVector2f){10100, 1050});
-    house[1] = NULL;
+    obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11776, 2560}, sfFalse);
+    obj[5] = NULL;
+    //house[0] = create_house(1, (sfVector2f){10100, 1050});
+    house[0] = NULL;
 
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});

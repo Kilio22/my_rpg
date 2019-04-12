@@ -17,8 +17,8 @@ void init_game(rpg_t *rpg, obj_t **obj, house_t **house)
     init_save(obj, rpg);
     for (int i = 0; i < 715; i++)
         MAP.sprite[i] = NULL;
-    map_init(rpg);
-    create_map(rpg);
+    //map_init(rpg);
+    //create_map(rpg);
     GAME.auberge = false;
     game_loop(rpg, obj, house);
 }
