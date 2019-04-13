@@ -7,6 +7,16 @@
 
 #include "rpg.h"
 
+static void check_already_ctrl(rpg_t *rpg, int code)
+{
+    for (int i = 0; i < 6; i++) {
+        if (CONTROLS.keys[i] == code) {
+            CONTROLS.keys[i] = -1;
+            sfText_setString(CONTROLS.text[i].text, "N/A");
+        }
+    }
+}
+
 static void manage_move_event_ctrl(rpg_t *rpg, int *high)
 {
     int i = check_mousepos_intersect(rpg, CONTROLS.text, 6);
@@ -26,6 +36,7 @@ static void manage_key_pressed_ctrl(rpg_t *rpg, int code)
 {
     if (code == -1 || CONTROLS.wait_key == -1)
         return;
+    check_already_ctrl(rpg, code);
     CONTROLS.keys[CONTROLS.wait_key] = code;
     sfText_setString(CONTROLS.text[CONTROLS.wait_key].text, key_str[code]);
     CONTROLS.wait_key = -1;
