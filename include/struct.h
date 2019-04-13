@@ -134,6 +134,7 @@ typedef struct menu_s {
     sfSprite *menu_sprite[2];
     fields_t buttons[6];
     int highlight;
+    sfRectangleShape *rect;
 } menu_t;
 
 typedef struct first_gid_s

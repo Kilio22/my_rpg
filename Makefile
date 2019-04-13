@@ -43,7 +43,9 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
 
-SRC	=	$(MENU_PATH)menu_display.c	\
+SRC	=	$(MENU_PATH)analyse_menu_key.c	\
+		$(MENU_PATH)analyse_menu_mouse.c	\
+		$(MENU_PATH)menu_display.c	\
 		$(MENU_PATH)menu_event.c 	\
 		$(MENU_PATH)menu_fcts.c	\
 		$(MENU_PATH)menu_init.c	\
@@ -54,8 +56,6 @@ SRC	=	$(MENU_PATH)menu_display.c	\
 		$(SETTINGS_PATH)settings_menu.c	\
 		$(SETTINGS_PATH)settings_utils.c	\
 		analyse_game_key.c	\
-		analyse_menu_key.c	\
-		analyse_menu_mouse.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\

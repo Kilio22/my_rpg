@@ -7,6 +7,24 @@
 
 #include "rpg.h"
 
+void update_rectangle(rpg_t *rpg, int *move)
+{
+    sfVector2f pos = sfRectangleShape_getPosition(MENU.rect);
+    sfVector2f text_pos = sfText_getPosition(MENU.buttons[MENU.highlight].text);
+
+    if (pos.y == text_pos.y) {
+        *move = -1;
+        return;
+    }
+    if (*move == -1)
+        return;
+    if (pos.y < text_pos.y)
+        pos.y += 10;
+    else
+        pos.y -= 10;
+    sfRectangleShape_setPosition(MENU.rect, pos);
+}
+
 int check_mousepos_butt(rpg_t *rpg)
 {
     sfFloatRect text_pos;
@@ -20,21 +38,23 @@ int check_mousepos_butt(rpg_t *rpg)
     return (-1);
 }
 
-void check_button_hovered(rpg_t *rpg)
+void check_button_hovered(rpg_t *rpg, int *move)
 {
     int i = check_mousepos_butt(rpg);
 
     if (i == -1 || MENU.buttons[MENU.highlight].status == 1)
         return;
     sfText_setColor(MENU.buttons[MENU.highlight].text, sfRed);
+    *move = 1;
     MENU.highlight = i;
     sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
 }
 
-void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
+void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house,
+                                                    int *move_rect)
 {
     if (WIND.event.type == sfEvtKeyPressed)
-        analyse_menu_key_pressed(WIND.event.key.code, rpg);
+        analyse_menu_key_pressed(WIND.event.key.code, rpg, move_rect);
     if (WIND.event.type == sfEvtKeyReleased)
         analyse_menu_key_released(WIND.event.key.code, rpg, obj, house);
     if (WIND.event.type == sfEvtMouseButtonPressed)
@@ -43,7 +63,7 @@ void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
         analyse_menu_mouse_released(rpg, WIND.event.mouseButton.button,
 obj, house);
     if (WIND.event.type == sfEvtMouseMoved)
-        analyse_menu_mouse_move(rpg);
+        analyse_menu_mouse_move(rpg, move_rect);
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
 }

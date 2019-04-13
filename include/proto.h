@@ -16,13 +16,13 @@ void all_character_animation(obj_t **obj);
 void update_all_rect(obj_t **obj, house_t **house);
 
 //analyse_menu_key.c
-void analyse_menu_key_pressed(int code, rpg_t *rpg);
+void analyse_menu_key_pressed(int code, rpg_t *rpg, int *move);
 void analyse_menu_key_released(int code, rpg_t *rpg, obj_t **obj, house_t **h);
 
 //analyse_menu_mouse.c
 void analyse_menu_mouse_press(rpg_t *rpg, int key);
 void analyse_menu_mouse_released(rpg_t *rpg, int key, obj_t **obj, house_t **h);
-void analyse_menu_mouse_move(rpg_t *rpg);
+void analyse_menu_mouse_move(rpg_t *rpg, int *move);
 
 //camera_gestion.c
 void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
@@ -89,9 +89,11 @@ void create_map(rpg_t *rpg);
 void menu_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //menu_event.c
-void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
+void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house,
+                                                    int *move_rect);
 int check_mousepos_butt(rpg_t *rpg);
-void check_button_hovered(rpg_t *rpg);
+void check_button_hovered(rpg_t *rpg, int *move);
+void update_rectangle(rpg_t *rpg, int *move);
 
 //menu_init.c
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);

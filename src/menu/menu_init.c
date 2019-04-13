@@ -7,7 +7,19 @@
 
 #include "rpg.h"
 
-void create_ground(rpg_t *rpg)
+static void create_rect_menu(rpg_t *rpg)
+{
+    sfVector2f pos_rect = {90, 60};
+
+    MENU.rect = sfRectangleShape_create();
+    sfRectangleShape_setOutlineThickness(MENU.rect, 6);
+    sfRectangleShape_setSize(MENU.rect, (sfVector2f){450, 100});
+    sfRectangleShape_setFillColor(MENU.rect, sfTransparent);
+    sfRectangleShape_setOutlineColor(MENU.rect, sfRed);
+    sfRectangleShape_setPosition(MENU.rect, pos_rect);
+}
+
+static void create_ground(rpg_t *rpg)
 {
     sfTexture *texture;
 
@@ -29,6 +41,7 @@ menu_str[i], 80, menu_pos[i]);
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     create_ground(rpg);
+    create_rect_menu(rpg);
     rpg->menu.menu_on = 1;
     init_save(obj, rpg);
     menu_loop(rpg, obj, house);
