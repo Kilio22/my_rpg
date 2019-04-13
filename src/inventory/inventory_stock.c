@@ -48,7 +48,7 @@ static void treat_pending_drag_stock(inventory_t *inv, item_t *dragged)
     sfVector2i pos = dragndrop_getpendingDrag(dragged->display);
     int i = compute_coords_to_stuff(pos);
 
-    if (i != -1)
+    if (i != -1 && i == inv->item_dragging->type)
         inventory_swap_to_stuff(inv, inv->item_dragging, i);
     inv->item_dragging = NULL;
     inv->item_pos = NOTHING;
