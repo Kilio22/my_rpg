@@ -40,16 +40,26 @@ TESTS_NAME	=	tests
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
+MENU_PATH	=	menu/
+SETTINGS_PATH	=	settings/
 
-SRC	=	analyse_game_key.c	\
+SRC	=	$(MENU_PATH)menu_display.c	\
+		$(MENU_PATH)menu_event.c 	\
+		$(MENU_PATH)menu_fcts.c	\
+		$(MENU_PATH)menu_init.c	\
+		$(SETTINGS_PATH)controls_events.c	\
+		$(SETTINGS_PATH)controls_init.c	\
+		$(SETTINGS_PATH)settings_events.c	\
+		$(SETTINGS_PATH)settings_init.c	\
+		$(SETTINGS_PATH)settings_menu.c	\
+		$(SETTINGS_PATH)settings_utils.c	\
+		analyse_game_key.c	\
 		analyse_menu_key.c	\
 		analyse_menu_mouse.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
 		characters_stats.c	\
-		controls_events.c	\
-		controls_init.c	\
 		create_house.c	\
 		create_obj.c	\
 		fill_map.c	\
@@ -64,17 +74,9 @@ SRC	=	analyse_game_key.c	\
 		layout_init.c 	\
 		list.c 	\
 		map_init.c	\
-		menu_display.c	\
-		menu_event.c 	\
-		menu_fcts.c	\
-		menu_init.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-		settings_events.c	\
-		settings_init.c	\
-		settings_menu.c	\
-		settings_utils.c	\
 		time_gestion.c	\
 		dialogue/french.c
 

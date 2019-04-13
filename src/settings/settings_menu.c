@@ -23,7 +23,7 @@ int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings)
     return (0);
 }
 
-void manage_other_settings_events(rpg_t *rpg, settings_t *settings)
+static void manage_other_settings_events(rpg_t *rpg, settings_t *settings)
 {
     if (sfMouse_isButtonPressed(sfMouseLeft)) {
         if (settings->high < 3 && settings->high > 0) {
@@ -34,7 +34,7 @@ void manage_other_settings_events(rpg_t *rpg, settings_t *settings)
     }
 }
 
-void display_settings(rpg_t *rpg, settings_t *settings)
+static void display_settings(rpg_t *rpg, settings_t *settings)
 {
     for (int i = 0; i < 5; i++)
         sfRenderWindow_drawSprite(WIND.wind,

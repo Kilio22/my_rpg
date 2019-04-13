@@ -127,9 +127,6 @@ settings_t init_settings(rpg_t *rpg);
 int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);
 
 //settings_events.c
-void analyse_settings_move(rpg_t *rpg, settings_t *settings);
-void analyse_button_press_setting(rpg_t *rpg, settings_t *settings, int code);
-void analyse_button_real_setting(settings_t *settings, int code);
 int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
 int check_high_controls(int i);
 

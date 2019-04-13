@@ -20,7 +20,7 @@ int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb)
     return (-1);
 }
 
-void display_controls(rpg_t *rpg, int *high)
+static void display_controls(rpg_t *rpg, int *high)
 {
     int ret_val = 0;
 

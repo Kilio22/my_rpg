@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int check_text_settings(settings_t *settings, int j)
+static int check_text_settings(settings_t *settings, int j)
 {
     sfText_setColor(settings->text[3].text, sfRed);
     check_high_controls(0);
@@ -18,7 +18,7 @@ int check_text_settings(settings_t *settings, int j)
     return (1);
 }
 
-void analyse_settings_move(rpg_t *rpg, settings_t *settings)
+static void analyse_settings_move(rpg_t *rpg, settings_t *settings)
 {
     int i = check_mousepos_butt_set(rpg, settings);
 
@@ -44,7 +44,8 @@ settings_spr_pos[GAME.language + 3]);
     settings->high = i;
 }
 
-void analyse_button_press_setting(rpg_t *rpg, settings_t *settings, int code)
+static void analyse_button_press_setting(rpg_t *rpg, settings_t *settings,
+                                                                int code)
 {
     if (code != 0)
         return;
@@ -59,7 +60,7 @@ void analyse_button_press_setting(rpg_t *rpg, settings_t *settings, int code)
         init_controls_menu(rpg);
 }
 
-void analyse_button_real_setting(settings_t *settings, int code)
+static void analyse_button_real_setting(settings_t *settings, int code)
 {
     if (code != 0)
         return;

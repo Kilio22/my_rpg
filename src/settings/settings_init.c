@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-sfRectangleShape *create_rect(void)
+static sfRectangleShape *create_rect(void)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
 
@@ -19,7 +19,7 @@ sfRectangleShape *create_rect(void)
     return (rect);
 }
 
-void init_texts(settings_t *settings)
+static void init_texts_settings(settings_t *settings)
 {
     for (int i = 0; i < 4; i++) {
         if (i == 1)
@@ -45,7 +45,7 @@ settings_t init_settings(rpg_t *rpg)
         sfSprite_setPosition(settings.buttons[i].sprite, settings_spr_pos[i]);
         settings.buttons[i].state = 0;
     }
-    init_texts(&settings);
+    init_texts_settings(&settings);
     settings.high = 0;
     return (settings);
 }
