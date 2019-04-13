@@ -15,9 +15,9 @@ int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb)
     for (int i = 0; i < nb; i++) {
         text_pos = sfText_getGlobalBounds(field[i].text);
         if (sfFloatRect_intersects(&text_pos, &mouse_pos, NULL))
-            return (i);
+            return i;
     }
-    return (-1);
+    return -1;
 }
 
 static void display_controls(rpg_t *rpg, int *high)

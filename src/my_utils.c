@@ -51,5 +51,5 @@ int my_tab_vector_len(sfVector2f **tab)
     int i = 0;
 
     for (; tab[i]; i++);
-    return (i);
+    return i;
 }

@@ -14,5 +14,5 @@ int check_high_controls(int i)
     if (i == -1)
         return (value);
     value = i;
-    return (-1);
+    return -1;
 }

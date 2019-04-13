@@ -15,7 +15,7 @@ static int verif(char *str, char const *to_find, int p)
         }
         i++;
     }
-    return (0);
+    return 0;
 }
 
 static int strlenghtg(char const *to_find)
@@ -26,7 +26,7 @@ static int strlenghtg(char const *to_find)
     {
         i++;
     }
-    return (i);
+    return i;
 }
 
 char *my_strstr(char *str, char const *to_find)
@@ -39,5 +39,5 @@ char *my_strstr(char *str, char const *to_find)
             return (&str[i]);
         i++;
     }
-    return (0);
+    return 0;
 }

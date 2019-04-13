@@ -42,6 +42,7 @@ void init_menu(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     create_ground(rpg);
     create_rect_menu(rpg);
+    MENU.clock = sfClock_create();
     rpg->menu.menu_on = 1;
     init_save(obj, rpg);
     menu_loop(rpg, obj, house);

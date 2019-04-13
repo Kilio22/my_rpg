@@ -11,7 +11,7 @@ int my_is_prime(int nb)
     int compt = 0;
 
     if (nb <= 1)
-        return (0);
+        return 0;
     while (i <= nb) {
         if (nb % i == 0) {
             compt++;
@@ -19,9 +19,9 @@ int my_is_prime(int nb)
         i++;
     }
     if (compt == 2) {
-        return (1);
+        return 1;
     } else {
-        return (0);
+        return 0;
     }
-    return (0);
+    return 0;
 }

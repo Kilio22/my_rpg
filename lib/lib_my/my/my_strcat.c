@@ -12,7 +12,7 @@ static int strlenghtf(char *dest)
     while (dest[i] != '\0') {
         i++;
     }
-    return (i);
+    return i;
 }
 
 char *my_strcat(char *dest, char const *src)

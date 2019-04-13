@@ -58,12 +58,12 @@ int manage_control_events(rpg_t *rpg, int *high)
         sfRenderWindow_close(WIND.wind);
     if (WIND.event.type == sfEvtKeyPressed &&
 WIND.event.key.code == sfKeyEscape)
-        return (1);
+        return 1;
     if (WIND.event.type == sfEvtMouseMoved)
         manage_move_event_ctrl(rpg, high);
     if (WIND.event.type == sfEvtMouseButtonPressed)
         manage_mouse_click_ctrl(rpg, WIND.event.mouseButton.button, high);
     if (WIND.event.type == sfEvtKeyPressed)
         manage_key_pressed_ctrl(rpg, WIND.event.key.code);
-    return (0);
+    return 0;
 }

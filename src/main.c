@@ -46,5 +46,5 @@ int main(void)
     sfMusic_destroy(rpg.game.back_music);
     free_house(house);
     free_obj(obj);
-    return (0);
+    return 0;
 }

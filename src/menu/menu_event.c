@@ -7,24 +7,6 @@
 
 #include "rpg.h"
 
-void update_rectangle(rpg_t *rpg, int *move)
-{
-    sfVector2f pos = sfRectangleShape_getPosition(MENU.rect);
-    sfVector2f text_pos = sfText_getPosition(MENU.buttons[MENU.highlight].text);
-
-    if (pos.y == text_pos.y) {
-        *move = -1;
-        return;
-    }
-    if (*move == -1)
-        return;
-    if (pos.y < text_pos.y)
-        pos.y += 10;
-    else
-        pos.y -= 10;
-    sfRectangleShape_setPosition(MENU.rect, pos);
-}
-
 int check_mousepos_butt(rpg_t *rpg)
 {
     sfFloatRect text_pos;
@@ -33,9 +15,9 @@ int check_mousepos_butt(rpg_t *rpg)
     for (int i = 0; i < 6; i++) {
         text_pos = sfText_getGlobalBounds(MENU.buttons[i].text);
         if (sfFloatRect_intersects(&text_pos, &mouse_pos, NULL))
-            return (i);
+            return i;
     }
-    return (-1);
+    return -1;
 }
 
 void check_button_hovered(rpg_t *rpg, int *move)

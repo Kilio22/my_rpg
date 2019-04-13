@@ -93,7 +93,6 @@ void menu_event_management(rpg_t *rpg, obj_t **obj, house_t **house,
                                                     int *move_rect);
 int check_mousepos_butt(rpg_t *rpg);
 void check_button_hovered(rpg_t *rpg, int *move);
-void update_rectangle(rpg_t *rpg, int *move);
 
 //menu_init.c
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);

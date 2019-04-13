@@ -12,10 +12,10 @@ static int check_text_settings(settings_t *settings, int j)
     sfText_setColor(settings->text[3].text, sfRed);
     check_high_controls(0);
     if (j != 9)
-        return (0);
+        return 0;
     check_high_controls(1);
     sfText_setColor(settings->text[3].text, sfBlue);
-    return (1);
+    return 1;
 }
 
 static void analyse_settings_move(rpg_t *rpg, settings_t *settings)
@@ -75,7 +75,7 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
     if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-        return (1);
+        return 1;
     if (event.type == sfEvtMouseMoved) {
         WIND.mouse_pos.x = event.mouseMove.x;
         WIND.mouse_pos.y = event.mouseMove.y;
@@ -85,5 +85,5 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
         analyse_button_press_setting(rpg, settings, event.mouseButton.button);
     if (event.type == sfEvtMouseButtonReleased)
         analyse_button_real_setting(settings, event.mouseButton.button);
-    return (0);
+    return 0;
 }

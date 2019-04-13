@@ -15,7 +15,7 @@ static int strlenght(char *str)
         i++;
     }
     i = i - 1;
-    return (i);
+    return i;
 }
 
 char *my_revstr(char *str)

@@ -15,12 +15,12 @@ int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings)
     for (int i = 1; i < 5; i++) {
         text_pos = sfSprite_getGlobalBounds(settings->buttons[i].sprite);
         if (sfFloatRect_intersects(&text_pos, &mouse_pos, NULL))
-            return (i);
+            return i;
     }
     text_pos = sfText_getGlobalBounds(settings->text[3].text);
     if (sfFloatRect_intersects(&text_pos, &mouse_pos, NULL))
         return (9);
-    return (0);
+    return 0;
 }
 
 static void manage_other_settings_events(rpg_t *rpg, settings_t *settings)

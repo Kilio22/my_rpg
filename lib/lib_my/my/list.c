@@ -16,10 +16,10 @@ int check(char c)
 
     while (verif[i] != '\0') {
         if (verif[i] == c)
-            return (i);
+            return i;
         i++;
     }
-    return (-1);
+    return -1;
 }
 
 int printer(char c, va_list list)
