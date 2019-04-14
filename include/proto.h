@@ -123,6 +123,7 @@ void print_map(sprite_t **sprites, obj_t **obj, wind_t wind);
 
 //settings_init.c
 settings_t init_settings(rpg_t *rpg);
+void destroy_settings(settings_t *settings);
 
 //settings_menu.c
 int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);

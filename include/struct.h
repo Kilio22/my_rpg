@@ -136,6 +136,7 @@ typedef struct menu_s {
     fields_t buttons[6];
     int highlight;
     sfRectangleShape *rect;
+    sfText *descr_text;
 } menu_t;
 
 typedef struct first_gid_s

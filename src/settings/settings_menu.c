@@ -62,4 +62,5 @@ void menu_settings(rpg_t *rpg, obj_t **obj, house_t **house)
             return;
         display_settings(rpg, &settings);
     }
+    destroy_settings(&settings);
 }

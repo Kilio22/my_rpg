@@ -7,7 +7,21 @@
 
 #include "rpg.h"
 
-static sfRectangleShape *create_rect(void)
+void destroy_settings(settings_t *settings)
+{
+    for (int i = 0; i < 4; i++) {
+        sfFont_destroy((sfFont *)sfText_getFont(settings->text[i].text));
+        sfText_destroy(settings->text[i].text);
+    }
+    for (int i = 0; i < 5; i++) {
+        sfTexture_destroy(
+(sfTexture *)sfSprite_getTexture(settings->buttons[i].sprite));
+        sfSprite_destroy(settings->buttons[i].sprite);
+    }
+    sfRectangleShape_destroy(settings->rect);
+}
+
+static sfRectangleShape *create_rect(rpg_t *rpg)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
 
@@ -15,7 +29,10 @@ static sfRectangleShape *create_rect(void)
     sfRectangleShape_setSize(rect, (sfVector2f){130, 87});
     sfRectangleShape_setFillColor(rect, sfTransparent);
     sfRectangleShape_setOutlineColor(rect, sfBlue);
-    sfRectangleShape_setPosition(rect, settings_spr_pos[3]);
+    if (GAME.language == 0)
+        sfRectangleShape_setPosition(rect, settings_spr_pos[3]);
+    else
+        sfRectangleShape_setPosition(rect, settings_spr_pos[4]);
     return (rect);
 }
 
@@ -37,7 +54,7 @@ settings_t init_settings(rpg_t *rpg)
     sfTexture *texture;
 
     settings.volume = sfMusic_getVolume(GAME.back_music);
-    settings.rect = create_rect();
+    settings.rect = create_rect(rpg);
     for (int i = 0; i < 5; i++) {
         texture = sfTexture_createFromFile(settings_fp[i], NULL);
         settings.buttons[i].sprite = sfSprite_create();

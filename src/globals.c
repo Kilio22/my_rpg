@@ -125,6 +125,16 @@ const char *menu_str[6] = {
     "     Quit "
 };
 
+const char *menu_desc[6] = {
+    "Start a new adventure !",
+    "Load one of the saved adventure and continue it !",
+    "Change your experience by selecting an other language, \nmodify the volume"
+    " of the music, or by define \nyour propers controls !",
+    "Learn how to play to this game !",
+    "View the credits",
+    "Go back to the deskdop"
+};
+
 const sfVector2f menu_pos[6] = {
     {110, 60},
     {100, 160},
