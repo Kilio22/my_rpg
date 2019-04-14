@@ -130,7 +130,6 @@ int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);
 
 //settings_events.c
 int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
-int check_high_controls(int i);
 
 //settings_utils.c
 int check_high_controls(int i);

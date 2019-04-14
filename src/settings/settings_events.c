@@ -56,17 +56,23 @@ static void analyse_button_press_setting(rpg_t *rpg, settings_t *settings,
         if (settings->high == 4)
             GAME.language = 1;
     }
-    if (check_high_controls(-1) == 1)
+    if (check_high_controls(-1) == 1) {
         init_controls_menu(rpg);
+        sfText_setColor(settings->text[3].text, sfRed);
+        check_high_controls(0);
+    }
 }
 
-static void analyse_button_real_setting(settings_t *settings, int code)
+static void analyse_button_real_setting(settings_t *settings, int code,
+                                                            rpg_t *rpg)
 {
     if (code != 0)
         return;
-    if (settings->high < 3 && settings->high > 0) {
-        settings->buttons[settings->high].state = 0;
-        sfSprite_setColor(settings->buttons[settings->high].sprite, sfYellow);
+    for (int i = 1; i < 5; i++) {
+        if (settings->buttons[i].state == 1 &&
+check_mousepos_butt_set(rpg, settings) == i)
+            sfSprite_setColor(settings->buttons[i].sprite, sfYellow);
+        settings->buttons[i].state = 0;
     }
 }
 
@@ -84,6 +90,6 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
     if (event.type == sfEvtMouseButtonPressed)
         analyse_button_press_setting(rpg, settings, event.mouseButton.button);
     if (event.type == sfEvtMouseButtonReleased)
-        analyse_button_real_setting(settings, event.mouseButton.button);
+        analyse_button_real_setting(settings, event.mouseButton.button, rpg);
     return 0;
 }

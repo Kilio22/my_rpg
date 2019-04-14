@@ -46,7 +46,8 @@ static void manage_mouse_click_ctrl(rpg_t *rpg, int code, int *high)
 {
     if (code != 0)
         return;
-    if (check_mousepos_intersect(rpg, CONTROLS.text, 6) >= 0) {
+    if (check_mousepos_intersect(rpg, CONTROLS.text, 6) >= 0
+&& CONTROLS.wait_key == -1) {
         sfText_setString(CONTROLS.text[*high].text, "PRESS ANY KEY");
         CONTROLS.wait_key = *high;
     }
