@@ -69,15 +69,37 @@ SRC	=	analyse_game_key.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-		time_gestion.c
+		time_gestion.c \
+		item/item.c \
+		inventory/inventory_debug.c \
+		inventory/inventory_op.c \
+		inventory/inventory.c \
+		inventory/inventory_swap.c \
+		inventory/inventory_core.c \
+		inventory/inventory_stock.c \
+		inventory/inventory_stuff.c
 
-SRC_LIB	=	my 	\
-		graphic 	\
-		list
+SRC_LIB	=	inimy \
+			g 	\
+			list \
+			graphmy \
+			filemy \
+			chainmy \
+			stringmy \
+			dispmy \
+			my \
+			graphic \
+			list
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
-				lib/lib_list
+				lib/lib_list \
+				lib/graphmy_lib \
+				lib/stringmy_lib \
+				lib/chainmy_lib \
+				lib/inimy_lib \
+				lib/filemy_lib \
+				lib/dispmy_lib
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)
@@ -163,7 +185,7 @@ tests_run: build_libs
 	@$(ECHO) $(DEFAULT)
 
 %.o: %.c
-	@$(CC) -c $(CFLAGS) -o $@ $< && \
+	@$(CC) -c $(CFLAGS) -g3 -o $@ $< && \
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 
