@@ -1,11 +1,11 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_getnbr
+** mg_getnbr
 ** File description:
-** my_getnbr
+** mg_getnbr
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
 static int get_that_string_length(char const *str)
 {
@@ -27,7 +27,7 @@ static int get_return_value(int is_negative, long long result)
     return (result);
 }
 
-int my_getnbr(char const *str)
+int mg_getnbr(char const *str)
 {
     int i = 0;
     long long result = 0;

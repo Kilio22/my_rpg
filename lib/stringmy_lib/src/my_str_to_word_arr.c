@@ -5,9 +5,9 @@
 ** str to word arr
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-static int my_count_words(char const *str)
+static int mg_count_words(char const *str)
 {
     int i = 0;
     int counter = 0;
@@ -24,7 +24,7 @@ static int my_count_words(char const *str)
     return (counter);
 }
 
-static int my_word_lenght(char const *s)
+static int mg_word_lenght(char const *s)
 {
     int i = 0;
 
@@ -33,18 +33,18 @@ static int my_word_lenght(char const *s)
     return (i);
 }
 
-word_arr_t *my_str_to_word_arr(char const *str)
+word_arr_t *mg_str_to_word_arr(char const *str)
 {
     word_arr_t *arr = malloc(sizeof(word_arr_t));
     int j = 0;
 
-    arr->nb_word = my_count_words(str);
+    arr->nb_word = mg_count_words(str);
     arr->arr = malloc(sizeof(char *) * arr->nb_word);
     for (int i = 0; i < arr->nb_word; i++) {
         while (str[j] == ' ' || str[j] == '\t')
             j++;
-        arr->arr[i] = my_strndup(str + j, my_word_lenght(str + j));
-        j += my_word_lenght(str + j);
+        arr->arr[i] = mg_strndup(str + j, mg_word_lenght(str + j));
+        j += mg_word_lenght(str + j);
     }
     return (arr);
 }

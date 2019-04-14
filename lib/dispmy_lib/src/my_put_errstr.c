@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_put_errstr
+** mg_put_errstr
 ** File description:
 ** put an str on the standard err output
 */
@@ -15,7 +15,7 @@ static int s_strlen(char const *str)
     return (i);
 }
 
-void my_put_errstr(char const *str)
+void mg_put_errstr(char const *str)
 {
     write(2, str, s_strlen(str));
 }

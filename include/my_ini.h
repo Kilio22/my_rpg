@@ -8,7 +8,7 @@
 #ifndef MY_INI_H_
 #define MY_INI_H_
 
-#include "my_str.h"
+#include "mg_str.h"
 #include "my_file.h"
 #include "my_vector.h"
 #include <stdio.h>

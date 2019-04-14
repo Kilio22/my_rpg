@@ -1,11 +1,11 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_atoi
+** mg_atoi
 ** File description:
 ** convert str to int
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
 static int s_pow(int nb, int power)
 {
@@ -27,17 +27,17 @@ static int s_pow(int nb, int power)
 
 static int s_str_isneg(char const *str)
 {
-    if (my_str_isnum(str) == 0)
+    if (mg_str_isnum(str) == 0)
         return -1;
     if (str[0] == '-')
         return 1;
     return 0;
 }
 
-int my_atoi(char const *str)
+int mg_atoi(char const *str)
 {
     int neg_flag = (s_str_isneg(str) == 1) ? 1 : 0;
-    int size = my_strlen(str) - neg_flag;
+    int size = mg_strlen(str) - neg_flag;
     int result = 0;
 
     for (int i = 1; i < size + 1; i++){

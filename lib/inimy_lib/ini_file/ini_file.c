@@ -19,7 +19,7 @@ ini_file_t *ini_file_create(void)
 ini_file_t *ini_file_create_from_str(char *str)
 {
     ini_file_t *file = ini_file_create();
-    char **arr = my_strtok(str, "\n");
+    char **arr = mg_strtok(str, "\n");
     int i = 0;
 
     while (arr[i]) {
@@ -37,6 +37,6 @@ ini_file_t *ini_file_create_from_file(char *path)
     if (buff == NULL)
         return (NULL);
     file = ini_file_create_from_str(buff);
-    file->path = my_strdup(path);
+    file->path = mg_strdup(path);
     return (file);
 }

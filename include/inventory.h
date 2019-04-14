@@ -15,7 +15,7 @@
 #include "my_dragndrop.h"
 #include <stdlib.h>
 #include "macros.h"
-#include "my_str.h"
+#include "mg_str.h"
 #include "my_ini.h"
 #include "my_display.h"
 

@@ -1,11 +1,11 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_iota
+** mg_iota
 ** File description:
 ** convert int to char
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
 static long counter_set(int nb)
 {
@@ -33,7 +33,7 @@ static int malloc_size(int nb)
     return (size);
 }
 
-char *my_itoa(int nb)
+char *mg_itoa(int nb)
 {
     char *buff = malloc(sizeof(int) * (malloc_size(nb) + 1));
     int i = (nb < 0) ? 1 : 0;

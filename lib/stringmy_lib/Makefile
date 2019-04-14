@@ -28,7 +28,7 @@ LINE_RETURN	=	$(ECHO) ""
 
 NAME	=	stringmy
 COLOR_THEME	=	$(MAGEN_C)
-MY_PATH	=	.
+my_PATH	=	.
 INCLUDE_PATH	=	../../include
 
 SRC_MY	=	src/my_char_is.c \
@@ -52,7 +52,7 @@ CFLAGS	=	-Wall \
 			-W \
 			-I $(INCLUDE_PATH)
 
-SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
+SRCS	=	$(SRC_MY:%=$(my_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
 

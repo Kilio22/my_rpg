@@ -11,7 +11,7 @@
 #include <SFML/System.h>
 #include <SFML/Window.h>
 #include <SFML/Graphics.h>
-#include "my_str.h"
+#include "mg_str.h"
 #include <stdlib.h>
 #include <stdio.h>
 

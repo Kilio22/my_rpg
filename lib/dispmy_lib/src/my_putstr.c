@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_putstr
+** mg_putstr
 ** File description:
 ** function for display an entire str
 */
@@ -16,7 +16,7 @@ static int s_strlen(char const *str)
     return (i);
 }
 
-void my_putstr(char const *str)
+void mg_putstr(char const *str)
 {
     write(1, str, s_strlen(str));
 }

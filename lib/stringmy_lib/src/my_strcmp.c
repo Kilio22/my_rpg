@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strcmp
+** mg_strcmp
 ** File description:
 ** compare 2 strings
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-my_bool_t my_strcmp(char const *s1, char const *s2)
+mg_bool_t mg_strcmp(char const *s1, char const *s2)
 {
     int i = 0;
 
@@ -21,7 +21,7 @@ my_bool_t my_strcmp(char const *s1, char const *s2)
     return (TRUE);
 }
 
-my_bool_t my_strncmp(char const *s1, char const *s2, int n)
+mg_bool_t mg_strncmp(char const *s1, char const *s2, int n)
 {
     int i = 0;
     int returned;

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_putfloat
+** mg_putfloat
 ** File description:
 ** display an float
 */
@@ -25,20 +25,20 @@ static int pow_s(int nb, int power)
     return (res);
 }
 
-void my_putfloat(float nb, int sensibility)
+void mg_putfloat(float nb, int sensibility)
 {
     if (nb < 0){
         nb = nb * -1;
-        my_putchar('-');
+        mg_putchar('-');
     }
-    my_putnbr((int)nb);
+    mg_putnbr((int)nb);
     if (sensibility == 0)
         return;
     nb -= (int)nb;
     nb = nb *pow_s(10, sensibility);
-    my_putchar('.');
+    mg_putchar('.');
     if ((int)nb == 0){
-        my_putchar('0');
+        mg_putchar('0');
     }
-    my_putnbr((int)nb);
+    mg_putnbr((int)nb);
 }

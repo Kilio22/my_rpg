@@ -1,16 +1,16 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_revstr
+** mg_revstr
 ** File description:
 ** reverse an string
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-char *my_revstr(char *str)
+char *mg_revstr(char *str)
 {
-    int size = my_strlen(str);
-    char *dest = my_strdup(str);
+    int size = mg_strlen(str);
+    char *dest = mg_strdup(str);
     int i = size - 1;
     int j = 0;
 

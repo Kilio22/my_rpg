@@ -1,22 +1,22 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_str_to_line_arr
+** mg_str_to_line_arr
 ** File description:
-** my_str_to_line_arr
+** mg_str_to_line_arr
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-line_arr_t *my_str_to_line_arr(char const *str)
+line_arr_t *mg_str_to_line_arr(char const *str)
 {
     line_arr_t *arr = malloc(sizeof(line_arr_t));
     int size_read = 0;
 
-    arr->nb_line = my_count_line(str);
+    arr->nb_line = mg_count_line(str);
     arr->arr = malloc(sizeof(char *) * arr->nb_line);
     for (int i = 0; i < arr->nb_line; i++) {
-        int size = my_line_lenght(str + size_read);
-        arr->arr[i] = my_strndup(str + size_read, size);
+        int size = mg_line_lenght(str + size_read);
+        arr->arr[i] = mg_strndup(str + size_read, size);
         size_read += size + 1;
     }
     return (arr);

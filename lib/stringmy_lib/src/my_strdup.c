@@ -1,30 +1,30 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strdup
+** mg_strdup
 ** File description:
-** my_strdup
+** mg_strdup
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-char *my_strdup(char const *src)
+char *mg_strdup(char const *src)
 {
-    char *new_str = malloc(sizeof(char) * (my_strlen(src) + 1));
+    char *new_str = malloc(sizeof(char) * (mg_strlen(src) + 1));
 
     if (!new_str)
         return (NULL);
-    my_strcpy(new_str, src);
-    new_str[my_strlen(src)] = '\0';
+    mg_strcpy(new_str, src);
+    new_str[mg_strlen(src)] = '\0';
     return (new_str);
 }
 
-char *my_strndup(char const *src, int n)
+char *mg_strndup(char const *src, int n)
 {
-    int size = (my_strlen(src) < n) ? my_strlen(src) : n;
+    int size = (mg_strlen(src) < n) ? mg_strlen(src) : n;
     char *new_str = malloc(sizeof(char) * (size + 1));
 
     if (!new_str)
         return (NULL);
-    my_strncpy(new_str, src, n);
+    mg_strncpy(new_str, src, n);
     return (new_str);
 }

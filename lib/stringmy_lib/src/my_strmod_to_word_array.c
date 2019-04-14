@@ -1,11 +1,11 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_str_to_word_array
+** mg_str_to_word_array
 ** File description:
 ** create a str array with a str
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
 int nb_space(char *src, char cutmod)
 {
@@ -25,7 +25,7 @@ int word_size(char *src, char cutmod)
     return (nb);
 }
 
-char **my_strmod_to_word_array(char *src, char cutmod)
+char **mg_strmod_to_word_array(char *src, char cutmod)
 {
     int nbword = nb_space(src, cutmod) + 1;
     char **dest = malloc(sizeof(char *) * (nbword + 1));
@@ -34,7 +34,7 @@ char **my_strmod_to_word_array(char *src, char cutmod)
 
     for (int i = 0; i < nbword; i++) {
         wordlen = word_size(&src[cursor], cutmod);
-        dest[i] = my_strndup(&src[cursor], wordlen);
+        dest[i] = mg_strndup(&src[cursor], wordlen);
         cursor += wordlen + 1;
     }
     dest[nbword] = NULL;

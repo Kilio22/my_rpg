@@ -11,7 +11,7 @@ ini_line_t *ini_line_create(char *key)
 {
     ini_line_t *line = malloc(sizeof(ini_line_t));
 
-    line->key = my_strdup(key);
+    line->key = mg_strdup(key);
     line->values = double_vector_create();
     return (line);
 }
@@ -26,17 +26,17 @@ ini_line_t *ini_line_create_from_str(char *str)
         size_key++;
     if (str[size_key] == '\0')
         return (NULL);
-    line = ini_line_create(my_strndup(str, size_key));
-    if (my_strlen(str) - size_key - 2 == 0)
+    line = ini_line_create(mg_strndup(str, size_key));
+    if (mg_strlen(str) - size_key - 2 == 0)
         return (line);
-    values = my_strtok(my_strndup(str + size_key + 1,
-    my_strlen(str) - size_key - 2), ";");
+    values = mg_strtok(mg_strndup(str + size_key + 1,
+    mg_strlen(str) - size_key - 2), ";");
     size_key = 0;
     while (values[size_key]) {
-        double_vector_push_back(line->values, my_strdup(values[size_key]));
+        double_vector_push_back(line->values, mg_strdup(values[size_key]));
         size_key++;
     }
-    my_strtok_destroy(values);
+    mg_strtok_destroy(values);
     return (line);
 }
 

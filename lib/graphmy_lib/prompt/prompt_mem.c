@@ -21,7 +21,7 @@ my_prompt_t *my_prompt_create(sfTexture *background)
     new->pos = (sfVector2f){0, 0};
     new->scale = (sfVector2f){1, 1};
     new->return_released = 1;
-    new->to_display = my_strdup("");
+    new->to_display = mg_strdup("");
     return (new);
 }
 
@@ -39,12 +39,12 @@ static void display_text(sfRenderWindow *window, my_prompt_t *prompt)
     sfFloatRect back;
     sfFloatRect text;
     sfVector2f pos_text;
-    int offset = my_strlen(prompt->to_display) - prompt->char_to_display;
+    int offset = mg_strlen(prompt->to_display) - prompt->char_to_display;
     char *to_display;
 
     if (offset < 0)
         offset = 0;
-    to_display = my_strdup(prompt->to_display + offset);
+    to_display = mg_strdup(prompt->to_display + offset);
     sfText_setString(prompt->text, to_display);
     back = sfSprite_getGlobalBounds(prompt->background);
     text = sfText_getGlobalBounds(prompt->text);

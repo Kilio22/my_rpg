@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_strcpy
+** mg_strcpy
 ** File description:
 ** copy an string into another
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-char *my_strcpy(char *dest, char const *str)
+char *mg_strcpy(char *dest, char const *str)
 {
     int i = 0;
 
@@ -19,9 +19,9 @@ char *my_strcpy(char *dest, char const *str)
     return dest;
 }
 
-char *my_strncpy(char *dest, char const *src, int n)
+char *mg_strncpy(char *dest, char const *src, int n)
 {
-    int size = (my_strlen(src) > n) ? n : my_strlen(src);
+    int size = (mg_strlen(src) > n) ? n : mg_strlen(src);
 
     for (int i = 0; i < size; i++) {
         dest[i] = src[i];

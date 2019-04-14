@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_str_isnum
+** mg_str_isnum
 ** File description:
 ** define is an str contain exclusively digits
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-my_bool_t my_str_isnum(char const *str)
+mg_bool_t mg_str_isnum(char const *str)
 {
     int i = 0;
     int negative = 0;
-    my_bool_t is_float = FALSE;
+    mg_bool_t is_float = FALSE;
     if (str[0] == '-'){
         i++;
         negative = 1;
@@ -21,7 +21,7 @@ my_bool_t my_str_isnum(char const *str)
             is_float = TRUE;
             i++;
         }
-        if (my_char_isnumber(str[i]) == 0)
+        if (mg_char_isnumber(str[i]) == 0)
             return FALSE;
         i++;
     }
@@ -30,7 +30,7 @@ my_bool_t my_str_isnum(char const *str)
     return FALSE;
 }
 
-my_bool_t my_str_isint(char const *str)
+mg_bool_t mg_str_isint(char const *str)
 {
     int i = 0;
     int negative = 0;
@@ -39,7 +39,7 @@ my_bool_t my_str_isint(char const *str)
         negative = 1;
     }
     while (str[i] != '\0'){
-        if (my_char_isnumber(str[i]) == 0)
+        if (mg_char_isnumber(str[i]) == 0)
             return FALSE;
         i++;
     }

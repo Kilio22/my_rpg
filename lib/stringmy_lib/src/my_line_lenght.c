@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_line_lenght
+** mg_line_lenght
 ** File description:
-** my_line_lenght
+** mg_line_lenght
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-int my_line_lenght(char const *str)
+int mg_line_lenght(char const *str)
 {
     int i = 0;
 

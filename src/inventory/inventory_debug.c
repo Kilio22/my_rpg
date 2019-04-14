@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2019
-** my_rpg
+** mg_rpg
 ** File description:
 ** inventory_debug
 */
@@ -15,24 +15,24 @@ void inventory_show_debug(inventory_t *inv)
 
 void inventory_show_debug_stuff(inventory_t *inv)
 {
-    my_putstr("stuff: \n");
+    mg_putstr("stuff: \n");
     for (int i = 0; i < 6; i++) {
         if (inv->stuff[i] == NULL)
-            my_putstr("NULL\n");
+            mg_putstr("NULL\n");
         else {
-            my_putstr(inv->stuff[i]->name);
-            my_putchar('\n');
+            mg_putstr(inv->stuff[i]->name);
+            mg_putchar('\n');
         }
     }
 }
 
 void inventory_show_debug_stock(inventory_t *inv)
 {
-    my_putstr("stock:\n");
+    mg_putstr("stock:\n");
     for (int i = 0; i < INVENTORY_SIZE; i++) {
         if (inv->stock[i] != NULL) {
-            my_putstr(inv->stock[i]->name);
-            my_putchar('\n');
+            mg_putstr(inv->stock[i]->name);
+            mg_putchar('\n');
         }
     }
 }

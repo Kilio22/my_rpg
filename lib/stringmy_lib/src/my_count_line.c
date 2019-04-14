@@ -1,13 +1,13 @@
 /*
 ** EPITECH PROJECT, 2018
-** my_count_line
+** mg_count_line
 ** File description:
-** my_count_line
+** mg_count_line
 */
 
-#include "my_str.h"
+#include "mg_str.h"
 
-int my_count_line(char const *str)
+int mg_count_line(char const *str)
 {
     int i = 0;
     int counter = 0;

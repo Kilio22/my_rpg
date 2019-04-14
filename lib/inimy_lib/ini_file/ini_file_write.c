@@ -17,7 +17,7 @@ static int file_str_size(ini_file_t *file)
     while (current) {
         current_content = (ini_line_t *)current->content;
         buff = ini_line_to_str(current_content);
-        size += my_strlen(buff) + 1;
+        size += mg_strlen(buff) + 1;
         free(buff);    
         current = current->next;
     }
@@ -35,8 +35,8 @@ char *ini_file_to_str(ini_file_t *file)
     while (current) {
         current_content = (ini_line_t *)current->content;
         to_insert = ini_line_to_str(current_content);
-        my_strcpy(buff + offset, to_insert);
-        offset += my_strlen(to_insert) + 1;
+        mg_strcpy(buff + offset, to_insert);
+        offset += mg_strlen(to_insert) + 1;
         buff[offset - 1] = '\n';
         current = current->next;
     }
@@ -49,7 +49,7 @@ void ini_file_write(ini_file_t *file)
     char *buff = ini_file_to_str(file);
     int fd = open(file->path, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
 
-    write(fd, buff, my_strlen(buff));
+    write(fd, buff, mg_strlen(buff));
     free(buff);
 }
 
@@ -58,6 +58,6 @@ void ini_file_write_path(ini_file_t *file, char *path)
     char *buff = ini_file_to_str(file);
     int fd = open(path, O_CREAT | O_RDWR | O_TRUNC, S_IRUSR | S_IWUSR);
 
-    write(fd, buff, my_strlen(buff));
+    write(fd, buff, mg_strlen(buff));
     free(buff);
 }

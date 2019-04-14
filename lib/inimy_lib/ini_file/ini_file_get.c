@@ -14,7 +14,7 @@ ini_line_t *ini_file_get_from_key(ini_file_t *file, char *key)
 
     while (current) {
         current_content = (ini_line_t *)current->content;
-        if (my_strcmp(current_content->key, key))
+        if (mg_strcmp(current_content->key, key))
             return (current_content);
         current = current->next;
     }
