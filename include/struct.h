@@ -54,7 +54,7 @@ enum bools {
 
 enum stats {
     LEVEL = 0,
-    HP,
+    HPS,
     ATK,
     DEF
 };

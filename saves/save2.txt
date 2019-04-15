@@ -1,10 +1,10 @@
-Name: Antoine
-UP: 73
-LEFT: 71
-DOWN: 74
-RIGHT: 72
-INTERACT: 67
-STATS: 57
+Name: Fabien
+UP: 25
+LEFT: 16
+DOWN: 18
+RIGHT: 3
+INTERACT: 4
+STATS: 15
 Character 1
 Level: 1
 HP: 20
