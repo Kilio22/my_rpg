@@ -45,10 +45,16 @@ SETTINGS_PATH	=	settings/
 
 SRC	=	$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
+		$(MENU_PATH)check_save_status.c	\
+		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)load_game.c	\
+		$(MENU_PATH)load_game_event.c	\
 		$(MENU_PATH)menu_display.c	\
 		$(MENU_PATH)menu_event.c 	\
 		$(MENU_PATH)menu_fcts.c	\
 		$(MENU_PATH)menu_init.c	\
+		$(MENU_PATH)new_game.c	\
+		$(MENU_PATH)new_game_event.c	\
 		$(SETTINGS_PATH)controls_events.c	\
 		$(SETTINGS_PATH)controls_init.c	\
 		$(SETTINGS_PATH)settings_events.c	\

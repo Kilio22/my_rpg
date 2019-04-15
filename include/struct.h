@@ -129,6 +129,13 @@ typedef struct settings_s {
     fields_t text[4];
 } settings_t;
 
+typedef struct load_game_s {
+    fields_t text[3];
+    sfRectangleShape *rect;
+    sfSprite *back;
+    int high;
+} load_game_t;
+
 typedef struct menu_s {
     sfClock *clock;
     bool menu_on;

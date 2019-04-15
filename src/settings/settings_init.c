@@ -21,7 +21,7 @@ void destroy_settings(settings_t *settings)
     sfRectangleShape_destroy(settings->rect);
 }
 
-static sfRectangleShape *create_rect(rpg_t *rpg)
+static sfRectangleShape *create_rect_setting(rpg_t *rpg)
 {
     sfRectangleShape *rect = sfRectangleShape_create();
 
@@ -54,7 +54,7 @@ settings_t init_settings(rpg_t *rpg)
     sfTexture *texture;
 
     settings.volume = sfMusic_getVolume(GAME.back_music);
-    settings.rect = create_rect(rpg);
+    settings.rect = create_rect_setting(rpg);
     for (int i = 0; i < 5; i++) {
         texture = sfTexture_createFromFile(settings_fp[i], NULL);
         settings.buttons[i].sprite = sfSprite_create();

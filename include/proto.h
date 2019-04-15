@@ -31,6 +31,9 @@ void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void follower(obj_t **obj, rpg_t *rpg);
 void character_control(rpg_t *rpg, obj_t *obj, house_t **house);
 
+//check_save_status.c
+char *check_save_status(int save_nb);
+
 //controls_events.c
 int manage_control_events(rpg_t *rpg, int *high);
 
@@ -45,6 +48,9 @@ void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
 //create_obj.c
 obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
 sfBool centered);
+
+//destroy_menu.c
+void destroy_load(load_game_t *load);
 
 //fill_map.c
 void add_vector(sprite_t *oui, sfVector2f pos);
@@ -74,6 +80,24 @@ void init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //init.c
 void init_save(obj_t **obj, rpg_t *rpg);
+
+//load_game.c
+void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
+void init_text_load(load_game_t *new);
+load_game_t init_load_game(void);
+void update_rect_load(load_game_t *load, size_t frame);
+void load_display(rpg_t *rpg, load_game_t *load);
+
+//load_game_event.c
+int check_load_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                        house_t **house);
+int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                        house_t **house);
+void check_move_load(rpg_t *rpg, load_game_t *load);
+void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                        house_t **house);
+void update_time(sfTime *current_time, sfTime *old_time, rpg_t *rpg,
+                                                        size_t *frames);
 
 //layout_init.c
 void map_init(rpg_t *rpg);
@@ -105,10 +129,9 @@ void set_volume(rpg_t *rpg, int high, settings_t *settings);
 //menu_fcts.c
 void menu_close_window(rpg_t *rpg, obj_t **obj, house_t **house);
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
-void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
-void menu_settings(rpg_t *rpg, obj_t **obj, house_t **house);
 void menu_how_to_play(rpg_t *rpg, obj_t **obj, house_t **house);
 void menu_credit(rpg_t *rpg, obj_t **obj, house_t **house);
+sfRectangleShape *create_rect(sfVector2f pos, sfVector2f size);
 
 //my_utils.c
 int my_equal_len(char *str);
@@ -117,6 +140,17 @@ int gid_len(first_gid_t **gid);
 int my_tab_vector_len(sfVector2f **tab);
 sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
+
+//new_game.c
+void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
+int check_new_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                        house_t **house);
+int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                        house_t **house);
+void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
+                                                            house_t **house);
+
+//new_game_event.c
 
 //print_map.c
 void print_map(sprite_t **sprites, obj_t **obj, wind_t wind);
@@ -127,6 +161,7 @@ void destroy_settings(settings_t *settings);
 
 //settings_menu.c
 int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);
+void menu_settings(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //settings_events.c
 int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
