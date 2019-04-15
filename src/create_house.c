@@ -40,9 +40,10 @@ void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
 house_t *create_house(int type, sfVector2f pos)
 {
     house_t *house = malloc(sizeof(house_t));
-    sfVector2f doorPos = {pos.x + 0, pos.y + door_pos[type]};
+    sfVector2f doorPos =
+{pos.x + door_pos[type].x, pos.y + door_pos[type].y};
 
     house_creation(house, (char *)house_path[type], pos, house_rects[type]);
-    door_creation(house, (char *)door_path[type], doorPos, door_rects);
+    door_creation(house, "assets/doors.png", doorPos, door_rects[type]);
     return (house);
 }

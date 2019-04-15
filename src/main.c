@@ -5,7 +5,6 @@
 ** main
 */
 
-/*
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 #include <stdlib.h>
@@ -16,10 +15,10 @@ int main(void)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
-    house_t **house = malloc(sizeof(house_t *) * 2);
+    house_t **house = malloc(sizeof(house_t *) * 5);
     sfVector2u windowSize;
 
-    rpg.wind.wind = create_window("test window", 10);
+    rpg.wind.wind = create_window("Nuck Fathan", 10);
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
@@ -29,8 +28,11 @@ int main(void)
     obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11776, 2560}, sfFalse);
     obj[5] = NULL;
-    //house[0] = create_house(1, (sfVector2f){10100, 1050});
-    house[0] = NULL;
+    house[0] = create_house(2, (sfVector2f){10400, 768});
+    house[1] = create_house(3, (sfVector2f){10720, 864});
+    house[2] = create_house(0, (sfVector2f){10944, 896});
+    house[3] = create_house(1, (sfVector2f){10400, 1280});
+    house[4] = NULL;
 
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
     sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
@@ -48,9 +50,9 @@ int main(void)
     free_house(house);
     free_obj(obj);
     return (0);
-}*/
+}
 
-#include "inventory.h"
+/*#include "inventory.h"
 #include "my_ini.h"
 
 sfRenderWindow *init_window()
@@ -82,4 +84,4 @@ int main()
         inventory_compute(inv);
         sfRenderWindow_display(inv->window);
     }
-}
+}*/
