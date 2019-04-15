@@ -37,29 +37,29 @@ const char *save_path[3] = {
 };
 
 const char *house_path[4] = {
-    "assets/maison 1.png",
-    "assets/maison 2.png",
+    "assets/maison1.png",
+    "assets/maison2.png",
     "assets/auberge.png",
     "assets/forge.png"
 };
 
 const sfIntRect house_rects[4] = {
-    {0, 0, 192, 320},
-    {0, 0, 256, 256},
+    {0, 0, 160, 320},
+    {0, 0, 224, 256},
     {0, 0, 320, 448},
     {0, 0, 192, 352}
 };
 
 const sfVector2f door_pos[4] = {
-    {0, 259},
-    {0, 195},
+    {0, 256},
+    {0, 192},
     {160, 352},
-    {96, 161}
+    {95, 160}
 };
 
 const sfIntRect door_rects[4] = {
     {0, 64, 96, 64},
-    {0, 64, 96, 64},
+    {0, 0, 96, 64},
     {0, 352, 96, 96},
     {0, 224, 96, 64},
 };

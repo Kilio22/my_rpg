@@ -52,6 +52,8 @@ CFLAGS	=	-Wall \
 			-W \
 			-I $(INCLUDE_PATH)
 
+DEBUG_FLAGS	=	-g3 -gdwarf-4
+
 SRCS	=	$(SRC_MY:%=$(my_PATH)/%)
 
 OBJ	=	$(SRCS:.c=.o)
@@ -86,6 +88,10 @@ fclean:	clean
 		$(LIGHT_RED)"Binary lib$(NAME).a"$(DEFAULT)
 
 re:		fclean all
+
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: COLOR_THEME = $(CYAN_C)
+debug: all
 
 %.o: %.c
 	@$(CC) -c $(CFLAGS) -o $@ $< && \

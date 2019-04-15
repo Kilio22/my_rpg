@@ -39,9 +39,11 @@ SRC_MY	=	src/my_put_errchar.c \
 			src/my_putstr.c
 
 CFLAGS	=	-Wall \
-			-W \
+			-Wextra \
 			-Werror \
 			-I $(INCLUDE_PATH)
+
+DEBUG_FLAGS	=	-g3 -gdwarf-4
 
 SRCS	=	$(SRC_MY:%=$(MY_PATH)/%)
 
@@ -77,6 +79,10 @@ fclean:	clean
 		$(LIGHT_RED)"Binary lib$(NAME).a"$(DEFAULT)
 
 re:		fclean all
+
+debug: CFLAGS += $(DEBUG_FLAGS)
+debug: COLOR_THEME = $(CYAN_C)
+debug: all
 
 %.o: %.c
 	@$(CC) -c $(CFLAGS) -o $@ $< && \

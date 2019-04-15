@@ -38,7 +38,7 @@ int my_str_islower(char const *str);
 int my_str_isupper(char const *str);
 int my_str_isprintable(char const *str);
 char *my_strcat(char *dest, char const *src);
-char *my_strncat(char *dest, char const *src, int nb);
+char *my_strncat(char *dest, char *str, int n);
 char *my_strdup(char const *src);
 char **my_str_to_word_array(char const *str, char c);
 int my_show_word_array(char * const *tab);
@@ -52,7 +52,7 @@ int my_tab_len(char **tab);
 void my_put_error(char *str);
 int my_is_alpha_num(char *str);
 int my_atoi(char *input);
-char *my_itoa(int nb, char *result);
+char *my_itoa(int nb, char *str);
 char *my_realloc(char *input_str, int nb);
 int randomiser(int max);
 

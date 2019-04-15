@@ -7,6 +7,30 @@
 
 #include "rpg.h"
 
+char *my_ftoa(float value)
+{
+    int ent = value;
+    int decimals = value * 100 - (ent * 100);
+    char *string = my_itoa(ent, "");
+
+    if (decimals != 0) {
+        string = my_strncat(string, ".", -1);
+        string = my_strncat(string, my_itoa(decimals, ""), -1);
+    }
+    return (string);
+}
+
+static void debug_txt(rpg_t *rpg, obj_t *obj)
+{
+    char *txt = my_strncat("", my_ftoa(obj->pos.x), -1);
+
+    txt = my_strncat(txt, "  ", -1);
+    txt = my_strncat(txt, my_ftoa(obj->pos.y), -1);
+    sfText_setPosition(rpg->debug_txt, V2F(obj->pos.x + 240, obj->pos.y - 210));
+    sfText_setString(rpg->debug_txt, txt);
+    sfRenderWindow_drawText(WIND.wind, rpg->debug_txt, NULL);
+}
+
 static void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
@@ -20,6 +44,8 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     for (int i = 0; house[i] != NULL; i++)
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+    if (rpg->debug == 1)
+        debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
@@ -52,7 +78,7 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
             WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             free_save(obj, rpg);
-            free_map(MAP);
+            //free_map(MAP);
             return;
         }
         game_action(rpg, obj, house);

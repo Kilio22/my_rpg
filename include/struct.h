@@ -155,6 +155,8 @@ typedef struct rpg_s {
     wind_t wind;
     menu_t menu;
     map_t map;
+    int debug;
+    sfText *debug_txt;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

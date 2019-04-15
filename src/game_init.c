@@ -19,6 +19,8 @@ void init_game(rpg_t *rpg, obj_t **obj, house_t **house)
         MAP.sprite[i] = NULL;
     //map_init(rpg);
     //create_map(rpg);
+    if (rpg->debug == 1)
+        rpg->debug_txt = create_text("assets/arial.ttf", "yes", 20, V2F(obj[1]->pos.x - 100, obj[1]->pos.y - 100));
     GAME.auberge = false;
     game_loop(rpg, obj, house);
 }
