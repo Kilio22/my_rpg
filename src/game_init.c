@@ -14,7 +14,6 @@ void init_game(rpg_t *rpg, obj_t **obj, house_t **house)
     sfView_destroy(WIND.view);
     WIND.view = sfView_createFromRect((sfFloatRect){0, 0,
                                 (windSize.x * 0.6), (windSize.y * 0.6)});
-    init_save(obj, rpg);
     for (int i = 0; i < 715; i++)
         MAP.sprite[i] = NULL;
     //map_init(rpg);

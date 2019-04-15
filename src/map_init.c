@@ -15,10 +15,10 @@ int check_sprite(layer_t *layers, int x, int y, rpg_t *rpg)
     for (int j = 0; MAP.sprite[j] != NULL; j++) {
         if (layers->map[y][x] == MAP.sprite[j]->id) {
             add_vector(MAP.sprite[j], (sfVector2f){pos_x, pos_y});
-            return (1);
+            return 1;
         }
     }
-    return (0);
+    return 0;
 }
 
 void tilemaping(layer_t *layers, rpg_t *rpg, int y)

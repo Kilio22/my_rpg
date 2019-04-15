@@ -15,8 +15,8 @@ static sfBool all_world_hitBox(obj_t *obj, house_t **house)
     for (int i = 0; house[i] != NULL; i++)
         if (pp_intersect(obj->sprite, house[i]->tab[HITBOX],
 obj->image, house[i]->image) == 1)
-            return (1);
-    return (0);
+            return 1;
+    return 0;
 }
 
 void apply_controls_character(rpg_t *rpg, obj_t *obj, house_t **house)

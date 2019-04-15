@@ -72,12 +72,6 @@ typedef struct wind_s {
     sfView *view;
 } wind_t;
 
-typedef struct controls_s {
-    int *keys;
-    sfBool *bools;
-    sfVector2f mousePos;
-} controls_t;
-
 typedef struct obj_s {
     sfImage *image;
     sfTexture *texture;
@@ -103,22 +97,54 @@ typedef struct house_s {
 typedef struct game_s {
     int nb_save;
     int auberge;
+    int language;
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
 } game_t;
 
 typedef struct button_s {
-    sfText *text;
-    sfVector2f pos;
-    int status;
+    sfSprite *sprite;
+    int state;
 } button_t;
 
+typedef struct fields_s {
+    sfText *text;
+    int status;
+} fields_t;
+
+typedef struct controls_s {
+    int wait_key;
+    int *keys;
+    sfBool *bools;
+    sfVector2f mousePos;
+    fields_t text[6];
+    sfSprite *back;
+} controls_t;
+
+typedef struct settings_s {
+    int high;
+    int volume;
+    sfRectangleShape *rect;
+    button_t buttons[5];
+    fields_t text[4];
+} settings_t;
+
+typedef struct load_game_s {
+    fields_t text[3];
+    sfRectangleShape *rect;
+    sfSprite *back;
+    int high;
+} load_game_t;
+
 typedef struct menu_s {
+    sfClock *clock;
     bool menu_on;
     sfSprite *menu_sprite[2];
-    button_t buttons[6];
+    fields_t buttons[6];
     int highlight;
+    sfRectangleShape *rect;
+    sfText *descr_text;
 } menu_t;
 
 typedef struct first_gid_s

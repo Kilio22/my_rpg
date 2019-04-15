@@ -17,5 +17,5 @@ int my_show_word_array(char * const *tab)
         my_putchar('\n');
         compteur++;
     }
-    return (0);
+    return 0;
 }

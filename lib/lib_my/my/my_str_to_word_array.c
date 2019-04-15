@@ -14,9 +14,9 @@ int my_strlen(char const *str);
 static int is_valid(char oui, char c)
 {
     if (oui == c || oui == ' ' || oui == '\t' || oui == '\0')
-        return (0);
+        return 0;
     else
-        return (1);
+        return 1;
 }
 
 static int words_count(char const *str, int str_len, char c)

@@ -40,10 +40,28 @@ TESTS_NAME	=	tests
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
+MENU_PATH	=	menu/
+SETTINGS_PATH	=	settings/
 
-SRC	=	analyse_game_key.c	\
-		analyse_menu_key.c	\
-		analyse_menu_mouse.c	\
+SRC	=	$(MENU_PATH)analyse_menu_key.c	\
+		$(MENU_PATH)analyse_menu_mouse.c	\
+		$(MENU_PATH)check_save_status.c	\
+		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)load_game.c	\
+		$(MENU_PATH)load_game_event.c	\
+		$(MENU_PATH)menu_display.c	\
+		$(MENU_PATH)menu_event.c 	\
+		$(MENU_PATH)menu_fcts.c	\
+		$(MENU_PATH)menu_init.c	\
+		$(MENU_PATH)new_game.c	\
+		$(MENU_PATH)new_game_event.c	\
+		$(SETTINGS_PATH)controls_events.c	\
+		$(SETTINGS_PATH)controls_init.c	\
+		$(SETTINGS_PATH)settings_events.c	\
+		$(SETTINGS_PATH)settings_init.c	\
+		$(SETTINGS_PATH)settings_menu.c	\
+		$(SETTINGS_PATH)settings_utils.c	\
+		analyse_game_key.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
@@ -62,10 +80,6 @@ SRC	=	analyse_game_key.c	\
 		layout_init.c 	\
 		list.c 	\
 		map_init.c	\
-		menu_display.c	\
-		menu_event.c 	\
-		menu_fcts.c	\
-		menu_init.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\

@@ -11,5 +11,5 @@
 int print_char(va_list list)
 {
     my_putchar(va_arg(list, int));
-    return (1);
+    return 1;
 }

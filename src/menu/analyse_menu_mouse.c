@@ -24,9 +24,9 @@ void analyse_menu_mouse_press(rpg_t *rpg, int key)
     }
 }
 
-void analyse_menu_mouse_move(rpg_t *rpg)
+void analyse_menu_mouse_move(rpg_t *rpg, int *move)
 {
     WIND.mouse_pos.x = WIND.event.mouseMove.x;
     WIND.mouse_pos.y = WIND.event.mouseMove.y;
-    check_button_hovered(rpg);
+    check_button_hovered(rpg, move);
 }

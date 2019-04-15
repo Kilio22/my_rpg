@@ -9,7 +9,7 @@
 
 void print_stats(obj_t **obj)
 {
-    for (int i = 2; i < 5; i++) {
+    for (int i = 1; i < 4; i++) {
         my_printf("Character %d\n", i - 1);
         my_printf("Level: %d\n", obj[i]->stats->stats[0]);
         my_printf("HP: %d\n", obj[i]->stats->stats[1]);
