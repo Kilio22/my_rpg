@@ -35,10 +35,9 @@ int main(int ac, char **av)
 
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[1] = create_object("assets/hero.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[2] = create_object("assets/perso_blanc.png", (sfVector2f){9950, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11776, 2560}, sfFalse);
-    obj[5] = NULL;
+    for (int i = 2; i < 10; i++)
+        obj[i] = NULL;
+    obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11777, 2561}, sfFalse);
     house[0] = create_house(2, (sfVector2f){10400, 768});
     house[1] = create_house(3, (sfVector2f){10720, 864});
     house[2] = create_house(0, (sfVector2f){10944, 896});
@@ -46,16 +45,12 @@ int main(int ac, char **av)
     house[4] = NULL;
 
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
-    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
-    sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
 
     rpg.game.nb_save = 0;
     rpg.game.language = 0;
     rpg.controls.bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
         rpg.controls.bools[i] = 0;
-    rpg.game.follower = init_list(9950, 1280);
-    rpg.game.follower2 = init_list(9900, 1280);
     create_music(&rpg);
     init_menu(&rpg, obj, house);
     sfMusic_destroy(rpg.game.back_music);

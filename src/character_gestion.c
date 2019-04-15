@@ -55,12 +55,16 @@ void follower(obj_t **obj, rpg_t *rpg)
 
     if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y ||
 pos.y < oldpos.y) {
-        sfSprite_setPosition(obj[2]->sprite,
+        if (obj[2] != NULL) {
+            sfSprite_setPosition(obj[2]->sprite,
 *(sfVector2f*)GAME.follower->start->content);
-        modif_list(GAME.follower, obj[0]);
-        sfSprite_setPosition(obj[3]->sprite,
+            modif_list(GAME.follower, obj[0]);
+        }
+        if (obj[3] != NULL) {
+            sfSprite_setPosition(obj[3]->sprite,
 *(sfVector2f*)GAME.follower2->start->content);
-        modif_list(GAME.follower2, obj[2]);
+            modif_list(GAME.follower2, obj[2]);
+        }
     }
     oldpos = sfSprite_getPosition(obj[0]->sprite);
 }

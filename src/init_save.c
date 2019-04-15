@@ -48,8 +48,6 @@ void init_save(obj_t **obj, rpg_t *rpg)
 
     init_controls(rpg, fd);
     init_stats(obj[1], fd);
-    init_stats(obj[2], fd);
-    init_stats(obj[3], fd);
     while (get_next_line(fd) != NULL);
     close(fd);
 }
