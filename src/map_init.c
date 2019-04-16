@@ -45,13 +45,13 @@ MAP.gid[l]->path, layers->map[y][x], posRect);
     }
 }
 
-void set_end_layout(int layout, sprite_t **sprite)
+void set_end_layer(int layer, sprite_t **sprite)
 {
     int j;
 
     for (int i = 0; sprite[i] != NULL; i++) {
         for (j = 0; sprite[i]->pos[j] != NULL; j++);
-        sprite[i]->end_layout[layout] = j;
+        sprite[i]->end_layout[layer] = j;
     }
 }
 
@@ -61,8 +61,8 @@ void create_map(rpg_t *rpg)
         for (int y = 0; y < MAP.layers[i]->height; y++) {
             tilemaping(MAP.layers[i], rpg, y);
         }
-        set_end_layout(i, MAP.sprite);
+        set_end_layer(i, MAP.sprite);
     }
     for (int j = 0; MAP.sprite[j] != NULL; j++)
-        MAP.sprite[j]->end_layout[4] = -1;
+        MAP.sprite[j]->end_layout[5] = -1;
 }

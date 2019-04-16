@@ -15,7 +15,7 @@ int main(int ac, char **av)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 10);
-    house_t **house = malloc(sizeof(house_t *) * 5);
+    house_t **house = malloc(sizeof(house_t *) * 6);
     sfVector2u windowSize;
 
     rpg.debug = 0;
@@ -33,16 +33,17 @@ int main(int ac, char **av)
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
-    obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 16}, sfTrue);
-    obj[1] = create_object("assets/hero.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 16}, sfTrue);
+    obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     for (int i = 2; i < 10; i++)
         obj[i] = NULL;
-    obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11777, 2561}, sfFalse);
-    house[0] = create_house(2, (sfVector2f){10400, 768});
-    house[1] = create_house(3, (sfVector2f){10720, 864});
+    //obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11777, 2561}, sfFalse);
+    house[0] = create_house(2, (sfVector2f){9200, 768});
+    house[1] = create_house(3, (sfVector2f){9520, 864});
     house[2] = create_house(0, (sfVector2f){10944, 896});
     house[3] = create_house(1, (sfVector2f){10400, 1280});
-    house[4] = NULL;
+    house[4] = create_house(4, (sfVector2f){10272, 480});
+    house[5] = NULL;
 
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
 

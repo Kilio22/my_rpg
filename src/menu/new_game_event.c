@@ -30,6 +30,7 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     init_save(obj, rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
+    GAME.objectiv = 0;
     init_game(rpg, obj, house);
 }
 
@@ -51,6 +52,7 @@ int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
         init_save(obj, rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
+        GAME.objectiv = 0;
         init_game(rpg, obj, house);
         return 1;
     }

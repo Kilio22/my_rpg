@@ -180,32 +180,36 @@ const char *save_path[3] = {
     "saves/save3.txt"
 };
 
-const char *house_path[4] = {
+const char *house_path[5] = {
     "assets/maison1.png",
     "assets/maison2.png",
     "assets/auberge.png",
-    "assets/forge.png"
+    "assets/forge.png",
+    "assets/church.png"
 };
 
-const sfIntRect house_rects[4] = {
+const sfIntRect house_rects[5] = {
     {0, 0, 160, 320},
     {0, 0, 224, 256},
     {0, 0, 320, 448},
-    {0, 0, 192, 352}
+    {0, 0, 192, 352},
+    {0, 0, 384, 352}
 };
 
-const sfVector2f door_pos[4] = {
+const sfVector2f door_pos[5] = {
     {0, 256},
     {0, 192},
     {160, 352},
-    {95, 160}
+    {95, 160},
+    {0, 270}
 };
 
-const sfIntRect door_rects[4] = {
+const sfIntRect door_rects[5] = {
     {0, 64, 96, 64},
     {0, 0, 96, 64},
     {0, 352, 96, 96},
     {0, 224, 96, 64},
+    {0, 64, 96, 64}
 };
 
 void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {

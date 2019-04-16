@@ -98,6 +98,7 @@ typedef struct game_s {
     int nb_save;
     int auberge;
     int language;
+    int objectiv;
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
@@ -166,12 +167,12 @@ typedef struct sprite_s
     int id;
     sfSprite *sprite;
     sfVector2f **pos;
-    int end_layout[5];
+    int end_layout[6];
 } sprite_t;
 
 typedef struct map_s {
-    first_gid_t *gid[4];
-    layer_t *layers[5];
+    first_gid_t *gid[8];
+    layer_t *layers[6];
     sprite_t *sprite[715];
 } map_t;
 
