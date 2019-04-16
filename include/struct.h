@@ -59,6 +59,14 @@ enum stats {
     DEF
 };
 
+enum houses {
+    MAISON1,
+    MAISON2,
+    AUBERGE,
+    FORGE,
+    EGLISE
+};
+
 typedef struct char_stats_s {
     int *stats;
 } char_stats_t;

@@ -37,12 +37,11 @@ int main(int ac, char **av)
     obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     for (int i = 2; i < 10; i++)
         obj[i] = NULL;
-    //obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11777, 2561}, sfFalse);
-    house[0] = create_house(2, (sfVector2f){9200, 768});
-    house[1] = create_house(3, (sfVector2f){9520, 864});
-    house[2] = create_house(0, (sfVector2f){10944, 896});
-    house[3] = create_house(1, (sfVector2f){10400, 1280});
-    house[4] = create_house(4, (sfVector2f){10272, 480});
+    house[0] = create_house(AUBERGE, (sfVector2f){9200, 768});
+    house[1] = create_house(FORGE, (sfVector2f){9520, 864});
+    house[2] = create_house(MAISON1, (sfVector2f){10944, 896});
+    house[3] = create_house(MAISON2, (sfVector2f){9744, 960});
+    house[4] = create_house(EGLISE, (sfVector2f){10272, 480});
     house[5] = NULL;
 
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
