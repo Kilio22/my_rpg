@@ -51,7 +51,7 @@ int main(int ac, char **av)
     rpg.game.language = 0;
     rpg.controls.bools = malloc(sizeof(sfBool) * 9);
     for (int i = 0; i < 9; i++)
-        rpg.controls.bools[i] = 0;
+        rpg.controls.bools[i] = 0; 
     create_music(&rpg);
     init_menu(&rpg, obj, house);
     sfMusic_destroy(rpg.game.back_music);
