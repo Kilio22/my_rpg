@@ -44,6 +44,7 @@ int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb);
 //create_house.c
 house_t *create_house(int type, sfVector2f housePos);
 void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
+int create_houses(house_t **house);
 
 //create_obj.c
 obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
@@ -53,9 +54,9 @@ sfBool centered);
 void destroy_load(load_game_t *load);
 
 //fill_map.c
-void add_vector(sprite_t *oui, sfVector2f pos);
+void add_vector(sprite_t *sprites, sfVector2f pos, sprite_t **sprite);
 void fill_sprite(sprite_t **oui, sfVector2f pos);
-void create_sprite(sprite_t **oui, char *path, int id, sfIntRect rect);
+int create_sprite(sprite_t **sprites, char *path, int id, sfIntRect rect);
 
 //free_save.c
 void free_save(obj_t **obj, rpg_t *rpg);
@@ -100,14 +101,14 @@ void update_time(sfTime *current_time, sfTime *old_time, rpg_t *rpg,
                                                         size_t *frames);
 
 //layout_init.c
-void map_init(rpg_t *rpg);
+int map_init(rpg_t *rpg);
 
 //list.c
 simple_vector_t *init_list(int x, int y);
 void modif_list(simple_vector_t *pos, obj_t *obj);
 
 //map_init.c
-void create_map(rpg_t *rpg);
+int create_map(rpg_t *rpg);
 
 //menu_display.c
 void menu_loop(rpg_t *rpg, obj_t **obj, house_t **house);

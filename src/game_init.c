@@ -16,8 +16,10 @@ int init_game(rpg_t *rpg, obj_t **obj, house_t **house)
                                 (windSize.x * 0.6), (windSize.y * 0.6)});
     for (int i = 0; i < 715; i++)
         MAP.sprite[i] = NULL;
-    map_init(rpg);
-    create_map(rpg);
+    if (map_init(rpg) == -1 || create_map(rpg) == -1) {
+        sfRenderWindow_close(WIND.wind);
+        return 1;
+    }
     GAME.auberge = false;
     if (GAME.objectiv == 0) {
         if (intro_game(rpg, obj, house) == 0)

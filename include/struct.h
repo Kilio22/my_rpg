@@ -192,6 +192,7 @@ typedef struct rpg_s {
     map_t map;
     int debug;
     sfText *debug_txt;
+    int error_code;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

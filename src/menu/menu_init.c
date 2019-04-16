@@ -41,7 +41,9 @@ static void create_ground(rpg_t *rpg)
     sfTexture *texture;
 
     for (int i = 0; i < 2; i++) {
-        MENU.menu_sprite[i] = malloc(sizeof(sfSprite *));
+        /* MENU.menu_sprite[i] = malloc(sizeof(sfSprite *));
+        if (MENU.menu_sprite[i] == NULL)
+            return; */
         texture = sfTexture_createFromFile(menu_path[i], NULL);
         MENU.menu_sprite[i] = sfSprite_create();
         sfSprite_setTexture(MENU.menu_sprite[i], texture, sfTrue);
