@@ -44,7 +44,6 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     for (int i = 0; house[i] != NULL; i++)
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
-    sfRenderWindow_drawSprite(WIND.wind, obj[4]->sprite, NULL);
     if (rpg->debug == 1)
         debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);

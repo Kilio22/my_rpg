@@ -92,6 +92,5 @@ int main()
         inventory_compute(inv);
         sfRenderWindow_display(inv->window);
     }
-}
     return 0;
 }*/
