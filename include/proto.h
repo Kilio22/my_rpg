@@ -76,7 +76,7 @@ void manage_key_released(rpg_t *rpg);
 void manage_key_pressed(rpg_t *rpg, obj_t **obj);
 
 //game_init.c
-void init_game(rpg_t *rpg, obj_t **obj, house_t **house);
+int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //init.c
 void init_save(obj_t **obj, rpg_t *rpg);
@@ -176,5 +176,7 @@ void print_stats(obj_t **obj);
 //time_gestion.c
 int check_characters_clock(sfClock *clock, float limit);
 
+//intro.c
+int intro_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
 #endif /* !PROTO_H_ */

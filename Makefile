@@ -42,8 +42,10 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
+INTRO_PATH	=	intro/
 
-SRC	=	$(MENU_PATH)analyse_menu_key.c	\
+SRC	=	$(INTRO_PATH)intro.c	\
+		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
 		$(MENU_PATH)destroy_menu.c	\

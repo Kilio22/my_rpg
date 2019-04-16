@@ -7,18 +7,6 @@
 
 #include "rpg.h"
 
-void auberge_key(rpg_t *rpg)
-{
-    if (GAME.auberge == 0 && WIND.event.key.code == sfKeyF6)
-        GAME.auberge = 1;
-    if (GAME.auberge == 1 && WIND.event.key.code == sfKeyNumpad3)
-        GAME.auberge = 0;
-    if (GAME.auberge == 1 && WIND.event.key.code == sfKeyNumpad1)
-        GAME.auberge = 2;
-    if (GAME.auberge == 1 && WIND.event.key.code == sfKeyNumpad2)
-        GAME.auberge = 3;
-}
-
 void manage_other_key_pressed(rpg_t *rpg)
 {
     if (WIND.event.key.code == CONTROLS.keys[INTERACT])
@@ -33,7 +21,6 @@ void manage_other_key_pressed(rpg_t *rpg)
     }
     if (WIND.event.key.code == sfKeyF5)
         set_music(rpg);
-    auberge_key(rpg);
     if (WIND.event.key.code == sfKeyEscape)
         MENU.menu_on = 0;
 }

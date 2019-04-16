@@ -7,12 +7,7 @@
 
 #include "rpg.h"
 
-void start_game(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    rpg->debug = 1;
-}
-
-void init_game(rpg_t *rpg, obj_t **obj, house_t **house)
+int init_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
 
@@ -24,9 +19,12 @@ void init_game(rpg_t *rpg, obj_t **obj, house_t **house)
     map_init(rpg);
     create_map(rpg);
     GAME.auberge = false;
-    if (GAME.objectiv == 0)
-        start_game(rpg, obj, house);
+    if (GAME.objectiv == 0) {
+        if (intro_game(rpg, obj, house) == 0)
+            return 1;
+    }
     if (rpg->debug == 1)
         rpg->debug_txt = create_text("assets/arial.ttf", "yes", 20, V2F(obj[1]->pos.x - 100, obj[1]->pos.y - 100));
     game_loop(rpg, obj, house);
+    return 1;
 }

@@ -33,11 +33,14 @@ int main(int ac, char **av)
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
+    for (int i = 0; i < 10; i++)
+        obj[i] = NULL;
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    for (int i = 2; i < 10; i++)
-        obj[i] = NULL;
     obj[4] = create_object("assets/map_hitbox.png", (sfVector2f){0, 10}, (sfIntRect){0, 0, 11776, 2560}, sfFalse);
+    obj[5] = create_object("assets/perso_blanc.png", (sfVector2f){10194, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    obj[6] = create_object("assets/perso_blanc.png", (sfVector2f){10228, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    obj[7] = create_object("assets/perso_blanc.png", (sfVector2f){10162, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
     house[0] = create_house(AUBERGE, (sfVector2f){9200, 768});
     house[1] = create_house(FORGE, (sfVector2f){9520, 864});
     house[2] = create_house(MAISON1, (sfVector2f){10944, 896});
