@@ -16,7 +16,7 @@ int init_game(rpg_t *rpg, obj_t **obj, house_t **house)
                                 (windSize.x * 0.6), (windSize.y * 0.6)});
     for (int i = 0; i < 715; i++)
         MAP.sprite[i] = NULL;
-    if (init_save(obj, rpg) == -1 || map_init(rpg) == -1 ||
+    if (map_init(rpg) == -1 ||
 create_map(rpg) == -1) {
         sfRenderWindow_close(WIND.wind);
         rpg->error_code = 84;
