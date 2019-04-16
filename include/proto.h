@@ -29,7 +29,7 @@ void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 
 //character_gestion.c
 void follower(obj_t **obj, rpg_t *rpg);
-void character_control(rpg_t *rpg, obj_t *obj, house_t **house);
+void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //check_save_status.c
 char *check_save_status(int save_nb);

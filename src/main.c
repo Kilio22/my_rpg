@@ -37,6 +37,7 @@ int main(int ac, char **av)
     obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     for (int i = 2; i < 10; i++)
         obj[i] = NULL;
+    obj[4] = create_object("assets/map_hitbox.png", (sfVector2f){0, 10}, (sfIntRect){0, 0, 11776, 2560}, sfFalse);
     house[0] = create_house(AUBERGE, (sfVector2f){9200, 768});
     house[1] = create_house(FORGE, (sfVector2f){9520, 864});
     house[2] = create_house(MAISON1, (sfVector2f){10944, 896});
