@@ -28,7 +28,6 @@ void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     if (i == -1)
         return;
     GAME.nb_save = i;
-    init_save(obj, rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
     GAME.objectiv = 1;
@@ -61,7 +60,6 @@ int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfText_setColor(load->text[load->high].text, sfYellow);
     if (WIND.event.key.code == sfKeyReturn) {
         GAME.nb_save = load->high;
-        init_save(obj, rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
         GAME.objectiv = 1;

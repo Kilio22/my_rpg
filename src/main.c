@@ -41,11 +41,23 @@ int main(int ac, char **av)
 
     //check si les obj sont NULL -> malloc failed
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 16}, sfTrue);
+    if (obj[0] == NULL)
+        return (84);
     obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    if (obj[1] == NULL)
+        return (84);
     obj[4] = create_object("assets/map_hitbox.png", (sfVector2f){0, 10}, (sfIntRect){0, 0, 11776, 2560}, sfFalse);
+    if (obj[4] == NULL)
+        return (84);
     obj[5] = create_object("assets/perso_blanc.png", (sfVector2f){10194, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[5] == NULL)
+        return (84);
     obj[6] = create_object("assets/perso_blanc.png", (sfVector2f){10228, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[6] == NULL)
+        return (84);
     obj[7] = create_object("assets/perso_blanc.png", (sfVector2f){10162, 1674}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[7] == NULL)
+        return (84);
     if (create_houses(house) == -1)
         return 84;
 
@@ -61,7 +73,7 @@ int main(int ac, char **av)
     create_music(&rpg);
     init_menu(&rpg, obj, house);
     if (rpg.error_code == 84)
-        return;
+        return (84);
     sfMusic_destroy(rpg.game.back_music);
     free_house(house);
     free_obj(obj);

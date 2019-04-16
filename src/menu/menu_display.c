@@ -63,6 +63,8 @@ print_index < my_strlen(menu_desc[index]); i++) {
 
 static void display_menu(rpg_t *rpg)
 {
+    if (!sfRenderWindow_isOpen(WIND.wind))
+        return;
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[BACK], NULL);
     for (int i = 0; i < 6; i++)
         sfRenderWindow_drawText(WIND.wind, MENU.buttons[i].text, NULL);

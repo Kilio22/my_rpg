@@ -80,7 +80,7 @@ void manage_key_pressed(rpg_t *rpg, obj_t **obj);
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //init.c
-void init_save(obj_t **obj, rpg_t *rpg);
+int init_save(obj_t **obj, rpg_t *rpg);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
