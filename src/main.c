@@ -60,6 +60,8 @@ int main(int ac, char **av)
         rpg.controls.bools[i] = 0;
     create_music(&rpg);
     init_menu(&rpg, obj, house);
+    if (rpg.error_code == 84)
+        return;
     sfMusic_destroy(rpg.game.back_music);
     free_house(house);
     free_obj(obj);
