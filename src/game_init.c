@@ -28,6 +28,7 @@ create_map(rpg) == -1) {
         if (intro_game(rpg, obj, house) == 0)
             return 1;
     }
+    MENU.menu_on = 1;
     if (rpg->debug == 1)
         rpg->debug_txt = create_text("assets/arial.ttf", "yes", 20, V2F(obj[1]->pos.x - 100, obj[1]->pos.y - 100));
     game_loop(rpg, obj, house);

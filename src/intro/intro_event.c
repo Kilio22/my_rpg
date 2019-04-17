@@ -22,14 +22,14 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg)
 (sfVector2i){0, 0}, WIND.view);
 
     sfRectangleShape_setPosition(intro->fondu, oui);
-    if ((rpg->quest_status == 2 || rpg->quest_status == 12) && clock_text_intro(0) == 1) {
+    if ((rpg->quest_status == 2 || rpg->quest_status == 12 || rpg->quest_status == 23) && clock_text_intro(0) == 1) {
         sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});
         if (alpha < 255)
             alpha += 5;
         else
             rpg->quest_status++;
     }
-    if ((rpg->quest_status == 3 || rpg->quest_status == 13) && clock_text_intro(0) == 1) {
+    if ((rpg->quest_status == 3 || rpg->quest_status == 13 || rpg->quest_status == 24) && clock_text_intro(0) == 1) {
         sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});
         if (alpha > 0)
             alpha -= 5;
