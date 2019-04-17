@@ -105,6 +105,7 @@ typedef struct house_s {
     sfIntRect door_rect;
     sfBool display_house;
     int frame_animation;
+    int type;
 } house_t;
 
 typedef struct game_s {
@@ -195,6 +196,7 @@ typedef struct rpg_s {
     wind_t wind;
     menu_t menu;
     map_t map;
+    house_t **house;
     int debug;
     sfText *debug_txt;
     int error_code;

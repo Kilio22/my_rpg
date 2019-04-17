@@ -24,5 +24,8 @@ const char *scrpits[] = {
 je vais vous offrir \nune chambre pour vous reposer.",
     " ",
     " ",
-    " "
+    "Salut, tu as bien dormi ?\nJe ne t'ai pas demandé hier,\nd'où viens tu ?",
+    "Je..\n Je ne me souviens plus..",
+    "Comment ça tu ne te rapelles plus ?",
+    "Je me suis fait attaquer par \n3 hommes,\nje n'ai plus de memoire..",
 };

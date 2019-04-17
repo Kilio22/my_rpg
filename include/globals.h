@@ -24,5 +24,6 @@ extern const char *settings_fp[5];
 extern const sfVector2f settings_spr_pos[5];
 extern const char *key_str[];
 extern const char *scrpits[];
+extern int (* const intro[])(obj_t **, int, rpg_t *, house_t **);
 
 #endif /* !GLOBALS_H_ */

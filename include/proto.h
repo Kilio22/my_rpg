@@ -43,7 +43,7 @@ int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb);
 
 //create_house.c
 house_t *create_house(int type, sfVector2f housePos);
-void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
+void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg, obj_t **objs);
 int create_houses(house_t **house);
 
 //create_obj.c
@@ -79,9 +79,38 @@ void manage_key_pressed(rpg_t *rpg, obj_t **obj);
 //game_init.c
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
+//house_display.c
+void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg, obj_t **objs);
+void do_not_display_house(obj_t *obj, house_t *house, rpg_t *rpg, obj_t **objs);
+
 //init.c
 int init_save(obj_t **obj, rpg_t *rpg);
 
+//intro_fcts1.c
+//void intro_control(obj_t **obj, int opt,rpg_t *rpg, house_t **house);
+//int intro_control(obj_t **obj, rpg_t *rpg, house_t **house);
+//int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+/* int intro_ennemi_two(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_nathan(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_nathan_echelle(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_nathan_dialogue(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge2(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge3(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge4(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge5(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge6(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge7(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge8(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge9(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge10(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge11(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge12(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge13(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge14(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+int intro_go_auberge15(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
+ */
 //intro_event.c
 void intro_event_management(rpg_t *rpg);
 void update_fondu_rect(intro_t *intro, rpg_t *rpg);
@@ -93,7 +122,6 @@ int clock_text_intro(int i);
 
 //intro_move.c
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro);
-void intro_control(obj_t **obj, rpg_t *rpg);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
