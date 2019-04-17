@@ -34,21 +34,15 @@ static int intro_go_auberge3(obj_t **obj, int opt, rpg_t *rpg)
     sfVector2f new_pos = {0, 0};
 
     if (opt == 17) {
-        if (obj[8]->pos.y < 1076) {
-            new_pos.y = 1;
-            sfSprite_move(obj[8]->sprite, new_pos);
-        } else
-            opt++;
-    }
-    if (opt == 18) {
-        if (obj[0]->pos.x > 11376) {
+        if (obj[8]->pos.x > 11376) {
             new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         } else
             opt++;
     }
-    return intro_go_auberge4(obj, opt, rpg);
+    return opt;
 }
 
 static int intro_go_auberge2(obj_t **obj, int opt, rpg_t *rpg)
