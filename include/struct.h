@@ -184,7 +184,7 @@ typedef struct sprite_s
 } sprite_t;
 
 typedef struct map_s {
-    first_gid_t *gid[8];
+    first_gid_t *gid[9];
     layer_t *layers[6];
     sprite_t *sprite[715];
 } map_t;
