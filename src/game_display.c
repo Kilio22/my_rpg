@@ -78,7 +78,7 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
             WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             //free_save(obj, rpg);
-            //free_map(MAP);
+            free_map(MAP);
             return;
         }
         game_action(rpg, obj, house);
