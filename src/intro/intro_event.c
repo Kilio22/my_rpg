@@ -26,8 +26,10 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg)
         sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});
         if (alpha < 255)
             alpha += 5;
-        else
+        else {
+            while (clock_text_intro(1) != 1);
             rpg->quest_status++;
+        }
     }
     if (rpg->quest_status == 3 && clock_text_intro(0) == 1) {
         sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});

@@ -11,17 +11,35 @@ static int intro_port(obj_t **obj, int opt, rpg_t *rpg)
 {
     sfVector2f new_pos = {0, 0};
 
-    if (opt == 3 && rpg->quest_status == 3) {
-        new_pos.x = 11552;
-        new_pos.y = 1094;
+    if (opt == 5 && rpg->quest_status == 3) {
+        new_pos.x = 11556;
+        new_pos.y = 1122;
         sfSprite_setPosition(obj[0]->sprite, new_pos);
-        new_pos.x = -1;
-        new_pos.y = 0;
+        obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        opt++;
+    }
+    if (opt == 6 || opt == 7) {
+        new_pos.x = 0;
+        new_pos.y = 1;
         sfSprite_move(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         opt++;
     }
     return opt;
+}
+
+static int intro_ennemi_two(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 3  || opt == 4) {
+        (new_pos).x -= 1;
+        sfSprite_move(obj[6]->sprite, new_pos);
+        (new_pos).x += 2;
+        sfSprite_move(obj[7]->sprite, new_pos);
+        opt++;
+    }
+    return (intro_port(obj, opt, rpg));
 }
 
 static int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg)
@@ -40,7 +58,7 @@ static int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg)
         } else
             opt++;
     }
-    return (intro_port(obj, opt, rpg));
+    return (intro_ennemi_two(obj, opt, rpg));
 }
 
 void intro_control(obj_t **obj, rpg_t *rpg)
@@ -76,9 +94,9 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
         vect = sfSprite_getPosition(obj[6]->sprite);
         vect.y -= 100;
     } else {
+        vect = sfSprite_getPosition(obj[0]->sprite);
         vect.x += 50;
         vect.y -= 50;
-        vect = sfSprite_getPosition(obj[0]->sprite);
     }
     if (sfSprite_getPosition(obj[0]->sprite).y <= 1900)
         update_intro_text(rpg, 1, intro);
