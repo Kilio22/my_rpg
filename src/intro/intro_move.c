@@ -50,7 +50,7 @@ static int intro_go_auberge2(obj_t **obj, int opt, rpg_t *rpg)
     sfVector2f new_pos = {0, 0};
 
     if (opt == 15) {
-        if (obj[8]->pos.x > 11432) {
+        if (obj[8]->pos.x > 11462) {
             new_pos.x = -1;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else
