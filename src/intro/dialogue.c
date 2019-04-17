@@ -7,8 +7,10 @@
 
 #include "rpg.h"
 
-const script_t *scrpits[2] = {
-    {"Bienvenue dans mon auberge !\n", "Que puis-je faire pour vous ?\n",
-"1- Deposer un allie\n", "2- Recuperer un allie\n", "3- Partir"},
-    {"oui"}
+const char *scrpits[] = {
+    "Hey les gars, regardez moi ca, un voyageur\n    \
+        Donne nous ton argent !",
+    "Je viens d'arriver, je refuse de vous le donner !",
+    "Tres bien, dans ce cas la...",
+    "oui"
 };

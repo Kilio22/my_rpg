@@ -82,9 +82,18 @@ int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 //init.c
 int init_save(obj_t **obj, rpg_t *rpg);
 
+//intro_event.c
+void intro_event_management(rpg_t *rpg);
+void update_fondu_rect(intro_t *intro, rpg_t *rpg);
+
+//intro_text.c
+int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro);
+int intro_text_index(int *index, rpg_t *rpg, char **to_print, int *p_ind);
+int clock_text_intro(int i);
+
 //intro_move.c
-void intro_action(rpg_t *rpg, obj_t **obj, house_t **house);
-void intro_control(obj_t **obj);
+void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro);
+void intro_control(obj_t **obj, rpg_t *rpg);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
