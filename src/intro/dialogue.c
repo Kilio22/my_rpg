@@ -18,6 +18,11 @@ const char *scrpits[] = {
     "Monsieur ? Monsieur ? Vous allez bien ?",
     "Comment vous apppelez vous ?",
     "Vous etes blesse ? Venez avec moi !",
-    "Je vais vous transporter a l'auberge.",
+    "Je vais vous amener a l'auberge.",
+    " ",
+    "Bienvenue, jeune voyageur !\n Vous me semblez en mauvais etat,\n\
+je vais vous offrir \nune chambre pour vous reposer.",
+    " ",
+    " ",
     " "
 };

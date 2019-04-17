@@ -63,7 +63,7 @@ int main(int ac, char **av)
         return (84);
     if (create_houses(house) == -1)
         return 84;
-
+    rpg.house = house;
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
 
     rpg.game.nb_save = 0;

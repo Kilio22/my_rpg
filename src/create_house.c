@@ -53,6 +53,7 @@ house_t *create_house(int type, sfVector2f pos)
     if (house == NULL)
         return NULL;
     door_creation(house, "assets/doors.png", doorPos, door_rects[type]);
+    house->type = type;
     return (house);
 }
 

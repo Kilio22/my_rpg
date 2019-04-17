@@ -37,13 +37,16 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     print_map(MAP.sprite, obj, rpg->wind);
     //sfRenderWindow_drawSprite(WIND.wind, obj[HERO_HB]->sprite, NULL);
     house_display(rpg, house);
-    for (int i = 3; i > 0; i--)
-        if (obj[i] != NULL)
+    for (int i = 10; i > 0; i--)
+        if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
-    for (int i = 0; house[i] != NULL; i++)
+    for (int i = 0; house[i] != NULL; i++) {
+        if (house[i]->type == 2 && obj[9] == NULL && house[i]->display_house == 0)
+            obj[9] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+    }
     if (rpg->debug == 1)
         debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);
@@ -59,7 +62,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     }
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
-    house_interaction(obj[HERO_HB], house, rpg);
+    house_interaction(obj[HERO_HB], house, rpg, obj);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
 }
