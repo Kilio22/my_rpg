@@ -7,6 +7,158 @@
 
 #include "rpg.h"
 
+static int intro_go_auberge13(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 27) {
+        if (obj[8]->pos.y > 1150) {
+            new_pos.y = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return opt;
+}
+
+static int intro_go_auberge12(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 26) {
+        if (obj[0]->pos.x > 9402) {
+            new_pos.y = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            new_pos.x = -1;
+            new_pos.y = 0;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge13(obj, opt, rpg);
+}
+
+static int intro_go_auberge11(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 25) {
+        if (obj[8]->pos.x > 9402) {
+            new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge12(obj, opt, rpg);
+}
+
+static int intro_go_auberge10(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 24) {
+        if (obj[0]->pos.y < 1296) {
+            new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            new_pos.x = 0;
+            new_pos.y = 1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge11(obj, opt, rpg);
+}
+
+static int intro_go_auberge9(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 23) {
+        if (obj[8]->pos.y < 1268) {
+            new_pos.y = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge10(obj, opt, rpg);
+}
+
+static int intro_go_auberge8(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 22) {
+        if (obj[0]->pos.x > 10834) {
+            new_pos.y = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            new_pos.x = -1;
+            new_pos.y = 0;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge9(obj, opt, rpg);
+}
+
+static int intro_go_auberge7(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 21) {
+        if (obj[8]->pos.x > 10834) {
+            new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge8(obj, opt, rpg);
+}
+
+static int intro_go_auberge6(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 20) {
+        if (obj[0]->pos.y < 1104) {
+            new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            new_pos.x = 0;
+            new_pos.y = 1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge7(obj, opt, rpg);
+}
+
+static int intro_go_auberge5(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 19) {
+        if (obj[8]->pos.y < 1076) {
+            new_pos.y = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge6(obj, opt, rpg);
+}
+
 static int intro_go_auberge4(obj_t **obj, int opt, rpg_t *rpg)
 {
     sfVector2f new_pos = {0, 0};
@@ -22,7 +174,7 @@ static int intro_go_auberge4(obj_t **obj, int opt, rpg_t *rpg)
         } else
             opt++;
     }
-    return opt;
+    return intro_go_auberge5(obj, opt, rpg);
 }
 
 static int intro_go_auberge3(obj_t **obj, int opt, rpg_t *rpg)
@@ -46,7 +198,7 @@ static int intro_go_auberge2(obj_t **obj, int opt, rpg_t *rpg)
     sfVector2f new_pos = {0, 0};
 
     if (opt == 15) {
-        if (obj[8]->pos.x > 11462) {
+        if (obj[8]->pos.x > 11436) {
             new_pos.x = -1;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else
