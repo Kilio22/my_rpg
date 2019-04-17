@@ -82,6 +82,10 @@ int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 //init.c
 int init_save(obj_t **obj, rpg_t *rpg);
 
+//intro_move.c
+void intro_action(rpg_t *rpg, obj_t **obj, house_t **house);
+void intro_control(obj_t **obj);
+
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
 void init_text_load(load_game_t *new);

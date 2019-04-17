@@ -67,6 +67,10 @@ enum houses {
     EGLISE
 };
 
+typedef struct script_s {
+    char **dial;
+} script_t;
+
 typedef struct char_stats_s {
     int *stats;
 } char_stats_t;

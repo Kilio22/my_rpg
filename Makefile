@@ -45,6 +45,7 @@ SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
 
 SRC	=	$(INTRO_PATH)intro.c	\
+		$(INTRO_PATH)intro_move.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\

@@ -49,55 +49,6 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house)
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
-void intro_control(obj_t **obj)
-{
-    static int opt = 0;
-    sfVector2f newPos = {0, 0};
-
-    if (opt == 0) {
-        if (obj[0]->pos.y > 2076) {
-            newPos.y -= 1;
-            sfSprite_move(obj[0]->sprite, newPos);
-            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-        } else
-            opt++;
-    }
-    if (opt == 1) {
-        if (obj[0]->pos.x > 10194) {
-            newPos.x -= 1;
-            sfSprite_move(obj[0]->sprite, newPos);
-            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-        } else
-            opt++;
-    }
-    if (opt == 2) {
-        if (obj[0]->pos.y > 1900) {
-            newPos.y -= 1;
-            sfSprite_move(obj[0]->sprite, newPos);
-            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-            newPos.y += 2;
-            sfSprite_move(obj[5]->sprite, newPos);
-            sfSprite_move(obj[6]->sprite, newPos);
-            sfSprite_move(obj[7]->sprite, newPos);
-        } else
-            opt++;
-    }
-    return;
-}
-
-static void intro_action(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        intro_control(obj);
-        all_character_animation(obj);
-    }
-    sfSprite_setPosition(obj[1]->sprite,
-    sfSprite_getPosition(obj[HERO_HB]->sprite));
-    house_interaction(obj[HERO_HB], house, rpg);
-    camera_control(rpg, obj[HERO_HB]->pos, obj);
-    update_all_rect(obj, house);
-}
-
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
@@ -111,7 +62,6 @@ int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
             sfView_destroy(WIND.view);
             WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
-            //free_save(obj, rpg);
             return 0;
         }
         intro_action(rpg, obj, house);
