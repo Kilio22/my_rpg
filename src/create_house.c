@@ -59,7 +59,7 @@ house_t *create_house(int type, sfVector2f pos)
 int create_houses(house_t **house)
 {
     int index[5] = {AUBERGE, FORGE, MAISON1, MAISON2, EGLISE};
-    sfVector2f vect[5] = {{9200, 768}, {9520, 864}, {10944, 896}, {9744, 960},
+    sfVector2f vect[5] = {{9200, 768}, {9520, 864}, {11200, 768}, {9744, 960},
 {10272, 480}};
     int i = 0;
 

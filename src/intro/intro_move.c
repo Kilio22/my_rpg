@@ -7,6 +7,137 @@
 
 #include "rpg.h"
 
+static int intro_go_auberge3(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 17) {
+        if (obj[8]->pos.y < 1076) {
+            new_pos.y = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 18) {
+        if (obj[0]->pos.x > 11376) {
+            new_pos.x = -1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return opt;
+}
+
+static int intro_go_auberge2(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 15) {
+        if (obj[8]->pos.x > 11376) {
+            new_pos.x = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 16) {
+        if (obj[0]->pos.y > 914) {
+            new_pos.y = -1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge3(obj, opt, rpg);
+}
+
+static int intro_go_auberge(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 13 && rpg->quest_status == 10) {
+        if (obj[8]->pos.y > 882) {
+            new_pos.y = -1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 14) {
+        if (obj[0]->pos.x > 11500) {
+            new_pos.x = -1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge2(obj, opt, rpg);
+}
+
+static int intro_nathan_dialogue(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 12) {
+        if (obj[8]->pos.x < 11502) {
+            new_pos.x = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+            new_pos.x = -1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else {
+            rpg->quest_status++;
+            clock_text_intro(0);
+            opt++;
+        }
+    }
+    return intro_go_auberge(obj, opt, rpg);
+}
+
+static int intro_nathan_echelle(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 10) {
+        if (obj[8]->pos.x < 11500) {
+            new_pos.x = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 11) {
+        if (obj[8]->pos.y < 1096) {
+            new_pos.y = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    return intro_nathan_dialogue(obj, opt, rpg);
+}
+
+static int intro_nathan(obj_t **obj, int opt, rpg_t *rpg)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 8 && rpg->quest_status == 4) {
+        if (obj[8]->pos.x < 11376) {
+            new_pos.x = 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 9) {
+        if (obj[8]->pos.y > 882) {
+            new_pos.y -= 1;
+            sfSprite_move(obj[8]->sprite, new_pos);
+        } else {
+            rpg->quest_status++;
+            clock_text_intro(0);
+            opt++;
+        }
+    }
+    return intro_nathan_echelle(obj, opt, rpg);
+}
+
 static int intro_port(obj_t **obj, int opt, rpg_t *rpg)
 {
     sfVector2f new_pos = {0, 0};
@@ -25,7 +156,7 @@ static int intro_port(obj_t **obj, int opt, rpg_t *rpg)
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         opt++;
     }
-    return opt;
+    return intro_nathan(obj, opt, rpg);
 }
 
 static int intro_ennemi_two(obj_t **obj, int opt, rpg_t *rpg)
@@ -93,6 +224,9 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
     if (rpg->quest_status == 0 || rpg->quest_status == 2) {
         vect = sfSprite_getPosition(obj[6]->sprite);
         vect.y -= 100;
+    } else if (rpg->quest_status >= 6 && rpg->quest_status <= 9) {
+        vect = sfSprite_getPosition(obj[8]->sprite);
+        vect.y -= 50;
     } else {
         vect = sfSprite_getPosition(obj[0]->sprite);
         vect.x += 50;
