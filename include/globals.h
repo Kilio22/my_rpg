@@ -23,6 +23,6 @@ extern const sfVector2f settings_pos[4];
 extern const char *settings_fp[5];
 extern const sfVector2f settings_spr_pos[5];
 extern const char *key_str[];
-extern const script_t *scrpits[2];
+extern const char *scrpits[];
 
 #endif /* !GLOBALS_H_ */

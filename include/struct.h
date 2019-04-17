@@ -67,9 +67,10 @@ enum houses {
     EGLISE
 };
 
-typedef struct script_s {
-    char **dial;
-} script_t;
+typedef struct intro_s {
+    sfText *text;
+    sfRectangleShape *fondu;
+} intro_t;
 
 typedef struct char_stats_s {
     int *stats;
@@ -197,6 +198,8 @@ typedef struct rpg_s {
     int debug;
     sfText *debug_txt;
     int error_code;
+    int quest_status;
+    int dial_status;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

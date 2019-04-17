@@ -33,9 +33,9 @@ static int update_text_inex(int *index, rpg_t *rpg, char **to_print, int *p_ind)
         *index = MENU.highlight;
         *p_ind = 0;
         free(*to_print);
-        *to_print = NULL;
+        *to_print = my_strdup("");
     }
-    if (*to_print == NULL) {
+    if (my_strlen(*to_print) == 0) {
         *to_print = malloc(sizeof(char) * (my_strlen(menu_desc[*index]) + 1));
         if (*to_print == NULL)
             return -1;
@@ -51,7 +51,7 @@ static int update_text(rpg_t *rpg, size_t frames)
 
     if (update_text_inex(&index, rpg, &to_print, &print_index) == -1)
         return -1;
-    for (size_t i = 0; i < frames &&
+    for (size_t i = 0; (i < frames || i <= 1) &&
 print_index < my_strlen(menu_desc[index]); i++) {
         to_print[print_index] = menu_desc[index][print_index];
         print_index++;
