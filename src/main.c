@@ -58,7 +58,7 @@ int main(int ac, char **av)
     obj[7] = create_object("assets/perso_blanc.png", (sfVector2f){10162, 1696}, (sfIntRect){0, 0, 32, 64}, sfTrue);
     if (obj[7] == NULL)
         return (84);
-    obj[8] = create_object("assets/stupid_nathan.png", (sfVector2f){11128, 1108}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    obj[8] = create_object("assets/stupid_nathan.png", (sfVector2f){11128, 1076}, (sfIntRect){0, 0, 32, 64}, sfTrue);
     if (obj[8] == NULL)
         return (84);
     if (create_houses(house) == -1)
