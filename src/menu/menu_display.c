@@ -27,23 +27,7 @@ static void update_rectangle(rpg_t *rpg, int *move, float frame)
     sfRectangleShape_setPosition(MENU.rect, pos);
 }
 
-static int update_text_inex(int *index, rpg_t *rpg, char **to_print, int *p_ind)
-{
-    if (*index != MENU.highlight) {
-        *index = MENU.highlight;
-        *p_ind = 0;
-        free(*to_print);
-        *to_print = my_strdup("");
-    }
-    if (my_strlen(*to_print) == 0) {
-        *to_print = malloc(sizeof(char) * (my_strlen(menu_desc[*index]) + 1));
-        if (*to_print == NULL)
-            return -1;
-    }
-    return 0;
-}
-
-static int update_text(rpg_t *rpg, size_t frames)
+static void update_text(rpg_t *rpg, size_t frames)
 {
     static int print_index = 0;
     static int index = 0;
@@ -64,7 +48,6 @@ print_index < my_strlen(menu_desc[index]); i++) {
         to_print[print_index] = '\0';
     }
     sfText_setString(MENU.descr_text, to_print);
-    return 0;
 }
 
 static void display_menu(rpg_t *rpg)
@@ -98,10 +81,7 @@ sfTime_asMicroseconds(current_time) - sfTime_asMicroseconds(old_time);
         frames /= 1000;
         old_time.microseconds = current_time.microseconds;
         update_rectangle(rpg, &move_rect, frames);
-        if (update_text(rpg, frames) == -1) {
-            sfRenderWindow_close(WIND.wind);
-            rpg->error_code = 84;
-        }
+        update_text(rpg, frames);
         display_menu(rpg);
     }
 }
