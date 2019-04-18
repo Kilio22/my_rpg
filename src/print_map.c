@@ -7,9 +7,12 @@
 
 #include "rpg.h"
 
-void check_sprite_position(sprite_t *sprites, obj_t **obj, wind_t wind)
+void check_sprite_position(sprite_t *sprites, obj_t **obj, wind_t wind,
+int opt)
 {
-    for (int j = 0; sprites->pos[j] != NULL; j++) {
+    int j = (opt == -1) ? 0 : sprites->end_layout[opt];
+
+    for (; j <= sprites->end_layout[opt + 1] - 1; j++) {
         if (sprites->pos[j]->x < (obj[1]->pos.x - 416) ||
             sprites->pos[j]->x > (obj[1]->pos.x + 416) ||
             sprites->pos[j]->y < (obj[1]->pos.y - 256) ||
@@ -26,6 +29,16 @@ void check_sprite_position(sprite_t *sprites, obj_t **obj, wind_t wind)
 
 void print_map(sprite_t **sprites, obj_t **obj, wind_t wind)
 {
-    for (int i = 0; sprites[i] != NULL; i++)
-        check_sprite_position(sprites[i], obj, wind);
+    for (int j = -1; j < 2; j++) {
+        for (int i = 0; sprites[i] != NULL; i++)
+            check_sprite_position(sprites[i], obj, wind, j);
+    }
+}
+
+void print_map2(sprite_t **sprites, obj_t **obj, wind_t wind)
+{
+    for (int j = 2; j < 4; j++) {
+        for (int i = 0; sprites[i] != NULL; i++)
+            check_sprite_position(sprites[i], obj, wind, j);
+    }
 }

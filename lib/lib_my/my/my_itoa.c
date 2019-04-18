@@ -5,18 +5,46 @@
 ** int into char
 */
 
-#include "my.h"
+#include <stdlib.h>
+#include "../../../include/my.h"
 
-char *my_itoa(int nb, char *result)
+char const BASE_DECIMAL[11] = "0123456789";
+
+static int count_char(int nb)
 {
-    int i = 0;
-    int buff;
-    while (nb != 0) {
-        buff = nb % 10;
-        result[i] = (buff > 9)? (buff - 10) + 'a' : buff + '0';
+    int i = 1;
+    while (nb > 9) {
         i++;
-        nb /= 10;
+        nb = nb / 10;
     }
-    result = my_revstr(result);
-    return (result);
+    return (i);
+}
+
+static char *end_of_string(char *str, int count, int pos)
+{
+    str[count] = BASE_DECIMAL[pos];
+    count++;
+    str[count] = '\0';
+    return (str);
+}
+
+char *my_itoa(int nb, char *str)
+{
+    char *score;
+    char *text;
+    int count = 0;
+    int pos;
+
+    score = malloc(sizeof(char) * (count_char(nb) + 2));
+    for (; nb > 9; count++) {
+        pos = nb % 10;
+        score[count] = BASE_DECIMAL[pos];
+        nb = nb / 10;
+    }
+    pos = nb % 10;
+    score = end_of_string(score, count, pos);
+    score = my_revstr(score);
+    text = my_strncat(str, score, -1);
+    free(score);
+    return (text);
 }

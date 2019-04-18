@@ -12,7 +12,7 @@ static int strlenghth(char *dest)
     while (dest[i] != '\0') {
         i++;
     }
-    return (i);
+    return i;
 }
 
 char *my_strncat(char *dest, char const *src, int nb)

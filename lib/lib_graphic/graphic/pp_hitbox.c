@@ -11,7 +11,7 @@
 sfIntRect f_to_i_rect(sfFloatRect f)
 {
     sfIntRect i = {f.left, f.top, f.width, f.height};
-    return (i);
+    return i;
 }
 
 sfBool pp_check(pp_t pp_hitbox, const sfUint8* pixA, const sfUint8* pixB)
@@ -31,9 +31,9 @@ pp_hitbox.vecB.x >= 0 && pp_hitbox.vecB.y >= 0 &&
 pp_hitbox.vecA.x < pp_hitbox.sizeA.x && pp_hitbox.vecA.y < pp_hitbox.sizeA.y &&
 pp_hitbox.vecB.x < pp_hitbox.sizeB.x && pp_hitbox.vecB.y < pp_hitbox.sizeB.y &&
 pixA[pp_hitbox.idxA] > 0 && pixB[pp_hitbox.idxB] > 0)
-                return (sfTrue);
+                return sfTrue;
         }
-    return (sfFalse);
+    return sfFalse;
 }
 
 sfBool pp_intersect(const sfSprite *a, const sfSprite *b,
@@ -46,7 +46,7 @@ const sfImage *imgA, const sfImage *imgB)
     const sfUint8* pixB = sfImage_getPixelsPtr(imgB);
 
     if (sfIntRect_intersects(&rectA, &rectB, &pp_hitbox.intersect) == 0)
-        return (sfFalse);
+        return sfFalse;
     pp_hitbox.inverseA = sfSprite_getInverseTransform(a);
     pp_hitbox.inverseB = sfSprite_getInverseTransform(b);
     pp_hitbox.sizeA = sfImage_getSize(imgA);
@@ -54,7 +54,7 @@ const sfImage *imgA, const sfImage *imgB)
     pp_hitbox.xMax = pp_hitbox.intersect.left + pp_hitbox.intersect.width;
     pp_hitbox.yMax = pp_hitbox.intersect.top + pp_hitbox.intersect.height;
     if (pp_check(pp_hitbox, pixA, pixB) == 1)
-        return (sfTrue);
+        return sfTrue;
     else
-        return (sfFalse);
+        return sfFalse;
 }

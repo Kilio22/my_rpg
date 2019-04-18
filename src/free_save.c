@@ -10,7 +10,7 @@
 void free_save(obj_t **obj, rpg_t *rpg)
 {
     free(CONTROLS.keys);
-    for (int i = 1; i < 4; i++) {
+    for (int i = 1; i < 4 && obj[i] != NULL; i++) {
         free(obj[i]->stats->stats);
         free(obj[i]->stats);
     }

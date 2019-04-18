@@ -1,0 +1,63 @@
+type=aubergiste
+propositions=
+5
+Bienvenue dans mon auberge !
+-175
+-180
+Que puis-je faire pour vous ?
+-125
+-160
+1- Deposer un allie
+-85
+-160
+2- Recuperer un allie
+-95
+-120
+3- Partir
+-44
+-100
+answers=
+3
+1- Tres bien! Quel allie souhaite tu deposer ?
+-190
+-180
+2- Pas de probleme! Quel est celui qui rejoint ton equipe ?
+-260
+-180
+3- Bonne continuation !
+-100
+-140
+
+
+forge
+Bienvenue, voyageur ! Que puis-je faire pour vous ?
+Reparer un objet
+Acheter un objet
+Vendre un objet
+Très bien, quel objet voulez vous reparer ?
+Bien sur ! Quel objet pourrait vous satisfaire ?
+Quel objet allez vous me vendre ?
+Etes vous sur ?
+
+Monsieur ? Monsieur ? Vous allez bien ?
+Comment vous apppelez vous ?
+Vous êtes blessé ? Venez avec moi !
+Je vais vous transporter à l'auberge.
+
+Bienvenue, jeune voyageur !
+Vous me semblez en mauvais état, je vais vous offrir une chambre pour vous reposer.
+
+Salut, tu as bien dormi ?
+Je ne t'ai pas demandé hier, d'où viens tu ?
+Comment ça tu ne te rapelles plus ?
+Quoi ? Des hommes t'ont attaqué ? Et tu ne te souviens plus de rien ?
+C'est injuste ! Il faut faire quelquechose pour que tu retrouves la mémoire !
+
+
+
+
+
+
+
+Il fait beau aujourd'hui, un temps idéal pour une promenade.
+Qui etes vous ? Laissez moi tranquille.

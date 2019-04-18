@@ -40,9 +40,41 @@ TESTS_NAME	=	tests
 INCL_PATH	=	$(ROOT_PATH)$(INCL_NAME)
 TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
+MENU_PATH	=	menu/
+SETTINGS_PATH	=	settings/
+INTRO_PATH	=	intro/
 
-SRC	=	analyse_game_key.c	\
-		analyse_menu_key.c	\
+SRC	=	$(INTRO_PATH)intro.c	\
+		$(INTRO_PATH)intro_event.c	\
+		$(INTRO_PATH)intro_move.c	\
+		$(INTRO_PATH)intro_text.c	\
+		$(INTRO_PATH)intro_steps.c	\
+		$(INTRO_PATH)intro_steps_2.c	\
+		$(INTRO_PATH)intro_steps_3.c	\
+		$(INTRO_PATH)intro_steps_4.c	\
+		$(INTRO_PATH)intro_steps_5.c	\
+		$(INTRO_PATH)intro_steps_6.c	\
+		$(INTRO_PATH)dialogue.c	\
+		$(INTRO_PATH)intro_create.c	\
+		$(MENU_PATH)analyse_menu_key.c	\
+		$(MENU_PATH)analyse_menu_mouse.c	\
+		$(MENU_PATH)check_save_status.c	\
+		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)load_game.c	\
+		$(MENU_PATH)load_game_event.c	\
+		$(MENU_PATH)menu_display.c	\
+		$(MENU_PATH)menu_event.c 	\
+		$(MENU_PATH)menu_fcts.c	\
+		$(MENU_PATH)menu_init.c	\
+		$(MENU_PATH)new_game.c	\
+		$(MENU_PATH)new_game_event.c	\
+		$(SETTINGS_PATH)controls_events.c	\
+		$(SETTINGS_PATH)controls_init.c	\
+		$(SETTINGS_PATH)settings_events.c	\
+		$(SETTINGS_PATH)settings_init.c	\
+		$(SETTINGS_PATH)settings_menu.c	\
+		$(SETTINGS_PATH)settings_utils.c	\
+		analyse_game_key.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
@@ -51,30 +83,51 @@ SRC	=	analyse_game_key.c	\
 		create_obj.c	\
 		fill_map.c	\
 		free_save.c	\
+		free.c 	\
 		game_display.c	\
 		game_event.c	\
 		game_init.c \
 		globals.c	\
 		house_display.c	\
-		layout_init.c 	\
 		init_save.c	\
+		layout_init.c 	\
 		list.c 	\
 		map_init.c	\
-		menu_display.c	\
-		menu_event.c 	\
-		menu_init.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-		time_gestion.c
+		time_gestion.c \
+		item/item.c \
+		inventory/inventory_debug.c \
+		inventory/inventory_op.c \
+		inventory/inventory.c \
+		inventory/inventory_swap.c \
+		inventory/inventory_core.c \
+		inventory/inventory_stock.c \
+		inventory/inventory_stuff.c	\
+		game_create.c
 
-SRC_LIB	=	my 	\
+SRC_LIB	=	inimy \
 			g 	\
+			list \
+			graphmy \
+			filemy \
+			chainmy \
+			stringmy \
+			dispmy \
+			my \
+			graphic \
 			list
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
-				lib/lib_list
+				lib/lib_list \
+				lib/graphmy_lib \
+				lib/stringmy_lib \
+				lib/chainmy_lib \
+				lib/inimy_lib \
+				lib/filemy_lib \
+				lib/dispmy_lib
 
 SRCS	=	$(SRC:%=$(SRC_PATH)/%) $(SRC_PATH)/main.c
 OBJ	=	$(SRCS:.c=.o)
@@ -95,7 +148,7 @@ DEBUG_FLAGS	=	-g3 -gdwarf-4
 MAKE_RULE	=	all
 CLEAN_RULE	=	clean
 
-all:	build_libs message $(NAME) clean
+all:	build_libs message $(NAME)
 
 message:
 	@$(LINE_RETURN)
@@ -160,7 +213,7 @@ tests_run: build_libs
 	@$(ECHO) $(DEFAULT)
 
 %.o: %.c
-	@$(CC) -c $(CFLAGS) -o $@ $< && \
+	@$(CC) -c $(CFLAGS) -g3 -o $@ $< && \
 		$(ECHO) $(DIM_T) "cc $(CFLAGS) -c "$<$(COLOR_THEME)" -o "$@ $(DEFAULT) || \
 		$(ECHO) "\n"$(MAGEN_C) $(UNDLN_T)$(BOLD_T)"cc $(CFLAGS) -c "$<" -o "$@$(DEFAULT)"\n"
 

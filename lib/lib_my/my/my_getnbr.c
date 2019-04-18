@@ -22,7 +22,7 @@ int my_getnbr(char const *str)
     while ((str[i] >= '0' && str[i] <= '9')) {
         result = (p * 10) + (str[i] - '0');
         if ((result != 0) && (result / 10) != p) {
-            return (0);
+            return 0;
         }
         p = result;
         i++;

@@ -16,7 +16,7 @@ int check_characters_clock(sfClock *clock, float limit)
     micro_seconds = time.microseconds;
     if (micro_seconds > limit) {
         sfClock_restart(clock);
-        return (0);
+        return 0;
     }
-    return (-1);
+    return -1;
 }
