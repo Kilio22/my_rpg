@@ -42,8 +42,21 @@ TESTS_PATH	=	$(ROOT_PATH)$(TESTS_NAME)
 SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
+INTRO_PATH	=	intro/
 
-SRC	=	$(MENU_PATH)analyse_menu_key.c	\
+SRC	=	$(INTRO_PATH)intro.c	\
+		$(INTRO_PATH)intro_event.c	\
+		$(INTRO_PATH)intro_move.c	\
+		$(INTRO_PATH)intro_text.c	\
+		$(INTRO_PATH)intro_steps.c	\
+		$(INTRO_PATH)intro_steps_2.c	\
+		$(INTRO_PATH)intro_steps_3.c	\
+		$(INTRO_PATH)intro_steps_4.c	\
+		$(INTRO_PATH)intro_steps_5.c	\
+		$(INTRO_PATH)intro_steps_6.c	\
+		$(INTRO_PATH)dialogue.c	\
+		$(INTRO_PATH)intro_create.c	\
+		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
 		$(MENU_PATH)destroy_menu.c	\
@@ -91,7 +104,8 @@ SRC	=	$(MENU_PATH)analyse_menu_key.c	\
 		inventory/inventory_swap.c \
 		inventory/inventory_core.c \
 		inventory/inventory_stock.c \
-		inventory/inventory_stuff.c
+		inventory/inventory_stuff.c	\
+		game_create.c
 
 SRC_LIB	=	inimy \
 			g 	\

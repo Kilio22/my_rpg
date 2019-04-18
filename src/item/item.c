@@ -13,6 +13,8 @@ item_t *item_create(int id, ini_file_t *data)
     ini_line_t *line = ini_file_get_from_key(data, mg_itoa(id));
     char *path = mg_strdup(ini_line_get_value_from_col(line, ASSET));
 
+    if (new == NULL)
+        return NULL;
     new->name = mg_strdup(ini_line_get_value_from_col(line, NAME));
     new->id = id;
     new->type = mg_atoi(ini_line_get_value_from_col(line, TYPE));

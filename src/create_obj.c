@@ -16,6 +16,8 @@ sfBool centered)
     obj_t *obj = malloc(sizeof(obj_t));
     sfFloatRect rect;
 
+    if (obj == NULL)
+        return (NULL);
     obj->image = sfImage_createFromFile(Path);
     obj->texture = sfTexture_createFromFile(Path, NULL);
     obj->sprite = sfSprite_create();

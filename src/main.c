@@ -14,11 +14,14 @@
 int main(int ac, char **av)
 {
     rpg_t rpg;
-    obj_t **obj = malloc(sizeof(obj_t *) * 10);
-    house_t **house = malloc(sizeof(house_t *) * 5);
+    obj_t **obj = malloc(sizeof(obj_t *) * 11);
+    house_t **house = malloc(sizeof(house_t *) * 6);
     sfVector2u windowSize;
 
+    if (obj == NULL || house == NULL)
+        return (84);
     rpg.debug = 0;
+    rpg.error_code = 0;
     if (ac == 2) {
         if (my_strcmp(av[1], "-d") == 0)
             rpg.debug = 1;
@@ -27,40 +30,59 @@ int main(int ac, char **av)
     }
     if (ac > 2)
         return 84;
-    if (ac == 2 && my_strcmp(av[1], "-d") == 0)
-        rpg.debug = 1;
     rpg.wind.wind = create_window("Nuck Fathan", 10);
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
-    obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 16}, sfTrue);
-    obj[1] = create_object("assets/hero.png", (sfVector2f){10000, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[2] = create_object("assets/perso_blanc.png", (sfVector2f){9950, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[3] = create_object("assets/stupid_nathan.png", (sfVector2f){9900, 1280}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-    obj[4] = create_object("assets/yes.png", V2F(0, 0), (sfIntRect){0, 0, 11776, 2560}, sfFalse);
-    obj[5] = NULL;
-    house[0] = create_house(2, (sfVector2f){10400, 768});
-    house[1] = create_house(3, (sfVector2f){10720, 864});
-    house[2] = create_house(0, (sfVector2f){10944, 896});
-    house[3] = create_house(1, (sfVector2f){10400, 1280});
-    house[4] = NULL;
+    for (int i = 0; i < 11; i++)
+        obj[i] = NULL;
 
+    //check si les obj sont NULL -> malloc failed
+    obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 16}, sfTrue);
+    if (obj[0] == NULL)
+        return (84);
+    obj[0]->rectangle = sfRectangleShape_create();
+    sfRectangleShape_setSize(obj[0]->rectangle, V2F(32, 16));
+    sfRectangleShape_setOrigin(obj[0]->rectangle, V2F(16, 8));
+    obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+    if (obj[1] == NULL)
+        return (84);
+    obj[4] = create_object("assets/map_hitbox.png", (sfVector2f){0, 0}, (sfIntRect){0, 0, 11776, 2560}, sfFalse);
+    if (obj[4] == NULL)
+        return (84);
+    obj[5] = create_object("assets/perso_blanc.png", (sfVector2f){10194, 1676}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[5] == NULL)
+        return (84);
+    obj[6] = create_object("assets/perso_blanc.png", (sfVector2f){10228, 1696}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[6] == NULL)
+        return (84);
+    obj[7] = create_object("assets/perso_blanc.png", (sfVector2f){10162, 1696}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[7] == NULL)
+        return (84);
+    obj[8] = create_object("assets/stupid_nathan.png", (sfVector2f){11128, 1076}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+    if (obj[8] == NULL)
+        return (84);
+    if (create_houses(house) == -1)
+        return 84;
+    rpg.house = house;
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
-    sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
-    sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
 
     rpg.game.nb_save = 0;
     rpg.game.language = 0;
     rpg.controls.bools = malloc(sizeof(sfBool) * 9);
+    if (rpg.controls.bools == NULL)
+        return (84);
     for (int i = 0; i < 9; i++)
         rpg.controls.bools[i] = 0;
-    rpg.game.follower = init_list(9950, 1280);
-    rpg.game.follower2 = init_list(9900, 1280);
     create_music(&rpg);
     init_menu(&rpg, obj, house);
+    if (rpg.error_code == 84)
+        return (84);
     sfMusic_destroy(rpg.game.back_music);
-    free_house(house);
-    free_obj(obj);
+    for (int i = 0; i < 5; i++)
+        free_house(house[i]);
+    for (int i = 0; i < 11; i++)
+        free_obj(obj[i]);
     return (0);
 }
 
@@ -96,6 +118,5 @@ int main()
         inventory_compute(inv);
         sfRenderWindow_display(inv->window);
     }
-}
     return 0;
 }*/

@@ -17,6 +17,8 @@ simple_vector_t *init_list(int x, int y)
 
     for (; x < max; x++) {
         sfVector2f *current = malloc(sizeof(sfVector2f));
+        if (current == NULL)
+            return NULL;
         current->x = x;
         current->y = y;
         simple_vector_push_back(list, current);
@@ -30,6 +32,8 @@ void modif_list(simple_vector_t *pos, obj_t *obj)
     sfVector2f *current = malloc(sizeof(sfVector2f));
     sfVector2f position = sfSprite_getPosition(obj->sprite);
 
+    if (current == NULL)
+        return;
     current->x = position.x;
     current->y = position.y;
     simple_vector_push_back(pos, current);

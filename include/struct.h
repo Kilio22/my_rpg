@@ -59,6 +59,19 @@ enum stats {
     DEF
 };
 
+enum houses {
+    MAISON1,
+    MAISON2,
+    AUBERGE,
+    FORGE,
+    EGLISE
+};
+
+typedef struct intro_s {
+    sfText *text;
+    sfRectangleShape *fondu;
+} intro_t;
+
 typedef struct char_stats_s {
     int *stats;
 } char_stats_t;
@@ -80,6 +93,8 @@ typedef struct obj_s {
     sfVector2f pos;
     sfVector2f oldPos;
     sfClock *clock;
+    sfRectangleShape *rectangle;
+    sfFloatRect rectangle_bound;
     int frame_animation;
     char_stats_t *stats;
 } obj_t;
@@ -90,14 +105,18 @@ typedef struct house_s {
     sfTexture *doorTexture;
     sfSprite *tab[5];
     sfIntRect door_rect;
+    sfRectangleShape *door_use_rectangle;
+    sfFloatRect door_use_rect_bound;
     sfBool display_house;
     int frame_animation;
+    int type;
 } house_t;
 
 typedef struct game_s {
     int nb_save;
     int auberge;
     int language;
+    int objectiv;
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
@@ -139,7 +158,7 @@ typedef struct load_game_s {
 
 typedef struct menu_s {
     sfClock *clock;
-    bool menu_on;
+    int menu_on;
     sfSprite *menu_sprite[2];
     fields_t buttons[6];
     int highlight;
@@ -166,12 +185,12 @@ typedef struct sprite_s
     int id;
     sfSprite *sprite;
     sfVector2f **pos;
-    int end_layout[5];
+    int end_layout[6];
 } sprite_t;
 
 typedef struct map_s {
-    first_gid_t *gid[4];
-    layer_t *layers[5];
+    first_gid_t *gid[9];
+    layer_t *layers[6];
     sprite_t *sprite[715];
 } map_t;
 
@@ -181,8 +200,12 @@ typedef struct rpg_s {
     wind_t wind;
     menu_t menu;
     map_t map;
+    house_t **house;
     int debug;
     sfText *debug_txt;
+    int error_code;
+    int quest_status;
+    int dial_status;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

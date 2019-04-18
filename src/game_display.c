@@ -34,16 +34,19 @@ static void debug_txt(rpg_t *rpg, obj_t *obj)
 static void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
-    //print_map(MAP.sprite, obj, rpg->wind);
+    print_map(MAP.sprite, obj, rpg->wind);
     //sfRenderWindow_drawSprite(WIND.wind, obj[HERO_HB]->sprite, NULL);
-    sfRenderWindow_drawSprite(WIND.wind, obj[4]->sprite, NULL);
     house_display(rpg, house);
-    for (int i = 3; i > 0; i--)
-        sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
-    //print_map2(MAP.sprite, obj, rpg->wind);
-    for (int i = 0; house[i] != NULL; i++)
+    for (int i = 10; i > 0; i--)
+        if (obj[i] != NULL && i != 4)
+            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    print_map2(MAP.sprite, obj, rpg->wind);
+    for (int i = 0; house[i] != NULL; i++) {
+        if (house[i]->type == 2 && obj[9] == NULL && house[i]->display_house == 0)
+            obj[9] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+    }
     if (rpg->debug == 1)
         debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);
@@ -53,7 +56,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        character_control(rpg, obj[HERO_HB], house);
+        character_control(rpg, obj, house);
         follower(obj, rpg);
         all_character_animation(obj);
     }
@@ -77,8 +80,8 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
             sfView_destroy(WIND.view);
             WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
-            free_save(obj, rpg);
-            //free_map(MAP);
+            //free_save(obj, rpg);
+            free_map(MAP);
             return;
         }
         game_action(rpg, obj, house);

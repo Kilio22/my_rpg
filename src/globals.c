@@ -180,32 +180,36 @@ const char *save_path[3] = {
     "saves/save3.txt"
 };
 
-const char *house_path[4] = {
+const char *house_path[5] = {
     "assets/maison1.png",
     "assets/maison2.png",
     "assets/auberge.png",
-    "assets/forge.png"
+    "assets/forge.png",
+    "assets/church.png"
 };
 
-const sfIntRect house_rects[4] = {
+const sfIntRect house_rects[5] = {
     {0, 0, 160, 320},
     {0, 0, 224, 256},
     {0, 0, 320, 448},
-    {0, 0, 192, 352}
+    {0, 0, 192, 352},
+    {0, 0, 384, 352}
 };
 
-const sfVector2f door_pos[4] = {
+const sfVector2f door_pos[5] = {
     {0, 256},
     {0, 192},
     {160, 352},
-    {95, 160}
+    {95, 160},
+    {0, 270}
 };
 
-const sfIntRect door_rects[4] = {
+const sfIntRect door_rects[5] = {
     {0, 64, 96, 64},
     {0, 0, 96, 64},
     {0, 352, 96, 96},
     {0, 224, 96, 64},
+    {0, 64, 96, 64}
 };
 
 void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
@@ -215,4 +219,50 @@ void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
     menu_how_to_play,
     menu_credit,
     menu_close_window
+};
+
+int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
+    intro_control,
+    intro_control,
+    intro_ennemi_ctrl,
+    intro_ennemi_two,
+    intro_ennemi_two,
+    intro_port,
+    intro_port,
+    intro_port,
+    intro_nathan,
+    intro_nathan,
+    intro_nathan_echelle,
+    intro_nathan_echelle,
+    intro_nathan_dialogue,
+    intro_go_auberge,
+    intro_go_auberge,
+    intro_go_auberge2,
+    intro_go_auberge2,
+    intro_go_auberge3,
+    intro_go_auberge4,
+    intro_go_auberge5,
+    intro_go_auberge6,
+    intro_go_auberge7,
+    intro_go_auberge8,
+    intro_go_auberge9,
+    intro_go_auberge10,
+    intro_go_auberge11,
+    intro_go_auberge12,
+    intro_go_auberge13,
+    intro_go_auberge13,
+    intro_go_auberge14,
+    intro_go_auberge14,
+    intro_go_auberge14,
+    intro_go_auberge15,
+    intro_go_auberge16,
+    intro_go_auberge16,
+    intro_go_auberge16,
+    intro_go_auberge17,
+    intro_go_auberge17,
+    intro_go_auberge18,
+    intro_go_auberge19,
+    intro_go_auberge19,
+    intro_go_auberge20,
+    intro_go_auberge20
 };

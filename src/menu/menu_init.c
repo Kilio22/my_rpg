@@ -41,7 +41,6 @@ static void create_ground(rpg_t *rpg)
     sfTexture *texture;
 
     for (int i = 0; i < 2; i++) {
-        MENU.menu_sprite[i] = malloc(sizeof(sfSprite *));
         texture = sfTexture_createFromFile(menu_path[i], NULL);
         MENU.menu_sprite[i] = sfSprite_create();
         sfSprite_setTexture(MENU.menu_sprite[i], texture, sfTrue);
@@ -63,7 +62,10 @@ void init_menu(rpg_t *rpg, obj_t **obj, house_t **house)
     rpg->menu.menu_on = 1;
     MENU.descr_text = create_text(MENU_FONT, menu_desc[0], 30,
 (sfVector2f){580, 570});
-    init_save(obj, rpg);
+    if (init_save(obj, rpg) == -1) {
+        rpg->error_code = 84;
+        return;
+    }
     menu_loop(rpg, obj, house);
     destroy_menu(rpg);
 }

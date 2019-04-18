@@ -37,8 +37,9 @@ obj->image, house->image) == 0) {
 
 void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg)
 {
-    if (house->display_house == 1)
+    if (house->display_house == 1) {
         display_house(obj, house, rpg);
+    }
     else
         do_not_display_house(obj, house, rpg);
 }

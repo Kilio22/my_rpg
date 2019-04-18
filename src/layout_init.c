@@ -17,26 +17,42 @@
 #include "macros.h"
 #include "get_next_line.h"
 
-layer_t **add_layer(char *str, layer_t *layers[5], int fd)
+int loop_add_layer(layer_t *layers[5], int fd, char **array, int i)
 {
-    char **array = my_str_to_word_array(str, '"');
-    char *line;
-    int i = 0;
+    char *line = NULL;
 
-    for (; layers[i] != NULL; i++);
-    layers[i] = malloc(sizeof(layer_t));
-    layers[i]->width = my_atoi(array[2]);
-    layers[i]->height = my_atoi(array[4]);
-    layers[i]->map = malloc(sizeof(int *) * (layers[i]->height));
     for (int a = 0; a < layers[i]->height; a++) {
         line = get_next_line(fd);
         array = my_str_to_word_array(line, ',');
+        if (array == NULL)
+            return -1;
         layers[i]->map[a] = malloc(sizeof(int) * (layers[i]->width));
+        if (layers[i]->map[a] == NULL)
+            return -1;
         for (int x = 0; x < layers[i]->width; x++)
             layers[i]->map[a][x] = my_atoi(array[x]);
         free_array(array);
         free(line);
     }
+    return 0;
+}
+
+layer_t **add_layer(char *str, layer_t *layers[5], int fd)
+{
+    char **array = my_str_to_word_array(str, '"');
+    int i = 0;
+
+    for (; layers[i] != NULL; i++);
+    layers[i] = malloc(sizeof(layer_t));
+    if (layers[i] == NULL || array == NULL)
+        return NULL;
+    layers[i]->width = my_atoi(array[2]);
+    layers[i]->height = my_atoi(array[4]);
+    layers[i]->map = malloc(sizeof(int *) * (layers[i]->height));
+    if (layers[i]->map == NULL)
+        return NULL;
+    if (loop_add_layer(layers, fd, array, i) == -1)
+        return NULL;
     layers[++i] = NULL;
     return (layers);
 }
@@ -48,6 +64,8 @@ void add_gid(char *str, first_gid_t *gid[4])
 
     for (; gid[i] != NULL; i++);
     gid[i] = malloc(sizeof(first_gid_t));
+    if (gid[i] == NULL)
+        return;
     gid[i]->gid = my_atoi(array[0]);
     gid[i]->path = my_strdup(array[2]);
     gid[i]->offset = my_atoi(array[4]);
@@ -55,14 +73,14 @@ void add_gid(char *str, first_gid_t *gid[4])
     free(array);
 }
 
-void map_init(rpg_t *rpg)
+int map_init(rpg_t *rpg)
 {
     int fd = open("assets/map.txt", O_RDONLY);
     char *line = NULL;
 
     if (fd == -1) {
         my_printf("OPEN FAILED\n");
-        return;
+        return -1;
     }
     line = get_next_line(fd);
     MAP.gid[0] = NULL;
@@ -72,7 +90,9 @@ void map_init(rpg_t *rpg)
         line = get_next_line(fd);
     }
     while (line) {
-        add_layer(&line[my_equal_len(line) + 1], MAP.layers, fd);
+        if (add_layer(&line[my_equal_len(line) + 1], MAP.layers, fd) == NULL)
+            return -1;
         line = get_next_line(fd);
     }
+    return 0;
 }

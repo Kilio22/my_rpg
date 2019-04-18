@@ -40,6 +40,8 @@ char **my_str_to_word_array(char const *str, char c)
     int word_count = words_count(str, my_strlen(str), c);
     char **return_array = malloc(sizeof(char *) * (word_count + 1));
 
+    if (return_array == NULL)
+        return NULL;
     while (pos[3] < word_count) {
         while (is_valid(str[pos[1]], c) == 0)
             pos[1]++;

@@ -36,7 +36,7 @@ static int compute_coords_from_stuff(item_t *item)
 static void treat_pending_drag_stuff(inventory_t *inv, item_t *item)
 {
     int i = compute_coords_from_stuff(inv->item_dragging);
-    
+
     inventory_swap_to_stock(inv, i);
     inv->item_pos = NOTHING;
     inv->item_dragging = NULL;
