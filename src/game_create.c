@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int game_create_load(rpg_t *rpg, obj_t **obj, house_t **house)
+int game_create_load(obj_t **obj)
 {
     free(obj[0]);
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){9410, 1250}, (sfIntRect){0, 0, 32, 16}, sfTrue);
@@ -24,7 +24,7 @@ int game_create_load(rpg_t *rpg, obj_t **obj, house_t **house)
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     if (rpg->quest_status == 1) {
-        if (game_create_load(rpg, obj, house) == 84)
+        if (game_create_load(obj) == 84)
             return 84;
     }
     if (obj[2] == NULL) {
