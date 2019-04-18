@@ -46,9 +46,11 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
             obj[9] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+        sfRenderWindow_drawRectangleShape(WIND.wind, house[i]->door_use_rectangle, NULL);
     }
     if (rpg->debug == 1)
         debug_txt(rpg, obj[1]);
+    sfRenderWindow_drawRectangleShape(WIND.wind, obj[0]->rectangle, NULL);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }

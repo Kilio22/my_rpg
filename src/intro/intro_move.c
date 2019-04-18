@@ -28,7 +28,7 @@ rpg_t *rpg, int *opt)
     if (house->display_house == 1)
         display_house_intro(obj, house, rpg, opt);
     else
-        do_not_display_house(obj[8], house, rpg);
+        exit_house(obj[8], house, rpg);
 }
 
 void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house)
