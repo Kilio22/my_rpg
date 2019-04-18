@@ -18,6 +18,10 @@ int game_create_load(obj_t **obj)
     if (obj[1] == NULL)
         return (84);
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
+    for (int i = 5; i < 9; i++) {
+        free(obj[i]);
+        obj[i] = NULL;
+    }
     return 1;
 }
 
@@ -37,7 +41,7 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
         sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
         GAME.follower2 = init_list(obj[0]->pos.x - 100, obj[0]->pos.y);
     }
-    if (rpg->quest_status == 1)
+    if (rpg->quest_status == 1 || rpg->quest_status == 26)
         game_loop(rpg, obj, house);
     return 1;
 }

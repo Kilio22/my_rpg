@@ -264,5 +264,6 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
     intro_go_auberge19,
     intro_go_auberge19,
     intro_go_auberge20,
+    intro_go_auberge20,
     intro_go_auberge20
 };
