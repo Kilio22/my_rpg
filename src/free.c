@@ -31,28 +31,26 @@ map.sprite[i]->sprite));
     }
 }
 
-void free_obj(obj_t **obj)
+void free_obj(obj_t *obj)
 {
-    for (int i = 0; obj[i] != NULL; i++) {
-        sfImage_destroy(obj[i]->image);
-        sfTexture_destroy(obj[i]->texture);
-        sfSprite_destroy(obj[i]->sprite);
-        sfClock_destroy(obj[i]->clock);
-        free(obj[i]);
-    }
+    if (obj == NULL)
+        return;
+    sfImage_destroy(obj->image);
+    sfTexture_destroy(obj->texture);
+    sfSprite_destroy(obj->sprite);
+    sfClock_destroy(obj->clock);
     free(obj);
 }
 
-void free_house(house_t **house)
+void free_house(house_t *house)
 {
-    for (int i = 0; house[i] != NULL; i++) {
-        sfImage_destroy(house[i]->image);
-        sfImage_destroy(house[i]->door_image);
-        sfTexture_destroy(house[i]->doorTexture);
-        for (int j = 0; j < 5; j++)
-            sfSprite_destroy(house[i]->tab[j]);
-        free(house[i]);
-    }
+    if (house == NULL)
+        return;
+    sfImage_destroy(house->image);
+    sfImage_destroy(house->door_image);
+    sfTexture_destroy(house->doorTexture);
+    for (int j = 0; j < 5; j++)
+        sfSprite_destroy(house->tab[j]);
     free(house);
 }
 

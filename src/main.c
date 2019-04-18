@@ -81,8 +81,10 @@ int main(int ac, char **av)
     if (rpg.error_code == 84)
         return (84);
     sfMusic_destroy(rpg.game.back_music);
-    free_house(house);
-    free_obj(obj);
+    for (int i = 0; i < 5; i++)
+        free_house(house[i]);
+    for (int i = 0; i < 11; i++)
+        free_obj(obj[i]);
     return (0);
 }
 
