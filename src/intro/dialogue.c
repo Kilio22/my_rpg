@@ -13,7 +13,7 @@ const char *scrpits[] = {
     "Je viens d'arriver, je refuse de vous le donner !",
     "Tres bien, dans ce cas la...",
     "Ouahhhh",
-    "Que c'est il passe ?",
+    "Que s'est il passe ?",
     "Ou suis-je ?",
     "Monsieur ? Monsieur ? Vous allez bien ?",
     "Comment vous apppelez vous ?",
@@ -24,8 +24,15 @@ const char *scrpits[] = {
 je vais vous offrir \nune chambre pour vous reposer.",
     " ",
     " ",
-    "Salut, tu as bien dormi ?\nJe ne t'ai pas demandé hier,\nd'où viens tu ?",
-    "Je..\n Je ne me souviens plus..",
-    "Comment ça tu ne te rapelles plus ?",
+    " ",
+    "Salut, tu as bien dormi ?\nJe ne t'ai pas demande hier,\nd'ou viens tu ?",
+    "Je..\nJe ne me souviens plus..",
+    "Comment ca tu ne te rapelles plus ?",
     "Je me suis fait attaquer par \n3 hommes,\nje n'ai plus de memoire..",
+    "Quoi ? Des hommes t'ont attaque ?\n Et tu ne te souviens plus de rien ?",
+    "C'est injuste !\nIl faut faire quelquechose\n\
+pour que tu retrouves \nla memoire !\n Allons voir si on les trouves !",
+    "Jacques, viens avec nous !",
+    " ",
+    " "
 };

@@ -28,9 +28,107 @@ void check_house_display_intro(obj_t **obj, house_t *house, rpg_t *rpg, int *opt
         do_not_display_house(obj[8], house, rpg, obj);
 }
 
+static int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 41) {
+        new_pos.y = 1;
+        sfSprite_move(obj[0]->sprite, new_pos);
+        sfSprite_move(obj[8]->sprite, new_pos);
+        sfSprite_move(obj[10]->sprite, new_pos);
+        obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        opt++;
+    }
+    if (opt == 42 && rpg->quest_status == 24) {
+        //free_obj(5 a 10);
+        sfSprite_setPosition(obj[0]->sprite, V2F(9410, 1250));
+        obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        //free_house(0);
+        for (int i = 5; i < 11; i++)
+            obj[i] = NULL; //a enlever
+        house[0] = NULL; //a enlever
+        house[0] = create_house(2, V2F(9200, 768));
+        obj[2] = create_object("assets/stupid_nathan.png", (sfVector2f){obj[0]->pos.x - 50, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+        obj[3] = create_object("assets/perso_blanc.png", (sfVector2f){obj[0]->pos.x - 100, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
+        sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
+        sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
+        GAME.follower = init_list(obj[0]->pos.x - 50, obj[0]->pos.y);
+        GAME.follower2 = init_list(obj[0]->pos.x - 100, obj[0]->pos.y);
+        printf("ok\n");
+    }
+    if (rpg->quest_status == 25)
+        MENU.menu_on = 2;
+    return opt;
+}
+
+static int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 39 && rpg->quest_status == 22) {
+        if (obj[10]->pos.x > 9408) {
+            new_pos.x = -1;
+            sfSprite_move(obj[10]->sprite, new_pos);
+        } else
+            opt++;
+    }
+    if (opt == 40) {
+        if (obj[10]->pos.y < 1026) {
+            new_pos.y = 1;
+            sfSprite_move(obj[10]->sprite, new_pos);
+        } else {
+            opt++;
+            rpg->quest_status++;
+        }
+    }
+    return intro_go_auberge20(obj, opt, rpg, house);
+}
+
+static int intro_go_auberge18(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 38) {
+        if (obj[0]->pos.y > 1130) {
+            new_pos.y = -1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else {
+            rpg->quest_status++;
+            opt++;
+        }
+    }
+    return intro_go_auberge19(obj, opt, rpg, house);
+}
+
+static int intro_go_auberge17(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+{
+    sfVector2f new_pos = {0, 0};
+
+    if (opt == 36 && rpg->quest_status == 14) {
+        if (obj[0]->pos.y < 1150) {
+            new_pos.y = 1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    if (opt == 37) {
+        if (obj[0]->pos.x < 9408) {
+            new_pos.x = 1;
+            sfSprite_move(obj[0]->sprite, new_pos);
+            obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        } else
+            opt++;
+    }
+    return intro_go_auberge18(obj, opt, rpg, house);
+}
+
 static int intro_go_auberge16(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 {
     sfVector2f new_pos = {0, 0};
+
     if (opt == 33) {
         if (obj[0]->pos.y > 1000) {
             new_pos.y = -1;
@@ -39,13 +137,16 @@ static int intro_go_auberge16(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         } else
             opt++;
     }
-    if (opt == 34 || opt == 35) {
+    if ((opt == 34 || opt == 35) && rpg->quest_status == 13) {
+        new_pos.x = -1;
+        sfSprite_move(obj[10]->sprite, new_pos);
+        new_pos.x = 0;
         new_pos.y = 1;
         sfSprite_move(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         opt++;
     }
-    return opt;
+    return intro_go_auberge17(obj, opt, rpg, house);
 }
 
 static int intro_go_auberge15(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
@@ -471,7 +572,7 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
     if (rpg->quest_status == 0 || rpg->quest_status == 2) {
         vect = sfSprite_getPosition(obj[6]->sprite);
         vect.y -= 100;
-    } else if (rpg->quest_status >= 6 && rpg->quest_status <= 9) {
+    } else if ((rpg->quest_status >= 6 && rpg->quest_status <= 9)) {
         vect = sfSprite_getPosition(obj[8]->sprite);
         vect.y -= 50;
     } else {
@@ -479,9 +580,12 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
         vect.x += 50;
         vect.y -= 50;
     }
-    if (rpg->quest_status >= 11) {
-        vect = sfSprite_getPosition(obj[9]->sprite);
-        vect.y -= 50;
+    if (rpg->quest_status >= 11 && rpg->quest_status < 24) {
+        if (rpg->quest_status == 11)
+            vect = sfSprite_getPosition(obj[9]->sprite);
+        else
+            vect = sfSprite_getPosition(obj[8]->sprite);
+        vect.y -= 70;
         vect.x -= 200;
     }
     if (sfSprite_getPosition(obj[0]->sprite).y <= 1900)

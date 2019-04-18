@@ -154,7 +154,7 @@ typedef struct load_game_s {
 
 typedef struct menu_s {
     sfClock *clock;
-    bool menu_on;
+    int menu_on;
     sfSprite *menu_sprite[2];
     fields_t buttons[6];
     int highlight;

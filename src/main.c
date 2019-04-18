@@ -14,7 +14,7 @@
 int main(int ac, char **av)
 {
     rpg_t rpg;
-    obj_t **obj = malloc(sizeof(obj_t *) * 10);
+    obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * 6);
     sfVector2u windowSize;
 
@@ -36,7 +36,7 @@ int main(int ac, char **av)
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 11; i++)
         obj[i] = NULL;
 
     //check si les obj sont NULL -> malloc failed
