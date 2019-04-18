@@ -20,13 +20,13 @@ int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         opt++;
     }
     if (opt == 42 && rpg->quest_status == 24) {
-        //free_obj(5 a 10);
         sfSprite_setPosition(obj[0]->sprite, V2F(9410, 1250));
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-        //free_house(0);
-        for (int i = 5; i < 11; i++)
-            obj[i] = NULL; //a enlever
-        house[0] = NULL; //a enlever
+        free_house(house[0]);
+        for (int i = 5; i < 11; i++) {
+            free_obj(obj[i]);
+            obj[i] = NULL;
+        }
         house[0] = create_house(2, V2F(9200, 768));
         obj[2] = create_object("assets/stupid_nathan.png", (sfVector2f){obj[0]->pos.x - 50, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
         obj[3] = create_object("assets/perso_vert.png", (sfVector2f){obj[0]->pos.x - 100, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
