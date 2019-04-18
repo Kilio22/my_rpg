@@ -93,6 +93,8 @@ typedef struct obj_s {
     sfVector2f pos;
     sfVector2f oldPos;
     sfClock *clock;
+    sfRectangleShape *rectangle;
+    sfFloatRect rectangle_bound;
     int frame_animation;
     char_stats_t *stats;
 } obj_t;
@@ -103,6 +105,8 @@ typedef struct house_s {
     sfTexture *doorTexture;
     sfSprite *tab[5];
     sfIntRect door_rect;
+    sfRectangleShape *door_use_rectangle;
+    sfFloatRect door_use_rect_bound;
     sfBool display_house;
     int frame_animation;
     int type;

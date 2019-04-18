@@ -43,6 +43,9 @@ int main(int ac, char **av)
     obj[0] = create_object("assets/hero_hitbox.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     if (obj[0] == NULL)
         return (84);
+    obj[0]->rectangle = sfRectangleShape_create();
+    sfRectangleShape_setSize(obj[0]->rectangle, V2F(32, 16));
+    sfRectangleShape_setOrigin(obj[0]->rectangle, V2F(16, 8));
     obj[1] = create_object("assets/hero.png", (sfVector2f){10280, 2800}, (sfIntRect){0, 0, 32, 64}, sfFalse);
     if (obj[1] == NULL)
         return (84);
