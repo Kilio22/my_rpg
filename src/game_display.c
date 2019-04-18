@@ -62,7 +62,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     }
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
-    house_interaction(obj[HERO_HB], house, rpg, obj);
+    house_interaction(obj[HERO_HB], house, rpg);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
 }

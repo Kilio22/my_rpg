@@ -26,5 +26,6 @@
 ((layers->map[y][x] - MAP.gid[l]->gid) % MAP.gid[l]->offset)
 #define RECT_TOP 32 * \
 ((layers->map[y][x] - MAP.gid[l]->gid) / MAP.gid[l]->offset);
+#define RECT_BASE (sfIntRect){0, 0, 32, 16}
 
 #endif /* !MACROS_H_ */

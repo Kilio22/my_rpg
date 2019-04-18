@@ -33,7 +33,7 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
-intro_t create_intro(rpg_t *rpg, obj_t **obj)
+intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 {
     intro_t new;
     sfVector2f oui = sfRenderWindow_mapPixelToCoords(WIND.wind,
@@ -48,7 +48,7 @@ sfSprite_getPosition(obj[6]->sprite));
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
-    intro_t intro = create_intro(rpg, obj);
+    intro_t intro = create_struct_intro(rpg, obj);
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
@@ -64,7 +64,6 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
         if (MENU.menu_on == 2)
             return 1;
         intro_action(rpg, obj, house, &intro);
-        printf("ICI\n");
         intro_display(rpg, obj, house, &intro);
     }
     return 0;

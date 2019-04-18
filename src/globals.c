@@ -221,15 +221,23 @@ void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
     menu_close_window
 };
 
-/* int (* const intro[22])(obj_t **, int, rpg_t *, house_t **) = {
+int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
+    intro_control,
     intro_control,
     intro_ennemi_ctrl,
     intro_ennemi_two,
+    intro_ennemi_two,
+    intro_port,
+    intro_port,
     intro_port,
     intro_nathan,
+    intro_nathan,
+    intro_nathan_echelle,
     intro_nathan_echelle,
     intro_nathan_dialogue,
     intro_go_auberge,
+    intro_go_auberge,
+    intro_go_auberge2,
     intro_go_auberge2,
     intro_go_auberge3,
     intro_go_auberge4,
@@ -242,6 +250,19 @@ void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
     intro_go_auberge11,
     intro_go_auberge12,
     intro_go_auberge13,
+    intro_go_auberge13,
     intro_go_auberge14,
-    intro_go_auberge15
-}; */
+    intro_go_auberge14,
+    intro_go_auberge14,
+    intro_go_auberge15,
+    intro_go_auberge16,
+    intro_go_auberge16,
+    intro_go_auberge16,
+    intro_go_auberge17,
+    intro_go_auberge17,
+    intro_go_auberge18,
+    intro_go_auberge19,
+    intro_go_auberge19,
+    intro_go_auberge20,
+    intro_go_auberge20
+};

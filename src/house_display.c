@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void do_not_display_house(obj_t *obj, house_t *house, rpg_t *rpg, obj_t **objs)
+void do_not_display_house(obj_t *obj, house_t *house, rpg_t *rpg)
 {
     sfSprite_move(obj->sprite, (sfVector2f){0, 1});
     if (pp_intersect(obj->sprite, house->tab[HITBOX],
@@ -35,21 +35,21 @@ obj->image, house->image) == 0) {
     }
 }
 
-void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg, obj_t **objs)
+void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg)
 {
     if (house->display_house == 1) {
         display_house(obj, house, rpg);
     }
     else
-        do_not_display_house(obj, house, rpg, objs);
+        do_not_display_house(obj, house, rpg);
 }
 
-void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg, obj_t **objs)
+void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++)
         if (pp_intersect(obj->sprite, house[i]->tab[DOOR], obj->image,
 house[i]->door_image) == 1 && CONTROLS.bools[KEYINTER] == 1)
-            check_house_display(obj, house[i], rpg, objs);
+            check_house_display(obj, house[i], rpg);
 }
 
 void house_display(rpg_t *rpg, house_t **house)
