@@ -22,9 +22,8 @@ create_map(rpg) == -1) {
         rpg->error_code = 84;
         return 1;
     }
-    rpg->quest_status = 0;
     GAME.auberge = false;
-    if (GAME.objectiv == 0) {
+    if (rpg->quest_status == 0) {
         if (intro_game(rpg, obj, house) == 0)
             return 1;
     }
