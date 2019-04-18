@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-int main(int ac, char **av)
+int main(void)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
@@ -20,16 +20,7 @@ int main(int ac, char **av)
 
     if (obj == NULL || house == NULL)
         return (84);
-    rpg.debug = 0;
     rpg.error_code = 0;
-    if (ac == 2) {
-        if (my_strcmp(av[1], "-d") == 0)
-            rpg.debug = 1;
-        else
-            return (84);
-    }
-    if (ac > 2)
-        return 84;
     rpg.wind.wind = create_window("Nuck Fathan", 10);
     windowSize = sfRenderWindow_getSize(rpg.wind.wind);
     rpg.wind.view = sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});

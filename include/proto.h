@@ -85,7 +85,6 @@ void do_not_display_house(obj_t *obj, house_t *house, rpg_t *rpg);
 
 //init.c
 int init_save(obj_t **obj, rpg_t *rpg);
-int init_ctrls(rpg_t *rpg);
 
 //intro_fcts1.c
 void check_house_display_intro(obj_t **obj, house_t *house,

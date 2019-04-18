@@ -28,12 +28,7 @@ int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             obj[i] = NULL;
         }
         house[0] = create_house(2, V2F(9200, 768));
-        obj[2] = create_object("assets/stupid_nathan.png", (sfVector2f){obj[0]->pos.x - 50, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-        obj[3] = create_object("assets/perso_vert.png", (sfVector2f){obj[0]->pos.x - 100, obj[0]->pos.y}, (sfIntRect){0, 0, 32, 64}, sfFalse);
-        sfSprite_setOrigin(obj[2]->sprite, (sfVector2f){16, 60});
-        sfSprite_setOrigin(obj[3]->sprite, (sfVector2f){16, 60});
-        GAME.follower = init_list(obj[0]->pos.x - 50, obj[0]->pos.y);
-        GAME.follower2 = init_list(obj[0]->pos.x - 100, obj[0]->pos.y);
+        game_create(rpg, obj, house);
     }
     if (rpg->quest_status == 25)
         MENU.menu_on = 2;
