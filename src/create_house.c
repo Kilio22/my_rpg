@@ -37,8 +37,8 @@ void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
     house->door_use_rectangle = sfRectangleShape_create();
     house->door_rect = rect;
     house->frame_animation = 0;
-    sfRectangleShape_setSize(house->door_use_rectangle, V2F(2, 14));
-    sfRectangleShape_setOrigin(house->door_use_rectangle, V2F(1, 13));
+    sfRectangleShape_setSize(house->door_use_rectangle, V2F(1, 16));
+    sfRectangleShape_setOrigin(house->door_use_rectangle, V2F(0.5, 14));
     sfRectangleShape_setPosition(house->door_use_rectangle,
     V2F(pos.x + rect.width / 2, pos.y + rect.height));
     house->door_use_rect_bound = sfRectangleShape_getGlobalBounds(house->door_use_rectangle);

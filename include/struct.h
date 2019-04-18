@@ -49,7 +49,8 @@ enum bools {
     ZOOM,
     DEZOOM,
     KEYINTER,
-    KEYY
+    KEYY,
+    EVENTLOCK
 };
 
 enum stats {
