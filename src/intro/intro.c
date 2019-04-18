@@ -21,7 +21,7 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[9] == NULL && house[i]->display_house == 0) {
             obj[9] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
-            obj[10] = create_object("assets/hero.png", (sfVector2f){9460, 912}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+            obj[10] = create_object("assets/perso_vert.png", (sfVector2f){9460, 912}, (sfIntRect){0, 0, 32, 64}, sfTrue);
         }
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
