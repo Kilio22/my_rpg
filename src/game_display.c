@@ -76,7 +76,7 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
-        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
+        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event) && rpg->controls.bools[EVENTLOCK] == 0)
             event_management(rpg, obj);
         if (MENU.menu_on == 0) {
             MENU.menu_on = 1;

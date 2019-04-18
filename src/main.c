@@ -60,10 +60,10 @@ int main(void)
 
     rpg.game.nb_save = 0;
     rpg.game.language = 0;
-    rpg.controls.bools = malloc(sizeof(sfBool) * 9);
+    rpg.controls.bools = malloc(sizeof(sfBool) * 10);
     if (rpg.controls.bools == NULL)
         return (84);
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < 10; i++)
         rpg.controls.bools[i] = 0;
     create_music(&rpg);
     init_menu(&rpg, obj, house);

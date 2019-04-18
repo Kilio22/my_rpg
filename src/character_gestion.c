@@ -50,7 +50,7 @@ void apply_controls_character(rpg_t *rpg, obj_t **obj, house_t **house)
         sfSprite_move(obj[0]->sprite, newPos);
     }
     obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-    sfRectangleShape_setPosition(obj[0]->rectangle, obj[0]->pos);
+    sfRectangleShape_setPosition(obj[0]->rectangle, sfSprite_getPosition(obj[0]->sprite));
     obj[0]->rectangle_bound = sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
 }
 

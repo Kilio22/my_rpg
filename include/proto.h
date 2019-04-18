@@ -81,7 +81,7 @@ int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //house_display.c
 void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg);
-void do_not_display_house(obj_t *obj, house_t *house, rpg_t *rpg);
+void exit_house(obj_t *obj, house_t *house, rpg_t *rpg);
 
 //init.c
 int init_save(obj_t **obj, rpg_t *rpg);
