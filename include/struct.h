@@ -71,6 +71,8 @@ enum houses {
 typedef struct intro_s {
     sfText *text;
     sfRectangleShape *fondu;
+    sfSprite *sprite;
+    int opt;
 } intro_t;
 
 typedef struct char_stats_s {

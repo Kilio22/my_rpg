@@ -20,12 +20,14 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
     print_map2(MAP.sprite, obj, rpg->wind);
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[9] == NULL && house[i]->display_house == 0) {
-            obj[9] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
+            obj[9] = create_object("assets/Aubergiste.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
             obj[10] = create_object("assets/perso_vert.png", (sfVector2f){9460, 912}, (sfIntRect){0, 0, 32, 64}, sfTrue);
         }
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
     }
+    if (my_strcmp(sfText_getString(i->text), " ") != 0 && i->opt >= 3 && rpg->quest_status < 24)
+        sfRenderWindow_drawSprite(WIND.wind, i->sprite, NULL);
     if (rpg->quest_status != 24)
         sfRenderWindow_drawText(WIND.wind, i->text, NULL);
     update_fondu_rect(i, rpg);
@@ -38,10 +40,13 @@ intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
     intro_t new;
     sfVector2f oui = sfRenderWindow_mapPixelToCoords(WIND.wind,
 (sfVector2i){0, 0}, WIND.view);
+    sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
     new.text = create_text(MENU_FONT, "", 13,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(oui, (sfVector2f){1280, 720});
+    new.sprite = sfSprite_create();
+    sfSprite_setTexture(new.sprite, text, sfTrue);
     return new;
 }
 

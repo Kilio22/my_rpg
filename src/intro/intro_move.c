@@ -31,45 +31,50 @@ rpg_t *rpg, int *opt)
         exit_house(obj[8], house, rpg);
 }
 
-void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house)
+void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros)
 {
     static int opt = 0;
 
     opt = intro[opt](obj, opt, rpg, house);
+    intros->opt = opt;
 }
 
 void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
 {
     sfVector2f vect;
 
-    if (rpg->quest_status == 0 || rpg->quest_status == 2) {
-        vect = sfSprite_getPosition(obj[6]->sprite);
-        vect.y -= 100;
-    } else if ((rpg->quest_status >= 6 && rpg->quest_status <= 9)) {
-        vect = sfSprite_getPosition(obj[8]->sprite);
-        vect.y -= 50;
-    } else {
-        vect = sfSprite_getPosition(obj[0]->sprite);
-        vect.x += 50;
-        vect.y -= 50;
-    }
-    if (rpg->quest_status >= 11 && rpg->quest_status < 24) {
-        if (rpg->quest_status == 11)
-            vect = sfSprite_getPosition(obj[9]->sprite);
-        else
-            vect = sfSprite_getPosition(obj[8]->sprite);
+    vect = sfSprite_getPosition(obj[0]->sprite);
+    vect.x += 115;
+    vect.y -= 50;
+    if (rpg->quest_status >= 12 && rpg->quest_status < 24) {
+        vect = sfSprite_getPosition(obj[9]->sprite);
         vect.y -= 70;
-        vect.x -= 200;
+        vect.x -= 160;
+    }
+    if (rpg->quest_status == 11 && rpg->quest_status < 24) {
+        vect = sfSprite_getPosition(obj[9]->sprite);
+        vect.y -= 150;
+        vect.x -= 160;
     }
     if (sfSprite_getPosition(obj[0]->sprite).y <= 1900)
         update_intro_text(rpg, 1, intro);
     sfText_setPosition(intro->text, vect);
+    if (rpg->quest_status >= 11 && rpg->quest_status < 24) {
+        vect.y -= 80;
+        vect.x -= 50;
+    } else {
+        vect.x -= 45;
+        vect.y -= 50;
+    }
+    if (rpg->quest_status == 11)
+        vect.y -= 40;
+    sfSprite_setPosition(intro->sprite, vect);
 }
 
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro)
 {
     if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        intro_fcts(rpg, obj, house);
+        intro_fcts(rpg, obj, house, intro);
         all_character_animation(obj);
     }
     sfSprite_setPosition(obj[1]->sprite,

@@ -8,9 +8,9 @@
 #include "rpg.h"
 
 const char *scrpits[] = {
-    "Hey les gars, regardez moi ca, un voyageur\n    \
+    "Hey les gars, regardez moi ca, un voyageur\n\
         Donne nous ton argent !",
-    "Je viens d'arriver, je refuse de vous le donner !",
+    "Je viens d'arriver, \nje refuse de vous le donner !",
     "Tres bien, dans ce cas la...",
     "Ouahhhh",
     "Que s'est il passe ?",
@@ -20,8 +20,8 @@ const char *scrpits[] = {
     "Vous etes blesse ? Venez avec moi !",
     "Je vais vous amener a l'auberge.",
     " ",
-    "Bienvenue, jeune voyageur !\n Vous me semblez en mauvais etat,\n\
-je vais vous offrir \nune chambre pour vous reposer.",
+    "Bienvenue, jeune voyageur !\nVous me semblez en mauvais etat,\n\
+je vais vous offrir\nune chambre pour vous reposer.",
     " ",
     " ",
     " ",
