@@ -15,11 +15,10 @@ inventory_t *inventory_create(sfRenderWindow *window)
         return NULL;
     new->item_dragging = NULL;
     new->window = window;
-    new->item_pos = NOTHING;
     for (int i = 0; i < INVENTORY_SIZE_X * INVENTORY_SIZE_Y; i++)
         new->stock[i] = NULL;
     for (int i = 0; i < 6; i++)
-        new->stuff[i] = NULL;
+        new->stuff[0][i] = NULL;
     return (new);
 }
 
