@@ -57,6 +57,10 @@ struct inventory {
     item_t *stuff[3][6];
     item_t *item_dragging;
     int state;
+
+    sfSprite *grid;
+    sfSprite *inv_widget[3];
+
     sfRenderWindow *window;
 };
 typedef struct inventory inventory_t;
@@ -75,9 +79,13 @@ void inventory_compute(inventory_t *inv);
 void inventory_draw(inventory_t *inv);
 void inventory_event(inventory_t *inv);
 
+// inventory_draw.c
+void inventory_draw_background(inventory_t *inv);
+void inventory_draw_debug(inventory_t *inv);
+
 static const sfVector2f stuff_grid[6] = {
-{130, 100}, {210, 100},
-{130, 190}, {210, 190},
-{130, 270}, {210, 270}};
+{70, 234}, {145, 88},
+{145, 162}, {145, 234},
+{145, 307}, {218, 234}};
 
 #endif /* !INVENTORY_H_ */

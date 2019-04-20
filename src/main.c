@@ -78,12 +78,12 @@
     return (0);
 }*/
 
-/*#include "inventory.h"
+#include "inventory.h"
 #include "my_ini.h"
 
 sfRenderWindow *init_window()
 {
-    sfVideoMode mode = {1280, 720, 32};
+    sfVideoMode mode = {1200, 800, 32};
     sfRenderWindow *window;
 
     window = sfRenderWindow_create(mode, "debug", sfClose, NULL);
@@ -95,8 +95,6 @@ int main()
 {
     ini_file_t *file = ini_file_create_from_file("assets_data.ini");
     inventory_t *inv = inventory_create(init_window());
-    item_t *item = item_create(0, file);
-    item_t *item2 = item_create(1, file);
 
     while (sfRenderWindow_isOpen(inv->window)) {
         sfEvent event;
@@ -104,45 +102,10 @@ int main()
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(inv->window);
         }
+        printf("x: %d y: %d\n", sfMouse_getPositionRenderWindow(inv->window).x, sfMouse_getPositionRenderWindow(inv->window).y);
         sfRenderWindow_clear(inv->window, sfBlack);
-        inventory_compute(inv);
+        inventory_draw(inv);
         sfRenderWindow_display(inv->window);
-    }
-    return 0;
-}*/
-
-sfRenderWindow *init_window()
-{
-    sfVideoMode mode = {1280, 720, 32};
-    sfRenderWindow *window;
-
-    window = sfRenderWindow_create(mode, "debug", sfClose, NULL);
-    sfRenderWindow_setFramerateLimit(window, 60);
-    return (window);
-}
-
-int main()
-{
-    sfTexture *t1 = sfTexture_createFromFile("assets/sword.png", NULL);
-    sfTexture *t2 = sfTexture_createFromFile("assets/eng.png", NULL);
-
-    sfRenderWindow *window = init_window();
-    dragndrop_t *a = dragndrop_create(t1, t1, t1);
-    dragndrop_t *b = dragndrop_create(t2, t2, t2);
-    b->pos.x = 300;
-
-    while (sfRenderWindow_isOpen(window)) {
-        sfEvent event;
-        while (sfRenderWindow_pollEvent(window, &event)) {
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(window);
-        }
-        dragndrop_event(a, window);
-        dragndrop_event(b, window);
-        sfRenderWindow_clear(window, sfBlack);
-        sfRenderWindow_drawDragndrop(window, a);
-        sfRenderWindow_drawDragndrop(window, b);
-        sfRenderWindow_display(window);
     }
     return 0;
 }
