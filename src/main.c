@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-int main(void)
+/*int main(void)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
@@ -75,9 +75,9 @@ int main(void)
     for (int i = 0; i < 11; i++)
         free_obj(obj[i]);
     return (0);
-}
+}*/
 
-/*#include "inventory.h"
+#include "inventory.h"
 #include "my_ini.h"
 
 sfRenderWindow *init_window()
@@ -110,4 +110,4 @@ int main()
         sfRenderWindow_display(inv->window);
     }
     return 0;
-}*/
+}
