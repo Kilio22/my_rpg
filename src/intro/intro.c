@@ -42,11 +42,12 @@ intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 (sfVector2i){0, 0}, WIND.view);
     sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
-    new.text = create_text(MENU_FONT, "", 13,
+    new.text = create_text(MENU_FONT, " ", 16,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(oui, (sfVector2f){1280, 720});
     new.sprite = sfSprite_create();
     sfSprite_setTexture(new.sprite, text, sfTrue);
+    sfSprite_setScale(new.sprite, V2F(0.6, 0.6));
     return new;
 }
 

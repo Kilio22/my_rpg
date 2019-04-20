@@ -41,33 +41,16 @@ void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros)
 
 void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
 {
-    sfVector2f vect;
+    sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
+(sfVector2i){0, 558}, WIND.view);
 
-    vect = sfSprite_getPosition(obj[0]->sprite);
-    vect.x += 115;
-    vect.y -= 50;
-    if (rpg->quest_status >= 12 && rpg->quest_status < 24) {
-        vect = sfSprite_getPosition(obj[9]->sprite);
-        vect.y -= 70;
-        vect.x -= 160;
-    }
-    if (rpg->quest_status == 11 && rpg->quest_status < 24) {
-        vect = sfSprite_getPosition(obj[9]->sprite);
-        vect.y -= 150;
-        vect.x -= 160;
-    }
+    vect.y += 15;
+    vect.x += 80;
     if (sfSprite_getPosition(obj[0]->sprite).y <= 1900)
         update_intro_text(rpg, 1, intro);
     sfText_setPosition(intro->text, vect);
-    if (rpg->quest_status >= 11 && rpg->quest_status < 24) {
-        vect.y -= 80;
-        vect.x -= 50;
-    } else {
-        vect.x -= 45;
-        vect.y -= 50;
-    }
-    if (rpg->quest_status == 11)
-        vect.y -= 40;
+    vect.y -= 15;
+    vect.x -= 20;
     sfSprite_setPosition(intro->sprite, vect);
 }
 
