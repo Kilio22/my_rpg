@@ -95,7 +95,9 @@ int main()
 {
     ini_file_t *file = ini_file_create_from_file("assets_data.ini");
     inventory_t *inv = inventory_create(init_window());
+    item_t *a = item_create(0, file);
 
+    inventory_add_item(inv, a);
     while (sfRenderWindow_isOpen(inv->window)) {
         sfEvent event;
         while (sfRenderWindow_pollEvent(inv->window, &event)) {

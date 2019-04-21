@@ -39,3 +39,20 @@ void inventory_draw_debug(inventory_t *inv)
         }
     }
 }
+
+void inventory_draw_stock(inventory_t *inv)
+{
+    int x;
+    int y;
+    dragndrop_t *current;
+
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
+        if (!inv->stock[i])
+            continue;
+        current = inv->stock[i]->display;
+        x = i % INVENTORY_SIZE_X;
+        y = i / INVENTORY_SIZE_X;
+        current->pos = (sfVector2f){477 + x * 73, 46 + y * 73};
+        sfRenderWindow_drawDragndrop(inv->window, current);
+    }
+}

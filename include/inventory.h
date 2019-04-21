@@ -81,7 +81,12 @@ void inventory_event(inventory_t *inv);
 
 // inventory_draw.c
 void inventory_draw_background(inventory_t *inv);
+void inventory_draw_stock(inventory_t *inv);
 void inventory_draw_debug(inventory_t *inv);
+
+// inventory_data.c
+int inventory_get_empty_case(inventory_t *inv);
+void inventory_add_item(inventory_t *inv, item_t *item);
 
 static const sfVector2f stuff_grid[6] = {
 {70, 234}, {145, 88},
