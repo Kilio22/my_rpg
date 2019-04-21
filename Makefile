@@ -102,6 +102,9 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		inventory/inventory.c \
 		inventory/inventory_draw.c \
 		inventory/inventory_data.c \
+		inventory/inventory_event.c \
+		inventory/inventory_common.c \
+		inventory/inventory_compute.c \
 		game_create.c
 
 SRC_LIB	=	inimy \

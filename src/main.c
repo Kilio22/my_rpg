@@ -104,10 +104,10 @@ int main()
             if (event.type == sfEvtClosed)
                 sfRenderWindow_close(inv->window);
         }
-        printf("x: %d y: %d\n", sfMouse_getPositionRenderWindow(inv->window).x, sfMouse_getPositionRenderWindow(inv->window).y);
+        inventory_event(inv);
         sfRenderWindow_clear(inv->window, sfBlack);
         inventory_draw(inv);
         sfRenderWindow_display(inv->window);
     }
-    return 0;
+    return (0);
 }
