@@ -7,19 +7,6 @@
 
 #include "rpg.h"
 
-char *my_ftoa(float value)
-{
-    int ent = value;
-    int decimals = value * 100 - (ent * 100);
-    char *string = my_itoa(ent, "");
-
-    if (decimals != 0) {
-        string = my_strncat(string, ".", -1);
-        string = my_strncat(string, my_itoa(decimals, ""), -1);
-    }
-    return (string);
-}
-
 static void debug_txt(rpg_t *rpg, obj_t *obj)
 {
     char *txt = my_strncat("", my_ftoa(obj->pos.x), -1);
@@ -31,6 +18,22 @@ static void debug_txt(rpg_t *rpg, obj_t *obj)
     sfRenderWindow_drawText(WIND.wind, rpg->debug_txt, NULL);
 }
 
+static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
+{
+    for (int i = 0; house[i] != NULL; i++) {
+        if (house[i]->type == 2 && obj[5] == NULL
+&& house[i]->display_house == 0)
+            obj[5] = create_object(obj_path[5], AUB_POS, RECT_OBJ, sfTrue);
+        if (house[i]->type == 2 && obj[5] != NULL
+&& house[i]->display_house == 1) {
+            free_obj(obj[5]);
+            obj[5] = NULL;
+        }
+        if (house[i]->display_house == 1)
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+    }
+}
+
 static void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
@@ -40,16 +43,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
-    for (int i = 0; house[i] != NULL; i++) {
-        if (house[i]->type == 2 && obj[5] == NULL && house[i]->display_house == 0)
-            obj[5] = create_object("assets/Aubergiste.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
-        if (house[i]->type == 2 && obj[5] != NULL && house[i]->display_house == 1) {
-            free_obj(obj[5]);
-            obj[5] = NULL;
-        }
-        if (house[i]->display_house == 1)
-            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
-    }
+    check_pnj_display(house, obj, rpg);
     if (rpg->debug == 1)
         debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);
@@ -76,7 +70,8 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
-        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event) && rpg->controls.bools[EVENTLOCK] == 0)
+        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event)
+&& rpg->controls.bools[EVENTLOCK] == 0)
             event_management(rpg, obj);
         if (MENU.menu_on == 0) {
             MENU.menu_on = 1;
@@ -85,6 +80,7 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             //free_save(obj, rpg);
             free_map(MAP);
+            free_objs(obj);
             return;
         }
         game_action(rpg, obj, house);

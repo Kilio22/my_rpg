@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-static int loop_ctrls(int fd, rpg_t *rpg)
+/* static int loop_ctrls(int fd, rpg_t *rpg)
 {
     char *buff = NULL;
     char **args = NULL;
@@ -31,21 +31,23 @@ static int loop_ctrls(int fd, rpg_t *rpg)
         CONTROLS.keys[i] = my_getnbr(args[1]);
     }
     return 0;
-}
+} */
 
-static int init_controls(rpg_t *rpg, int fd)
+int init_controls(rpg_t *rpg)
 {
     CONTROLS.keys = malloc(sizeof(int) * 6);
     if (CONTROLS.keys == NULL) {
         return -1;
     }
-    if (loop_ctrls(fd, rpg) == -1) {
-        return -1;
-    }
+    CONTROLS.keys[UP] = sfKeyZ;
+    CONTROLS.keys[LEFT] = sfKeyQ;
+    CONTROLS.keys[DOWN] = sfKeyS;
+    CONTROLS.keys[RIGHT] = sfKeyD;
+    CONTROLS.keys[INTERACT] = sfKeyE;
     return 0;
 }
 
-static int init_stats(obj_t *obj, int fd)
+/* static int init_stats(obj_t *obj, int fd)
 {
     char *buff;
     char **args;
@@ -68,21 +70,21 @@ static int init_stats(obj_t *obj, int fd)
         obj->stats->stats[i] = my_getnbr(args[1]);
     }
     return 0;
-}
+} */
 
 int init_save(obj_t **obj, rpg_t *rpg)
 {
     int fd = open(save_path[GAME.nb_save], O_RDONLY);
 
-    if (init_controls(rpg, fd) == -1) {
+    if (init_controls(rpg) == -1) {
         rpg->error_code = 84;
         return -1;
     }
-    if (init_stats(obj[1], fd) == -1) {
+    /* if (init_stats(obj[1], fd) == -1) {
         rpg->error_code = 84;
         return -1;
-    }
-    while (get_next_line(fd) != NULL);
+    } */
+    //while (get_next_line(fd) != NULL);
     close(fd);
     return 0;
 }

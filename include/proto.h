@@ -47,7 +47,7 @@ void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
 int create_houses(house_t **house);
 
 //create_obj.c
-obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
+obj_t *create_object(const char *Path, sfVector2f pos, sfIntRect intrect,
 sfBool centered);
 
 //destroy_menu.c
@@ -66,6 +66,7 @@ void free_map(map_t map);
 void free_obj(obj_t *obj);
 void free_array(char **array);
 void free_house(house_t *house);
+void free_objs(obj_t **obj);
 
 //game_display.c
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -188,6 +189,7 @@ int gid_len(first_gid_t **gid);
 int my_tab_vector_len(sfVector2f **tab);
 sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
+char *my_ftoa(float value);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);

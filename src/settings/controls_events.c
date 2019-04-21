@@ -9,7 +9,7 @@
 
 static void check_already_ctrl(rpg_t *rpg, int code)
 {
-    for (int i = 0; i < 6; i++) {
+    for (int i = 0; i < NB_KEYS; i++) {
         if (CONTROLS.keys[i] == code) {
             CONTROLS.keys[i] = -1;
             sfText_setString(CONTROLS.text[i].text, "N/A");
@@ -19,7 +19,7 @@ static void check_already_ctrl(rpg_t *rpg, int code)
 
 static void manage_move_event_ctrl(rpg_t *rpg, int *high)
 {
-    int i = check_mousepos_intersect(rpg, CONTROLS.text, 6);
+    int i = check_mousepos_intersect(rpg, CONTROLS.text, NB_KEYS);
 
     WIND.mouse_pos.x = WIND.event.mouseMove.x;
     WIND.mouse_pos.y = WIND.event.mouseMove.y;
@@ -46,7 +46,7 @@ static void manage_mouse_click_ctrl(rpg_t *rpg, int code, int *high)
 {
     if (code != 0)
         return;
-    if (check_mousepos_intersect(rpg, CONTROLS.text, 6) >= 0
+    if (check_mousepos_intersect(rpg, CONTROLS.text, NB_KEYS) >= 0
 && CONTROLS.wait_key == -1) {
         sfText_setString(CONTROLS.text[*high].text, "PRESS ANY KEY");
         CONTROLS.wait_key = *high;

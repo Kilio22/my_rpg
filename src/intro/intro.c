@@ -7,6 +7,20 @@
 
 #include "rpg.h"
 
+static void check_pnj_intro(obj_t **obj, house_t **house, rpg_t *rpg)
+{
+    for (int i = 0; house[i] != NULL; i++) {
+        if (house[i]->type == 2 && obj[9] == NULL && !house[i]->display_house) {
+            obj[9] = create_object(obj_path[5],
+(sfVector2f){9246, 1120}, RECT_OBJ, sfTrue);
+            obj[10] = create_object(obj_path[6],
+(sfVector2f){9460, 912}, RECT_OBJ, sfTrue);
+        }
+        if (house[i]->display_house == 1)
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
+    }
+}
+
 static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
 {
     if (MENU.menu_on == 2)
@@ -18,15 +32,9 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
-    for (int i = 0; house[i] != NULL; i++) {
-        if (house[i]->type == 2 && obj[9] == NULL && house[i]->display_house == 0) {
-            obj[9] = create_object("assets/Aubergiste.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
-            obj[10] = create_object("assets/perso_vert.png", (sfVector2f){9460, 912}, (sfIntRect){0, 0, 32, 64}, sfTrue);
-        }
-        if (house[i]->display_house == 1)
-            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
-    }
-    if (my_strcmp(sfText_getString(i->text), " ") != 0 && i->opt >= 3 && rpg->quest_status < 24)
+    check_pnj_intro(obj, house, rpg);
+    if (my_strcmp(sfText_getString(i->text), " ")
+&& i->opt >= 3 && rpg->quest_status < 24)
         sfRenderWindow_drawSprite(WIND.wind, i->sprite, NULL);
     if (rpg->quest_status != 24)
         sfRenderWindow_drawText(WIND.wind, i->text, NULL);

@@ -41,7 +41,8 @@ void door_creation(house_t *house, char *path, sfVector2f pos, sfIntRect rect)
     sfRectangleShape_setOrigin(house->door_use_rectangle, V2F(0.5, 14));
     sfRectangleShape_setPosition(house->door_use_rectangle,
     V2F(pos.x + rect.width / 2, pos.y + rect.height));
-    house->door_use_rect_bound = sfRectangleShape_getGlobalBounds(house->door_use_rectangle);
+    house->door_use_rect_bound =
+sfRectangleShape_getGlobalBounds(house->door_use_rectangle);
     sfSprite_setTexture(house->tab[DOOR], house->doorTexture, sfTrue);
     sfSprite_setPosition(house->tab[DOOR], pos);
     sfSprite_setTextureRect(house->tab[DOOR], rect);

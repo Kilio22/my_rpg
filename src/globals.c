@@ -135,6 +135,16 @@ const char *menu_desc[6] = {
     "Go back to the deskdop"
 };
 
+const char *obj_path[] = {
+    "assets/hero_hitbox.png",
+    "assets/hero.png",
+    "assets/map_hitbox.png",
+    "assets/perso_blanc.png",
+    "assets/stupid_nathan.png",
+    "assets/Aubergiste.png",
+    "assets/perso_vert.png"
+};
+
 const sfVector2f menu_pos[6] = {
     {110, 60},
     {100, 160},

@@ -25,12 +25,11 @@ void my_prompt_check_focus(my_prompt_t *prompt, sfRenderWindow *window)
         if (my_prompt_is_hover(prompt, window))
             prompt->focused = 1;
         else
-            prompt->focused = 0;        
+            prompt->focused = 0;
     }
     if (!my_prompt_enter_pressed(prompt))
         prompt->return_released = 1;
 }
-
 
 void my_prompt_check_input(my_prompt_t *prompt, sfEvent event)
 {

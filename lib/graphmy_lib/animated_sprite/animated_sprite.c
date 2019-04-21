@@ -7,7 +7,7 @@
 
 #include "my_animated_sprite.h"
 
-animated_sprite_t *animated_sprite_create(sfTexture const *texture, int nb, 
+animated_sprite_t *animated_sprite_create(sfTexture const *texture, int nb,
                                 sfIntRect const *coords, float timer_anim)
 {
     animated_sprite_t *animated = malloc(sizeof(animated_sprite_t));

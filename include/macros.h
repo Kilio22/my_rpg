@@ -27,5 +27,8 @@
 #define RECT_TOP 32 * \
 ((layers->map[y][x] - MAP.gid[l]->gid) / MAP.gid[l]->offset);
 #define RECT_BASE (sfIntRect){0, 0, 32, 16}
+#define RECT_OBJ (sfIntRect){0, 0, 32, 64}
+#define NB_KEYS 5
+#define AUB_POS (sfVector2f){9246, 1120}
 
 #endif /* !MACROS_H_ */

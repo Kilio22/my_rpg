@@ -28,10 +28,10 @@ je vais vous offrir une chambre pour vous reposer.",
     "Salut, tu as bien dormi ?\nJe ne t'ai pas demande hier,\nd'ou viens tu ?",
     "Je..\nJe ne me souviens plus..",
     "Comment ca tu ne te rappelles plus ?",
-    "Je me suis fait attaquer par 3 hommes,\nje n'ai plus de memoire..",
+    "Je me suis fait attaquer par 3 hommes, \nje n'ai plus de memoire..",
     "Quoi ? Des hommes t'ont attaque ?\n Et tu ne te souviens plus de rien ?",
-    "C'est injuste ! Il faut faire quelque chose pour que tu retrouves \
-    la memoire !\nAllons voir si on les trouves !",
+    "C'est injuste ! Il faut faire quelque chose pour que tu retrouves"
+    "la memoire !\nAllons voir si on les trouves !",
     "Jacques, viens avec nous !",
     " ",
     " "

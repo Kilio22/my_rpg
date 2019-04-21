@@ -15,6 +15,26 @@ static void mouse_wheel_management(rpg_t *rpg)
         CONTROLS.bools[DEZOOM] = 1;
 }
 
+static void check_updates(rpg_t *rpg, intro_t *intro, int *alpha)
+{
+    if ((rpg->quest_status == 2 || rpg->quest_status == 12
+|| rpg->quest_status == 23) && clock_text_intro(0) == 1) {
+        sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, *alpha});
+        if (*alpha < 255)
+            *alpha += 5;
+        else
+            rpg->quest_status++;
+    }
+    if ((rpg->quest_status == 3 || rpg->quest_status == 13
+|| rpg->quest_status == 24) && clock_text_intro(0) == 1) {
+        sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, *alpha});
+        if (*alpha > 0)
+            *alpha -= 5;
+        else
+            rpg->quest_status++;
+    }
+}
+
 void update_fondu_rect(intro_t *intro, rpg_t *rpg)
 {
     static int alpha = 0;
@@ -22,20 +42,7 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg)
 (sfVector2i){0, 0}, WIND.view);
 
     sfRectangleShape_setPosition(intro->fondu, oui);
-    if ((rpg->quest_status == 2 || rpg->quest_status == 12 || rpg->quest_status == 23) && clock_text_intro(0) == 1) {
-        sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});
-        if (alpha < 255)
-            alpha += 5;
-        else
-            rpg->quest_status++;
-    }
-    if ((rpg->quest_status == 3 || rpg->quest_status == 13 || rpg->quest_status == 24) && clock_text_intro(0) == 1) {
-        sfRectangleShape_setFillColor(intro->fondu, (sfColor){0, 0, 0, alpha});
-        if (alpha > 0)
-            alpha -= 5;
-        else
-            rpg->quest_status++;
-    }
+    check_updates(rpg, intro, &alpha);
     sfRenderWindow_drawRectangleShape(WIND.wind, intro->fondu, NULL);
 }
 

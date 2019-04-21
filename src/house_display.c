@@ -12,7 +12,8 @@ void exit_house(obj_t *obj, house_t *house, rpg_t *rpg)
     sfSprite_move(obj->sprite, (sfVector2f){0, 1});
     sfRectangleShape_move(obj->rectangle, (sfVector2f){0, 1});
     obj->rectangle_bound = sfRectangleShape_getGlobalBounds(obj->rectangle);
-    if (sfFloatRect_intersects(&obj->rectangle_bound, &house->door_use_rect_bound, NULL) == 0) {
+    if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house->door_use_rect_bound, NULL) == 0) {
         house->display_house = 1;
         CONTROLS.bools[KEYINTER] = 0;
         rpg->controls.bools[EVENTLOCK] = 0;
@@ -30,7 +31,8 @@ void enter_house(obj_t *obj, house_t *house, rpg_t *rpg)
         sfSprite_move(obj->sprite, (sfVector2f){0, -1});
         sfRectangleShape_move(obj->rectangle, (sfVector2f){0, -1});
         obj->rectangle_bound = sfRectangleShape_getGlobalBounds(obj->rectangle);
-        if (sfFloatRect_intersects(&obj->rectangle_bound, &house->door_use_rect_bound, NULL) == 0) {
+        if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house->door_use_rect_bound, NULL) == 0) {
             house->door_rect.left = 0;
             house->display_house = 0;
             CONTROLS.bools[KEYINTER] = 0;
