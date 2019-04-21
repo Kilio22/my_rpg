@@ -95,6 +95,7 @@ void inventory_event_stuff(inventory_t *inv);
 
 // inventory_compute.c
 void inventory_compute_stock_released(inventory_t *inv);
+void inventory_compute_stuff_released(inventory_t *inv);
 
 // inventory_common.c
 int inventory_get_id_from_coord(sfRenderWindow *window);

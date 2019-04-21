@@ -47,3 +47,30 @@ void inventory_compute_stock_released(inventory_t *inv)
         do_dop_stock(inv->stock[i], inv, i);
     }
 }
+
+static void do_op_stuff(item_t *item, inventory_t *inv, int from)
+{
+    int id = inventory_get_id_from_coord(inv->window);
+
+    dragndrop_getpendingDrag(item->display);
+    if (id == -1)
+        return;
+    if (inv->stock[id] != NULL)
+        return;
+    inv->stock[id] = inv->stuff[inv->state][from];
+    inv->stuff[inv->state][from] = NULL;
+}
+
+void inventory_compute_stuff_released(inventory_t *inv)
+{
+    dragndrop_t *current;
+
+    for (int i = 0; i < 6; i++) {
+        if (!inv->stuff[inv->state][i])
+            continue;
+        current = inv->stuff[inv->state][i]->display;
+        if (!dragndrop_ispendingDrag(current))
+            continue;
+        do_op_stuff(inv->stuff[inv->state][i], inv, i);
+    }
+}

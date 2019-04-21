@@ -24,4 +24,5 @@ void inventory_event(inventory_t *inv)
 void inventory_compute(inventory_t *inv)
 {
     inventory_compute_stock_released(inv);
+    inventory_compute_stuff_released(inv);
 }
