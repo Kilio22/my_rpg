@@ -57,7 +57,7 @@ struct inventory {
     item_t *stuff[3][6];
     item_t *item_dragging;
     int state;
-
+    int should_exit;
     sfSprite *grid;
     sfSprite *inv_widget[3];
 
@@ -78,6 +78,7 @@ void inventory_destroy(inventory_t *inv);
 void inventory_draw(inventory_t *inv);
 void inventory_event(inventory_t *inv);
 void inventory_compute(inventory_t *inv);
+void inventory_loop(inventory_t *inv);
 
 // inventory_draw.c
 void inventory_draw_background(inventory_t *inv);

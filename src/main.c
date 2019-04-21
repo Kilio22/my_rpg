@@ -98,16 +98,6 @@ int main()
     item_t *a = item_create(0, file);
 
     inventory_add_item(inv, a);
-    while (sfRenderWindow_isOpen(inv->window)) {
-        sfEvent event;
-        while (sfRenderWindow_pollEvent(inv->window, &event)) {
-            if (event.type == sfEvtClosed)
-                sfRenderWindow_close(inv->window);
-        }
-        inventory_event(inv);
-        sfRenderWindow_clear(inv->window, sfBlack);
-        inventory_draw(inv);
-        sfRenderWindow_display(inv->window);
-    }
+    inventory_loop(inv);
     return (0);
 }
