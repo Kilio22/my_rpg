@@ -25,7 +25,7 @@ void manage_other_key_pressed(rpg_t *rpg)
         MENU.menu_on = 0;
 }
 
-void manage_key_pressed(rpg_t *rpg, obj_t **obj)
+void manage_key_pressed(rpg_t *rpg)
 {
     if (WIND.event.key.code == CONTROLS.keys[UP])
         CONTROLS.bools[KEYUP] = 1;

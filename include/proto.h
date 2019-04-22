@@ -73,9 +73,9 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 void house_display(rpg_t *rpg, house_t **house);
 
 //game_event.c
-void event_management(rpg_t *rpg, obj_t **obj);
+void event_management(rpg_t *rpg);
 void manage_key_released(rpg_t *rpg);
-void manage_key_pressed(rpg_t *rpg, obj_t **obj);
+void manage_key_pressed(rpg_t *rpg);
 
 //game_init.c
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -85,7 +85,7 @@ void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg);
 void exit_house(obj_t *obj, house_t *house, rpg_t *rpg);
 
 //init.c
-int init_save(obj_t **obj, rpg_t *rpg);
+int init_save(rpg_t *rpg);
 
 //intro_fcts1.c
 void check_house_display_intro(obj_t **obj, house_t *house,

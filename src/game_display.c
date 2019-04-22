@@ -59,7 +59,7 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event)
 && rpg->controls.bools[EVENTLOCK] == 0)
-            event_management(rpg, obj);
+            event_management(rpg);
         if (MENU.menu_on == 0) {
             MENU.menu_on = 1;
             sfView_destroy(WIND.view);
