@@ -10,8 +10,11 @@
 int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb)
 {
     sfFloatRect text_pos;
-    sfFloatRect mouse_pos = {WIND.mouse_pos.x, WIND.mouse_pos.y, 1, 1};
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(WIND.wind);
+    sfFloatRect mouse_pos = {mouse.x, mouse.y, 1, 1};
 
+    WIND.mouse_pos.x = mouse.x;
+    WIND.mouse_pos.y = mouse.y;
     for (int i = 0; i < nb; i++) {
         text_pos = sfText_getGlobalBounds(field[i].text);
         if (sfFloatRect_intersects(&text_pos, &mouse_pos, NULL))
