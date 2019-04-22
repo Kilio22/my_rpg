@@ -9,9 +9,7 @@
 
 int game_create_load(obj_t **obj)
 {
-    free_obj(obj[0]);
-    obj[0] = create_object(obj_path[0],
-(sfVector2f){9410, 1250}, (sfIntRect){0, 0, 32, 16}, sfTrue);
+    obj[0] = create_object(obj_path[0], V2F(9410, 1250), RECT_BASE, sfTrue);
     if (obj[0] == NULL)
         return (84);
     obj[0]->rectangle = sfRectangleShape_create();
@@ -20,8 +18,7 @@ int game_create_load(obj_t **obj)
     obj[0]->rectangle_bound =
 sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
     free_obj(obj[1]);
-    obj[1] = create_object(obj_path[1],
-(sfVector2f){9410, 1250}, RECT_OBJ, sfFalse);
+    obj[1] = create_object(obj_path[1], V2F(9410, 1250), RECT_OBJ, sfFalse);
     if (obj[1] == NULL)
         return (84);
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
@@ -37,6 +34,7 @@ sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     if (rpg->quest_status == 1) {
+        free_obj(obj[0]);
         if (game_create_load(obj) == 84)
             return 84;
     }
