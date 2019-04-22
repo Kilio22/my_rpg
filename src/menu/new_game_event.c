@@ -2,15 +2,6 @@
 ** EPITECH PROJECT, 2019
 ** my_rpg
 ** File description:
-** new_game_event
-*/
-
-#include "rpg.h"
-
-/*
-** EPITECH PROJECT, 2019
-** my_rpg
-** File description:
 ** event_load_game
 */
 
