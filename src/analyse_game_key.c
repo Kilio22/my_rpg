@@ -35,9 +35,7 @@ void manage_key_pressed(rpg_t *rpg, obj_t **obj)
         CONTROLS.bools[KEYLEFT] = 1;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 1;
-    /* if (WIND.event.key.code == CONTROLS.keys[STATS])
-        print_stats(obj);
-     */manage_other_key_pressed(rpg);
+    manage_other_key_pressed(rpg);
 }
 
 void manage_key_released(rpg_t *rpg)

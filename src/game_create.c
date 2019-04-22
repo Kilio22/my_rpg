@@ -14,6 +14,11 @@ int game_create_load(obj_t **obj)
 (sfVector2f){9410, 1250}, (sfIntRect){0, 0, 32, 16}, sfTrue);
     if (obj[0] == NULL)
         return (84);
+    obj[0]->rectangle = sfRectangleShape_create();
+    sfRectangleShape_setSize(obj[0]->rectangle, V2F(32, 16));
+    sfRectangleShape_setOrigin(obj[0]->rectangle, V2F(16, 8));
+    obj[0]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
     free_obj(obj[1]);
     obj[1] = create_object(obj_path[1],
 (sfVector2f){9410, 1250}, RECT_OBJ, sfFalse);

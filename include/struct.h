@@ -204,8 +204,6 @@ typedef struct rpg_s {
     menu_t menu;
     map_t map;
     house_t **house;
-    int debug;
-    sfText *debug_txt;
     int error_code;
     int quest_status;
     int dial_status;

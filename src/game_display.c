@@ -7,17 +7,6 @@
 
 #include "rpg.h"
 
-static void debug_txt(rpg_t *rpg, obj_t *obj)
-{
-    char *txt = my_strncat("", my_ftoa(obj->pos.x), -1);
-
-    txt = my_strncat(txt, "  ", -1);
-    txt = my_strncat(txt, my_ftoa(obj->pos.y), -1);
-    sfText_setPosition(rpg->debug_txt, V2F(obj->pos.x + 240, obj->pos.y - 210));
-    sfText_setString(rpg->debug_txt, txt);
-    sfRenderWindow_drawText(WIND.wind, rpg->debug_txt, NULL);
-}
-
 static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
@@ -44,8 +33,6 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_display(house, obj, rpg);
-    if (rpg->debug == 1)
-        debug_txt(rpg, obj[1]);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
