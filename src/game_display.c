@@ -32,6 +32,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
+    sfRenderWindow_drawRectangleShape(WIND.wind, obj[6]->rectangle, NULL);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
@@ -70,6 +71,7 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             return;
         }
         game_action(rpg, obj, house);
+        printf("%.2f && %.2f\n", obj[0]->pos.x, obj[0]->pos.y);
         display(rpg, obj, house);
     }
 }

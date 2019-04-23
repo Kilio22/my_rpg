@@ -10,15 +10,28 @@
 #include <stdio.h>
 #include "rpg.h"
 
-static sfBool all_world_hitBox(obj_t *obj, house_t **house, obj_t *world_hit)
+static sfBool all_world_hitBox(obj_t **obj, house_t **house, obj_t *world_hit)
 {
-    if (pp_intersect(obj->sprite, world_hit->sprite,
-obj->image, world_hit->image) == 1)
+    if (pp_intersect(obj[0]->sprite, world_hit->sprite,
+obj[0]->image, world_hit->image) == 1)
         return 1;
     for (int i = 0; house[i] != NULL; i++)
-        if (pp_intersect(obj->sprite, house[i]->tab[HITBOX],
-obj->image, house[i]->image) == 1)
+        if (pp_intersect(obj[0]->sprite, house[i]->tab[HITBOX],
+obj[0]->image, house[i]->image) == 1)
             return 1;
+    obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+    sfRectangleShape_setPosition(obj[0]->rectangle, obj[0]->pos);
+    obj[0]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
+    for (int i = 6; i < 9; i++) {
+        if (obj[i] == NULL)
+            continue;
+        obj[i]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[i]->rectangle);
+        if (sfFloatRect_intersects(&obj[0]->rectangle_bound,
+&obj[i]->rectangle_bound, NULL) == sfTrue)
+            return 1;
+    }
     return 0;
 }
 
@@ -29,7 +42,7 @@ void apply_y_control(rpg_t *rpg, obj_t **obj, house_t **house, sfVector2f pos)
     if (CONTROLS.bools[KEYDOWN] == 1)
         pos.y += 2;
     sfSprite_move(obj[0]->sprite, pos);
-    if (all_world_hitBox(obj[0], house, obj[4]) == 1) {
+    if (all_world_hitBox(obj, house, obj[4]) == 1) {
         pos.y *= -1;
         sfSprite_move(obj[0]->sprite, pos);
     }
@@ -45,7 +58,7 @@ void apply_controls_character(rpg_t *rpg, obj_t **obj, house_t **house)
     if (CONTROLS.bools[KEYRIGHT] == 1)
         newPos.x += 2;
     sfSprite_move(obj[0]->sprite, newPos);
-    if (all_world_hitBox(obj[0], house, obj[4]) == 1) {
+    if (all_world_hitBox(obj, house, obj[4]) == 1) {
         newPos.x *= -1;
         sfSprite_move(obj[0]->sprite, newPos);
     }
