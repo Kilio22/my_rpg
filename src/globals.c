@@ -211,7 +211,7 @@ const sfVector2f door_pos[5] = {
     {0, 192},
     {160, 352},
     {95, 160},
-    {0, 270}
+    {0, 256}
 };
 
 const sfIntRect door_rects[5] = {
@@ -219,7 +219,7 @@ const sfIntRect door_rects[5] = {
     {0, 0, 96, 64},
     {0, 352, 96, 96},
     {0, 224, 96, 64},
-    {0, 64, 96, 64}
+    {0, 224, 96, 64}
 };
 
 void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
