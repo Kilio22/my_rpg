@@ -35,7 +35,7 @@ int main(void)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
-    house_t **house = malloc(sizeof(house_t *) * 6);
+    house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
     if (obj == NULL || house == NULL)
         return (84);
@@ -48,7 +48,7 @@ int main(void)
     if (rpg.error_code == 84)
         return (84);
     sfMusic_destroy(rpg.game.back_music);
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < NB_HOUSE; i++)
         free_house(house[i]);
     return (0);
 }

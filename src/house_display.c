@@ -53,7 +53,8 @@ void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg)
 void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
-        if (sfFloatRect_intersects(&obj->rectangle_bound, &house[i]->door_use_rect_bound, NULL) == 1 && CONTROLS.bools[KEYINTER] == 1) {
+        if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house[i]->door_use_rect_bound, NULL) == 1 && CONTROLS.bools[KEYINTER] == 1) {
             rpg->controls.bools[EVENTLOCK] = 1;
             rpg->controls.bools[KEYDOWN] = 0;
             rpg->controls.bools[KEYLEFT] = 0;

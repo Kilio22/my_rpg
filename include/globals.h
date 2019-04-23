@@ -9,10 +9,10 @@
 #define GLOBALS_H_
 
 extern const char *save_path[3];
-extern const char *house_path[5];
-extern const sfIntRect house_rects[5];
-extern const sfIntRect door_rects[5];
-extern const sfVector2f door_pos[5];
+extern const char *house_path[8];
+extern const sfIntRect house_rects[8];
+extern const sfIntRect door_rects[8];
+extern const sfVector2f door_pos[8];
 extern const char *menu_path[2];
 extern const char *menu_str[6];
 extern const char *menu_desc[6];

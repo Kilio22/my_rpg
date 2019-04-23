@@ -55,7 +55,6 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_steps_5.c	\
 		$(INTRO_PATH)intro_steps_6.c	\
 		$(INTRO_PATH)dialogue.c	\
-		$(INTRO_PATH)intro_create.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
@@ -78,6 +77,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
+		characters_interaction.c	\
 		characters_stats.c	\
 		create_house.c	\
 		create_obj.c	\

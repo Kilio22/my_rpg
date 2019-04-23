@@ -47,7 +47,7 @@ void create_followers(rpg_t *rpg, obj_t **obj)
     }
 }
 
-void create_ennemis(rpg_t *rpg, obj_t **obj)
+void create_ennemis(obj_t **obj)
 {
     if (obj[6] == NULL) {
         obj[6] = create_object(obj_path[3], V2F(7728, 2290), RECT_OBJ, sfFalse);
@@ -79,7 +79,7 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
             return 84;
     }
     create_followers(rpg, obj);
-    create_ennemis(rpg, obj);
+    create_ennemis(obj);
     if (rpg->quest_status == 1 || rpg->quest_status == 26)
         game_loop(rpg, obj, house);
     return 1;

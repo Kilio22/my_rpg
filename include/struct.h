@@ -65,7 +65,10 @@ enum houses {
     MAISON2,
     AUBERGE,
     FORGE,
-    EGLISE
+    EGLISE,
+    MAISON3,
+    MAISON4,
+    MAISON5
 };
 
 typedef struct intro_s {
@@ -197,6 +200,11 @@ typedef struct map_s {
     sprite_t *sprite[715];
 } map_t;
 
+typedef struct my_musics_s {
+    sfSound *aled;
+    sfSound *hurt;
+} my_musics_t;
+
 typedef struct rpg_s {
     controls_t controls;
     game_t game;
@@ -204,6 +212,7 @@ typedef struct rpg_s {
     menu_t menu;
     map_t map;
     house_t **house;
+    my_musics_t musics;
     int error_code;
     int quest_status;
     int dial_status;

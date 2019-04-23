@@ -50,7 +50,9 @@ static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 (sfVector2i){0, 0}, WIND.view);
     sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
-    new.text = create_text(MENU_FONT, " ", 16,
+    rpg->musics.aled = create_sound("assets/aled.ogg");
+    rpg->musics.hurt = create_sound("assets/hurt.ogg");
+    new.text = create_text(MENU_FONT, " ", 19,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(oui, (sfVector2f){1280, 720});
     new.sprite = sfSprite_create();
@@ -63,6 +65,10 @@ int return_to_game(rpg_t *rpg, obj_t **obj)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
 
+    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->musics.aled));
+    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->musics.hurt));
+    sfSound_destroy(rpg->musics.aled);
+    sfSound_destroy(rpg->musics.hurt);
     if (MENU.menu_on == 0) {
         MENU.menu_on = 1;
         sfView_destroy(WIND.view);

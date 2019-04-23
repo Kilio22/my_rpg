@@ -31,6 +31,9 @@ void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void follower(obj_t **obj, rpg_t *rpg);
 void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 
+//character_animation
+int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
+
 //check_save_status.c
 char *check_save_status(int save_nb);
 
@@ -190,6 +193,7 @@ int my_tab_vector_len(sfVector2f **tab);
 sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
 char *my_ftoa(float value);
+sfSound *create_sound(char const *path);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);

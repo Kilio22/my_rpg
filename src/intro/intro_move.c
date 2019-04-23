@@ -35,6 +35,8 @@ void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros)
 {
     static int opt = 0;
 
+    if (rpg->quest_status == 20)
+        sfSound_play(rpg->musics.aled);
     opt = intro[opt](obj, opt, rpg, house);
     intros->opt = opt;
 }

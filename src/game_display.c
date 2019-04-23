@@ -11,8 +11,16 @@ static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[5] == NULL
-&& house[i]->display_house == 0)
+&& house[i]->display_house == 0) {
             obj[5] = create_object(obj_path[5], AUB_POS, RECT_OBJ, sfTrue);
+            obj[5]->rectangle = sfRectangleShape_create();
+            sfSprite_setOrigin(obj[5]->sprite, V2F(16, 60));
+            sfRectangleShape_setSize(obj[5]->rectangle, V2F(32, 16));
+            sfRectangleShape_setOrigin(obj[5]->rectangle, V2F(16, 8));
+            sfRectangleShape_setPosition(obj[5]->rectangle, obj[5]->pos);
+            obj[5]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
+        }
         if (house[i]->type == 2 && obj[5] != NULL
 && house[i]->display_house == 1) {
             free_obj(obj[5]);
@@ -71,7 +79,6 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             return;
         }
         game_action(rpg, obj, house);
-        printf("%.2f && %.2f\n", obj[0]->pos.x, obj[0]->pos.y);
         display(rpg, obj, house);
     }
 }

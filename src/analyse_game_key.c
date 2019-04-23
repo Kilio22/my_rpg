@@ -48,7 +48,7 @@ void manage_key_released(rpg_t *rpg)
         CONTROLS.bools[KEYLEFT] = 0;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 0;
-    if (WIND.event.key.code == sfKeyE)
+    if (WIND.event.key.code == CONTROLS.keys[INTERACT])
         CONTROLS.bools[KEYINTER] = 0;
     if (WIND.event.key.code == sfKeySpace)
         CONTROLS.bools[KEYSPACE] = 0;
