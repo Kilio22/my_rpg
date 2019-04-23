@@ -52,5 +52,6 @@ create_map(rpg) == -1) {
             return 1;
     }
     MENU.menu_on = 1;
-    return game_create(rpg, obj, house);
+    game_create(rpg, obj, house);
+    return 0;
 }
