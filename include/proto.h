@@ -233,5 +233,14 @@ int check_characters_clock(sfClock *clock, float limit);
 //intro.c
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house);
+void mouse_wheel_management(rpg_t *rpg);
+
+//fight
+void fight_event_management(rpg_t *rpg);
+int update_fight_text(rpg_t *rpg, size_t frames, fight_t *fight);
+void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
+void fight_event_management(rpg_t *rpg);
+void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
+int fight_text_intro(int i);
 
 #endif /* !PROTO_H_ */

@@ -57,7 +57,8 @@ enum stats {
     LEVEL = 0,
     HPS,
     ATK,
-    DEF
+    DEF,
+    SPEED
 };
 
 enum houses {
@@ -199,6 +200,13 @@ typedef struct map_s {
     layer_t *layers[6];
     sprite_t *sprite[715];
 } map_t;
+
+typedef struct fight_s {
+    int nb_fight;
+    int old_i;
+    sfText *text;
+    sfSprite *parch;
+} fight_t;
 
 typedef struct my_musics_s {
     sfSound *aled;

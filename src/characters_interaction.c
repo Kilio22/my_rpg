@@ -7,7 +7,11 @@
 
 #include "rpg.h"
 
-
+static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
+{
+    if (i >= 6 && i <= 9)
+        fight(obj, rpg, i - 6, house);
+}
 
 static void check_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
@@ -21,7 +25,7 @@ static void check_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
     oui.left--;
     if (sfFloatRect_intersects(&obj[0]->rectangle_bound,
 &oui, NULL) == sfTrue)
-        return;
+        do_interact(obj, rpg, i, house);
 }
 
 int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house)

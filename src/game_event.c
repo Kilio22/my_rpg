@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "rpg.h"
 
-static void mouse_wheel_management(rpg_t *rpg)
+void mouse_wheel_management(rpg_t *rpg)
 {
     if (WIND.event.mouseWheel.delta == 1)
         CONTROLS.bools[ZOOM] = 1;

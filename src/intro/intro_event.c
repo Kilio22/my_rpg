@@ -7,14 +7,6 @@
 
 #include "rpg.h"
 
-static void mouse_wheel_management(rpg_t *rpg)
-{
-    if (WIND.event.mouseWheel.delta == 1)
-        CONTROLS.bools[ZOOM] = 1;
-    else if (WIND.event.mouseWheel.delta == -1)
-        CONTROLS.bools[DEZOOM] = 1;
-}
-
 static void check_updates(rpg_t *rpg, intro_t *intro, int *alpha)
 {
     if ((rpg->quest_status == 2 || rpg->quest_status == 12
