@@ -102,6 +102,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
+		pnj_moves.c	\
 		time_gestion.c \
 		item/item.c \
 		inventory/inventory_debug.c \

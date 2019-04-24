@@ -93,7 +93,7 @@ int init_save(rpg_t *rpg);
 //intro_fcts1.c
 void check_house_display_intro(obj_t **obj, house_t *house,
                                         rpg_t *rpg, int *opt);
-int intro_control(obj_t **obj, int opt,rpg_t *rpg, house_t **house);
+int intro_control(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_ennemi_two(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
@@ -194,6 +194,7 @@ sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
 char *my_ftoa(float value);
 sfSound *create_sound(char const *path);
+int check_pnj_clock_move(void);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -247,5 +248,8 @@ void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg);
 void display(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_attacks_pos(fight_t *new, rpg_t *rpg, int i);
+
+//move pnj
+void move_pnjs(obj_t **obj, house_t **house);
 
 #endif /* !PROTO_H_ */

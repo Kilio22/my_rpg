@@ -29,3 +29,20 @@ sfSound *create_sound(char const *path)
     sfSound_setBuffer(sound, buffer);
     return sound;
 }
+
+int check_pnj_clock_move(void)
+{
+    static sfClock *clock = NULL;
+    sfTime time;
+    float seconds;
+
+    if (!clock)
+        clock = sfClock_create();
+    time = sfClock_getElapsedTime(clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds >= 5) {
+        sfClock_restart(clock);
+        return 1;
+    }
+    return 0;
+}

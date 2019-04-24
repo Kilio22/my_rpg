@@ -40,7 +40,6 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
-    sfRenderWindow_drawRectangleShape(WIND.wind, obj[6]->rectangle, NULL);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
@@ -51,6 +50,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
         character_control(rpg, obj, house);
         follower(obj, rpg);
+        move_pnjs(obj, house);
         all_character_animation(obj);
     }
     sfSprite_setPosition(obj[1]->sprite,

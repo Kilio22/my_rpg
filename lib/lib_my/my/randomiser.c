@@ -12,7 +12,7 @@ int randomiser(int max)
 {
     int result = 0;
 
-    srand(time(0));
+    srand(1);
     result = rand() % max;
     return (result);
 }
