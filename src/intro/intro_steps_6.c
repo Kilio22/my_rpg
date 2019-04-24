@@ -62,7 +62,6 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         } else {
             opt++;
             rpg->quest_status++;
-            printf("here?\n");
         }
     }
     return opt;
