@@ -22,11 +22,8 @@ void exit_house(obj_t *obj, house_t *house, rpg_t *rpg)
 
 void enter_house(obj_t *obj, house_t *house, rpg_t *rpg)
 {
-    if (house->frame_animation > 8 && house->door_rect.left < 288) {
+    if (clock_door() == 1 && house->door_rect.left < 288)
         animation(&house->door_rect, 0, 96, 384);
-        house->frame_animation = 0;
-    }
-    house->frame_animation++;
     if (house->door_rect.left >= 288) {
         sfSprite_move(obj->sprite, (sfVector2f){0, -1});
         sfRectangleShape_move(obj->rectangle, (sfVector2f){0, -1});

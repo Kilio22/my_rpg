@@ -7,6 +7,23 @@
 
 #include "rpg.h"
 
+int clock_door(void)
+{
+    static sfClock *clock = NULL;
+    sfTime time;
+    float seconds;
+
+    if (!clock)
+        clock = sfClock_create();
+    time = sfClock_getElapsedTime(clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds >= 0.15) {
+        sfClock_restart(clock);
+        return 1;
+    }
+    return 0;
+}
+
 int check_characters_clock(sfClock *clock, float limit)
 {
     sfTime time;
