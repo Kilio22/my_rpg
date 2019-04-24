@@ -228,6 +228,7 @@ int check_high_controls(int i);
 void print_stats(obj_t **obj);
 
 //time_gestion.c
+int clock_door(void);
 int check_characters_clock(sfClock *clock, float limit);
 
 //intro.c
