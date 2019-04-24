@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "rpg.h"
 
-static void mouse_wheel_management(rpg_t *rpg)
+void mouse_wheel_management(rpg_t *rpg)
 {
     if (WIND.event.mouseWheel.delta == 1)
         CONTROLS.bools[ZOOM] = 1;
@@ -17,7 +17,7 @@ static void mouse_wheel_management(rpg_t *rpg)
         CONTROLS.bools[DEZOOM] = 1;
 }
 
-void event_management(rpg_t *rpg, obj_t **obj)
+void event_management(rpg_t *rpg)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -26,7 +26,7 @@ void event_management(rpg_t *rpg, obj_t **obj)
         CONTROLS.mousePos.y = WIND.event.mouseMove.y;
     }
     if (WIND.event.type == sfEvtKeyPressed)
-        manage_key_pressed(rpg, obj);
+        manage_key_pressed(rpg);
     if (WIND.event.type == sfEvtKeyReleased)
         manage_key_released(rpg);
     if (WIND.event.type == sfEvtClosed)

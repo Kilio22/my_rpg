@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static void reset_char(obj_t **obj, rpg_t *rpg, house_t **house)
+void reset_char(obj_t **obj, rpg_t *rpg, house_t **house)
 {
     sfSprite_setPosition(obj[0]->sprite, V2F(9410, 1250));
     obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -47,6 +47,7 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 {
     sfVector2f new_pos = {0, 0};
 
+    (void)house;
     if (opt == 39 && rpg->quest_status == 22) {
         if (obj[10]->pos.x > 9408) {
             new_pos.x = -1;
@@ -63,5 +64,5 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             rpg->quest_status++;
         }
     }
-    return intro_go_auberge20(obj, opt, rpg, house);
+    return opt;
 }

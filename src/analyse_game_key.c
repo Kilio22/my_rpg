@@ -25,7 +25,7 @@ void manage_other_key_pressed(rpg_t *rpg)
         MENU.menu_on = 0;
 }
 
-void manage_key_pressed(rpg_t *rpg, obj_t **obj)
+void manage_key_pressed(rpg_t *rpg)
 {
     if (WIND.event.key.code == CONTROLS.keys[UP])
         CONTROLS.bools[KEYUP] = 1;
@@ -35,8 +35,6 @@ void manage_key_pressed(rpg_t *rpg, obj_t **obj)
         CONTROLS.bools[KEYLEFT] = 1;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 1;
-    if (WIND.event.key.code == CONTROLS.keys[STATS])
-        print_stats(obj);
     manage_other_key_pressed(rpg);
 }
 
@@ -50,7 +48,7 @@ void manage_key_released(rpg_t *rpg)
         CONTROLS.bools[KEYLEFT] = 0;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 0;
-    if (WIND.event.key.code == sfKeyE)
+    if (WIND.event.key.code == CONTROLS.keys[INTERACT])
         CONTROLS.bools[KEYINTER] = 0;
     if (WIND.event.key.code == sfKeySpace)
         CONTROLS.bools[KEYSPACE] = 0;

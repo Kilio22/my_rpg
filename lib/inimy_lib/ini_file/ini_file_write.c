@@ -18,7 +18,7 @@ static int file_str_size(ini_file_t *file)
         current_content = (ini_line_t *)current->content;
         buff = ini_line_to_str(current_content);
         size += mg_strlen(buff) + 1;
-        free(buff);    
+        free(buff);
         current = current->next;
     }
     return (size);

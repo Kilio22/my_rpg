@@ -7,28 +7,28 @@
 
 #include "rpg.h"
 
-char *my_ftoa(float value)
+static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
 {
-    int ent = value;
-    int decimals = value * 100 - (ent * 100);
-    char *string = my_itoa(ent, "");
-
-    if (decimals != 0) {
-        string = my_strncat(string, ".", -1);
-        string = my_strncat(string, my_itoa(decimals, ""), -1);
+    for (int i = 0; house[i] != NULL; i++) {
+        if (house[i]->type == 2 && obj[5] == NULL
+&& house[i]->display_house == 0) {
+            obj[5] = create_object(obj_path[5], AUB_POS, RECT_OBJ, sfTrue);
+            obj[5]->rectangle = sfRectangleShape_create();
+            sfSprite_setOrigin(obj[5]->sprite, V2F(16, 60));
+            sfRectangleShape_setSize(obj[5]->rectangle, V2F(32, 16));
+            sfRectangleShape_setOrigin(obj[5]->rectangle, V2F(16, 8));
+            sfRectangleShape_setPosition(obj[5]->rectangle, obj[5]->pos);
+            obj[5]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
+        }
+        if (house[i]->type == 2 && obj[5] != NULL
+&& house[i]->display_house == 1) {
+            free_obj(obj[5]);
+            obj[5] = NULL;
+        }
+        if (house[i]->display_house == 1)
+            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
     }
-    return (string);
-}
-
-static void debug_txt(rpg_t *rpg, obj_t *obj)
-{
-    char *txt = my_strncat("", my_ftoa(obj->pos.x), -1);
-
-    txt = my_strncat(txt, "  ", -1);
-    txt = my_strncat(txt, my_ftoa(obj->pos.y), -1);
-    sfText_setPosition(rpg->debug_txt, V2F(obj->pos.x + 240, obj->pos.y - 210));
-    sfText_setString(rpg->debug_txt, txt);
-    sfRenderWindow_drawText(WIND.wind, rpg->debug_txt, NULL);
 }
 
 static void display(rpg_t *rpg, obj_t **obj, house_t **house)
@@ -40,18 +40,8 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
     print_map2(MAP.sprite, obj, rpg->wind);
-    for (int i = 0; house[i] != NULL; i++) {
-        if (house[i]->type == 2 && obj[5] == NULL && house[i]->display_house == 0)
-            obj[5] = create_object("assets/perso_blanc.png", (sfVector2f){9246, 1120}, (sfIntRect){0, 0, 32, 64}, sfTrue);
-        if (house[i]->type == 2 && obj[5] != NULL && house[i]->display_house == 1) {
-            free_obj(obj[5]);
-            obj[5] = NULL;
-        }
-        if (house[i]->display_house == 1)
-            sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);
-    }
-    if (rpg->debug == 1)
-        debug_txt(rpg, obj[1]);
+    sfRenderWindow_drawRectangleShape(WIND.wind, obj[6]->rectangle, NULL);
+    check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
@@ -76,15 +66,16 @@ void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
-        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event) && rpg->controls.bools[EVENTLOCK] == 0)
-            event_management(rpg, obj);
+        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event)
+&& rpg->controls.bools[EVENTLOCK] == 0)
+            event_management(rpg);
         if (MENU.menu_on == 0) {
             MENU.menu_on = 1;
             sfView_destroy(WIND.view);
             WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
-            //free_save(obj, rpg);
             free_map(MAP);
+            free_objs(obj);
             return;
         }
         game_action(rpg, obj, house);

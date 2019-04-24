@@ -12,7 +12,8 @@ void exit_house(obj_t *obj, house_t *house, rpg_t *rpg)
     sfSprite_move(obj->sprite, (sfVector2f){0, 1});
     sfRectangleShape_move(obj->rectangle, (sfVector2f){0, 1});
     obj->rectangle_bound = sfRectangleShape_getGlobalBounds(obj->rectangle);
-    if (sfFloatRect_intersects(&obj->rectangle_bound, &house->door_use_rect_bound, NULL) == 0) {
+    if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house->door_use_rect_bound, NULL) == 0) {
         house->display_house = 1;
         CONTROLS.bools[KEYINTER] = 0;
         rpg->controls.bools[EVENTLOCK] = 0;
@@ -21,16 +22,14 @@ void exit_house(obj_t *obj, house_t *house, rpg_t *rpg)
 
 void enter_house(obj_t *obj, house_t *house, rpg_t *rpg)
 {
-    if (house->frame_animation > 8 && house->door_rect.left < 288) {
+    if (clock_door() == 1 && house->door_rect.left < 288)
         animation(&house->door_rect, 0, 96, 384);
-        house->frame_animation = 0;
-    }
-    house->frame_animation++;
     if (house->door_rect.left >= 288) {
         sfSprite_move(obj->sprite, (sfVector2f){0, -1});
         sfRectangleShape_move(obj->rectangle, (sfVector2f){0, -1});
         obj->rectangle_bound = sfRectangleShape_getGlobalBounds(obj->rectangle);
-        if (sfFloatRect_intersects(&obj->rectangle_bound, &house->door_use_rect_bound, NULL) == 0) {
+        if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house->door_use_rect_bound, NULL) == 0) {
             house->door_rect.left = 0;
             house->display_house = 0;
             CONTROLS.bools[KEYINTER] = 0;
@@ -51,7 +50,8 @@ void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg)
 void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
-        if (sfFloatRect_intersects(&obj->rectangle_bound, &house[i]->door_use_rect_bound, NULL) == 1 && CONTROLS.bools[KEYINTER] == 1) {
+        if (sfFloatRect_intersects(&obj->rectangle_bound,
+&house[i]->door_use_rect_bound, NULL) == 1 && CONTROLS.bools[KEYINTER] == 1) {
             rpg->controls.bools[EVENTLOCK] = 1;
             rpg->controls.bools[KEYDOWN] = 0;
             rpg->controls.bools[KEYLEFT] = 0;

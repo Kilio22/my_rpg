@@ -7,7 +7,7 @@
 
 #include "my_button.h"
 
-my_button_t *my_button_create(sfTexture *idle, sfTexture *hover, 
+my_button_t *my_button_create(sfTexture *idle, sfTexture *hover,
                             sfTexture *clicked)
 {
     my_button_t *new = malloc(sizeof(my_button_t));

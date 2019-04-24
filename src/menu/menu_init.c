@@ -62,7 +62,7 @@ void init_menu(rpg_t *rpg, obj_t **obj, house_t **house)
     rpg->menu.menu_on = 1;
     MENU.descr_text = create_text(MENU_FONT, menu_desc[0], 30,
 (sfVector2f){580, 570});
-    if (init_save(obj, rpg) == -1) {
+    if (init_save(rpg) == -1) {
         rpg->error_code = 84;
         return;
     }

@@ -31,6 +31,9 @@ void camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void follower(obj_t **obj, rpg_t *rpg);
 void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 
+//character_animation
+int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
+
 //check_save_status.c
 char *check_save_status(int save_nb);
 
@@ -47,7 +50,7 @@ void house_interaction(obj_t *obj, house_t **house, rpg_t *rpg);
 int create_houses(house_t **house);
 
 //create_obj.c
-obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
+obj_t *create_object(const char *Path, sfVector2f pos, sfIntRect intrect,
 sfBool centered);
 
 //destroy_menu.c
@@ -66,15 +69,16 @@ void free_map(map_t map);
 void free_obj(obj_t *obj);
 void free_array(char **array);
 void free_house(house_t *house);
+void free_objs(obj_t **obj);
 
 //game_display.c
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 void house_display(rpg_t *rpg, house_t **house);
 
 //game_event.c
-void event_management(rpg_t *rpg, obj_t **obj);
+void event_management(rpg_t *rpg);
 void manage_key_released(rpg_t *rpg);
-void manage_key_pressed(rpg_t *rpg, obj_t **obj);
+void manage_key_pressed(rpg_t *rpg);
 
 //game_init.c
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -84,7 +88,7 @@ void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg);
 void exit_house(obj_t *obj, house_t *house, rpg_t *rpg);
 
 //init.c
-int init_save(obj_t **obj, rpg_t *rpg);
+int init_save(rpg_t *rpg);
 
 //intro_fcts1.c
 void check_house_display_intro(obj_t **obj, house_t *house,
@@ -118,7 +122,7 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 
 //intro_event.c
-void intro_event_management(rpg_t *rpg);
+void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_fondu_rect(intro_t *intro, rpg_t *rpg);
 
 //intro_text.c
@@ -188,6 +192,8 @@ int gid_len(first_gid_t **gid);
 int my_tab_vector_len(sfVector2f **tab);
 sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
+char *my_ftoa(float value);
+sfSound *create_sound(char const *path);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -222,10 +228,21 @@ int check_high_controls(int i);
 void print_stats(obj_t **obj);
 
 //time_gestion.c
+int clock_door(void);
 int check_characters_clock(sfClock *clock, float limit);
 
 //intro.c
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house);
+void mouse_wheel_management(rpg_t *rpg);
+void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
+
+//fight
+int update_fight_text(size_t frames, fight_t *fight, int flag);
+void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
+int fight_event_management(rpg_t *rpg);
+void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
+int fight_text_intro(int i);
+void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 
 #endif /* !PROTO_H_ */

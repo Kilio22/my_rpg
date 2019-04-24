@@ -40,21 +40,3 @@ void modif_list(simple_vector_t *pos, obj_t *obj)
     free(pos->start->content);
     simple_vector_pop_top(pos);
 }
-
-//simple_vector_t *simple_vector_create(void); -> remplir
-// pour ajouter a la fin de la liste (simple_vector_push_back)
-// pour supprimer au debut de la liste (simple_vector_pop_top)
-
-/*
-    -----------------------------------
-
-    while (list->start != 0) { //free all
-        free(list->start->content);
-        simple_vector_pop_top(list);
-    }
-
-    ------------------------------------
-
-    free(list->end->content); //remove last sfVector2f in list
-    simple_vector_pop_back(list);
-*/

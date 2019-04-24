@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-obj_t *create_object(char *Path, sfVector2f pos, sfIntRect intrect,
+obj_t *create_object(const char *Path, sfVector2f pos, sfIntRect intrect,
 sfBool centered)
 {
     obj_t *obj = malloc(sizeof(obj_t));

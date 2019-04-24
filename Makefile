@@ -43,6 +43,7 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
+FIGHT_PATH	=	fight/
 
 SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_event.c	\
@@ -55,7 +56,10 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_steps_5.c	\
 		$(INTRO_PATH)intro_steps_6.c	\
 		$(INTRO_PATH)dialogue.c	\
-		$(INTRO_PATH)intro_create.c	\
+		$(FIGHT_PATH)fight.c	\
+		$(FIGHT_PATH)fight_text.c	\
+		$(FIGHT_PATH)fight_events.c	\
+		$(FIGHT_PATH)fight_updates.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
@@ -78,6 +82,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		camera_gestion.c	\
 		character_gestion.c \
 		characters_animation.c	\
+		characters_interaction.c	\
 		characters_stats.c	\
 		create_house.c	\
 		create_obj.c	\
@@ -105,7 +110,8 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		inventory/inventory_core.c \
 		inventory/inventory_stock.c \
 		inventory/inventory_stuff.c	\
-		game_create.c
+		game_create.c			\
+		my_other_utils.c
 
 SRC_LIB	=	inimy \
 			g 	\

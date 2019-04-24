@@ -135,6 +135,16 @@ const char *menu_desc[6] = {
     "Go back to the deskdop"
 };
 
+const char *obj_path[] = {
+    "assets/hero_hitbox.png",
+    "assets/hero.png",
+    "assets/map_hitbox.png",
+    "assets/perso_blanc.png",
+    "assets/stupid_nathan.png",
+    "assets/Aubergiste.png",
+    "assets/perso_vert.png"
+};
+
 const sfVector2f menu_pos[6] = {
     {110, 60},
     {100, 160},
@@ -180,36 +190,54 @@ const char *save_path[3] = {
     "saves/save3.txt"
 };
 
-const char *house_path[5] = {
+const char *house_path[8] = {
     "assets/maison1.png",
     "assets/maison2.png",
     "assets/auberge.png",
     "assets/forge.png",
-    "assets/church.png"
+    "assets/church.png",
+    "assets/maison3.png",
+    "assets/maison4.png",
+    "assets/maison5.png"
 };
 
-const sfIntRect house_rects[5] = {
+const char *ennemi_text[3] = {
+    "Ennemi: Viens te battre !",
+    "Ennemi: Tu es venu te faire tuer ?",
+    "Ennemi: Pauvre fou, tu vas souffrir !"
+};
+
+const sfIntRect house_rects[8] = {
     {0, 0, 160, 320},
     {0, 0, 224, 256},
     {0, 0, 320, 448},
     {0, 0, 192, 352},
-    {0, 0, 384, 352}
+    {0, 0, 384, 352},
+    {0, 0, 288, 288},
+    {0, 0, 192, 288},
+    {0, 0, 192, 384}
 };
 
-const sfVector2f door_pos[5] = {
+const sfVector2f door_pos[8] = {
     {0, 256},
     {0, 192},
     {160, 352},
     {95, 160},
-    {0, 270}
+    {0, 256},
+    {192, 224},
+    {0, 224},
+    {96, 320}
 };
 
-const sfIntRect door_rects[5] = {
+const sfIntRect door_rects[8] = {
     {0, 64, 96, 64},
     {0, 0, 96, 64},
     {0, 352, 96, 96},
     {0, 224, 96, 64},
-    {0, 64, 96, 64}
+    {0, 224, 96, 64},
+    {0, 64, 96, 64},
+    {0, 64, 96, 64},
+    {0, 0, 96, 64},
 };
 
 void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
