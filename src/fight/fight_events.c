@@ -24,9 +24,9 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 
 static void update_perso_pos(obj_t **obj, fight_t *fight)
 {
-    //if (fight->quest_status == 3)
+    if (fight->quest_status == 3)
+        fight->quest_status++;
         //tp le perso
-        //fight->quest_status++;
 }
 
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
@@ -43,7 +43,23 @@ void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
     update_fondu_rect_fight(fight, rpg, 0);
 }
 
-int fight_event_management(rpg_t *rpg)
+void manage_other_key_press(int code, fight_t *fight)
+{
+    if (fight->quest_status < 4)
+        return;
+    if (code == sfKeyLeft && fight->high > 0) {
+        sfText_setColor(fight->attacks[fight->high], sfRed);
+        fight->high--;
+        sfText_setColor(fight->attacks[fight->high], sfYellow);
+    }
+    if (code == sfKeyRight && fight->high < 4) {
+        sfText_setColor(fight->attacks[fight->high], sfRed);
+        fight->high++;
+        sfText_setColor(fight->attacks[fight->high], sfYellow);
+    }
+}
+
+int fight_event_management(rpg_t *rpg, fight_t *fight)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -56,6 +72,7 @@ int fight_event_management(rpg_t *rpg)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
             return 1;
+        manage_other_key_press(WIND.event.key.code, fight);
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);

@@ -209,6 +209,8 @@ typedef struct fight_s {
     sfText *text;
     sfSprite *parch;
     sfVector2f old_pos;
+    sfText *attacks[5];
+    int high;
 } fight_t;
 
 typedef struct my_musics_s {
