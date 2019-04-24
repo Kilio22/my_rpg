@@ -61,7 +61,8 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             sfSprite_move(obj[10]->sprite, new_pos);
         } else {
             opt++;
-            rpg->quest_status++;        }
+            rpg->quest_status++;
+        }
     }
     return opt;
 }
