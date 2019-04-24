@@ -237,11 +237,11 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house);
 void mouse_wheel_management(rpg_t *rpg);
 
 //fight
-void fight_event_management(rpg_t *rpg);
-int update_fight_text(rpg_t *rpg, size_t frames, fight_t *fight);
+int update_fight_text(size_t frames, fight_t *fight, int flag);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
-void fight_event_management(rpg_t *rpg);
+int fight_event_management(rpg_t *rpg);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
+void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 
 #endif /* !PROTO_H_ */

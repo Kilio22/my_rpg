@@ -13,7 +13,7 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 (sfVector2i){0, 558}, WIND.view);;
 
     if (fight->old_i == fight->nb_fight)
-        update_fight_text(rpg, 1, fight);
+        update_fight_text(1, fight, 0);
     vect.y += 15;
     vect.x += 80;
     sfText_setPosition(fight->text, vect);
@@ -32,9 +32,10 @@ void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
     camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
     update_text_pos(fight, rpg);
+    update_fondu_rect_fight(fight, rpg, 0);
 }
 
-void fight_event_management(rpg_t *rpg)
+int fight_event_management(rpg_t *rpg)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -46,8 +47,9 @@ void fight_event_management(rpg_t *rpg)
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
-            MENU.menu_on = 0;
+            return 1;
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
+    return 0;
 }

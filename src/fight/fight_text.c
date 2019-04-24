@@ -28,7 +28,7 @@ int fight_text_intro(int i)
     return 0;
 }
 
-int fight_text_index(int index, char **to_print)
+int fight_text_index(int index, char **to_print, int flag, int *p_ind)
 {
     if (my_strlen(*to_print) == 0) {
         *to_print = malloc(sizeof(char) *
@@ -36,15 +36,21 @@ int fight_text_index(int index, char **to_print)
         if (*to_print == NULL)
             return -1;
     }
+    if (flag == 1) {
+        free(*to_print);
+        *to_print = NULL;
+        *p_ind = 0;
+        return -1;
+    }
     return 0;
 }
 
-int update_fight_text(rpg_t *rpg, size_t frames, fight_t *fight)
+int update_fight_text(size_t frames, fight_t *fight, int flag)
 {
     static int print_index = 0;
     static char *to_print = NULL;
 
-    if (fight_text_index(fight->nb_fight, &to_print) == -1)
+    if (fight_text_index(fight->nb_fight, &to_print, flag, &print_index) == -1)
         return -1;
     for (size_t i = 0; (i < frames || i <= 1) &&
 print_index < my_strlen(ennemi_text[fight->nb_fight]); i++) {
@@ -54,7 +60,9 @@ print_index < my_strlen(ennemi_text[fight->nb_fight]); i++) {
     }
     sfText_setString(fight->text, to_print);
     if (my_strlen(to_print) == my_strlen(ennemi_text[fight->nb_fight])
-&& fight_text_intro(1) == 1)
+&& fight_text_intro(1) == 1) {
         fight->old_i++;
+        fight->quest_status++;
+    }
     return 0;
 }

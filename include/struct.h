@@ -204,6 +204,8 @@ typedef struct map_s {
 typedef struct fight_s {
     int nb_fight;
     int old_i;
+    int quest_status;
+    sfRectangleShape *fondu;
     sfText *text;
     sfSprite *parch;
 } fight_t;

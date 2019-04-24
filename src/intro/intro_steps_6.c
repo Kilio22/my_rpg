@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-void reset_char(obj_t **obj, rpg_t *rpg, house_t **house)
+static void reset_char(obj_t **obj, rpg_t *rpg, house_t **house)
 {
     sfSprite_setPosition(obj[0]->sprite, V2F(9410, 1250));
     obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
