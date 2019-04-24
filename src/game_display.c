@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
+void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[5] == NULL
@@ -31,7 +31,7 @@ sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
     }
 }
 
-static void display(rpg_t *rpg, obj_t **obj, house_t **house)
+void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);

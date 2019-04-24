@@ -244,5 +244,8 @@ int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
+void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg);
+void display(rpg_t *rpg, obj_t **obj, house_t **house);
+void update_attacks_pos(fight_t *new, rpg_t *rpg, int i);
 
 #endif /* !PROTO_H_ */
