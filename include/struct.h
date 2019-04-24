@@ -119,6 +119,15 @@ typedef struct house_s {
     int type;
 } house_t;
 
+typedef struct framebuffer
+{
+    int width;
+    int height;
+    sfUint8 *array;
+    sfTexture *text;
+    sfSprite *sprite;
+} framebuffer_t;
+
 typedef struct game_s {
     int nb_save;
     int auberge;
@@ -127,6 +136,8 @@ typedef struct game_s {
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
+    framebuffer_t *fog;
+    framebuffer_t *fire;
 } game_t;
 
 typedef struct button_s {

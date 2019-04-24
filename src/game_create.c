@@ -80,7 +80,9 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
     }
     create_followers(rpg, obj);
     create_ennemis(obj);
-    if (rpg->quest_status == 1 || rpg->quest_status == 26)
+    if (rpg->quest_status == 1 || rpg->quest_status == 26) {
+        create_framebuffer(rpg);
         game_loop(rpg, obj, house);
+    }
     return 1;
 }

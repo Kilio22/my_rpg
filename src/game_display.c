@@ -36,6 +36,7 @@ static void display(rpg_t *rpg, obj_t **obj, house_t **house)
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
+    display_framebuffer(rpg);
     for (int i = 10; i > 0; i--)
         if (obj[i] != NULL && i != 4)
             sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
