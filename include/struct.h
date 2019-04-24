@@ -208,6 +208,7 @@ typedef struct fight_s {
     sfRectangleShape *fondu;
     sfText *text;
     sfSprite *parch;
+    sfVector2f old_pos;
 } fight_t;
 
 typedef struct my_musics_s {

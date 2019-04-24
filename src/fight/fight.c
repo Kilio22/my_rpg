@@ -27,7 +27,7 @@ house_t **house, fight_t *fight)
     sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
-static fight_t create_fight(int i, rpg_t *rpg)
+static fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)
 {
     fight_t new;
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
@@ -42,12 +42,27 @@ static fight_t create_fight(int i, rpg_t *rpg)
     new.old_i = i;
     new.fondu = create_rect(vect, (sfVector2f){1280, 720});
     new.quest_status = 0;
+    new.old_pos = sfSprite_getPosition(obj[HERO_HB]->sprite);
     return new;
+}
+
+static void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg)
+{
+    sfRectangleShape_destroy(fight->fondu);
+    sfFont_destroy((sfFont *)sfText_getFont(fight->text));
+    sfText_destroy(fight->text);
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(fight->parch));
+    sfSprite_destroy(fight->parch);
+    update_fondu_rect_fight(fight, rpg, 1);
+    update_fight_text(1, fight, 1);
+    sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos);
+    sfSprite_setPosition(obj[1]->sprite,
+sfSprite_getPosition(obj[HERO_HB]->sprite));
 }
 
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
-    fight_t fight = create_fight(i, rpg);
+    fight_t fight = create_fight(i, rpg, obj);
     int ret_val = 0;
 
     sfClock_restart(obj[1]->clock);
@@ -56,11 +71,7 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += fight_event_management(rpg);
         if (ret_val > 0) {
-            sfRectangleShape_destroy(fight.fondu);
-            sfText_destroy(fight.text);
-            sfSprite_destroy(fight.parch);
-            update_fondu_rect_fight(&fight, rpg, 1);
-            update_fight_text(1, &fight, 1);
+            delete_fight(&fight, obj, rpg);
             return;
         }
         fight_action(rpg, obj, house, &fight);
