@@ -122,7 +122,7 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 
 //intro_event.c
-void intro_event_management(rpg_t *rpg);
+void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_fondu_rect(intro_t *intro, rpg_t *rpg);
 
 //intro_text.c
@@ -234,5 +234,15 @@ int check_characters_clock(sfClock *clock, float limit);
 //intro.c
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house);
+void mouse_wheel_management(rpg_t *rpg);
+void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
+
+//fight
+int update_fight_text(size_t frames, fight_t *fight, int flag);
+void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
+int fight_event_management(rpg_t *rpg);
+void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
+int fight_text_intro(int i);
+void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 
 #endif /* !PROTO_H_ */

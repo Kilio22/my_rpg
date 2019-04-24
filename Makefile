@@ -43,6 +43,7 @@ SRC_PATH	=	$(ROOT_PATH)$(SRC_NAME)
 MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
+FIGHT_PATH	=	fight/
 
 SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_event.c	\
@@ -55,6 +56,10 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_steps_5.c	\
 		$(INTRO_PATH)intro_steps_6.c	\
 		$(INTRO_PATH)dialogue.c	\
+		$(FIGHT_PATH)fight.c	\
+		$(FIGHT_PATH)fight_text.c	\
+		$(FIGHT_PATH)fight_events.c	\
+		$(FIGHT_PATH)fight_updates.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\

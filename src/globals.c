@@ -201,6 +201,12 @@ const char *house_path[8] = {
     "assets/maison5.png"
 };
 
+const char *ennemi_text[3] = {
+    "Ennemi: Viens te battre !",
+    "Ennemi: Tu es venu te faire tuer ?",
+    "Ennemi: Pauvre fou, tu vas souffrir !"
+};
+
 const sfIntRect house_rects[8] = {
     {0, 0, 160, 320},
     {0, 0, 224, 256},

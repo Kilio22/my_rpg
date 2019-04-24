@@ -7,14 +7,6 @@
 
 #include "rpg.h"
 
-static void mouse_wheel_management(rpg_t *rpg)
-{
-    if (WIND.event.mouseWheel.delta == 1)
-        CONTROLS.bools[ZOOM] = 1;
-    else if (WIND.event.mouseWheel.delta == -1)
-        CONTROLS.bools[DEZOOM] = 1;
-}
-
 static void check_updates(rpg_t *rpg, intro_t *intro, int *alpha)
 {
     if ((rpg->quest_status == 2 || rpg->quest_status == 12
@@ -46,7 +38,7 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg)
     sfRenderWindow_drawRectangleShape(WIND.wind, intro->fondu, NULL);
 }
 
-void intro_event_management(rpg_t *rpg)
+void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -59,6 +51,11 @@ void intro_event_management(rpg_t *rpg)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
             MENU.menu_on = 0;
+        if (WIND.event.key.code == sfKeyF6) {
+            reset_char(obj, rpg, house);
+            rpg->quest_status = 26;
+            MENU.menu_on = 2;
+        }
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
