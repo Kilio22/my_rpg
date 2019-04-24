@@ -14,7 +14,7 @@ int intro_go_auberge8(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)rpg;
     (void)house;
     if (opt == 22) {
-        if (obj[0]->pos.x > 10834) {
+        if (obj[0]->pos.x > 11474) {
             new_pos.y = 1;
             sfSprite_move(obj[8]->sprite, new_pos);
             new_pos.x = -1;
@@ -34,7 +34,7 @@ int intro_go_auberge7(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)rpg;
     (void)house;
     if (opt == 21) {
-        if (obj[8]->pos.x > 10834) {
+        if (obj[8]->pos.x > 11474) {
             new_pos.x = -1;
             sfSprite_move(obj[8]->sprite, new_pos);
             sfSprite_move(obj[0]->sprite, new_pos);
@@ -52,7 +52,7 @@ int intro_go_auberge6(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)rpg;
     (void)house;
     if (opt == 20) {
-        if (obj[0]->pos.y < 1104) {
+        if (obj[0]->pos.y < 1424) {
             new_pos.x = -1;
             sfSprite_move(obj[8]->sprite, new_pos);
             new_pos.x = 0;
@@ -72,7 +72,7 @@ int intro_go_auberge5(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)rpg;
     (void)house;
     if (opt == 19) {
-        if (obj[8]->pos.y < 1076) {
+        if (obj[8]->pos.y < 1396) {
             new_pos.y = 1;
             sfSprite_move(obj[8]->sprite, new_pos);
             sfSprite_move(obj[0]->sprite, new_pos);
@@ -90,7 +90,7 @@ int intro_go_auberge4(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)rpg;
     (void)house;
     if (opt == 18) {
-        if (obj[0]->pos.x > 11376) {
+        if (obj[0]->pos.x > 12016) {
             new_pos.y = 1;
             sfSprite_move(obj[8]->sprite, new_pos);
             new_pos.y = 0;

@@ -13,14 +13,14 @@ int intro_nathan(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 8 && rpg->quest_status == 4) {
-        if (obj[8]->pos.x < 11376) {
+        if (obj[8]->pos.x < 12016) {
             new_pos.x = 1;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else
             opt++;
     }
     if (opt == 9) {
-        if (obj[8]->pos.y > 882) {
+        if (obj[8]->pos.y > 1202) {
             new_pos.y -= 1;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else {
@@ -39,8 +39,8 @@ int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)house;
     if (opt == 5 && rpg->quest_status == 3) {
         sfSound_play(rpg->music.hurt);
-        new_pos.x = 11556;
-        new_pos.y = 1122;
+        new_pos.x = 12196;
+        new_pos.y = 1442;
         sfSprite_setPosition(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         opt++;
@@ -78,7 +78,7 @@ int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)house;
     (void)rpg;
     if (opt == 2) {
-        if (obj[0]->pos.y > 1900) {
+        if (obj[0]->pos.y > 2220) {
             (new_pos).y -= 1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -99,7 +99,7 @@ int intro_control(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)house;
     (void)rpg;
     if (opt == 0) {
-        if (obj[0]->pos.y > 2076) {
+        if (obj[0]->pos.y > 2396) {
             new_pos.y -= 1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -107,7 +107,7 @@ int intro_control(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             opt++;
     }
     if (opt == 1) {
-        if (obj[0]->pos.x > 10194) {
+        if (obj[0]->pos.x > 10834) {
             new_pos.x -= 1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
