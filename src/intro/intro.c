@@ -90,7 +90,7 @@ int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            intro_event_management(rpg);
+            intro_event_management(rpg, obj, house);
         if (MENU.menu_on == 0 || MENU.menu_on == 2)
             return return_to_game(rpg, obj);
         intro_action(rpg, obj, house, &intro);
