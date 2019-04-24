@@ -11,11 +11,8 @@ void display_house_intro(obj_t **obj, house_t *house, rpg_t *rpg, int *opt)
 {
     (void)obj;
     (void)rpg;
-    if (house->frame_animation > 8 && house->door_rect.left < 384 - 96) {
+    if (clock_door() == 1 && house->door_rect.left < 384 - 96)
         animation(&house->door_rect, 0, 96, 384);
-        house->frame_animation = 0;
-    }
-    house->frame_animation++;
     if (house->door_rect.left > 384 - 97) {
         house->display_house = 0;
         (*opt)++;
