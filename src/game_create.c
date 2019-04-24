@@ -9,7 +9,7 @@
 
 int game_create_load(obj_t **obj)
 {
-    obj[0] = create_object(obj_path[0], V2F(9410, 1250), RECT_BASE, sfTrue);
+    obj[0] = create_object(obj_path[0], V2F(10050, 1570), RECT_BASE, sfTrue);
     if (obj[0] == NULL)
         return (84);
     obj[0]->rectangle = sfRectangleShape_create();
@@ -18,7 +18,7 @@ int game_create_load(obj_t **obj)
     obj[0]->rectangle_bound =
 sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
     free_obj(obj[1]);
-    obj[1] = create_object(obj_path[1], V2F(9410, 1250), RECT_OBJ, sfFalse);
+    obj[1] = create_object(obj_path[1], V2F(10050, 1570), RECT_OBJ, sfFalse);
     if (obj[1] == NULL)
         return (84);
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
@@ -50,15 +50,15 @@ void create_followers(rpg_t *rpg, obj_t **obj)
 void create_ennemis(obj_t **obj)
 {
     if (obj[6] == NULL) {
-        obj[6] = create_object(obj_path[3], V2F(7728, 2290), RECT_OBJ, sfFalse);
+        obj[6] = create_object(obj_path[3], V2F(8368, 2610), RECT_OBJ, sfFalse);
         sfSprite_setOrigin(obj[6]->sprite, V2F(16, 60));
     }
     if (obj[7] == NULL) {
-        obj[7] = create_object(obj_path[3], V2F(9400, 350), RECT_OBJ, sfFalse);
+        obj[7] = create_object(obj_path[3], V2F(10040, 670), RECT_OBJ, sfFalse);
         sfSprite_setOrigin(obj[7]->sprite, V2F(16, 60));
     }
     if (obj[8] == NULL) {
-        obj[8] = create_object(obj_path[3], V2F(11312, 316), RECT_OBJ, sfFalse);
+        obj[8] = create_object(obj_path[3], V2F(11952, 636), RECT_OBJ, sfFalse);
         sfSprite_setOrigin(obj[8]->sprite, V2F(16, 60));
     }
     for (int i = 6; i < 9; i++) {

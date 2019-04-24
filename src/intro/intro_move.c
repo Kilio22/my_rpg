@@ -45,7 +45,7 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
 
     vect.y += 15;
     vect.x += 80;
-    if (sfSprite_getPosition(obj[0]->sprite).y <= 1900)
+    if (sfSprite_getPosition(obj[0]->sprite).y <= 2220)
         update_intro_text(rpg, 1, intro);
     sfText_setPosition(intro->text, vect);
     vect.y -= 15;

@@ -9,14 +9,14 @@
 
 void reset_char(obj_t **obj, rpg_t *rpg, house_t **house)
 {
-    sfSprite_setPosition(obj[0]->sprite, V2F(9410, 1250));
+    sfSprite_setPosition(obj[0]->sprite, V2F(10050, 1570));
     obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
     free_house(house[0]);
     for (int i = 5; i < 11; i++) {
         free_obj(obj[i]);
         obj[i] = NULL;
     }
-    house[0] = create_house(2, V2F(9200, 768));
+    house[0] = create_house(2, V2F(9840, 1088));
     game_create(rpg, obj, house);
 }
 
@@ -49,14 +49,14 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 39 && rpg->quest_status == 22) {
-        if (obj[10]->pos.x > 9408) {
+        if (obj[10]->pos.x > 10048) {
             new_pos.x = -1;
             sfSprite_move(obj[10]->sprite, new_pos);
         } else
             opt++;
     }
     if (opt == 40) {
-        if (obj[10]->pos.y < 1026) {
+        if (obj[10]->pos.y < 1346) {
             new_pos.y = 1;
             sfSprite_move(obj[10]->sprite, new_pos);
         } else {
