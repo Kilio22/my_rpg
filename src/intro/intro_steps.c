@@ -38,7 +38,7 @@ int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 5 && rpg->quest_status == 3) {
-        sfSound_play(rpg->musics.hurt);
+        sfSound_play(rpg->music.hurt);
         new_pos.x = 11556;
         new_pos.y = 1122;
         sfSprite_setPosition(obj[0]->sprite, new_pos);

@@ -222,7 +222,7 @@ typedef struct rpg_s {
     menu_t menu;
     map_t map;
     house_t **house;
-    my_musics_t musics;
+    my_musics_t music;
     int error_code;
     int quest_status;
     int dial_status;
