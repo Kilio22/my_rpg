@@ -245,4 +245,12 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 
+//framebuffer
+void display_framebuffer(rpg_t *rpg);
+void create_framebuffer(rpg_t *rpg);
+void draw_square_fog(framebuffer_t *framebuffer, sfVector2u position,
+unsigned int line);
+void draw_square_fire(framebuffer_t *framebuffer, sfVector2u position,
+unsigned int line);
+
 #endif /* !PROTO_H_ */

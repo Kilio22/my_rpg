@@ -101,7 +101,9 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-		time_gestion.c \
+		time_gestion.c 	\
+		framebuffer.c 	\
+		put_pixel.c \
 		item/item.c \
 		inventory/inventory_debug.c \
 		inventory/inventory_op.c \

@@ -9,6 +9,7 @@
 #include <SFML/Audio.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "rpg.h"
 
 int init_main(rpg_t *rpg)
@@ -37,6 +38,7 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
+    srand(time(0));
     if (obj == NULL || house == NULL)
         return (84);
     if (create_houses(house) == -1)
