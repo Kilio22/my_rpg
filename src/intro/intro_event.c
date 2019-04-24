@@ -53,7 +53,8 @@ void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
             MENU.menu_on = 0;
         if (WIND.event.key.code == sfKeyF6) {
             reset_char(obj, rpg, house);
-            rpg->quest_status = 24;
+            rpg->quest_status = 26;
+            MENU.menu_on = 2;
         }
     }
     if (WIND.event.type == sfEvtClosed)
