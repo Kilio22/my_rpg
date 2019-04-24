@@ -240,7 +240,7 @@ void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
 //fight
 int update_fight_text(size_t frames, fight_t *fight, int flag);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
-int fight_event_management(rpg_t *rpg);
+int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);

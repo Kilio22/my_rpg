@@ -56,6 +56,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_steps_5.c	\
 		$(INTRO_PATH)intro_steps_6.c	\
 		$(INTRO_PATH)dialogue.c	\
+		$(FIGHT_PATH)attaques.c	\
 		$(FIGHT_PATH)fight.c	\
 		$(FIGHT_PATH)fight_text.c	\
 		$(FIGHT_PATH)fight_events.c	\
