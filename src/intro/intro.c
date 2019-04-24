@@ -46,7 +46,7 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
 static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 {
     intro_t new;
-    sfVector2f oui = sfRenderWindow_mapPixelToCoords(WIND.wind,
+    sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
 (sfVector2i){0, 0}, WIND.view);
     sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
@@ -54,7 +54,7 @@ static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
     rpg->musics.hurt = create_sound("assets/hurt.ogg");
     new.text = create_text(MENU_FONT, " ", 19,
 sfSprite_getPosition(obj[6]->sprite));
-    new.fondu = create_rect(oui, (sfVector2f){1280, 720});
+    new.fondu = create_rect(vect, (sfVector2f){1280, 720});
     new.sprite = sfSprite_create();
     sfSprite_setTexture(new.sprite, text, sfTrue);
     sfSprite_setScale(new.sprite, V2F(0.6, 0.6));
