@@ -44,6 +44,7 @@ SRC		=	animated_sprite/animated_sprite.c \
 
 CFLAGS	=	-Wall \
 			-Wextra \
+			-Werror	\
 			-I $(INCLUDE_PATH)
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4
