@@ -35,6 +35,8 @@ void manage_key_pressed(rpg_t *rpg)
         CONTROLS.bools[KEYLEFT] = 1;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 1;
+    if (WIND.event.key.code == sfKeyA)
+        inventory_loop(rpg->game.inv);
     manage_other_key_pressed(rpg);
 }
 

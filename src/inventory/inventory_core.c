@@ -52,5 +52,6 @@ void inventory_loop(inventory_t *inv)
         inventory_draw(inv);
         sfRenderWindow_display(inv->window);
     }
+    inv->should_exit = 0;
     sfRenderWindow_setView(inv->window, view_backup);
 }

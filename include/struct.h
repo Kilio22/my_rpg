@@ -13,6 +13,7 @@
 #include <SFML/Graphics.h>
 #include "my_vector.h"
 #include "stdbool.h"
+#include "inventory.h"
 
 enum menu_type {
     BACK,
@@ -138,6 +139,7 @@ typedef struct game_s {
     simple_vector_t *follower2;
     framebuffer_t *fog;
     framebuffer_t *fire;
+    inventory_t *inv;
 } game_t;
 
 typedef struct button_s {

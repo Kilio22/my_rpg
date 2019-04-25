@@ -12,6 +12,7 @@
 #include <time.h>
 #include "rpg.h"
 #include "my_dragndrop.h"
+#include "inventory.h"
 
 int init_main(rpg_t *rpg)
 {
@@ -23,6 +24,7 @@ int init_main(rpg_t *rpg)
 sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
     rpg->game.nb_save = 0;
     rpg->game.language = 0;
+    rpg->game.inv = inventory_create(rpg->wind.wind);
     rpg->controls.bools = malloc(sizeof(sfBool) * 10);
     if (rpg->controls.bools == NULL)
         return (84);
