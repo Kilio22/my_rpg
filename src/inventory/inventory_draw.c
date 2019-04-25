@@ -33,8 +33,8 @@ void inventory_draw_debug(inventory_t *inv)
         draw_item_case(inv->window, stuff_grid[i].x, stuff_grid[i].y);
     for (int i = 0; i < INVENTORY_SIZE_Y; i++) {
         for (int j = 0; j < INVENTORY_SIZE_X; j++) {
-            x = 477 + j * (50 + 23);
-            y = 46 + i * (50 + 23);
+            x = 481 + j * (50 + 23);
+            y = 50 + i * (50 + 23);
             draw_item_case(inv->window, x, y);
         }
     }
@@ -52,7 +52,7 @@ void inventory_draw_stock(inventory_t *inv)
         current = inv->stock[i]->display;
         x = i % INVENTORY_SIZE_X;
         y = i / INVENTORY_SIZE_X;
-        current->pos = (sfVector2f){477 + x * 73, 46 + y * 73};
+        current->pos = (sfVector2f){481 + x * 73, 50 + y * 73};
         sfRenderWindow_drawDragndrop(inv->window, current);
     }
 }

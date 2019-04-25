@@ -9,7 +9,7 @@
 
 static void inventory_load_assets(inventory_t *inv)
 {
-    sfTexture *a = sfTexture_createFromFile("assets/inventory/grid.png", NULL);
+    sfTexture *a = sfTexture_createFromFile("assets/inventory/inv.png", NULL);
     sfTexture *b = sfTexture_createFromFile("assets/inventory/inv1.png", NULL);
     sfTexture *c = sfTexture_createFromFile("assets/inventory/inv2.png", NULL);
     sfTexture *d = sfTexture_createFromFile("assets/inventory/inv3.png", NULL);
@@ -22,7 +22,7 @@ static void inventory_load_assets(inventory_t *inv)
     sfSprite_setTexture(inv->inv_widget[1], c, sfTrue);
     sfSprite_setTexture(inv->inv_widget[2], d, sfTrue);
     for (int i = 0; i < 3; i++)
-        sfSprite_setPosition(inv->inv_widget[i], (sfVector2f){40, 60});
+        sfSprite_setPosition(inv->inv_widget[i], (sfVector2f){40, 40});
     sfSprite_setPosition(inv->grid, (sfVector2f){450, 20});
 }
 

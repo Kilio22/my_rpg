@@ -43,7 +43,7 @@ void inventory_loop(inventory_t *inv)
 {
     const sfView *view_backup = sfRenderWindow_getView(inv->window);
     const sfView *default_view = sfRenderWindow_getDefaultView(inv->window);
-
+    
     sfRenderWindow_setView(inv->window, default_view);
     while (sfRenderWindow_isOpen(inv->window) && inv->should_exit == 0) {
         window_event(inv);

@@ -18,9 +18,9 @@
 #include "my_ini.h"
 #include "my_display.h"
 
-#define INVENTORY_SIZE_X 9
-#define INVENTORY_SIZE_Y 10
-#define INVENTORY_SIZE (9 * 10)
+#define INVENTORY_SIZE_X 4
+#define INVENTORY_SIZE_Y 4
+#define INVENTORY_SIZE (4 * 4)
 
 enum data_mapping {
     NAME,
@@ -103,8 +103,8 @@ int inventory_get_stuff_id_from_mouse(sfRenderWindow *window);
 int is_collided_mouse_rect(sfIntRect rect, sfRenderWindow *window);
 
 static const sfVector2f stuff_grid[6] = {
-{70, 234}, {145, 88},
-{145, 162}, {145, 234},
-{145, 307}, {218, 234}};
+{70, 214}, {145, 68},
+{145, 142}, {145, 214},
+{145, 287}, {218, 214}};
 
 #endif /* !INVENTORY_H_ */
