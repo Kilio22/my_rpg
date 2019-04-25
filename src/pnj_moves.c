@@ -10,6 +10,12 @@
 static sfBool all_world_hitBox_pnj(obj_t **obj, house_t **house,
 obj_t *obj_solo)
 {
+    sfVector2f old_pos = sfRectangleShape_getPosition(obj_solo->rectangle);
+    sfFloatRect rect;
+
+    sfRectangleShape_setPosition(obj_solo->rectangle,
+sfSprite_getPosition(obj_solo->sprite));
+    rect = sfRectangleShape_getGlobalBounds(obj_solo->rectangle);
     if (pp_intersect(obj_solo->sprite, obj[4]->sprite,
 obj_solo->image, obj[4]->image) == 1)
         return 1;
@@ -17,6 +23,11 @@ obj_solo->image, obj[4]->image) == 1)
         if (pp_intersect(obj_solo->sprite, house[i]->tab[HITBOX],
 obj_solo->image, house[i]->image) == 1)
             return 1;
+    if (sfFloatRect_intersects(&obj[0]->rectangle_bound,
+&rect, NULL) == sfTrue) {
+        sfRectangleShape_setPosition(obj_solo->rectangle, old_pos);
+        return 1;
+    }
     return 0;
 }
 
