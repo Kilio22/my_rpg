@@ -16,7 +16,7 @@ static char *convert_empty(ini_line_t *line)
     buff[size - 2] = '[';
     buff[size - 1] = ']';
     buff[size] = '\0';
-    return (buff); 
+    return (buff);
 }
 
 static int ini_line_size(ini_line_t *line)
@@ -26,7 +26,7 @@ static int ini_line_size(ini_line_t *line)
 
     size += line->values->size - 1;
     while (current) {
-        size += mg_strlen((char*)current->content);
+        size += mg_strlen((char *)current->content);
         current = current->next;
     }
     size++;

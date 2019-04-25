@@ -12,9 +12,9 @@ static void check_pnj_intro(obj_t **obj, house_t **house, rpg_t *rpg)
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[9] == NULL && !house[i]->display_house) {
             obj[9] = create_object(obj_path[5],
-(sfVector2f){9246, 1120}, RECT_OBJ, sfTrue);
+(sfVector2f){9886, 1440}, RECT_OBJ, sfTrue);
             obj[10] = create_object(obj_path[6],
-(sfVector2f){9460, 912}, RECT_OBJ, sfTrue);
+(sfVector2f){10100, 1232}, RECT_OBJ, sfTrue);
         }
         if (house[i]->display_house == 1)
             sfRenderWindow_drawSprite(WIND.wind, house[i]->tab[ROOF], NULL);

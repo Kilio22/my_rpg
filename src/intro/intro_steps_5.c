@@ -13,7 +13,7 @@ int intro_go_auberge18(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 38) {
-        if (obj[0]->pos.y > 1130) {
+        if (obj[0]->pos.y > 1450) {
             new_pos.y = -1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -31,7 +31,7 @@ int intro_go_auberge17(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 36 && rpg->quest_status == 14) {
-        if (obj[0]->pos.y < 1150) {
+        if (obj[0]->pos.y < 1470) {
             new_pos.y = 1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -39,7 +39,7 @@ int intro_go_auberge17(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             opt++;
     }
     if (opt == 37) {
-        if (obj[0]->pos.x < 9408) {
+        if (obj[0]->pos.x < 10048) {
             new_pos.x = 1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -55,7 +55,7 @@ int intro_go_auberge16(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 33) {
-        if (obj[0]->pos.y > 1000) {
+        if (obj[0]->pos.y > 1320) {
             new_pos.y = -1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -80,7 +80,7 @@ int intro_go_auberge15(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 32) {
-        if (obj[0]->pos.x > 9266) {
+        if (obj[0]->pos.x > 9906) {
             new_pos.x = -1;
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
@@ -98,7 +98,7 @@ int intro_go_auberge14(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 
     (void)house;
     if (opt == 29) {
-        if (obj[8]->pos.y > 1060) {
+        if (obj[8]->pos.y > 1380) {
             new_pos.y = -1;
             sfSprite_move(obj[8]->sprite, new_pos);
             sfSprite_move(obj[0]->sprite, new_pos);

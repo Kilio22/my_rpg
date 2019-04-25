@@ -13,6 +13,7 @@
 #include <SFML/Graphics.h>
 #include "my_vector.h"
 #include "stdbool.h"
+#include "inventory.h"
 
 enum menu_type {
     BACK,
@@ -37,6 +38,7 @@ enum keys {
     DOWN,
     RIGHT,
     INTERACT,
+    INV,
     STATS
 };
 
@@ -119,6 +121,15 @@ typedef struct house_s {
     int type;
 } house_t;
 
+typedef struct framebuffer
+{
+    int width;
+    int height;
+    sfUint8 *array;
+    sfTexture *text;
+    sfSprite *sprite;
+} framebuffer_t;
+
 typedef struct game_s {
     int nb_save;
     int auberge;
@@ -127,6 +138,9 @@ typedef struct game_s {
     sfMusic *back_music;
     simple_vector_t *follower;
     simple_vector_t *follower2;
+    framebuffer_t *fog;
+    framebuffer_t *fire;
+    inventory_t *inv;
 } game_t;
 
 typedef struct button_s {
@@ -208,7 +222,7 @@ typedef struct fight_s {
     sfRectangleShape *fondu;
     sfText *text;
     sfSprite *parch;
-    sfVector2f old_pos;
+    sfVector2f old_pos[4];
     sfText *attacks[5];
     int high;
 } fight_t;

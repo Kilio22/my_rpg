@@ -39,3 +39,27 @@ void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag)
     check_updates(fight, &alpha);
     sfRenderWindow_drawRectangleShape(WIND.wind, fight->fondu, NULL);
 }
+
+void update_attacks_pos(fight_t *new, rpg_t *rpg, int i)
+{
+    sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
+(sfVector2i){0, 558}, WIND.view);;
+    sfVector2f vect_text;
+    static sfVector2f offset = {0, 0};
+
+    if (i == -1) {
+        offset = V2F(0, 0);
+        return;
+    }
+    vect.y += 15;
+    vect.x += 80;
+    vect_text = vect;
+    offset.y += (offset.x == 540 ? 40 : 0);
+    offset.x = (offset.x == 540 ? 0 : offset.x);
+    vect_text = (sfVector2f){vect_text.x + offset.x, vect_text.y + offset.y};
+    sfText_setPosition(new->attacks[i], vect_text);
+    offset.x += 180;
+    vect.y -= 15;
+    vect.x -= 20;
+    sfSprite_setPosition(new->parch, vect);
+}

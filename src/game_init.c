@@ -9,8 +9,8 @@
 
 void init_objs(obj_t **obj)
 {
-    sfVector2f vects[] = {{10280, 2800}, {10280, 2800}, {0, 0}, {10194, 1676},
-{10228, 1696}, {10162, 1696}, {11128, 1076}};
+    sfVector2f vects[] = {{10920, 2860}, {10920, 2860}, {0, 0}, {10834, 1996},
+{10868, 2016}, {10802, 2016}, {11768, 1396}};
 
     for (int i = 0; i < 11; i++)
         obj[i] = NULL;
@@ -20,7 +20,7 @@ void init_objs(obj_t **obj)
     sfRectangleShape_setOrigin(obj[0]->rectangle, V2F(16, 8));
     obj[1] = create_object(obj_path[1], vects[1], RECT_OBJ, sfFalse);
     obj[4] = create_object(obj_path[2], vects[2],
-(sfIntRect){0, 0, 11776, 2560}, sfFalse);
+(sfIntRect){0, 0, 14528, 3200}, sfFalse);
     obj[5] = create_object(obj_path[3], vects[3], RECT_OBJ, sfTrue);
     obj[6] = create_object(obj_path[3], vects[4], RECT_OBJ, sfTrue);
     obj[7] = create_object(obj_path[3], vects[5], RECT_OBJ, sfTrue);

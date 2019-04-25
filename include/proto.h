@@ -74,6 +74,7 @@ void free_objs(obj_t **obj);
 //game_display.c
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 void house_display(rpg_t *rpg, house_t **house);
+void check_obj_display(obj_t **obj, rpg_t *rpg);
 
 //game_event.c
 void event_management(rpg_t *rpg);
@@ -93,7 +94,7 @@ int init_save(rpg_t *rpg);
 //intro_fcts1.c
 void check_house_display_intro(obj_t **obj, house_t *house,
                                         rpg_t *rpg, int *opt);
-int intro_control(obj_t **obj, int opt,rpg_t *rpg, house_t **house);
+int intro_control(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_ennemi_two(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
@@ -194,6 +195,7 @@ sfText *create_text(const char *font_fp, const char *str,
 unsigned int size, sfVector2f pos);
 char *my_ftoa(float value);
 sfSound *create_sound(char const *path);
+int check_pnj_clock_move(void);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -244,5 +246,25 @@ int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
+void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg);
+void display(rpg_t *rpg, obj_t **obj, house_t **house);
+void update_attacks_pos(fight_t *new, rpg_t *rpg, int i);
+void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg);
+fight_t create_fight(int i, rpg_t *rpg, obj_t **obj);
+float calc_dist(sfVector2f pos1, sfVector2f pos2);
+void print_reverse_order(obj_t **obj, rpg_t *rpg);
+void print_base_order(obj_t **obj, rpg_t *rpg);
+void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
+
+//move pnj
+void move_pnjs(obj_t **obj, house_t **house);
+
+//framebuffer
+void display_framebuffer(rpg_t *rpg);
+void create_framebuffer(rpg_t *rpg);
+void draw_square_fog(framebuffer_t *framebuffer, sfVector2u position,
+unsigned int line);
+void draw_square_fire(framebuffer_t *framebuffer, sfVector2u position,
+unsigned int line);
 
 #endif /* !PROTO_H_ */

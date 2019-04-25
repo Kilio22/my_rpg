@@ -14,14 +14,13 @@
 #include "my_vector.h"
 #include "my_dragndrop.h"
 #include <stdlib.h>
-#include "macros.h"
 #include "mg_str.h"
 #include "my_ini.h"
 #include "my_display.h"
 
-#define INVENTORY_SIZE_X 4
-#define INVENTORY_SIZE_Y 4
-#define INVENTORY_SIZE (4 * 4)
+#define INVENTORY_SIZE_X 9
+#define INVENTORY_SIZE_Y 10
+#define INVENTORY_SIZE (9 * 10)
 
 enum data_mapping {
     NAME,
@@ -41,12 +40,6 @@ enum items {
     OTHER
 };
 
-enum item_pos {
-    NOTHING,
-    STUFF,
-    STOCK
-};
-
 struct item {
     char *name;
     int id;
@@ -60,9 +53,13 @@ typedef struct item item_t;
 
 struct inventory {
     item_t *stock[INVENTORY_SIZE_X * INVENTORY_SIZE_Y];
-    item_t *stuff[6];
+    item_t *stuff[3][6];
     item_t *item_dragging;
-    int item_pos;
+    int state;
+    int should_exit;
+    sfSprite *grid;
+    sfSprite *inv_widget[3];
+
     sfRenderWindow *window;
 };
 typedef struct inventory inventory_t;
@@ -77,38 +74,37 @@ inventory_t *inventory_create(sfRenderWindow *window);
 void inventory_destroy(inventory_t *inv);
 
 // inventory_core.c
-void inventory_compute(inventory_t *inv);
 void inventory_draw(inventory_t *inv);
 void inventory_event(inventory_t *inv);
+void inventory_compute(inventory_t *inv);
+void inventory_loop(inventory_t *inv);
 
-// inventory_op.c
-int inventory_add_item_to_stock(inventory_t *inv, item_t *item); //0 if fail
-void inventory_remove_item_from_stock(inventory_t *inv, item_t *item);
-void inventory_add_item_to_stuff(inventory_t *inv, item_t *item, int type);
-void inventory_remove_item_from_stuff(inventory_t *inv, int type);
-
-//inventory_swap.c
-void inventory_swap_to_stuff(inventory_t *inv, item_t *item, int type);
-void inventory_swap_to_stock(inventory_t *inv, int type);
-
-//inventory_debug.c
-void inventory_show_debug(inventory_t *inv);
-void inventory_show_debug_stuff(inventory_t *inv);
-void inventory_show_debug_stock(inventory_t *inv);
-void inventory_draw_debug_grid(inventory_t *inv);
-
-//inventory_stock;c
+// inventory_draw.c
+void inventory_draw_background(inventory_t *inv);
 void inventory_draw_stock(inventory_t *inv);
-void inventory_event_stock(inventory_t *inv);
-int inventory_is_under_dragging(inventory_t *inv);
-
-//inventory_stuff.c
 void inventory_draw_stuff(inventory_t *inv);
+void inventory_draw_debug(inventory_t *inv);
+
+// inventory_data.c
+int inventory_get_empty_case(inventory_t *inv);
+void inventory_add_item(inventory_t *inv, item_t *item);
+
+// inventory_event.c
+void inventory_event_stock(inventory_t *inv);
 void inventory_event_stuff(inventory_t *inv);
 
+// inventory_compute.c
+void inventory_compute_stock_released(inventory_t *inv);
+void inventory_compute_stuff_released(inventory_t *inv);
+
+// inventory_common.c
+int inventory_get_id_from_coord(sfRenderWindow *window);
+int inventory_get_stuff_id_from_mouse(sfRenderWindow *window);
+int is_collided_mouse_rect(sfIntRect rect, sfRenderWindow *window);
+
 static const sfVector2f stuff_grid[6] = {
-{130, 100}, {210, 100},
-{130, 190}, {210, 190},
-{130, 270}, {210, 270}};
+{70, 234}, {145, 88},
+{145, 162}, {145, 234},
+{145, 307}, {218, 234}};
 
 #endif /* !INVENTORY_H_ */
