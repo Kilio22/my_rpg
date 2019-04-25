@@ -9,7 +9,6 @@
 #include <SFML/Audio.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include "rpg.h"
 #include "my_dragndrop.h"
 #include "inventory.h"
@@ -41,7 +40,7 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
-    srand(time(0));
+    srand(&rpg.wind.wind);
     if (obj == NULL || house == NULL)
         return (84);
     if (create_houses(house) == -1)
