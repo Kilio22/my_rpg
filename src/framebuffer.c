@@ -5,6 +5,7 @@
 ** framebuffer
 */
 
+#include <string.h>
 #include "rpg.h"
 
 static framebuffer_t *framebuffer_create(unsigned int width,
@@ -15,6 +16,7 @@ unsigned int height)
     frame->width = width;
     frame->height = height;
     frame->array = malloc(sizeof(sfUint8) * width * height * 4);
+    memset(frame->array, 0, (width * height * 4));
     return (frame);
 }
 

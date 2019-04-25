@@ -60,7 +60,8 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
-    display_framebuffer(rpg);
+    if (house[1]->display_house == 1)
+        display_framebuffer(rpg);
     check_obj_display(obj, rpg);
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_display(house, obj, rpg);
