@@ -20,6 +20,23 @@ unsigned int height)
     return (frame);
 }
 
+static int clock_framebufer_fire(void)
+{
+    static sfClock *clock = NULL;
+    sfTime time;
+    float seconds;
+
+    if (!clock)
+        clock = sfClock_create();
+    time = sfClock_getElapsedTime(clock);
+    seconds = time.microseconds / 1000000.0;
+    if (seconds >= 0.20) {
+        sfClock_restart(clock);
+        return 1;
+    }
+    return 0;
+}
+
 static int clock_framebufer(void)
 {
     static sfClock *clock = NULL;
@@ -39,10 +56,10 @@ static int clock_framebufer(void)
 
 void display_framebuffer(rpg_t *rpg)
 {
-    if (clock_framebufer() == 1) {
+    if (clock_framebufer() == 1)
         draw_square_fog(GAME.fog, V2U(1U, 1U), 54);
+    if (clock_framebufer_fire() == 1)
         draw_square_fire(GAME.fire, V2U(1U, 1U), 15);
-    }
     sfTexture_updateFromPixels(GAME.fog->text, GAME.fog->array,
 GAME.fog->width, GAME.fog->height, 0, 0);
     sfSprite_setTexture(GAME.fog->sprite, GAME.fog->text, sfFalse);
