@@ -90,6 +90,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		characters_stats.c	\
 		create_house.c	\
 		create_obj.c	\
+		display_utils.c	\
 		fill_map.c	\
 		free_save.c	\
 		free.c 	\
@@ -132,7 +133,8 @@ SRC_LIB	=	inimy \
 			csfml-graphics \
 			csfml-window \
 			csfml-system \
-			csfml-audio
+			csfml-audio	\
+			m
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \

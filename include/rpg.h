@@ -19,5 +19,6 @@
 #include "my_chained.h"
 #include "get_next_line.h"
 #include "graphic.h"
+#include "math.h"
 
 #endif /* !RPG_H_ */
