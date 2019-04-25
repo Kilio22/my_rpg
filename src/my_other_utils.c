@@ -46,3 +46,11 @@ int check_pnj_clock_move(void)
     }
     return 0;
 }
+
+float calc_dist(sfVector2f pos1, sfVector2f pos2)
+{
+    float dist = sqrtf(powf((pos2.x -
+pos1.x), 2) + powf((pos2.y - pos1.y), 2));
+
+    return dist;
+}

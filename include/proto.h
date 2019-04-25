@@ -74,6 +74,7 @@ void free_objs(obj_t **obj);
 //game_display.c
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house);
 void house_display(rpg_t *rpg, house_t **house);
+void check_obj_display(obj_t **obj, rpg_t *rpg);
 
 //game_event.c
 void event_management(rpg_t *rpg);
@@ -250,6 +251,9 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_attacks_pos(fight_t *new, rpg_t *rpg, int i);
 void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg);
 fight_t create_fight(int i, rpg_t *rpg, obj_t **obj);
+float calc_dist(sfVector2f pos1, sfVector2f pos2);
+void print_reverse_order(obj_t **obj, rpg_t *rpg);
+void print_base_order(obj_t **obj, rpg_t *rpg);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);

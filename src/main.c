@@ -44,6 +44,7 @@ int main(void)
     rpg.house = house;
     if (init_main(&rpg) == 84)
         return 84;
+    srand((unsigned long) rpg.wind.wind);
     init_menu(&rpg, obj, house);
     if (rpg.error_code == 84)
         return (84);

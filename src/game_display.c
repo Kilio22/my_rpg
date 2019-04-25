@@ -31,14 +31,36 @@ sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
     }
 }
 
+void check_obj_display(obj_t **obj, rpg_t *rpg)
+{
+    float lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
+    float distance = 0;
+    int n_val = 6;
+
+    for (int i = 7; i < 9; i++) {
+        distance = calc_dist(obj[0]->pos, obj[i]->pos);
+        if (distance < lowest_dist) {
+            n_val = i;
+            lowest_dist = distance;
+        }
+    }
+    if (obj[0]->pos.y < obj[n_val]->pos.y)
+        n_val++;
+    else
+        n_val = -1;
+    if (n_val > 0) {
+        print_reverse_order(obj, rpg);
+    } else {
+        print_base_order(obj, rpg);
+    }
+}
+
 void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
-    for (int i = 10; i > 0; i--)
-        if (obj[i] != NULL && i != 4)
-            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    check_obj_display(obj, rpg);
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);

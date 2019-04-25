@@ -28,9 +28,7 @@ house_t **house, fight_t *fight)
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
-    for (int i = 10; i > 0; i--)
-        if (obj[i] != NULL && i != 4)
-            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    check_obj_display(obj, rpg);
     print_map2(MAP.sprite, obj, rpg->wind);
     text_display_fight(rpg, fight);
     sfRenderWindow_drawRectangleShape(WIND.wind, fight->fondu, NULL);
