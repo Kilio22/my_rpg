@@ -41,6 +41,12 @@ static void window_event(inventory_t *inv)
 
 void inventory_loop(inventory_t *inv)
 {
+    sfImage *img = sfRenderWindow_capture(inv->window);
+    sfTexture *t = sfTexture_create(1280, 720);
+    sfTexture_updateFromImage(t, img, 0, 0);
+    sfSprite *s = sfSprite_create();
+    sfSprite_setTexture(s, t, sfTrue);
+
     const sfView *view_backup = sfRenderWindow_getView(inv->window);
     const sfView *default_view = sfRenderWindow_getDefaultView(inv->window);
     
@@ -49,6 +55,7 @@ void inventory_loop(inventory_t *inv)
         window_event(inv);
         inventory_event(inv);
         sfRenderWindow_clear(inv->window, sfBlack);
+        sfRenderWindow_drawSprite(inv->window, s, NULL);
         inventory_draw(inv);
         sfRenderWindow_display(inv->window);
     }

@@ -65,7 +65,6 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
@@ -102,6 +101,7 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             return;
         }
         game_action(rpg, obj, house);
+        sfRenderWindow_clear(WIND.wind, sfBlack);
         display(rpg, obj, house);
     }
 }
