@@ -5,21 +5,26 @@
 ** create_fight
 */
 
+#include "my.h"
 #include "rpg.h"
 
-static void positioning_life_perso(fight_t *new, rpg_t *rpg)
+void positioning_life_perso(fight_t *new, rpg_t *rpg)
 {
+    char *str = my_strdup("JEAN : ");
     sfVector2f v1 = sfRenderWindow_mapPixelToCoords(WIND.wind,
-(sfVector2i){0, 0}, WIND.view);
+(sfVector2i){100, 0}, WIND.view);
     sfVector2f v2 = sfRenderWindow_mapPixelToCoords(WIND.wind,
-(sfVector2i){1100, 0}, WIND.view);
+(sfVector2i){900, 0}, WIND.view);
 
-    sfText_setCharacterSize(new->attacks[5], 25);
-    sfText_setCharacterSize(new->attacks[6], 25);
+    str = my_realloc_str(str, my_int_to_char(new->life[0]));
+    sfText_setCharacterSize(new->attacks[5], 30);
+    sfText_setCharacterSize(new->attacks[6], 30);
+    sfText_setString(new->attacks[5], str);
+    str = my_strdup("ENNEMI : ");
+    str = my_realloc_str(str, my_int_to_char(new->life[1]));
+    sfText_setString(new->attacks[6], str);
     sfText_setPosition(new->attacks[5], v1);
     sfText_setPosition(new->attacks[6], v2);
-    new->life[0] = 100;
-    new->life[1] = 100;
 }
 
 static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
@@ -33,6 +38,9 @@ static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
     new->old_pos[1] = sfSprite_getPosition(obj[2]->sprite);
     new->old_pos[2] = sfSprite_getPosition(obj[3]->sprite);
     new->old_pos[3] = sfSprite_getPosition(obj[new->nb_fight + 6]->sprite);
+    new->life[0] = 100;
+    new->life[1] = 100;
+    new->turn = 0;
 }
 
 fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)

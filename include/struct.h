@@ -212,6 +212,7 @@ typedef struct fight_s {
     sfText *attacks[7];
     int high;
     int life[2];
+    int turn;
 } fight_t;
 
 typedef struct my_musics_s {

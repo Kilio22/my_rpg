@@ -258,6 +258,7 @@ float calc_dist(sfVector2f pos1, sfVector2f pos2);
 void print_reverse_order(obj_t **obj, rpg_t *rpg);
 void print_base_order(obj_t **obj, rpg_t *rpg);
 void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
+void positioning_life_perso(fight_t *new, rpg_t *rpg);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);

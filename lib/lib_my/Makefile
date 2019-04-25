@@ -74,6 +74,7 @@ SRC	=	my_swap.c					\
 		my_itoa.c 					\
 		my_atoi.c					\
 		my_printf.c					\
+		my_realloc_str.c			\
 		binary.c					\
 		hexa.c						\
 		octal.c						\

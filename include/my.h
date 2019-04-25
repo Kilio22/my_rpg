@@ -55,5 +55,6 @@ int my_atoi(char *input);
 char *my_itoa(int nb, char *str);
 char *my_realloc(char *input_str, int nb);
 int randomiser(int max);
+char *my_realloc_str(char *f, char *b);
 
 #endif /* !MY_H_ */
