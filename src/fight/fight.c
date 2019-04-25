@@ -34,7 +34,7 @@ static void text_display_fight(rpg_t *rpg, fight_t *fight)
     }
     if (fight->quest_status > 2) {
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 7; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
     }
 }

@@ -134,6 +134,9 @@ int clock_text_intro(int i);
 //intro_move.c
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro);
 
+//intro_animation.c
+void all_character_animation_intro(obj_t **obj);
+
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
 void init_text_load(load_game_t *new);
@@ -255,6 +258,7 @@ float calc_dist(sfVector2f pos1, sfVector2f pos2);
 void print_reverse_order(obj_t **obj, rpg_t *rpg);
 void print_base_order(obj_t **obj, rpg_t *rpg);
 void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
+void positioning_life_perso(fight_t *new, rpg_t *rpg);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);
