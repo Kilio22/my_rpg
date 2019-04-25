@@ -13,8 +13,8 @@ int opt)
     int j = (opt == -1) ? 0 : sprites->end_layout[opt];
 
     for (; j <= sprites->end_layout[opt + 1] - 1; j++) {
-        if (sprites->pos[j]->x < (obj[1]->pos.x - 416) ||
-            sprites->pos[j]->x > (obj[1]->pos.x + 416) ||
+        if (sprites->pos[j]->x < (obj[1]->pos.x - 512) ||
+            sprites->pos[j]->x > (obj[1]->pos.x + 512) ||
             sprites->pos[j]->y < (obj[1]->pos.y - 256) ||
             sprites->pos[j]->y > (obj[1]->pos.y + 256))
             continue;
