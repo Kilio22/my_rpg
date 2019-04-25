@@ -134,6 +134,9 @@ int clock_text_intro(int i);
 //intro_move.c
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro);
 
+//intro_animation.c
+void all_character_animation_intro(obj_t **obj);
+
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
 void init_text_load(load_game_t *new);

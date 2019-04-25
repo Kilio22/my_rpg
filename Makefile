@@ -47,6 +47,7 @@ INTRO_PATH	=	intro/
 FIGHT_PATH	=	fight/
 
 SRC	=	$(INTRO_PATH)intro.c	\
+		$(INTRO_PATH)intro_animation.c	\
 		$(INTRO_PATH)intro_event.c	\
 		$(INTRO_PATH)intro_move.c	\
 		$(INTRO_PATH)intro_text.c	\

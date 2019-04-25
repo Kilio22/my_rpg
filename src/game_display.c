@@ -48,11 +48,10 @@ void check_obj_display(obj_t **obj, rpg_t *rpg)
         n_val++;
     else
         n_val = -1;
-    if (n_val > 0) {
+    if (n_val > 0)
         print_reverse_order(obj, rpg);
-    } else {
+    else
         print_base_order(obj, rpg);
-    }
 }
 
 void display(rpg_t *rpg, obj_t **obj, house_t **house)
