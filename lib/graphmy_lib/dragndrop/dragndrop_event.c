@@ -37,11 +37,17 @@ my_bool_t dragndrop_isUnderDragging(dragndrop_t *drag)
 
 void dragndrop_event(dragndrop_t *drag, sfRenderWindow *window)
 {
-    if (drag->state == IDLE_DRAG && dragndrop_isClicked(drag, window))
+    static dragndrop_t *current = NULL;
+
+    if (current != NULL && drag != current)
+        return;
+    if (drag->state == IDLE_DRAG && dragndrop_isClicked(drag, window)) {
+        current = drag;
         drag->state = DRAGGED;
+    }
     if (drag->state == DRAGGED && !sfMouse_isButtonPressed(sfMouseLeft)) {
+        current = NULL;
         drag->state = IDLE_DRAG;
         drag->last_pos_released = sfMouse_getPositionRenderWindow(window);
     }
 }
-

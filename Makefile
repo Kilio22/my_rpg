@@ -105,15 +105,15 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		framebuffer.c 	\
 		put_pixel.c \
 		item/item.c \
-		inventory/inventory_debug.c \
-		inventory/inventory_op.c \
-		inventory/inventory.c \
-		inventory/inventory_swap.c \
 		inventory/inventory_core.c \
-		inventory/inventory_stock.c \
-		inventory/inventory_stuff.c	\
 		game_create.c			\
-		my_other_utils.c
+		my_other_utils.c \
+		inventory/inventory.c \
+		inventory/inventory_draw.c \
+		inventory/inventory_data.c \
+		inventory/inventory_event.c \
+		inventory/inventory_common.c \
+		inventory/inventory_compute.c
 
 SRC_LIB	=	inimy \
 			g 	\
