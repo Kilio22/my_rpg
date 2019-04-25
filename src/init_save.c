@@ -15,7 +15,7 @@
 
 int init_controls(rpg_t *rpg)
 {
-    CONTROLS.keys = malloc(sizeof(int) * 6);
+    CONTROLS.keys = malloc(sizeof(int) * 7);
     if (CONTROLS.keys == NULL) {
         return -1;
     }
@@ -24,6 +24,7 @@ int init_controls(rpg_t *rpg)
     CONTROLS.keys[DOWN] = sfKeyS;
     CONTROLS.keys[RIGHT] = sfKeyD;
     CONTROLS.keys[INTERACT] = sfKeyE;
+    CONTROLS.keys[INV] = sfKeyI;
     return 0;
 }
 

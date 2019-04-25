@@ -38,6 +38,7 @@ enum keys {
     DOWN,
     RIGHT,
     INTERACT,
+    INV,
     STATS
 };
 
