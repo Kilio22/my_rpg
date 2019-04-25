@@ -79,8 +79,10 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
         free_objs(obj);
         return 0;
     }
-    if (MENU.menu_on == 2)
+    if (MENU.menu_on == 2) {
+        intro_fcts(rpg, obj, NULL, NULL);
         return 1;
+    }
     return (2);
 }
 
