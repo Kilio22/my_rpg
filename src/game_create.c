@@ -49,25 +49,22 @@ void create_followers(rpg_t *rpg, obj_t **obj)
 
 void create_ennemis(obj_t **obj)
 {
-    if (obj[6] == NULL) {
-        obj[6] = create_object(obj_path[3], V2F(8368, 2610), RECT_OBJ, sfFalse);
-        sfSprite_setOrigin(obj[6]->sprite, V2F(16, 60));
-    }
-    if (obj[7] == NULL) {
-        obj[7] = create_object(obj_path[3], V2F(10040, 670), RECT_OBJ, sfFalse);
-        sfSprite_setOrigin(obj[7]->sprite, V2F(16, 60));
-    }
-    if (obj[8] == NULL) {
-        obj[8] = create_object(obj_path[3], V2F(11952, 636), RECT_OBJ, sfFalse);
-        sfSprite_setOrigin(obj[8]->sprite, V2F(16, 60));
+    sfVector2f vects[] = {{8368, 2610}, {10040, 670}, {11952, 636}};
+    for (int i = 6; i < 9; i++) {
+        if (obj[i] == NULL) {
+            obj[i] = create_object(obj_path[3], vects[i - 6],
+RECT_OBJ, sfFalse);
+            sfSprite_setOrigin(obj[i]->sprite, V2F(16, 60));
+        }
     }
     for (int i = 6; i < 9; i++) {
-        obj[i]->rectangle = sfRectangleShape_create();
-        sfRectangleShape_setSize(obj[i]->rectangle, V2F(32, 16));
-        sfRectangleShape_setOrigin(obj[i]->rectangle, V2F(16, 8));
-        sfRectangleShape_setPosition(obj[i]->rectangle, obj[i]->pos);
+        OBJ_RECT = sfRectangleShape_create();
+        sfRectangleShape_setSize(OBJ_RECT, V2F(32, 16));
+        sfRectangleShape_setOrigin(OBJ_RECT, V2F(16, 8));
+        sfRectangleShape_setPosition(OBJ_RECT, obj[i]->pos);
         obj[i]->rectangle_bound =
-sfRectangleShape_getGlobalBounds(obj[i]->rectangle);
+sfRectangleShape_getGlobalBounds(OBJ_RECT);
+        obj[i]->oldPos = sfSprite_getPosition(obj[i]->sprite);
     }
 }
 

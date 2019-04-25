@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
+void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg)
 {
     for (int i = 0; house[i] != NULL; i++) {
         if (house[i]->type == 2 && obj[5] == NULL
@@ -31,17 +31,38 @@ sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
     }
 }
 
-static void display(rpg_t *rpg, obj_t **obj, house_t **house)
+void check_obj_display(obj_t **obj, rpg_t *rpg)
+{
+    float lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
+    float distance = 0;
+    int n_val = 6;
+
+    for (int i = 7; i < 9; i++) {
+        distance = calc_dist(obj[0]->pos, obj[i]->pos);
+        if (distance < lowest_dist) {
+            n_val = i;
+            lowest_dist = distance;
+        }
+    }
+    if (obj[0]->pos.y < obj[n_val]->pos.y)
+        n_val++;
+    else
+        n_val = -1;
+    if (n_val > 0) {
+        print_reverse_order(obj, rpg);
+    } else {
+        print_base_order(obj, rpg);
+    }
+}
+
+void display(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
     display_framebuffer(rpg);
-    for (int i = 10; i > 0; i--)
-        if (obj[i] != NULL && i != 4)
-            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    check_obj_display(obj, rpg);
     print_map2(MAP.sprite, obj, rpg->wind);
-    sfRenderWindow_drawRectangleShape(WIND.wind, obj[6]->rectangle, NULL);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
     sfRenderWindow_clear(WIND.wind, sfBlack);
@@ -52,6 +73,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
         character_control(rpg, obj, house);
         follower(obj, rpg);
+        move_pnjs(obj, house);
         all_character_animation(obj);
     }
     sfSprite_setPosition(obj[1]->sprite,

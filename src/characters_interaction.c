@@ -18,7 +18,7 @@ static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 
 static int check_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
-    sfFloatRect oui = sfRectangleShape_getGlobalBounds(obj[i]->rectangle);
+    sfFloatRect oui = sfRectangleShape_getGlobalBounds(OBJ_RECT);
 
     if (CONTROLS.bools[KEYINTER] == 0)
         return 0;
@@ -46,7 +46,7 @@ sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
         if (obj[i] == NULL)
             continue;
         obj[i]->rectangle_bound =
-sfRectangleShape_getGlobalBounds(obj[i]->rectangle);
+sfRectangleShape_getGlobalBounds(OBJ_RECT);
         if (sfFloatRect_intersects(&obj[0]->rectangle_bound,
 &obj[i]->rectangle_bound, NULL) == sfTrue)
             return 1;

@@ -20,17 +20,21 @@ Donne nous ton argent !",
     "Nathan: Vous etes blesse ? Venez avec moi !",
     "Nathan: Je vais vous amener a l'auberge.",
     " ",
-    "Aubergiste: Bienvenue, jeune voyageur !\nVous me semblez en mauvais etat,\n\
-Je vais vous offrir une chambre pour vous reposer.",
+    "Aubergiste: Bienvenue, jeune voyageur !\n"
+    "Vous me semblez en mauvais etat, \n"
+    "Je vais vous offrir une chambre pour vous reposer.",
     " ",
     " ",
     " ",
-    "Nathan: Salut, tu as bien dormi ?\nJe ne t'ai pas demande hier,\nD'ou viens tu ?",
+    "Nathan: Salut, tu as bien dormi ?\nJe ne t'ai pas demande hier, \n"
+    "D'ou viens tu ?",
     "Jean: Je..\nJe ne me souviens plus..",
     "Nathan: Comment ca tu ne te rappelles plus ?",
-    "Jean: Je me suis fait attaquer par 3 hommes, \nJe ne me souviens de rien..",
-    "Nathan: Quoi ? Des hommes t'ont attaque ?\nEt tu ne te souviens plus de rien ?",
-    "Nathan: C'est injuste ! Il faut faire quelque chose pour que tu retrouves"
+    "Jean: Je me suis fait attaquer par 3 hommes, \n"
+    "Je ne me souviens de rien..",
+    "Nathan: Quoi ? Des hommes t'ont attaque ? \n"
+    "Et tu ne te souviens plus de rien ?",
+    "Nathan: C'est injuste !Il faut faire quelque chose pour que tu retrouves"
     "la memoire !\nAllons voir si on les trouves !",
     "Nathan: Jacques, viens avec nous !",
     " ",

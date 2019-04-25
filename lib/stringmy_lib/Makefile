@@ -49,7 +49,8 @@ SRC_MY	=	src/my_char_is.c \
 		src/my_strtok.c
 
 CFLAGS	=	-Wall \
-			-W \
+			-Wextra	\
+			-Werror	\
 			-I $(INCLUDE_PATH)
 
 DEBUG_FLAGS	=	-g3 -gdwarf-4

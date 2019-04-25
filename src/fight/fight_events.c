@@ -24,9 +24,24 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 
 static void update_perso_pos(obj_t **obj, fight_t *fight)
 {
-    //if (fight->quest_status == 3)
-        //tp le perso
-        //fight->quest_status++;
+    sfVector2f vect = {13650, 500};
+    sfVector2f vect2 = {13590, 440};
+    sfVector2f vect3 = {13590, 560};
+    sfVector2f vect4 = {13890, 500};
+
+    if (fight->quest_status == 2) {
+        sfSprite_setPosition(obj[HERO_HB]->sprite, vect);
+        obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        obj[1]->sprite_rect.top = 0;
+        sfSprite_setPosition(obj[2]->sprite, vect2);
+        obj[2]->pos = sfSprite_getPosition(obj[2]->sprite);
+        obj[2]->sprite_rect.top = 0;
+        sfSprite_setPosition(obj[3]->sprite, vect3);
+        obj[3]->pos = sfSprite_getPosition(obj[3]->sprite);
+        obj[3]->sprite_rect.top = 0;
+        sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite, vect4);
+        obj[fight->nb_fight + 6]->sprite_rect.top = 64;
+    }
 }
 
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
@@ -35,15 +50,38 @@ void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
         all_character_animation(obj);
     }
     update_perso_pos(obj, fight);
+    for (int i = 0; i < 5; i++)
+        update_attacks_pos(fight, rpg, i);
+    update_attacks_pos(fight, rpg, -1);
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
-    camera_control(rpg, obj[HERO_HB]->pos, obj);
+    if (fight->quest_status > 1)
+        fight_camera_control(rpg,
+V2F(obj[HERO_HB]->pos.x + 106, obj[HERO_HB]->pos.y), obj);
+    else
+        fight_camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
     update_text_pos(fight, rpg);
     update_fondu_rect_fight(fight, rpg, 0);
 }
 
-int fight_event_management(rpg_t *rpg)
+void manage_other_key_press(int code, fight_t *fight)
+{
+    if (fight->quest_status < 3)
+        return;
+    if (code == sfKeyLeft && fight->high > 0) {
+        sfText_setColor(fight->attacks[fight->high], sfRed);
+        fight->high--;
+        sfText_setColor(fight->attacks[fight->high], sfBlue);
+    }
+    if (code == sfKeyRight && fight->high < 4) {
+        sfText_setColor(fight->attacks[fight->high], sfRed);
+        fight->high++;
+        sfText_setColor(fight->attacks[fight->high], sfBlue);
+    }
+}
+
+int fight_event_management(rpg_t *rpg, fight_t *fight)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -56,6 +94,7 @@ int fight_event_management(rpg_t *rpg)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
             return 1;
+        manage_other_key_press(WIND.event.key.code, fight);
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);

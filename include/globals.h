@@ -26,7 +26,8 @@ extern const char *key_str[];
 extern const char *scrpits[];
 extern int (* const intro[])(obj_t **, int, rpg_t *, house_t **);
 extern const char *obj_path[];
-const char *ennemi_text[3];
 const int fog_off[54][2];
+extern const char *ennemi_text[3];
+extern const char *attaques_names[];
 
 #endif /* !GLOBALS_H_ */

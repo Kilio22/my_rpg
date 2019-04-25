@@ -8,10 +8,29 @@
 #include <SFML/Graphics.h>
 #include "rpg.h"
 
+static void character_orientation_pnj(obj_t *obj)
+{
+    if (obj->oldPos.x > obj->pos.x)
+        obj->sprite_rect.top = 64;
+    else if (obj->oldPos.x < obj->pos.x)
+        obj->sprite_rect.top = 0;
+    else if (obj->oldPos.y < obj->pos.y) {
+        obj->sprite_rect.top = 128;
+        if (obj->sprite_rect.left >= 128)
+            obj->sprite_rect.left = 0;
+    }
+    else if (obj->oldPos.y > obj->pos.y) {
+        obj->sprite_rect.top = 192;
+        if (obj->sprite_rect.left >= 128)
+            obj->sprite_rect.left = 0;
+    }
+    else
+        obj->sprite_rect.left = 0;
+    obj->pos = sfSprite_getPosition(obj->sprite);
+}
+
 static void character_orientation(obj_t *obj)
 {
-    obj->oldPos = sfSprite_getPosition(obj->sprite);
-
     if (obj->oldPos.x < obj->pos.x)
         obj->sprite_rect.top = 64;
     else if (obj->oldPos.x > obj->pos.x)
@@ -31,21 +50,28 @@ static void character_orientation(obj_t *obj)
     obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
-static void character_animation(obj_t *obj)
+static void character_animation(obj_t *obj, int i)
 {
     if (obj->frame_animation > 8) {
         animation(&obj->sprite_rect, 32, 32, 160);
         obj->frame_animation = 0;
     }
     obj->frame_animation++;
-    character_orientation(obj);
+    if (i < 6) {
+        obj->oldPos = sfSprite_getPosition(obj->sprite);
+        character_orientation(obj);
+    }
+    if (i >= 6) {
+        character_orientation_pnj(obj);
+        obj->oldPos = sfSprite_getPosition(obj->sprite);
+    }
 }
 
 void all_character_animation(obj_t **obj)
 {
     for (int i = 1; i < 11; i++)
         if (obj[i] != NULL)
-            character_animation(obj[i]);
+            character_animation(obj[i], i);
 }
 
 void update_all_rect(obj_t **obj, house_t **house)

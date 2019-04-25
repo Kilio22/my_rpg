@@ -31,5 +31,6 @@
 #define NB_KEYS 5
 #define AUB_POS (sfVector2f){9886, 1456}
 #define NB_HOUSE 15
+#define OBJ_RECT obj[i]->rectangle
 
 #endif /* !MACROS_H_ */
