@@ -106,14 +106,10 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		music.c \
 		my_utils.c	\
 		print_map.c	\
-<<<<<<< HEAD
-		time_gestion.c 	\
 		framebuffer.c 	\
 		put_pixel.c \
-=======
 		pnj_moves.c	\
 		time_gestion.c \
->>>>>>> fight
 		item/item.c \
 		inventory/inventory_core.c \
 		game_create.c			\
