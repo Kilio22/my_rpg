@@ -9,11 +9,12 @@
 
 static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
-    if (i >= 6 && i <= 9) {
+    if (i >= 6 && i <= 9)
         fight(obj, rpg, i - 6, house);
-        for (int i = 0; i < 10; i++)
-            CONTROLS.bools[i] = 0;
-    }
+    if (i == 5)
+        aubergiste_dial(obj, rpg, i - 5, house);
+    for (int i = 0; i < 10; i++)
+        CONTROLS.bools[i] = 0;
 }
 
 static int check_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)

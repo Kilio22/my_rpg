@@ -80,8 +80,12 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
 {
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-        return 1;
+    if (event.type == sfEvtKeyPressed) {
+        if (event.key.code == sfKeyF5)
+            set_music(rpg);
+        if (event.key.code == sfKeyEscape)
+            return 1;
+    }
     if (event.type == sfEvtMouseMoved) {
         WIND.mouse_pos.x = event.mouseMove.x;
         WIND.mouse_pos.y = event.mouseMove.y;
