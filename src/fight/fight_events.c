@@ -55,8 +55,11 @@ void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
     update_attacks_pos(fight, rpg, -1);
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
-    camera_control(rpg, V2F(obj[HERO_HB]->pos.x + 108, obj[HERO_HB]->pos.y),
-obj);
+    if (fight->quest_status > 1)
+        fight_camera_control(rpg,
+V2F(obj[HERO_HB]->pos.x + 106, obj[HERO_HB]->pos.y), obj);
+    else
+        fight_camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
     update_text_pos(fight, rpg);
     update_fondu_rect_fight(fight, rpg, 0);
