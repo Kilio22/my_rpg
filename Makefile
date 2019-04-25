@@ -45,8 +45,14 @@ MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
 FIGHT_PATH	=	fight/
+DIALOGUE_PATH	=	dialogue/
 
-SRC	=	$(INTRO_PATH)intro.c	\
+SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
+		$(DIALOGUE_PATH)create_dialogue.c	\
+		$(DIALOGUE_PATH)dialogues_managment.c	\
+		$(DIALOGUE_PATH)dialogue_text.c	\
+		$(DIALOGUE_PATH)globals_dialogue.c	\
+		$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_animation.c	\
 		$(INTRO_PATH)intro_event.c	\
 		$(INTRO_PATH)intro_move.c	\

@@ -49,7 +49,7 @@ void create_followers(rpg_t *rpg, obj_t **obj)
 
 void create_ennemis(obj_t **obj)
 {
-    sfVector2f vects[] = {{8368, 2610}, {10040, 670}, {11952, 636}};
+    sfVector2f vects[] = {{8368, 2610}, {10844, 2222}, {11952, 636}};
     for (int i = 6; i < 9; i++) {
         if (obj[i] == NULL) {
             obj[i] = create_object(obj_path[3], vects[i - 6],

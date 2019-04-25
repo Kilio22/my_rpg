@@ -272,4 +272,11 @@ unsigned int line);
 void draw_square_fire(framebuffer_t *framebuffer, sfVector2u position,
 unsigned int line);
 
+//dialogues
+dialogue_t create_dialogue(rpg_t *rpg, int i);
+int dial_event_management(rpg_t *rpg, dialogue_t *dialogue);
+void dial_action(rpg_t *rpg, obj_t **obj, house_t **house, dialogue_t *dialogue);
+void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);
+int update_dial_text(rpg_t *rpg, size_t frames, dialogue_t *dialogue);
+
 #endif /* !PROTO_H_ */

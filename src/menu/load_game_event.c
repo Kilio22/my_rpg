@@ -83,7 +83,11 @@ int check_load_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
         WIND.mouse_pos.y = WIND.event.mouseMove.y;
         check_move_load(rpg, load);
     }
-    if (WIND.event.type == sfEvtKeyPressed)
-        ret_val += check_button_pressed_load(rpg, load, obj, house);
+    if (WIND.event.type == sfEvtKeyPressed) {
+        if (WIND.event.key.code == sfKeyF5)
+            set_music(rpg);
+        else
+            ret_val += check_button_pressed_load(rpg, load, obj, house);
+    }
     return ret_val;
 }
