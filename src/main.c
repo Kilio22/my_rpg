@@ -40,7 +40,6 @@ int main(void)
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
-    srand(&rpg.wind.wind);
     if (obj == NULL || house == NULL)
         return (84);
     if (create_houses(house) == -1)
