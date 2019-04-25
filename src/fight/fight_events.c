@@ -6,7 +6,7 @@
 */
 
 #include "rpg.h"
-
+//1- avancer 2- choisir attaque 3- appliquer attaque 4- revenir à sa position ---> si c'est == 3 alors reinit le static et changer le tour
 static void update_text_pos(fight_t *fight, rpg_t *rpg)
 {
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
@@ -53,6 +53,7 @@ void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
     for (int i = 0; i < 5; i++)
         update_attacks_pos(fight, rpg, i);
     update_attacks_pos(fight, rpg, -1);
+    positioning_life_perso(fight, rpg);
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
     if (fight->quest_status > 1)

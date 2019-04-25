@@ -43,7 +43,7 @@ void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag)
 void update_attacks_pos(fight_t *new, rpg_t *rpg, int i)
 {
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
-(sfVector2i){0, 558}, WIND.view);;
+(sfVector2i){0, 558}, WIND.view);
     sfVector2f vect_text;
     static sfVector2f offset = {0, 0};
 

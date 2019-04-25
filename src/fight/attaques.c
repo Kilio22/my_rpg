@@ -12,5 +12,7 @@ const char *attaques_names[] = {
     "Defendre",
     "Nathan : Jet de pieces",
     "Jean : Coup tranchant",
-    "Fuir"
+    "Fuir",
+    "JEAN : 100",
+    "ENNEMI : 100"
 };
