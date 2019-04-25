@@ -32,6 +32,7 @@ void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfRenderWindow_display(WIND.wind);
     rpg->quest_status = 1;
     init_game(rpg, obj, house);
+    rpg->quest_status = 0;
 }
 
 void check_move_load(rpg_t *rpg, load_game_t *load)
@@ -64,6 +65,7 @@ int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
         sfRenderWindow_display(WIND.wind);
         rpg->quest_status = 1;
         init_game(rpg, obj, house);
+        rpg->quest_status = 0;
         return 1;
     }
     return 0;

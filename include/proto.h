@@ -125,6 +125,7 @@ int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 //intro_event.c
 void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_fondu_rect(intro_t *intro, rpg_t *rpg);
+void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros);
 
 //intro_text.c
 int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro);

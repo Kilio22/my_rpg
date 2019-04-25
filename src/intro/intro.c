@@ -74,6 +74,7 @@ int return_to_game(rpg_t *rpg, obj_t **obj)
         sfView_destroy(WIND.view);
         WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
+        intro_fcts(rpg, obj, NULL, NULL);
         free_map(MAP);
         free_objs(obj);
         return 0;
