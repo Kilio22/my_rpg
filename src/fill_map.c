@@ -54,13 +54,13 @@ void fill_sprite(sprite_t **sprites, sfVector2f pos)
     sprites[j]->pos[1] = NULL;
 }
 
-void add_vector(sprite_t *sprites, sfVector2f pos, sprite_t **sprite)
+void add_vector(sprite_t *sprites, sfVector2f pos,
+sprite_t **sprite __attribute__((unused)))
 {
     int i = my_tab_vector_len(sprites->pos) + 2;
     int j = 0;
     sfVector2f **new_pos = malloc(sizeof(sfVector2f *) * i);
 
-    (void) sprite;
     if (new_pos == NULL) {
         sprite = NULL;
         return;

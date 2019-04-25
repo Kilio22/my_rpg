@@ -248,6 +248,8 @@ void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
 void check_pnj_display(house_t **house, obj_t **obj, rpg_t *rpg);
 void display(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_attacks_pos(fight_t *new, rpg_t *rpg, int i);
+void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg);
+fight_t create_fight(int i, rpg_t *rpg, obj_t **obj);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);

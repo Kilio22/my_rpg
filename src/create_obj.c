@@ -30,8 +30,7 @@ sfBool centered)
     sfSprite_setPosition(obj->sprite, pos);
     if (centered == 1) {
         rect = sfSprite_getGlobalBounds(obj->sprite);
-        sfSprite_setOrigin(obj->sprite, (sfVector2f)
-        {rect.width / 2, rect.height / 2});
+        sfSprite_setOrigin(obj->sprite, V2F(rect.width / 2, rect.height / 2));
     }
     return (obj);
 }
