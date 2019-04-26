@@ -46,7 +46,6 @@ void inventory_loop(inventory_t *inv)
     sfTexture *t = sfTexture_create(1280, 720);
     sfSprite *s = sfSprite_create();
 
-    
     sfTexture_updateFromRenderWindow(t, inv->window, 0, 0);
     sfSprite_setTexture(s, t, sfTrue);
     sfRenderWindow_setView(inv->window, default_view);
