@@ -11,7 +11,7 @@
 static void update_text_pos(fight_t *fight, rpg_t *rpg)
 {
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
-(sfVector2i){0, 558}, WIND.view);;
+(sfVector2i){0, 558}, WIND.view);
 
     if (fight->old_i == fight->nb_fight)
         update_fight_text(1, fight, 0);
