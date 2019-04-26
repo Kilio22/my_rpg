@@ -14,14 +14,14 @@ int intro_nathan(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)house;
     if (opt == 8 && rpg->quest_status == 4) {
         if (obj[8]->pos.x < 12016) {
-            new_pos.x = 1;
+            new_pos.x = 2;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else
             opt++;
     }
     if (opt == 9) {
         if (obj[8]->pos.y > 1202) {
-            new_pos.y -= 1;
+            new_pos.y -= 2;
             sfSprite_move(obj[8]->sprite, new_pos);
         } else {
             rpg->quest_status++;
