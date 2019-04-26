@@ -81,5 +81,7 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
         create_framebuffer(rpg);
         game_loop(rpg, obj, house);
     }
+    for (int i = 0; house[i]; i++)
+        house[i]->display_house = 1;
     return 1;
 }

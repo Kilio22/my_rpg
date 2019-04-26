@@ -49,6 +49,7 @@ DIALOGUE_PATH	=	dialogue/
 
 SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(DIALOGUE_PATH)create_dialogue.c	\
+		$(DIALOGUE_PATH)destroy_dialogue.c	\
 		$(DIALOGUE_PATH)dialogues_managment.c	\
 		$(DIALOGUE_PATH)dialogue_text.c	\
 		$(DIALOGUE_PATH)globals_dialogue.c	\
