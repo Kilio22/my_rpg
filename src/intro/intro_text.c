@@ -64,6 +64,8 @@ print_index < my_strlen(scrpits[index]); i++) {
 (rpg->quest_status >= 13 && rpg->quest_status <= 21))
 && clock_text_intro(1) == 1)
         rpg->quest_status++;
+    else if (print_index != my_strlen(scrpits[index]))
+        clock_text_intro(0);
     sfText_setString(intro->text, to_print);
     return 0;
 }

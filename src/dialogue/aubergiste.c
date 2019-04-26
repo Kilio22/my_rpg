@@ -52,4 +52,5 @@ void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house)
         dial_action(rpg, obj, house, &dialogue);
         dial_display(rpg, obj, house, &dialogue);
     }
+    destroy_dialogue(&dialogue);
 }

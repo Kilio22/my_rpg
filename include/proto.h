@@ -279,5 +279,6 @@ void dial_action(rpg_t *rpg, obj_t **obj,
 house_t **house, dialogue_t *dialogue);
 void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int update_dial_text(size_t frames, dialogue_t *dialogue);
+void destroy_dialogue(dialogue_t *dialogue);
 
 #endif /* !PROTO_H_ */
