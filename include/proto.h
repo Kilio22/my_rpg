@@ -136,7 +136,7 @@ int clock_text_intro(int i);
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro);
 
 //intro_animation.c
-void all_character_animation_intro(obj_t **obj);
+void all_character_animation_intro(rpg_t *rpg, obj_t **obj);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -242,6 +242,7 @@ int intro_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house);
 void mouse_wheel_management(rpg_t *rpg);
 void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
+void display_char(rpg_t *rpg, obj_t **obj);
 
 //fight
 int update_fight_text(size_t frames, fight_t *fight, int flag);

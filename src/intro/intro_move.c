@@ -61,7 +61,7 @@ void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro)
 {
     if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
         intro_fcts(rpg, obj, house, intro);
-        all_character_animation_intro(obj);
+        all_character_animation_intro(rpg, obj);
     }
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));

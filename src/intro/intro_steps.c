@@ -43,6 +43,8 @@ int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         new_pos.y = 1442;
         sfSprite_setPosition(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        free_obj(obj[9]);
+        obj[9] = NULL;
         opt++;
     }
     if (opt == 6 || opt == 7) {
@@ -92,16 +94,16 @@ int intro_ennemi_ctrl(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     return (intro_ennemi_two(obj, opt, rpg, house));
 }
 
-int intro_control(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+int intro_control(obj_t **obj, int opt, rpg_t *rpg __attribute__((unused)),
+house_t **house __attribute__((unused)))
 {
     sfVector2f new_pos = {0, 0};
 
-    (void)house;
-    (void)rpg;
     if (opt == 0) {
         if (obj[0]->pos.y > 2396) {
             new_pos.y -= 1;
             sfSprite_move(obj[0]->sprite, new_pos);
+            sfSprite_move(obj[9]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         } else
             opt++;

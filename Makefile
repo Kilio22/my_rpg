@@ -60,6 +60,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(INTRO_PATH)intro_text.c	\
 		$(INTRO_PATH)intro_steps.c	\
 		$(INTRO_PATH)intro_steps_2.c	\
+		$(INTRO_PATH)intro_display.c 	\
 		$(INTRO_PATH)intro_steps_3.c	\
 		$(INTRO_PATH)intro_steps_4.c	\
 		$(INTRO_PATH)intro_steps_5.c	\

@@ -28,9 +28,7 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
-    for (int i = 10; i > 0; i--)
-        if (obj[i] != NULL && i != 4)
-            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    display_char(rpg, obj);
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_intro(obj, house, rpg);
     if (my_strcmp(sfText_getString(i->text), " ")

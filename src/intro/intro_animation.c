@@ -40,9 +40,12 @@ static void character_animation_intro(obj_t *obj)
     character_orientation_intro(obj);
 }
 
-void all_character_animation_intro(obj_t **obj)
+void all_character_animation_intro(rpg_t *rpg, obj_t **obj)
 {
-    for (int i = 1; i < 11; i++)
+    for (int i = 1; i < 11; i++) {
+        if (i == 9 && rpg->quest_status < 2)
+            continue;
         if (obj[i] != NULL)
             character_animation_intro(obj[i]);
+    }
 }
