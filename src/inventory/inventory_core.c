@@ -41,9 +41,8 @@ static void window_event(inventory_t *inv)
 
 void inventory_loop(inventory_t *inv)
 {
-    sfImage *img = sfRenderWindow_capture(inv->window);
     sfTexture *t = sfTexture_create(1280, 720);
-    sfTexture_updateFromImage(t, img, 0, 0);
+    sfTexture_updateFromRenderWindow(t, inv->window, 0, 0);
     sfSprite *s = sfSprite_create();
     sfSprite_setTexture(s, t, sfTrue);
 
