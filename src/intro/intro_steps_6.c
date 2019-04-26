@@ -50,14 +50,14 @@ int intro_go_auberge19(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     (void)house;
     if (opt == 39 && rpg->quest_status == 22) {
         if (obj[10]->pos.x > 10048) {
-            new_pos.x = -1;
+            new_pos.x = -2;
             sfSprite_move(obj[10]->sprite, new_pos);
         } else
             opt++;
     }
     if (opt == 40) {
         if (obj[10]->pos.y < 1346) {
-            new_pos.y = 1;
+            new_pos.y = 2;
             sfSprite_move(obj[10]->sprite, new_pos);
         } else {
             opt++;

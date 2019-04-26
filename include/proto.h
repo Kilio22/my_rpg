@@ -125,6 +125,7 @@ int intro_go_auberge20(obj_t **obj, int opt, rpg_t *rpg, house_t **house);
 //intro_event.c
 void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house);
 void update_fondu_rect(intro_t *intro, rpg_t *rpg);
+void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros);
 
 //intro_text.c
 int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro);
@@ -270,5 +271,14 @@ void draw_square_fog(framebuffer_t *framebuffer, sfVector2u position,
 unsigned int line);
 void draw_square_fire(framebuffer_t *framebuffer, sfVector2u position,
 unsigned int line);
+
+//dialogues
+dialogue_t create_dialogue(rpg_t *rpg, int i);
+int dial_event_management(rpg_t *rpg, dialogue_t *dialogue);
+void dial_action(rpg_t *rpg, obj_t **obj,
+house_t **house, dialogue_t *dialogue);
+void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);
+int update_dial_text(size_t frames, dialogue_t *dialogue);
+void destroy_dialogue(dialogue_t *dialogue);
 
 #endif /* !PROTO_H_ */

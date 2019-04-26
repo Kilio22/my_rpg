@@ -6,11 +6,12 @@
 */
 
 #include "rpg.h"
-//1- avancer 2- choisir attaque 3- appliquer attaque 4- revenir à sa position ---> si c'est == 3 alors reinit le static et changer le tour
+//1- avancer 2- choisir attaque 3- appliquer attaque 4- revenir à sa
+//position ---> si c'est == 3 alors reinit le static et changer le tour
 static void update_text_pos(fight_t *fight, rpg_t *rpg)
 {
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
-(sfVector2i){0, 558}, WIND.view);;
+(sfVector2i){0, 558}, WIND.view);
 
     if (fight->old_i == fight->nb_fight)
         update_fight_text(1, fight, 0);
@@ -84,8 +85,6 @@ void manage_other_key_press(int code, fight_t *fight)
 
 int fight_event_management(rpg_t *rpg, fight_t *fight)
 {
-    if (WIND.event.type == sfEvtMouseWheelMoved)
-        mouse_wheel_management(rpg);
     if (WIND.event.type == sfEvtMouseMoved) {
         CONTROLS.mousePos.x = WIND.event.mouseMove.x;
         CONTROLS.mousePos.y = WIND.event.mouseMove.y;

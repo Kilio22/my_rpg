@@ -234,6 +234,14 @@ typedef struct my_musics_s {
     sfSound *hurt;
 } my_musics_t;
 
+typedef struct dialogue_s {
+    int quest_status_d;
+    sfText *text[4];
+    sfSprite *parch;
+    int high;
+    int nb_pnj;
+} dialogue_t;
+
 typedef struct rpg_s {
     controls_t controls;
     game_t game;

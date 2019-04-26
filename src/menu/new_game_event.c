@@ -22,6 +22,7 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfRenderWindow_display(WIND.wind);
     rpg->quest_status = 0;
     init_game(rpg, obj, house);
+    rpg->quest_status = 0;
 }
 
 int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
@@ -43,6 +44,7 @@ int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
         sfRenderWindow_display(WIND.wind);
         rpg->quest_status = 0;
         init_game(rpg, obj, house);
+        rpg->quest_status = 0;
         return 1;
     }
     return 0;
@@ -60,7 +62,11 @@ int check_new_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
         WIND.mouse_pos.y = WIND.event.mouseMove.y;
         check_move_load(rpg, load);
     }
-    if (WIND.event.type == sfEvtKeyPressed)
-        ret_val += check_button_pressed_new(rpg, load, obj, house);
+    if (WIND.event.type == sfEvtKeyPressed) {
+        if (WIND.event.key.code == sfKeyF5)
+            set_music(rpg);
+        else
+            ret_val += check_button_pressed_new(rpg, load, obj, house);
+    }
     return ret_val;
 }

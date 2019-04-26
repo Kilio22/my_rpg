@@ -34,19 +34,20 @@ sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
 void check_obj_display(obj_t **obj, rpg_t *rpg)
 {
     float lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
-    float distance = 0;
-    int n_val = 6;
+    int n_val = 5;
 
-    for (int i = 7; i < 9; i++) {
-        distance = calc_dist(obj[0]->pos, obj[i]->pos);
-        if (distance < lowest_dist) {
+    n_val = (obj[5] == NULL ? 6 : 5);
+    if (obj[5] != NULL)
+        lowest_dist = calc_dist(obj[0]->pos, obj[5]->pos);
+    else
+        lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
+    for (int i = n_val + 1; i < 9; i++) {
+        if (calc_dist(obj[0]->pos, obj[i]->pos) < lowest_dist) {
             n_val = i;
-            lowest_dist = distance;
+            lowest_dist = calc_dist(obj[0]->pos, obj[i]->pos);
         }
     }
-    if (obj[0]->pos.y < obj[n_val]->pos.y)
-        n_val++;
-    else
+    if (obj[0]->pos.y >= obj[n_val]->pos.y)
         n_val = -1;
     if (n_val > 0)
         print_reverse_order(obj, rpg);
@@ -65,7 +66,6 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_display(house, obj, rpg);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
@@ -102,6 +102,7 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
             return;
         }
         game_action(rpg, obj, house);
+        sfRenderWindow_clear(WIND.wind, sfBlack);
         display(rpg, obj, house);
     }
 }
