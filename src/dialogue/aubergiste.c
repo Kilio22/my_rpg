@@ -42,7 +42,7 @@ void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house)
     int ret_val = 0;
 
     sfClock_restart(obj[1]->clock);
-    update_dial_text(rpg, 1, NULL);
+    update_dial_text(1, NULL);
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += dial_event_management(rpg, &dialogue);

@@ -7,6 +7,12 @@
 
 #include "rpg.h"
 
+void res_bools(rpg_t *rpg)
+{
+    for (int i = 0; i < 10; i++)
+        CONTROLS.bools[i] = 0;
+}
+
 void manage_other_key_pressed(rpg_t *rpg)
 {
     if (WIND.event.key.code == CONTROLS.keys[INTERACT])
@@ -35,8 +41,10 @@ void manage_key_pressed(rpg_t *rpg)
         CONTROLS.bools[KEYLEFT] = 1;
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 1;
-    if (WIND.event.key.code == CONTROLS.keys[INV])
+    if (WIND.event.key.code == CONTROLS.keys[INV]) {
         inventory_loop(rpg->game.inv);
+        res_bools(rpg);
+    }
     manage_other_key_pressed(rpg);
 }
 

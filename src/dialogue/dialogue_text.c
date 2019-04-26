@@ -7,7 +7,8 @@
 
 #include "rpg.h"
 
-static int set_string(int *print_index, char **oui, dialogue_t *dialogue, int *ind)
+static int set_string(int *print_index, char **oui,
+dialogue_t *dialogue, int *ind)
 {
     if (*print_index == my_strlen(answers[dialogue->nb_pnj][*ind])
 && clock_text_intro(1) == 1) {
@@ -23,7 +24,8 @@ static int set_string(int *print_index, char **oui, dialogue_t *dialogue, int *i
     return 0;
 }
 
-static int dial_text_index(int *index, dialogue_t *dialogue, char **oui, int *p_ind)
+static int dial_text_index(int *index, dialogue_t *dialogue,
+char **oui, int *p_ind)
 {
     if (dialogue == NULL) {
         *p_ind = 0;
@@ -47,7 +49,7 @@ static int dial_text_index(int *index, dialogue_t *dialogue, char **oui, int *p_
     return 0;
 }
 
-int update_dial_text(rpg_t *rpg, size_t frames, dialogue_t *dialogue)
+int update_dial_text(size_t frames, dialogue_t *dialogue)
 {
     static int print_index = 0;
     static int ind = 0;

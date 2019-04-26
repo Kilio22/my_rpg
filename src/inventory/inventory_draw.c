@@ -63,6 +63,7 @@ void inventory_draw_stuff(inventory_t *inv)
         if (!inv->stuff[inv->state][i])
             continue;
         inv->stuff[inv->state][i]->display->pos = stuff_grid[i];
-        sfRenderWindow_drawDragndrop(inv->window, inv->stuff[inv->state][i]->display);   
+        sfRenderWindow_drawDragndrop(inv->window,
+inv->stuff[inv->state][i]->display);
     }
 }
