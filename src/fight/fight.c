@@ -32,9 +32,12 @@ static void text_display_fight(rpg_t *rpg, fight_t *fight)
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
         sfRenderWindow_drawText(WIND.wind, fight->text, NULL);
     }
-    if (fight->quest_status > 2) {
+    if (fight->quest_status > 2)
+        for (int i = 3; i < 5; i++)
+            sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
+    if (fight->quest_status > 2 && fight->fight_status == 0 && fight->turn < 6) {
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
-        for (int i = 0; i < 7; i++)
+        for (int i = 0; i < 3; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
     }
 }
@@ -62,9 +65,10 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 
     sfClock_restart(obj[1]->clock);
     fight_text_intro(0);
+    choose_fighter(obj, &fight, rpg, 2);
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            ret_val += fight_event_management(rpg, &fight);
+            ret_val += fight_event_management(rpg, &fight, obj);
         if (ret_val > 0) {
             delete_fight(&fight, obj, rpg);
             return;

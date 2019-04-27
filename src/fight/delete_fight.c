@@ -37,4 +37,6 @@ void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg)
         sfFont_destroy((sfFont *)sfText_getFont(fight->attacks[i]));
         sfText_destroy(fight->attacks[i]);
     }
+    choose_fighter(NULL, NULL, NULL, 0);
+    fight_turn(NULL, NULL, 1);
 }

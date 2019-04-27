@@ -247,7 +247,7 @@ void display_char(rpg_t *rpg, obj_t **obj);
 //fight
 int update_fight_text(size_t frames, fight_t *fight, int flag);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
-int fight_event_management(rpg_t *rpg, fight_t *fight);
+int fight_event_management(rpg_t *rpg, fight_t *fight, obj_t **obj);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
@@ -261,6 +261,8 @@ void print_reverse_order(obj_t **obj, rpg_t *rpg);
 void print_base_order(obj_t **obj, rpg_t *rpg);
 void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void positioning_life_perso(fight_t *new, rpg_t *rpg);
+void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
+void sorter(int (*tab)[4], int (*tab_speed)[4]);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);
@@ -281,5 +283,9 @@ house_t **house, dialogue_t *dialogue);
 void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int update_dial_text(size_t frames, dialogue_t *dialogue);
 void destroy_dialogue(dialogue_t *dialogue);
+
+//stats
+int init_stats(obj_t **obj);
+int fight_turn(obj_t **obj, fight_t *fight, int i);
 
 #endif /* !PROTO_H_ */

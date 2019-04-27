@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int game_create_load(obj_t **obj)
+static int game_create_load(obj_t **obj)
 {
     obj[0] = create_object(obj_path[0], V2F(10050, 1570), RECT_BASE, sfTrue);
     if (obj[0] == NULL)
@@ -31,7 +31,7 @@ sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
     return 1;
 }
 
-void create_followers(rpg_t *rpg, obj_t **obj)
+static void create_followers(rpg_t *rpg, obj_t **obj)
 {
     if (obj[2] == NULL) {
         obj[2] = create_object(obj_path[4],
@@ -47,7 +47,7 @@ void create_followers(rpg_t *rpg, obj_t **obj)
     }
 }
 
-void create_ennemis(obj_t **obj)
+static void create_ennemis(obj_t **obj)
 {
     sfVector2f vects[] = {{8368, 2610}, {10844, 2222}, {11952, 636}};
     for (int i = 6; i < 9; i++) {
@@ -68,6 +68,14 @@ sfRectangleShape_getGlobalBounds(OBJ_RECT);
     }
 }
 
+static void destroy_sounds(rpg_t *rpg)
+{
+    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.aled));
+    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.hurt));
+    sfSound_destroy(rpg->music.aled);
+    sfSound_destroy(rpg->music.hurt);
+}
+
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     if (rpg->quest_status == 1) {
@@ -75,13 +83,18 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
         if (game_create_load(obj) == 84)
             return 84;
     }
+    rpg->music.aled = create_sound("assets/aled.ogg");
+    rpg->music.hurt = create_sound("assets/hurt.ogg");
     create_followers(rpg, obj);
     create_ennemis(obj);
     if (rpg->quest_status == 1 || rpg->quest_status == 26) {
         create_framebuffer(rpg);
+        if (init_stats(obj) == -1)
+            return 84;
         game_loop(rpg, obj, house);
     }
     for (int i = 0; house[i]; i++)
         house[i]->display_house = 1;
+    destroy_sounds(rpg);
     return 1;
 }

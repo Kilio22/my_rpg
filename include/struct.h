@@ -57,6 +57,7 @@ enum bools {
 
 enum stats {
     LEVEL = 0,
+    XP,
     HPS,
     ATK,
     DEF,
@@ -81,10 +82,6 @@ typedef struct intro_s {
     int opt;
 } intro_t;
 
-typedef struct char_stats_s {
-    int *stats;
-} char_stats_t;
-
 typedef struct wind_s {
     sfRenderWindow *wind;
     sfVector2u windSize;
@@ -105,7 +102,7 @@ typedef struct obj_s {
     sfRectangleShape *rectangle;
     sfFloatRect rectangle_bound;
     int frame_animation;
-    char_stats_t *stats;
+    int stats[6];
 } obj_t;
 
 typedef struct house_s {
@@ -223,10 +220,11 @@ typedef struct fight_s {
     sfText *text;
     sfSprite *parch;
     sfVector2f old_pos[4];
-    sfText *attacks[7];
+    sfText *attacks[5];
     int high;
     int life[2];
     int turn;
+    int fight_status;
 } fight_t;
 
 typedef struct my_musics_s {

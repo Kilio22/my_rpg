@@ -28,6 +28,21 @@ int init_controls(rpg_t *rpg)
     return 0;
 }
 
+int init_stats(obj_t **obj)
+{
+    for (int i = 0; i < 9; i++) {
+        if (i == 4 || i == 5)
+            continue;
+        obj[i]->stats[LEVEL] = 1;
+        obj[i]->stats[XP] = 0;
+        obj[i]->stats[HPS] = 100;
+        obj[i]->stats[ATK] = 10;
+        obj[i]->stats[DEF] = 10;
+        obj[i]->stats[SPEED] = 10;
+    }
+    return 0;
+}
+
 int init_save(rpg_t *rpg)
 {
     if (init_controls(rpg) == -1) {
