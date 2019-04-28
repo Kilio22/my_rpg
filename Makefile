@@ -74,6 +74,8 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(FIGHT_PATH)fight_events.c	\
 		$(FIGHT_PATH)fight_updates.c	\
 		$(FIGHT_PATH)fight_order.c	\
+		$(FIGHT_PATH)manage_fight.c	\
+		$(FIGHT_PATH)apply_attacks.c	\
 		$(FIGHT_PATH)sort.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\

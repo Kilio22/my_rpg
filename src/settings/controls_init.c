@@ -40,11 +40,21 @@ static void display_controls(rpg_t *rpg, int *high)
     }
 }
 
+static void destroy_controls(rpg_t *rpg)
+{
+    for (int i = 0; i < NB_KEYS; i++) {
+        sfFont_destroy((sfFont *)sfText_getFont(CONTROLS.text[i].text));
+        sfText_destroy(CONTROLS.text[i].text);
+    }
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(CONTROLS.back));
+    sfSprite_destroy(CONTROLS.back);
+}
+
 void init_controls_menu(rpg_t *rpg)
 {
     int x = 100;
     int y = 100;
-    sfTexture *texture = sfTexture_createFromFile(BACK_CTRL, NULL);
+    sfTexture *texture = sfTexture_createFromFile(menu_path[0], NULL);
     int highlight = 0;
 
     for (int i = 0; i < NB_KEYS; i++) {
@@ -55,12 +65,8 @@ key_str[CONTROLS.keys[i]], 30, (sfVector2f){x, y});
     }
     CONTROLS.back = sfSprite_create();
     sfSprite_setTexture(CONTROLS.back, texture, sfTrue);
+    sfSprite_setScale(CONTROLS.back, V2F(0.7, 0.7));
     CONTROLS.wait_key = -1;
     display_controls(rpg, &highlight);
-    for (int i = 0; i < NB_KEYS; i++) {
-        sfFont_destroy((sfFont *)sfText_getFont(CONTROLS.text[i].text));
-        sfText_destroy(CONTROLS.text[i].text);
-    }
-    sfTexture_destroy((sfTexture *)sfSprite_getTexture(CONTROLS.back));
-    sfSprite_destroy(CONTROLS.back);
+    destroy_controls(rpg);
 }

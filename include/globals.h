@@ -33,5 +33,5 @@ extern const int global_damages[6][2];
 extern const char *dial[][3];
 extern const char *welcome[];
 extern const char *answers[][2];
-
+extern const char menu_font[];
 #endif /* !GLOBALS_H_ */

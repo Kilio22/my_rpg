@@ -112,7 +112,7 @@ const char *key_str[] = {
 };
 
 const char *menu_path[2] = {
-    "assets/background_menu.png",
+    "assets/menu_image.png",
     "assets/load.png"
 };
 
@@ -155,7 +155,7 @@ const sfVector2f menu_pos[6] = {
 };
 
 const char *settings_fp[5] = {
-    "assets/settings.png",
+    "assets/menu_image.png",
     "assets/up_vol.png",
     "assets/down_vol.png",
     "assets/fr.png",
@@ -352,3 +352,5 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
     intro_go_auberge20,
     intro_go_auberge20
 };
+
+const char menu_font[] = "assets/menu_font_h.ttf";

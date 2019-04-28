@@ -45,8 +45,9 @@ static void create_ground(rpg_t *rpg)
         MENU.menu_sprite[i] = sfSprite_create();
         sfSprite_setTexture(MENU.menu_sprite[i], texture, sfTrue);
     }
+    sfSprite_setScale(MENU.menu_sprite[0], V2F(0.7, 0.7));
     for (int i = 0; i < 6; i++) {
-        MENU.buttons[i].text = create_text((const char *)MENU_FONT,
+        MENU.buttons[i].text = create_text((const char *)menu_font,
 menu_str[i], 80, menu_pos[i]);
         MENU.buttons[i].status = 0;
     }
@@ -60,7 +61,7 @@ void init_menu(rpg_t *rpg, obj_t **obj, house_t **house)
     create_rect_menu(rpg);
     MENU.clock = sfClock_create();
     rpg->menu.menu_on = 1;
-    MENU.descr_text = create_text(MENU_FONT, menu_desc[0], 30,
+    MENU.descr_text = create_text(menu_font, menu_desc[0], 30,
 (sfVector2f){580, 570});
     if (init_save(rpg) == -1) {
         rpg->error_code = 84;

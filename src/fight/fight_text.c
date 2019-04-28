@@ -28,6 +28,21 @@ int fight_text_intro(int i)
     return 0;
 }
 
+void update_choices(fight_t *fight, int turn, rpg_t *rpg)
+{
+    if (turn == 0) {
+        for (int i = 0; i < 5; i++) {
+            sfText_setString(fight->attacks[i], attaques_names[0][i]);
+            update_attacks_pos(fight, rpg, i);
+        }
+    } else {
+        for (int i = 0; i < 5; i++) {
+            sfText_setString(fight->attacks[i], attaques_names[turn - 1][i]);
+            update_attacks_pos(fight, rpg, i);
+        }
+    }
+}
+
 int fight_text_index(int index, char **to_print, int flag, int *p_ind)
 {
     if (my_strlen(*to_print) == 0) {

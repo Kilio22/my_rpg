@@ -29,7 +29,7 @@ void positioning_life_perso(fight_t *new, rpg_t *rpg)
 
 static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
 {
-    new->text = create_text(MENU_FONT, " ", 19, V2F(0, 0));
+    new->text = create_text(menu_font, " ", 19, V2F(0, 0));
     new->nb_fight = i;
     new->old_i = i;
     new->fondu = create_rect(vect, (sfVector2f){1280, 720});
@@ -57,7 +57,7 @@ fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)
     sfSprite_setScale(new.parch, V2F(0.6, 0.6));
     init_fight_var(i, vect, obj, &new);
     for (int i = 0; i < 5; i++) {
-        new.attacks[i] = create_text(MENU_FONT,
+        new.attacks[i] = create_text(menu_font,
 attaques_names[0][i], 19, V2F(0, 0));
         update_attacks_pos(&new, rpg, i);
     }

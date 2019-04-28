@@ -19,9 +19,6 @@
 #define WIND rpg->wind
 #define MENU rpg->menu
 #define MAP rpg->map
-#define MENU_FONT "assets/menu_font_h.ttf"
-#define BACK_SETT "assets/settings.png"
-#define BACK_CTRL "assets/skyfullofstar.png"
 #define RECT_LEFT 32 * \
 ((layers->map[y][x] - MAP.gid[l]->gid) % MAP.gid[l]->offset)
 #define RECT_TOP 32 * \

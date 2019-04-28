@@ -230,6 +230,7 @@ typedef struct fight_s {
 typedef struct my_musics_s {
     sfSound *aled;
     sfSound *hurt;
+    sfMusic *fight_music;
 } my_musics_t;
 
 typedef struct dialogue_s {

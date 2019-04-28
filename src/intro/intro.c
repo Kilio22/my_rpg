@@ -50,7 +50,7 @@ static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 
     rpg->music.aled = create_sound("assets/aled.ogg");
     rpg->music.hurt = create_sound("assets/hurt.ogg");
-    new.text = create_text(MENU_FONT, " ", 19,
+    new.text = create_text(menu_font, " ", 19,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(vect, (sfVector2f){1280, 720});
     new.sprite = sfSprite_create();

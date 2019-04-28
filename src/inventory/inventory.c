@@ -56,5 +56,11 @@ void inventory_destroy(inventory_t *inv)
         if (inv->stock[6] != NULL)
             item_destroy(inv->stock[i]);
     }
+    for (int i = 0; i < 3; i++) {
+        sfTexture_destroy((sfTexture *)sfSprite_getTexture(inv->inv_widget[i]));
+        sfSprite_destroy(inv->inv_widget[i]);
+    }
+    sfTexture_destroy((sfTexture *)sfSprite_getTexture(inv->grid));
+    sfSprite_destroy(inv->grid);
 }
 

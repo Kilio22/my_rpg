@@ -205,8 +205,6 @@ int check_pnj_clock_move(void);
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int check_new_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                         house_t **house);
-int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
-                                                        house_t **house);
 void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                             house_t **house);
 
@@ -247,7 +245,7 @@ void display_char(rpg_t *rpg, obj_t **obj);
 //fight
 int update_fight_text(size_t frames, fight_t *fight, int flag);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
-int fight_event_management(rpg_t *rpg, fight_t *fight, obj_t **obj);
+int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
@@ -263,6 +261,12 @@ void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void positioning_life_perso(fight_t *new, rpg_t *rpg);
 void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 void sorter(int (*tab)[4], int (*tab_speed)[4]);
+void update_choices(fight_t *fight, int turn, rpg_t *rpg);
+void attack_allies(obj_t **obj, fight_t *fight, int i);
+void attack_ennemi(obj_t **obj, fight_t *fight);
+void apply_attack(obj_t **obj, fight_t *fight, rpg_t *rpg, int turn);
+void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
+void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);

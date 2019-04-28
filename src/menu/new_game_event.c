@@ -25,7 +25,7 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     rpg->quest_status = 0;
 }
 
-int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
+static int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                         house_t **house)
 {
     if (WIND.event.key.code == sfKeyEscape)

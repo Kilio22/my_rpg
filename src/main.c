@@ -34,6 +34,20 @@ sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
     return 0;
 }
 
+void destroy_game(rpg_t *rpg, house_t **house, obj_t **obj)
+{
+    sfRenderWindow_destroy(WIND.wind);
+    sfMusic_destroy(rpg->game.back_music);
+    for (int i = 0; i < NB_HOUSE; i++)
+        free_house(house[i]);
+    free(house);
+    free(obj);
+    free(CONTROLS.bools);
+    sfView_destroy(WIND.view);
+    inventory_destroy(GAME.inv);
+    free(GAME.inv);
+}
+
 int main(void)
 {
     rpg_t rpg;
@@ -51,8 +65,6 @@ int main(void)
     init_menu(&rpg, obj, house);
     if (rpg.error_code == 84)
         return (84);
-    sfMusic_destroy(rpg.game.back_music);
-    for (int i = 0; i < NB_HOUSE; i++)
-        free_house(house[i]);
+    destroy_game(&rpg, house, obj);
     return (0);
 }

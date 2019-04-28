@@ -41,10 +41,10 @@ static void init_texts_settings(settings_t *settings)
     for (int i = 0; i < 4; i++) {
         if (i == 1)
             settings->text[i].text =
-create_text(MENU_FONT, my_int_to_char(settings->volume), 80, settings_pos[i]);
+create_text(menu_font, my_int_to_char(settings->volume), 80, settings_pos[i]);
         else
             settings->text[i].text =
-create_text(MENU_FONT, settings_str[i], 80, settings_pos[i]);
+create_text(menu_font, settings_str[i], 80, settings_pos[i]);
     }
 }
 
@@ -62,6 +62,7 @@ settings_t init_settings(rpg_t *rpg)
         sfSprite_setPosition(settings.buttons[i].sprite, settings_spr_pos[i]);
         settings.buttons[i].state = 0;
     }
+    sfSprite_setScale(settings.buttons[0].sprite, V2F(0.7, 0.7));
     init_texts_settings(&settings);
     settings.high = 0;
     return (settings);

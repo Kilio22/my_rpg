@@ -68,7 +68,7 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
     choose_fighter(obj, &fight, rpg, 2);
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            ret_val += fight_event_management(rpg, &fight, obj);
+            ret_val += fight_event_management(rpg, &fight);
         if (ret_val > 0) {
             delete_fight(&fight, obj, rpg);
             return;
