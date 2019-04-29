@@ -48,8 +48,6 @@ static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 (sfVector2i){0, 0}, WIND.view);
     sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
-    rpg->music.aled = create_sound("assets/aled.ogg");
-    rpg->music.hurt = create_sound("assets/hurt.ogg");
     new.text = create_text(menu_font, " ", 19,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(vect, (sfVector2f){1280, 720});
