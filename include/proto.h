@@ -141,7 +141,7 @@ void all_character_animation_intro(rpg_t *rpg, obj_t **obj);
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
 void init_text_load(load_game_t *new);
-load_game_t init_load_game(void);
+load_game_t init_load_game(rpg_t *rpg);
 void update_rect_load(load_game_t *load, size_t frame);
 void load_display(rpg_t *rpg, load_game_t *load);
 

@@ -9,7 +9,7 @@
 
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    load_game_t load = init_load_game();
+    load_game_t load = init_load_game(rpg);
     int ret_val = 0;
     sfTime old_time = {0};
     sfTime current_time = {0};

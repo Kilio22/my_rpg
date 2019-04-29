@@ -27,10 +27,11 @@ void init_text_load(load_game_t *new)
     }
 }
 
-load_game_t init_load_game(void)
+load_game_t init_load_game(rpg_t *rpg)
 {
     load_game_t new;
-    sfTexture *texture = sfTexture_createFromFile(menu_path[0], NULL);
+    sfTexture *texture =
+sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
 
     new.back = sfSprite_create();
     sfSprite_setTexture(new.back, texture, sfTrue);
@@ -71,7 +72,7 @@ void load_display(rpg_t *rpg, load_game_t *load)
 
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    load_game_t load = init_load_game();
+    load_game_t load = init_load_game(rpg);
     int ret_val = 0;
     sfTime old_time = {0};
     sfTime current_time = {0};
