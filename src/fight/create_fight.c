@@ -41,8 +41,7 @@ static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
     new->old_pos[1] = sfSprite_getPosition(obj[2]->sprite);
     new->old_pos[2] = sfSprite_getPosition(obj[3]->sprite);
     new->old_pos[3] = sfSprite_getPosition(obj[new->nb_fight + 6]->sprite);
-    //new->life[0] = obj[0]->stats[HPS] + obj[2]->stats[HPS] + obj[3]->stats[HPS];
-    new->life[0] = 10;
+    new->life[0] = obj[0]->stats[HPS] + obj[2]->stats[HPS] + obj[3]->stats[HPS];
     new->life[1] = 100;
     new->turn = 0;
     new->fight_status = 0;
