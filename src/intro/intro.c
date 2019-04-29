@@ -61,10 +61,6 @@ int return_to_game(rpg_t *rpg, obj_t **obj)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
 
-    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.aled));
-    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.hurt));
-    sfSound_destroy(rpg->music.aled);
-    sfSound_destroy(rpg->music.hurt);
     if (MENU.menu_on == 0) {
         MENU.menu_on = 1;
         sfView_destroy(WIND.view);
