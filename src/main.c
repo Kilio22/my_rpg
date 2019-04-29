@@ -38,6 +38,7 @@ void destroy_game(rpg_t *rpg, house_t **house, obj_t **obj)
 {
     sfRenderWindow_destroy(WIND.wind);
     sfMusic_destroy(rpg->game.back_music);
+    destroy_sounds(rpg);
     for (int i = 0; i < NB_HOUSE; i++)
         free_house(house[i]);
     free(house);

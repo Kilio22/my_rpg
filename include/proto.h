@@ -200,6 +200,7 @@ unsigned int size, sfVector2f pos);
 char *my_ftoa(float value);
 sfSound *create_sound(char const *path);
 int check_pnj_clock_move(void);
+void destroy_sounds(rpg_t *rpg);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
