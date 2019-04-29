@@ -81,6 +81,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
 		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)init_load.c 	\
 		$(MENU_PATH)load_game.c	\
 		$(MENU_PATH)load_game_event.c	\
 		$(MENU_PATH)menu_display.c	\
