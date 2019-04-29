@@ -36,7 +36,7 @@ static void character_animation_intro(obj_t *obj)
         animation(&obj->sprite_rect, 32, 32, 160);
         obj->frame_animation = 0;
     }
-    obj->frame_animation++;
+    obj->frame_animation += update_time(NULL);
     character_orientation_intro(obj);
 }
 

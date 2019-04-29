@@ -50,7 +50,7 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
     vect.y += 15;
     vect.x += 80;
     if (sfSprite_getPosition(obj[0]->sprite).y <= 2220)
-        update_intro_text(rpg, 1, intro);
+        update_intro_text(rpg, intro);
     sfText_setPosition(intro->text, vect);
     vect.y -= 15;
     vect.x -= 20;
@@ -59,10 +59,8 @@ void update_text_pos(rpg_t *rpg, obj_t **obj, intro_t *intro)
 
 void intro_action(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intro)
 {
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        intro_fcts(rpg, obj, house, intro);
-        all_character_animation_intro(rpg, obj);
-    }
+    intro_fcts(rpg, obj, house, intro);
+    all_character_animation_intro(rpg, obj);
     sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
     camera_control(rpg, obj[HERO_HB]->pos, obj);

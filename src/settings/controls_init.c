@@ -26,8 +26,10 @@ int check_mousepos_intersect(rpg_t *rpg, fields_t field[], int nb)
 static void display_controls(rpg_t *rpg, int *high)
 {
     int ret_val = 0;
+    size_t frames;
 
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += manage_control_events(rpg, high);
         if (ret_val == 1)

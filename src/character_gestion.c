@@ -28,9 +28,9 @@ obj[0]->image, house[i]->image) == 1)
 void apply_y_control(rpg_t *rpg, obj_t **obj, house_t **house, sfVector2f pos)
 {
     if (CONTROLS.bools[KEYUP] == 1)
-        pos.y -= 2;
+        pos.y -= 2 * rpg->frame;
     if (CONTROLS.bools[KEYDOWN] == 1)
-        pos.y += 2;
+        pos.y += 2 * rpg->frame;
     sfSprite_move(obj[0]->sprite, pos);
     if (all_world_hitBox(obj, house, obj[4], rpg) == 1) {
         pos.y *= -1;
@@ -44,9 +44,9 @@ void apply_controls_character(rpg_t *rpg, obj_t **obj, house_t **house)
 
     apply_y_control(rpg, obj, house, newPos);
     if (CONTROLS.bools[KEYLEFT] == 1)
-        newPos.x -= 2;
+        newPos.x -= 2 * rpg->frame;
     if (CONTROLS.bools[KEYRIGHT] == 1)
-        newPos.x += 2;
+        newPos.x += 2 * rpg->frame;
     sfSprite_move(obj[0]->sprite, newPos);
     if (all_world_hitBox(obj, house, obj[4], rpg) == 1) {
         newPos.x *= -1;

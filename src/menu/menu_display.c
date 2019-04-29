@@ -67,19 +67,12 @@ static void display_menu(rpg_t *rpg)
 void menu_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     int move_rect = -1;
-    sfTime old_time = {0};
-    sfTime current_time = {0};
     size_t frames;
 
     while (sfRenderWindow_isOpen(WIND.wind)) {
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             menu_event_management(rpg, obj, house, &move_rect);
-        current_time = sfClock_getElapsedTime(MENU.clock);
-        frames =
-sfTime_asMicroseconds(current_time) - sfTime_asMicroseconds(old_time);
-        frames /= 1000 / 60;
-        frames /= 1000;
-        old_time.microseconds = current_time.microseconds;
+        rpg->frame = update_time(&frames);
         update_rectangle(rpg, &move_rect, frames);
         update_text(rpg, frames);
         display_menu(rpg);

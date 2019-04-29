@@ -49,7 +49,7 @@ char **oui, int *p_ind)
     return 0;
 }
 
-int update_dial_text(size_t frames, dialogue_t *dialogue)
+int update_dial_text(dialogue_t *dialogue)
 {
     static int print_index = 0;
     static int ind = 0;
@@ -57,7 +57,7 @@ int update_dial_text(size_t frames, dialogue_t *dialogue)
 
     if (dial_text_index(&ind, dialogue, &oui, &print_index) == -1)
         return -1;
-    for (size_t i = 0; (i < frames || i <= 1) &&
+    for (size_t i = 0; i < update_time(NULL) &&
 print_index < my_strlen(answers[dialogue->nb_pnj][ind]); i++) {
         oui[print_index] = answers[dialogue->nb_pnj][ind][print_index];
         print_index++;

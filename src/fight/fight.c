@@ -65,11 +65,13 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
     fight_t fight = create_fight(i, rpg, obj);
     int ret_val = 0;
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     fight_text_intro(0);
     choose_fighter(obj, &fight, rpg, 2);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += fight_event_management(rpg, &fight);
         if (ret_val > 0 || fight.quest_status == 10) {

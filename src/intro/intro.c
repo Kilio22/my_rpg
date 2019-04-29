@@ -81,9 +81,11 @@ sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     intro_t intro = create_struct_intro(rpg, obj);
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             intro_event_management(rpg, obj, house);
         if (MENU.menu_on == 0 || MENU.menu_on == 2)

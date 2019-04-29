@@ -254,6 +254,7 @@ typedef struct rpg_s {
     int error_code;
     int quest_status;
     int dial_status;
+    size_t frame;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

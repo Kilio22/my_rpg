@@ -14,11 +14,11 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 
     if (fight->quest_status == 8) {
         fight->text_index = (fight->win == 1) ? 3 : 4;
-        update_fight_text(1, fight, 1, rpg);
+        update_fight_text(fight, 1, rpg);
         fight->quest_status++;
     }
     if (fight->old_i == fight->nb_fight || fight->quest_status == 9)
-        update_fight_text(1, fight, 0, rpg);
+        update_fight_text(fight, 0, rpg);
     vect.y += 15;
     vect.x += 80;
     sfText_setPosition(fight->text, vect);
@@ -72,10 +72,10 @@ house_t **house, fight_t *fight)
 
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
 {
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0)
-        all_character_animation(obj);
+    all_character_animation(obj);
     update_perso(rpg, obj, house, fight);
-   if (fight->quest_status > 1 && fight->quest_status < 6)
+    obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+    if (fight->quest_status > 1 && fight->quest_status < 6)
         fight_camera_control(rpg, V2F(13756, 500), obj);
     else
         fight_camera_control(rpg, obj[HERO_HB]->pos, obj);

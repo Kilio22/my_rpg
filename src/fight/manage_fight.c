@@ -12,10 +12,12 @@ static void reset_allie_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
     if (fight->fight_status == 4) {
         if (obj[i]->pos.x <= 13648) {
             fight->fight_status = 0;
-            sfSprite_move(obj[i]->sprite, V2F(4, 0));
+            sfSprite_move(obj[i]->sprite, V2F(4 * update_time(NULL), 0));
             choose_fighter(obj, fight, rpg, 2);
-        } else
-            sfSprite_move(obj[i]->sprite, V2F(-2, 0));
+        } else {
+            printf("%ld\n", update_time(NULL));
+            sfSprite_move(obj[i]->sprite, V2F(-2 * MOVE_N, 0));
+        }
     }
     obj[0]->pos = sfSprite_getPosition(obj[i]->sprite);
 }
@@ -23,10 +25,10 @@ static void reset_allie_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 {
     if (fight->fight_status == 1) {
-        if (obj[i]->pos.x == 13850)
+        if (obj[i]->pos.x >= 13850)
             fight->fight_status++;
         else
-            sfSprite_move(obj[i]->sprite, V2F(2, 0));
+            sfSprite_move(obj[i]->sprite, V2F(2 * update_time(NULL), 0));
     }
     if (fight->fight_status == 2) {
         sfSound_play(rpg->music.hurt);
@@ -46,10 +48,10 @@ static void reset_ennemi_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
     if (fight->fight_status == 4) {
         if (obj[i]->pos.x >= 13890) {
             fight->fight_status = 0;
-            sfSprite_move(obj[i]->sprite, V2F(-4, 0));
+            sfSprite_move(obj[i]->sprite, V2F(-4 * MOVE_N, 0));
             choose_fighter(obj, fight, rpg, 2);
         } else
-            sfSprite_move(obj[i]->sprite, V2F(2, 0));
+            sfSprite_move(obj[i]->sprite, V2F(2 + update_time(NULL), 0));
     }
     obj[i]->pos = sfSprite_getPosition(obj[i]->sprite);
 }
@@ -61,7 +63,7 @@ void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
         if (obj[i]->pos.x == 13690)
             fight->fight_status++;
         else {
-            sfSprite_move(obj[i]->sprite, V2F(-2, 0));
+            sfSprite_move(obj[i]->sprite, V2F(-2 * MOVE_N, 0));
         }
     }
     if (fight->fight_status == 2) {

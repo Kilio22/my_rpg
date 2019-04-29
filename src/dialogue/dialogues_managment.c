@@ -15,7 +15,7 @@ void dial_action(rpg_t *rpg, obj_t **obj, house_t **house, dialogue_t *dialogue)
     house_interaction(obj[HERO_HB], house, rpg);
     update_all_rect(obj, house);
     if (dialogue->quest_status_d != -1)
-        update_dial_text(1, dialogue);
+        update_dial_text(dialogue);
 }
 
 static int manage_enter(dialogue_t *dialogue)

@@ -29,5 +29,6 @@
 #define AUB_POS (sfVector2f){9886, 1456}
 #define NB_HOUSE 15
 #define OBJ_RECT obj[i]->rectangle
+#define MOVE_N (long) update_time(NULL)
 
 #endif /* !MACROS_H_ */

@@ -86,13 +86,11 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
 
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        character_control(rpg, obj, house);
-        follower(obj, rpg);
-        move_pnjs(obj, house);
-        all_character_animation(obj);
-    }
-    sfSprite_setPosition(obj[1]->sprite,
+    character_control(rpg, obj, house);
+    follower(obj, rpg);
+    move_pnjs(obj, house);
+    all_character_animation(obj);
+   sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
     house_interaction(obj[HERO_HB], house, rpg);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
@@ -102,9 +100,11 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event)
 && rpg->controls.bools[EVENTLOCK] == 0)
             event_management(rpg);
