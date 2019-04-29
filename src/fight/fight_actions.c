@@ -14,11 +14,11 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 
     if (fight->quest_status == 8) {
         fight->text_index = (fight->win == 1) ? 3 : 4;
-        update_fight_text(1, fight, 1);
+        update_fight_text(1, fight, 1, rpg);
         fight->quest_status++;
     }
     if (fight->old_i == fight->nb_fight || fight->quest_status == 9)
-        update_fight_text(1, fight, 0);
+        update_fight_text(1, fight, 0, rpg);
     vect.y += 15;
     vect.x += 80;
     sfText_setPosition(fight->text, vect);
