@@ -13,7 +13,7 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 (sfVector2i){0, 558}, WIND.view);
 
     if (fight->old_i == fight->nb_fight)
-        update_fight_text(1, fight, 0);
+        update_fight_text(1, fight, 0, rpg);
     vect.y += 15;
     vect.x += 80;
     sfText_setPosition(fight->text, vect);

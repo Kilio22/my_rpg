@@ -176,6 +176,7 @@ int check_mousepos_butt(rpg_t *rpg);
 void check_button_hovered(rpg_t *rpg, int *move);
 
 //menu_init.c
+void init_load(rpg_t *rpg);
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //music.c
@@ -244,7 +245,7 @@ void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
 void display_char(rpg_t *rpg, obj_t **obj);
 
 //fight
-int update_fight_text(size_t frames, fight_t *fight, int flag);
+int update_fight_text(size_t frames, fight_t *fight, int flag, rpg_t *rpg);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
 int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);

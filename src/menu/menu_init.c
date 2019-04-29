@@ -40,11 +40,9 @@ static void create_ground(rpg_t *rpg)
 {
     sfTexture *texture;
 
-    for (int i = 0; i < 2; i++) {
-        texture = sfTexture_createFromFile(menu_path[i][GAME.language], NULL);
-        MENU.menu_sprite[i] = sfSprite_create();
-        sfSprite_setTexture(MENU.menu_sprite[i], texture, sfTrue);
-    }
+    texture = sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
+    MENU.menu_sprite[0] = sfSprite_create();
+    sfSprite_setTexture(MENU.menu_sprite[0], texture, sfTrue);
     sfSprite_setScale(MENU.menu_sprite[0], V2F(0.7, 0.7));
     for (int i = 0; i < 6; i++) {
         MENU.buttons[i].text = create_text((const char *)menu_font,

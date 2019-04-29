@@ -31,7 +31,7 @@ void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg)
     sfTexture_destroy((sfTexture *)sfSprite_getTexture(fight->parch));
     sfSprite_destroy(fight->parch);
     update_fondu_rect_fight(fight, rpg, 1);
-    update_fight_text(1, fight, 1);
+    update_fight_text(1, fight, 1, rpg);
     reinit_pos(obj, fight);
     for (int i = 0; i < 5; i++) {
         sfFont_destroy((sfFont *)sfText_getFont(fight->attacks[i]));

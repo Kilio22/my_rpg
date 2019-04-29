@@ -114,7 +114,7 @@ const char *key_str[] = {
 const char *menu_path[][2] = {
     {"assets/menu_image.png",
     "assets/menu_image.png"},
-    {"assets/load.png", "assets/load.png"},
+    {"assets/loading_fr.png", "assets/loading_en.png"},
     {"assets/option_key_fr.png",
     "assets/option_key_en.png"}
 };
@@ -204,10 +204,13 @@ const char *house_path[8] = {
     "assets/maison5.png"
 };
 
-const char *ennemi_text[3] = {
-    "Ennemi: Viens te battre !",
-    "Ennemi: Tu es venu te faire tuer ?",
-    "Ennemi: Pauvre fou, tu vas souffrir !"
+const char *ennemi_text[3][2] = {
+    {"Ennemi: Viens te battre !",
+    "Enemy: Come fight me !"},
+    {"Ennemi: Tu es venu te faire tuer ?",
+    "Enemy: You came to die ?"},
+    {"Ennemi: Pauvre fou, tu vas souffrir !",
+    "Enemy: Poor fool, you will suffer !"}
 };
 
 const sfIntRect house_rects[8] = {
