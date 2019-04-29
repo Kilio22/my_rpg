@@ -40,9 +40,8 @@ void enter_house(obj_t *obj, house_t *house, rpg_t *rpg)
 
 void check_house_display(obj_t *obj, house_t *house, rpg_t *rpg)
 {
-    if (house->display_house == 1) {
+    if (house->display_house == 1)
         enter_house(obj, house, rpg);
-    }
     else
         exit_house(obj, house, rpg);
 }

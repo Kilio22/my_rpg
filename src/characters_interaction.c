@@ -9,6 +9,8 @@
 
 static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
+    if (obj[i] == NULL)
+        return;
     if (i >= 6 && i <= 9)
         fight(obj, rpg, i - 6, house);
     if (i == 5)

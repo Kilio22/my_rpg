@@ -268,6 +268,7 @@ void attack_ennemi(obj_t **obj, fight_t *fight);
 void apply_attack(obj_t **obj, fight_t *fight, rpg_t *rpg, int turn);
 void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
+void check_end_pos(fight_t *fight, obj_t **obj, house_t **house, rpg_t *rpg);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);

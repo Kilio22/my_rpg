@@ -9,18 +9,24 @@
 
 void reinit_pos(obj_t **obj, fight_t *fight)
 {
-    sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
-    sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);
-    sfSprite_setPosition(obj[3]->sprite, fight->old_pos[2]);
-    sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite, fight->old_pos[3]);
-    obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-    obj[2]->pos = sfSprite_getPosition(obj[2]->sprite);
-    obj[3]->pos = sfSprite_getPosition(obj[3]->sprite);
-    obj[fight->nb_fight + 6]->pos =
+    if (fight->win == 1) {
+        sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite,
+fight->old_pos[3]);
+        obj[fight->nb_fight + 6]->pos =
 sfSprite_getPosition(obj[fight->nb_fight + 6]->sprite);
-    sfSprite_setPosition(obj[1]->sprite,
-sfSprite_getPosition(obj[HERO_HB]->sprite));
-
+    } else if (fight->win == 2) {
+        free_obj(obj[fight->nb_fight + 6]);
+        obj[fight->nb_fight + 6] = NULL;
+    } else {
+        sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
+        sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);
+        sfSprite_setPosition(obj[3]->sprite, fight->old_pos[2]);
+        obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
+        sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite,
+fight->old_pos[3]);
+        obj[fight->nb_fight + 6]->pos =
+sfSprite_getPosition(obj[fight->nb_fight + 6]->sprite);
+    }
 }
 
 void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg)
