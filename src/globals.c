@@ -111,9 +111,11 @@ const char *key_str[] = {
     "PAUSE"
 };
 
-const char *menu_path[2] = {
+const char *menu_path[4] = {
     "assets/menu_image.png",
-    "assets/load.png"
+    "assets/load.png",
+    "assets/option_key_fr.png",
+    "assets/option_key_en.png"
 };
 
 const char *menu_str[6] = {
