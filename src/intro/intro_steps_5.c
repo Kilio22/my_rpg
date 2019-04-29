@@ -77,6 +77,7 @@ int intro_go_auberge16(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 int intro_go_auberge15(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
 {
     sfVector2f new_pos = {0, 0};
+    int i;
 
     (void)house;
     if (opt == 32) {
@@ -85,8 +86,10 @@ int intro_go_auberge15(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
             sfSprite_move(obj[0]->sprite, new_pos);
             obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         } else {
-            opt++;
-            rpg->quest_status++;
+            i = clock_text_intro(1);
+            opt = (i == 1) ? opt + 1: opt;
+            rpg->quest_status = (i == 1) ?
+rpg->quest_status + 1: rpg->quest_status;
         }
     }
     return opt;

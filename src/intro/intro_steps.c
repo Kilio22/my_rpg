@@ -43,8 +43,6 @@ int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         new_pos.y = 1442;
         sfSprite_setPosition(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
-        free_obj(obj[9]);
-        obj[9] = NULL;
         opt++;
     }
     if (opt == 6 || opt == 7) {
@@ -53,6 +51,8 @@ int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
         sfSprite_move(obj[0]->sprite, new_pos);
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         opt++;
+        free_obj(obj[9]);
+        obj[9] = NULL;
     }
     return opt;
 }
