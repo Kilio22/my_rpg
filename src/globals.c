@@ -204,14 +204,20 @@ const char *house_path[8] = {
     "assets/maison5.png"
 };
 
-const char *ennemi_text[3][2] = {
+const char *ennemi_text[][2] = {
     {"Ennemi: Viens te battre !",
     "Enemy: Come fight me !"},
     {"Ennemi: Tu es venu te faire tuer ?",
     "Enemy: You came to die ?"},
     {"Ennemi: Pauvre fou, tu vas souffrir !",
-    "Enemy: Poor fool, you will suffer !"}
-};
+    "Enemy: Poor fool, you will suffer !"},
+    {"Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne.",
+    "Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne."},
+    {"Bravo, vous avez vaincu votre adversaire !\n",
+    "Bravo, vous avez vaincu votre adversaire !\n"},
+    {"Vous avez gagne un niveau, et un nouvel objet !",
+    "Vous avez gagne un niveau, et un nouvel objet !"}
+}
 
 const sfIntRect house_rects[8] = {
     {0, 0, 160, 320},

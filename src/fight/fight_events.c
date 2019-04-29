@@ -7,8 +7,9 @@
 
 #include "rpg.h"
 
-static void update_text_pos(fight_t *fight, rpg_t *rpg)
+static int manage_key_enter(int code, fight_t *fight)
 {
+<<<<<<< HEAD
     sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
 (sfVector2i){0, 558}, WIND.view);
 
@@ -41,28 +42,15 @@ static void update_perso_pos(obj_t **obj, fight_t *fight)
         obj[3]->sprite_rect.top = 0;
         sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite, vect4);
         obj[fight->nb_fight + 6]->sprite_rect.top = 64;
+=======
+    if (code == sfKeyReturn && fight->fight_status == 0
+&& fight->life[0] > 0 && fight->life[1] > 0) {
+        if (fight->high == 2)
+            return 1;
+        fight->fight_status = 1;
+>>>>>>> 3c29a41e0891e333dd55a7c70442afa45247a24c
     }
-}
-
-void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight)
-{
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0)
-        all_character_animation(obj);
-    update_perso_pos(obj, fight);
-    choose_fighter(obj, fight, rpg, 3);
-    for (int i = 0; i < 5; i++)
-        update_attacks_pos(fight, rpg, i);
-    update_attacks_pos(fight, rpg, -1);
-    positioning_life_perso(fight, rpg);
-    sfSprite_setPosition(obj[1]->sprite,
-    sfSprite_getPosition(obj[HERO_HB]->sprite));
-    if (fight->quest_status > 1)
-        fight_camera_control(rpg, V2F(13756, 500), obj);
-    else
-        fight_camera_control(rpg, obj[HERO_HB]->pos, obj);
-    update_all_rect(obj, house);
-    update_text_pos(fight, rpg);
-    update_fondu_rect_fight(fight, rpg, 0);
+    return 0;
 }
 
 static int manage_other_key_press(int code, fight_t *fight)
@@ -70,23 +58,20 @@ static int manage_other_key_press(int code, fight_t *fight)
     if (fight->quest_status < 3)
         return 0;
     if (code == sfKeyLeft && fight->high > 0 &&
-fight->fight_status == 0 && fight->turn < 6) {
+fight->fight_status == 0 && fight->turn < 6
+&& fight->life[0] > 0 && fight->life[1] > 0) {
         sfText_setColor(fight->attacks[fight->high], sfRed);
         fight->high--;
         sfText_setColor(fight->attacks[fight->high], sfBlue);
     }
     if (code == sfKeyRight && fight->high < 2 &&
-fight->fight_status == 0 && fight->turn < 6) {
+fight->fight_status == 0 && fight->turn < 6
+&& fight->life[0] > 0 && fight->life[1] > 0) {
         sfText_setColor(fight->attacks[fight->high], sfRed);
         fight->high++;
         sfText_setColor(fight->attacks[fight->high], sfBlue);
     }
-    if (code == sfKeyReturn && fight->fight_status == 0) {
-        if (fight->high == 2)
-            return 1;
-        fight->fight_status = 1;
-    }
-    return 0;
+    return manage_key_enter(code, fight);
 }
 
 int fight_event_management(rpg_t *rpg, fight_t *fight)
@@ -98,7 +83,8 @@ int fight_event_management(rpg_t *rpg, fight_t *fight)
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
-        if (WIND.event.key.code == sfKeyEscape)
+        if (WIND.event.key.code == sfKeyEscape
+&& fight->life[0] > 0 && fight->life[1] > 0)
             return 1;
         return manage_other_key_press(WIND.event.key.code, fight);
     }

@@ -63,23 +63,23 @@ int flag, int *p_ind)
 int update_fight_text(size_t frames, fight_t *fight, int flag, rpg_t *rpg)
 {
     static int print_index = 0;
-    static char *to_print = NULL;
+    static char *print = NULL;
 
-    if (fight_text_index(ennemi_text[fight->nb_fight][GAME.language],
-&to_print, flag, &print_index) == -1)
+    if (fight_text_index(fight->text_index, &print, flag, &print_index) == -1)
         return -1;
     for (size_t i = 0; (i < frames || i <= 1) &&
-print_index < my_strlen(ennemi_text[fight->nb_fight][GAME.language]); i++) {
-        to_print[print_index] =
-ennemi_text[fight->nb_fight][GAME.language][print_index];
+print_index < my_strlen(ennemi_text[fight->text_index]); i++) {
+        print[print_index] = ennemi_text[fight->text_index][print_index];
         print_index++;
-        to_print[print_index] = '\0';
+        print[print_index] = '\0';
     }
-    sfText_setString(fight->text, to_print);
-    if (fight_text_intro(1) == 1 && my_strlen(to_print) ==
-my_strlen(ennemi_text[fight->nb_fight][GAME.language])) {
+    sfText_setString(fight->text, print);
+    if (my_strlen(print) == my_strlen(ennemi_text[fight->text_index])
+&& fight_text_intro(1) == 1) {
         fight->old_i++;
         fight->quest_status++;
     }
+    if (my_strlen(print) != my_strlen(ennemi_text[fight->text_index]))
+        fight_text_intro(0);
     return 0;
 }

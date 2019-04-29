@@ -32,6 +32,8 @@ static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
     new->text = create_text(menu_font, " ", 19, V2F(0, 0));
     new->nb_fight = i;
     new->old_i = i;
+    new->text_index = i;
+    new->win = 0;
     new->fondu = create_rect(vect, (sfVector2f){1280, 720});
     sfRectangleShape_setOutlineColor(new->fondu, sfTransparent);
     new->quest_status = 0;

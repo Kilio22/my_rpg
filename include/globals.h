@@ -27,7 +27,7 @@ extern const char *scrpits[];
 extern int (* const intro[])(obj_t **, int, rpg_t *, house_t **);
 extern const char *obj_path[];
 extern const int fog_off[54][2];
-extern const char *ennemi_text[3][2];
+extern const char *ennemi_text[][2];
 extern const char *attaques_names[][5];
 extern const int global_damages[6][2];
 extern const char *dial[][3];

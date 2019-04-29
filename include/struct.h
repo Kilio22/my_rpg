@@ -225,6 +225,8 @@ typedef struct fight_s {
     int life[2];
     int turn;
     int fight_status;
+    int text_index;
+    int win;
 } fight_t;
 
 typedef struct my_musics_s {

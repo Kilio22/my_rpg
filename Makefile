@@ -70,6 +70,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(FIGHT_PATH)create_fight.c	\
 		$(FIGHT_PATH)delete_fight.c	\
 		$(FIGHT_PATH)fight.c	\
+		$(FIGHT_PATH)fight_actions.c	\
 		$(FIGHT_PATH)fight_text.c	\
 		$(FIGHT_PATH)fight_events.c	\
 		$(FIGHT_PATH)fight_updates.c	\
