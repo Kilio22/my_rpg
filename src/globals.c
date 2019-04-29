@@ -217,7 +217,7 @@ const char *ennemi_text[][2] = {
     "Bravo, vous avez vaincu votre adversaire !\n"},
     {"Vous avez gagne un niveau, et un nouvel objet !",
     "Vous avez gagne un niveau, et un nouvel objet !"}
-}
+};
 
 const sfIntRect house_rects[8] = {
     {0, 0, 160, 320},
