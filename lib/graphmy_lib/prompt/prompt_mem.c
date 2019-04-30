@@ -56,7 +56,7 @@ static void display_text(sfRenderWindow *window, my_prompt_t *prompt)
     free(to_display);
 }
 
-void sfRenderWindow_drawPrompt(sfRenderWindow *window, my_prompt_t *prompt)
+void window_draw_prompt(sfRenderWindow *window, my_prompt_t *prompt)
 {
     sfSprite_setPosition(prompt->background, prompt->pos);
     sfSprite_setScale(prompt->background, prompt->scale);

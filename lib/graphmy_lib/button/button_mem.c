@@ -35,7 +35,7 @@ void my_button_destroy(my_button_t *button)
     free(button);
 }
 
-void sfRenderWindow_drawButton(sfRenderWindow *window, my_button_t *button)
+void window_draw_button(sfRenderWindow *window, my_button_t *button)
 {
     for (int i = 0; i < 3; i++) {
         sfSprite_setPosition(button->sprites[i], button->pos);

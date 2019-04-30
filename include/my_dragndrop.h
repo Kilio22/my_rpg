@@ -38,17 +38,17 @@ typedef struct dragndrop dragndrop_t;
 dragndrop_t *dragndrop_create(sfTexture *idle, sfTexture *dragged,
 sfTexture *img_dragged);
 void dragndrop_destroy(dragndrop_t *drag);
-void sfRenderWindow_drawDragndrop(sfRenderWindow *window, dragndrop_t *drag);
+void window_draw_dragndrop(sfRenderWindow *window, dragndrop_t *drag);
 
 // event
-my_bool_t dragndrop_isClicked(dragndrop_t *drag, sfRenderWindow *window);
-my_bool_t dragndrop_isHover(dragndrop_t *drag, sfRenderWindow *window);
-my_bool_t dragndrop_isUnderDragging(dragndrop_t *drag);
+my_bool_t dragndrop_is_clicked(dragndrop_t *drag, sfRenderWindow *window);
+my_bool_t dragndrop_is_hover(dragndrop_t *drag, sfRenderWindow *window);
+my_bool_t dragndrop_isunderdragging(dragndrop_t *drag);
 void dragndrop_event(dragndrop_t *drag, sfRenderWindow *window);
 
 // accessor
-my_bool_t dragndrop_ispendingDrag(dragndrop_t *drag);
-sfVector2i dragndrop_getpendingDrag(dragndrop_t *drag);
+my_bool_t dragndrop_ispendingdrag(dragndrop_t *drag);
+sfVector2i dragndrop_getpendingdrag(dragndrop_t *drag);
 void dragndrop_set_size(dragndrop_t *drag, int x, int y);
 
 #endif /* !MY_DRANDROP_H_ */

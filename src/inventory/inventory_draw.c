@@ -58,7 +58,7 @@ void inventory_draw_stock(inventory_t *inv)
         x = i % INVENTORY_SIZE_X;
         y = i / INVENTORY_SIZE_X;
         current->pos = (sfVector2f){481 + x * 73, 50 + y * 73};
-        sfRenderWindow_drawDragndrop(inv->window, current);
+        window_draw_dragndrop(inv->window, current);
     }
 }
 
@@ -68,7 +68,7 @@ void inventory_draw_stuff(inventory_t *inv)
         if (!inv->stuff[inv->state][i])
             continue;
         inv->stuff[inv->state][i]->display->pos = stuff_grid[i];
-        sfRenderWindow_drawDragndrop(inv->window,
+        window_draw_dragndrop(inv->window,
 inv->stuff[inv->state][i]->display);
     }
 }

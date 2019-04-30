@@ -52,7 +52,7 @@ my_bool_t my_prompt_enter_pressed(my_prompt_t *prompt)
     return (FALSE);
 }
 
-my_bool_t my_prompt_enter_pressedOnce(my_prompt_t *prompt)
+my_bool_t my_prompt_enter_pressedonce(my_prompt_t *prompt)
 {
     if (my_prompt_enter_pressed(prompt) && prompt->return_released == 1) {
         prompt->return_released = 0;
