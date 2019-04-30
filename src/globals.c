@@ -350,8 +350,6 @@ void (* const menu[6])(rpg_t *, obj_t **, house_t **) =
     menu_close_window
 };
 
-typedef int (* const intro_pointer_t)(obj_t **, int, rpg_t *, house_t **);
-
 intro_pointer_t intro[] = {
     intro_control,
     intro_control,

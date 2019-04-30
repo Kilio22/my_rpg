@@ -300,4 +300,7 @@ int fight_turn(obj_t **obj, fight_t *fight, int i);
 //pause
 void pause_game(rpg_t *rpg);
 
+//globals.c
+typedef int (* const intro_pointer_t)(obj_t **, int, rpg_t *, house_t **);
+
 #endif /* !PROTO_H_ */
