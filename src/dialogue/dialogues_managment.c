@@ -54,11 +54,13 @@ int dial_event_management(rpg_t *rpg, dialogue_t *dialogue)
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
-            return 1;
+            pause_game(rpg);
         if (manage_other_key_press(WIND.event.key.code, dialogue) == 1)
             return 1;
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
+    if (MENU.menu_on == 0)
+        return 1;
     return 0;
 }
