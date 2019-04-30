@@ -25,7 +25,7 @@
 ((layers->map[y][x] - MAP.gid[l]->gid) / MAP.gid[l]->offset);
 #define RECT_BASE (sfIntRect){0, 0, 32, 16}
 #define RECT_OBJ (sfIntRect){0, 0, 32, 64}
-#define NB_KEYS 5
+#define NB_KEYS 6
 #define AUB_POS (sfVector2f){9886, 1456}
 #define NB_HOUSE 15
 #define OBJ_RECT obj[i]->rectangle

@@ -54,8 +54,8 @@ static void destroy_controls(rpg_t *rpg)
 
 void init_controls_menu(rpg_t *rpg)
 {
-    int x = 100;
-    int y = 100;
+    int x = 370;
+    int y = 80;
     sfTexture *texture = sfTexture_createFromFile(menu_path[2][GAME.language], NULL);
     int highlight = 0;
 
@@ -63,7 +63,7 @@ void init_controls_menu(rpg_t *rpg)
         CONTROLS.text[i].text = create_text("assets/arial.ttf",
 key_str[CONTROLS.keys[i]], 30, (sfVector2f){x, y});
         CONTROLS.text[i].status = 0;
-        y += 40;
+        y += 70;
     }
     CONTROLS.back = sfSprite_create();
     sfSprite_setTexture(CONTROLS.back, texture, sfTrue);
