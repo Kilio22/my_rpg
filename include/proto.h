@@ -35,7 +35,7 @@ void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
 
 //check_save_status.c
-char *check_save_status(int save_nb);
+char *check_save_status(int save_nb, rpg_t *rpg);
 
 //controls_events.c
 int manage_control_events(rpg_t *rpg, int *high);
@@ -140,7 +140,6 @@ void all_character_animation_intro(rpg_t *rpg, obj_t **obj);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
-void init_text_load(load_game_t *new);
 load_game_t init_load_game(rpg_t *rpg);
 void update_rect_load(load_game_t *load, size_t frame);
 void load_display(rpg_t *rpg, load_game_t *load);
