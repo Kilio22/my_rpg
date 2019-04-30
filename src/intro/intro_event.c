@@ -48,7 +48,7 @@ void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
-            MENU.menu_on = 0;
+            pause_game(rpg);
         if (WIND.event.key.code == sfKeyF6) {
             reset_char(obj, rpg, house);
             rpg->quest_status = 26;
