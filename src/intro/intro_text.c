@@ -45,7 +45,7 @@ int intro_text_index(int *index, rpg_t *rpg, char **to_print, int *p_ind)
     return 0;
 }
 
-int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro)
+int update_intro_text(rpg_t *rpg, intro_t *intro)
 {
     static int print_index = 0;
     static int index = 0;
@@ -53,7 +53,7 @@ int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro)
 
     if (intro_text_index(&index, rpg, &to_print, &print_index) == -1)
         return -1;
-    for (size_t i = 0; (i < frames || i <= 1) &&
+    for (size_t i = 0; (i < rpg->frame || i <= 1) &&
 print_index < my_strlen(scrpits[index]); i++) {
         to_print[print_index] = scrpits[index][print_index];
         print_index++;
@@ -64,6 +64,8 @@ print_index < my_strlen(scrpits[index]); i++) {
 (rpg->quest_status >= 13 && rpg->quest_status <= 21))
 && clock_text_intro(1) == 1)
         rpg->quest_status++;
+    else if (print_index != my_strlen(scrpits[index]))
+        clock_text_intro(0);
     sfText_setString(intro->text, to_print);
     return 0;
 }

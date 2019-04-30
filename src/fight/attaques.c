@@ -7,12 +7,29 @@
 
 #include "rpg.h"
 
-const char *attaques_names[] = {
-    "Coup Epee",
-    "Defendre",
-    "Nathan : Jet de pieces",
-    "Jean : Coup tranchant",
+const char *attaques_names[][5] = {
+    {"Coup Epee",
+    "DuoStumper",
     "Fuir",
-    "JEAN : 100",
-    "ENNEMI : 100"
+    "ALLIES : 300",
+    "ENNEMI : 100"},
+    {"Pichnette",
+    "Pile ou face",
+    "Fuir",
+    "ALLIES : 100",
+    "ENNEMI : 100"},
+    {"Rate-attak",
+    "Coude'bool",
+    "Fuir",
+    "ALLIES : 100",
+    "ENNEMI : 100"}
+};
+
+const int global_damages[6][2] = {
+    {7, 14},
+    {2, 20},
+    {5, 10},
+    {5, 8},
+    {8, 13},
+    {12, 18}
 };

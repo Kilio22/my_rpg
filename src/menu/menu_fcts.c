@@ -26,13 +26,6 @@ void menu_credit(rpg_t *rpg, obj_t **obj, house_t **house)
     (void) house;
 }
 
-void menu_how_to_play(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    (void) rpg;
-    (void) obj;
-    (void) house;
-}
-
 void menu_close_window(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     (void) obj;

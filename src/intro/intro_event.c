@@ -40,8 +40,6 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg)
 
 void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    if (WIND.event.type == sfEvtMouseWheelMoved)
-        mouse_wheel_management(rpg);
     if (WIND.event.type == sfEvtMouseMoved) {
         CONTROLS.mousePos.x = WIND.event.mouseMove.x;
         CONTROLS.mousePos.y = WIND.event.mouseMove.y;
@@ -50,7 +48,7 @@ void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
-            MENU.menu_on = 0;
+            pause_game(rpg);
         if (WIND.event.key.code == sfKeyF6) {
             reset_char(obj, rpg, house);
             rpg->quest_status = 26;

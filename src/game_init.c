@@ -9,8 +9,8 @@
 
 void init_objs(obj_t **obj)
 {
-    sfVector2f vects[] = {{10920, 2860}, {10920, 2860}, {0, 0}, {10834, 1996},
-{10868, 2016}, {10802, 2016}, {11768, 1396}};
+    sfVector2f vects[] = {{10934, 2860}, {10934, 2860}, {0, 0}, {10834, 1996},
+{10868, 2016}, {10802, 2016}, {11768, 1396}, {10926, 2840}};
 
     for (int i = 0; i < 11; i++)
         obj[i] = NULL;
@@ -25,6 +25,8 @@ void init_objs(obj_t **obj)
     obj[6] = create_object(obj_path[3], vects[4], RECT_OBJ, sfTrue);
     obj[7] = create_object(obj_path[3], vects[5], RECT_OBJ, sfTrue);
     obj[8] = create_object(obj_path[4], vects[6], RECT_OBJ, sfTrue);
+    obj[9] = create_object("assets/bato.png", vects[7],
+(sfIntRect){0, 0, 118, 204}, sfTrue);
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
     obj[0]->rectangle_bound =
 sfRectangleShape_getGlobalBounds(obj[0]->rectangle);

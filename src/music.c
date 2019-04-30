@@ -43,4 +43,6 @@ void create_music(rpg_t *rpg)
     GAME.back_music = sfMusic_createFromFile("assets/back_music.ogg");
     sfMusic_setLoop(GAME.back_music, sfTrue);
     set_music(rpg);
+    rpg->music.aled = create_sound("assets/aled.ogg");
+    rpg->music.hurt = create_sound("assets/hurt.ogg");
 }

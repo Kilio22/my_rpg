@@ -9,6 +9,10 @@
 
 void analyse_menu_mouse_released(rpg_t *rpg, int key, obj_t **obj, house_t **h)
 {
+    int i = check_mousepos_intersect(rpg, MENU.buttons, 6);
+
+    if (i == -1)
+        return;
     if (key == 0) {
         MENU.buttons[MENU.highlight].status = 0;
         sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
@@ -18,6 +22,10 @@ void analyse_menu_mouse_released(rpg_t *rpg, int key, obj_t **obj, house_t **h)
 
 void analyse_menu_mouse_press(rpg_t *rpg, int key)
 {
+    int i = check_mousepos_intersect(rpg, MENU.buttons, 6);
+
+    if (i == -1)
+        return;
     if (key == 0 && check_mousepos_butt(rpg) != -1) {
         MENU.buttons[MENU.highlight].status = 1;
         sfText_setColor(MENU.buttons[MENU.highlight].text, sfBlue);

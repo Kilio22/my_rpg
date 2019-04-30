@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-char *check_save_status(int save_nb)
+char *check_save_status(int save_nb, rpg_t *rpg)
 {
     char *line = NULL;
     size_t size;
@@ -20,5 +20,9 @@ char *check_save_status(int save_nb)
         return NULL;
     getline(&line, &size, stream);
     fclose(stream);
+    if (GAME.language == 0)
+        line = my_realloc_str("Nom : ", line);
+    else
+        line = my_realloc_str("Name : ", line);
     return line;
 }

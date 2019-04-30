@@ -7,15 +7,29 @@
 
 #include "rpg.h"
 
-void update_time(sfTime *current_time, sfTime *old_time, rpg_t *rpg,
-                                                        size_t *frames)
+size_t update_time(size_t *frames)
 {
-    *current_time = sfClock_getElapsedTime(MENU.clock);
-    *frames =
-sfTime_asMicroseconds(*current_time) - sfTime_asMicroseconds(*old_time);
-    *frames /= 1000 / 60;
-    *frames /= 1000;
-    (*old_time).microseconds = (*current_time).microseconds;
+    static sfClock *clock = NULL;
+    static sfTime old_time = {0};
+    sfTime current_time;
+    static size_t frame = 0;
+
+    if (!clock)
+        clock = sfClock_create();
+    if (frames) {
+        current_time = sfClock_getElapsedTime(clock);
+        *frames = current_time.microseconds - old_time.microseconds;
+        *frames /= 16666;
+        (old_time).microseconds += *frames * 16666;
+        frame = *frames;
+    }
+    if (frames && *frames >= 100) {
+        sfClock_restart(clock);
+        frame = 1;
+        old_time.microseconds = 0;
+        return 1;
+    }
+    return frame;
 }
 
 void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
@@ -28,10 +42,12 @@ void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     if (i == -1)
         return;
     GAME.nb_save = i;
+    init_load(rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
     rpg->quest_status = 1;
     init_game(rpg, obj, house);
+    rpg->quest_status = 0;
 }
 
 void check_move_load(rpg_t *rpg, load_game_t *load)
@@ -60,10 +76,12 @@ int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfText_setColor(load->text[load->high].text, sfYellow);
     if (WIND.event.key.code == sfKeyReturn) {
         GAME.nb_save = load->high;
+        init_load(rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
         rpg->quest_status = 1;
         init_game(rpg, obj, house);
+        rpg->quest_status = 0;
         return 1;
     }
     return 0;
@@ -81,7 +99,11 @@ int check_load_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
         WIND.mouse_pos.y = WIND.event.mouseMove.y;
         check_move_load(rpg, load);
     }
-    if (WIND.event.type == sfEvtKeyPressed)
-        ret_val += check_button_pressed_load(rpg, load, obj, house);
+    if (WIND.event.type == sfEvtKeyPressed) {
+        if (WIND.event.key.code == sfKeyF5)
+            set_music(rpg);
+        else
+            ret_val += check_button_pressed_load(rpg, load, obj, house);
+    }
     return ret_val;
 }

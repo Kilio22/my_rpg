@@ -17,14 +17,15 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     if (i == -1)
         return;
     GAME.nb_save = i;
-    //add une réinitialisation du fichier de save choisi
+    init_load(rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
     rpg->quest_status = 0;
     init_game(rpg, obj, house);
+    rpg->quest_status = 0;
 }
 
-int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
+static int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                         house_t **house)
 {
     if (WIND.event.key.code == sfKeyEscape)
@@ -38,11 +39,12 @@ int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfText_setColor(load->text[load->high].text, sfYellow);
     if (WIND.event.key.code == sfKeyReturn) {
         GAME.nb_save = load->high;
-        //add une réinitialisation du fichier de save choisi
+        init_load(rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
         rpg->quest_status = 0;
         init_game(rpg, obj, house);
+        rpg->quest_status = 0;
         return 1;
     }
     return 0;
@@ -60,7 +62,11 @@ int check_new_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
         WIND.mouse_pos.y = WIND.event.mouseMove.y;
         check_move_load(rpg, load);
     }
-    if (WIND.event.type == sfEvtKeyPressed)
-        ret_val += check_button_pressed_new(rpg, load, obj, house);
+    if (WIND.event.type == sfEvtKeyPressed) {
+        if (WIND.event.key.code == sfKeyF5)
+            set_music(rpg);
+        else
+            ret_val += check_button_pressed_new(rpg, load, obj, house);
+    }
     return ret_val;
 }

@@ -23,14 +23,13 @@ static void check_pnj_intro(obj_t **obj, house_t **house, rpg_t *rpg)
 
 static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
 {
+    sfRenderWindow_clear(WIND.wind, sfBlack);
     if (MENU.menu_on == 2)
         return;
     sfRenderWindow_setView(WIND.wind, WIND.view);
     print_map(MAP.sprite, obj, rpg->wind);
     house_display(rpg, house);
-    for (int i = 10; i > 0; i--)
-        if (obj[i] != NULL && i != 4)
-            sfRenderWindow_drawSprite(WIND.wind, obj[i]->sprite, NULL);
+    display_char(rpg, obj);
     print_map2(MAP.sprite, obj, rpg->wind);
     check_pnj_intro(obj, house, rpg);
     if (my_strcmp(sfText_getString(i->text), " ")
@@ -40,7 +39,6 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
         sfRenderWindow_drawText(WIND.wind, i->text, NULL);
     update_fondu_rect(i, rpg);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
@@ -50,9 +48,7 @@ static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)
 (sfVector2i){0, 0}, WIND.view);
     sfTexture *text = sfTexture_createFromFile("assets/parchemin.png", NULL);
 
-    rpg->music.aled = create_sound("assets/aled.ogg");
-    rpg->music.hurt = create_sound("assets/hurt.ogg");
-    new.text = create_text(MENU_FONT, " ", 19,
+    new.text = create_text(menu_font, " ", 19,
 sfSprite_getPosition(obj[6]->sprite));
     new.fondu = create_rect(vect, (sfVector2f){1280, 720});
     new.sprite = sfSprite_create();
@@ -65,30 +61,31 @@ int return_to_game(rpg_t *rpg, obj_t **obj)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
 
-    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.aled));
-    sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.hurt));
-    sfSound_destroy(rpg->music.aled);
-    sfSound_destroy(rpg->music.hurt);
     if (MENU.menu_on == 0) {
         MENU.menu_on = 1;
         sfView_destroy(WIND.view);
         WIND.view =
 sfView_createFromRect((sfFloatRect){0, 0, windSize.x, windSize.y});
+        intro_fcts(rpg, obj, NULL, NULL);
         free_map(MAP);
         free_objs(obj);
         return 0;
     }
-    if (MENU.menu_on == 2)
+    if (MENU.menu_on == 2) {
+        intro_fcts(rpg, obj, NULL, NULL);
         return 1;
+    }
     return (2);
 }
 
 int intro_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     intro_t intro = create_struct_intro(rpg, obj);
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             intro_event_management(rpg, obj, house);
         if (MENU.menu_on == 0 || MENU.menu_on == 2)

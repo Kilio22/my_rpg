@@ -51,10 +51,16 @@ static void analyse_button_press_setting(rpg_t *rpg, settings_t *settings,
         return;
     if (settings->high >= 3) {
         sfRectangleShape_setOutlineColor(settings->rect, sfBlue);
-        if (settings->high == 3)
+        if (settings->high == 3) {
             GAME.language = 0;
-        if (settings->high == 4)
+            sfText_setString(settings->text[2].text, SETT[GAME.language][2]);
+            sfText_setString(settings->text[3].text, SETT[GAME.language][3]);
+        }
+        if (settings->high == 4) {
             GAME.language = 1;
+            sfText_setString(settings->text[2].text, SETT[GAME.language][2]);
+            sfText_setString(settings->text[3].text, SETT[GAME.language][3]);
+        }
     }
     if (check_high_controls(-1) == 1) {
         init_controls_menu(rpg);
@@ -80,8 +86,12 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
 {
     if (event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
-    if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape)
-        return 1;
+    if (event.type == sfEvtKeyPressed) {
+        if (event.key.code == sfKeyF5)
+            set_music(rpg);
+        if (event.key.code == sfKeyEscape)
+            return 1;
+    }
     if (event.type == sfEvtMouseMoved) {
         WIND.mouse_pos.x = event.mouseMove.x;
         WIND.mouse_pos.y = event.mouseMove.y;

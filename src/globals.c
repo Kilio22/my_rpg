@@ -111,35 +111,61 @@ const char *key_str[] = {
     "PAUSE"
 };
 
-const char *menu_path[2] = {
-    "assets/background_menu.png",
-    "assets/load.png"
+const char *menu_path[][2] = {
+    {"assets/menu_image.png",
+    "assets/menu_image.png"},
+    {"assets/loading_fr.png", "assets/loading_en.png"},
+    {"assets/option_key_fr.png",
+    "assets/option_key_en.png"}
 };
 
-const char *menu_str[6] = {
-    " New Game ",
-    " Load Game ",
-    "   Settings ",
-    "How To Play ",
-    "   Credits ",
-    "     Quit "
+const char *menu_str[][6] = {
+    {
+        " Nouvelle Partie ",
+        "Charger une partie",
+        "   Parametres",
+        "    Tutoriel",
+        "    Credits",
+        "     Quitter"
+    },
+    {
+        " New Game ",
+        " Load Game ",
+        "   Settings ",
+        "How To Play ",
+        "   Credits ",
+        "     Quit "
+    }
 };
 
-const char *menu_desc[6] = {
-    "Start a new adventure !",
-    "Load one of the saved adventure and continue it !",
-    "Change your experience by selecting an other language, \nmodify the volume"
-    " of the music, or by define \nyour propers controls !",
-    "Learn how to play to this game !",
-    "View the credits",
-    "Go back to the deskdop"
+const char *menu_desc[][6] = {
+    {
+        "Commencer une nouvelle aventure !",
+        "Charger un partie sauvegardee pour la continuer !",
+        "Changer l'experience de jeu en selectionnant une autre\nlangue"
+        ", en modifiant le volume de la musique, \n"
+        "ou en changeant les controles !",
+        "Apprendre a jouer a ce jeu !",
+        "Regarder les credits du jeu !",
+        "Retourner au bureau"
+    },
+    {
+        "Start a new adventure !",
+        "Load one of the saved adventure and continue it !",
+        "Change your experience by selecting an other language, \n"
+        "modify the volume"
+        " of the music, or by define \nyour propers controls !",
+        "Learn how to play to this game !",
+        "View the credits",
+        "Go back to the deskdop"
+    }
 };
 
 const char *obj_path[] = {
     "assets/hero_hitbox.png",
     "assets/hero.png",
     "assets/map_hitbox.png",
-    "assets/perso_blanc.png",
+    "assets/ennemi.png",
     "assets/stupid_nathan.png",
     "assets/Aubergiste.png",
     "assets/perso_vert.png"
@@ -155,7 +181,7 @@ const sfVector2f menu_pos[6] = {
 };
 
 const char *settings_fp[5] = {
-    "assets/settings.png",
+    "assets/menu_image.png",
     "assets/up_vol.png",
     "assets/down_vol.png",
     "assets/fr.png",
@@ -170,11 +196,19 @@ const sfVector2f settings_spr_pos[5] = {
     {720, 200}
 };
 
-const char *settings_str[4] = {
-    "VOLUME",
-    "NULL",
-    "LANGUAGE",
-    "CONTROLS"
+const char *settings_str[][4] = {
+    {
+        "VOLUME",
+        "NULL",
+        "LANGAGE",
+        "CONTROLES"
+    },
+    {
+        "VOLUME",
+        "NULL",
+        "LANGUAGE",
+        "CONTROLS"
+    }
 };
 
 const sfVector2f settings_pos[4] = {
@@ -201,10 +235,19 @@ const char *house_path[8] = {
     "assets/maison5.png"
 };
 
-const char *ennemi_text[3] = {
-    "Ennemi: Viens te battre !",
-    "Ennemi: Tu es venu te faire tuer ?",
-    "Ennemi: Pauvre fou, tu vas souffrir !"
+const char *ennemi_text[][2] = {
+    {"Ennemi: Viens te battre !",
+    "Enemy: Come fight me !"},
+    {"Ennemi: Tu es venu te faire tuer ?",
+    "Enemy: You came to die ?"},
+    {"Ennemi: Pauvre fou, tu vas souffrir !",
+    "Enemy: Poor fool, you will suffer !"},
+    {"Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne.",
+    "You died. You were transported to the hostel and were healed."},
+    {"Bravo, vous avez vaincu votre adversaire !\n",
+    "Congratulations, you have defeated your opponent !\n"},
+    {"Vous avez gagne un niveau, et un nouvel objet !",
+    "You have gained a level, and a new object !"}
 };
 
 const sfIntRect house_rects[8] = {
@@ -351,4 +394,28 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
     intro_go_auberge20,
     intro_go_auberge20,
     intro_go_auberge20
+};
+
+const char menu_font[] = "assets/menu_font_h.ttf";
+
+const char *pause_str[][3] = {
+    {"REPRENDRE",
+    "RETOUR AU MENU",
+    "QUITTER"},
+    {"RESUME",
+    "MAIN MENU",
+    "QUIT"}
+};
+
+const sfVector2f vect_pause[][3] = {
+    {
+        {450, 220},
+        {370, 320},
+        {485, 420}
+    },
+    {
+        {530, 220},
+        {490, 320},
+        {580, 420}
+    }
 };

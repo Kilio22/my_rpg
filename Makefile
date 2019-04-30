@@ -45,14 +45,22 @@ MENU_PATH	=	menu/
 SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
 FIGHT_PATH	=	fight/
+DIALOGUE_PATH	=	dialogue/
 
-SRC	=	$(INTRO_PATH)intro.c	\
+SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
+		$(DIALOGUE_PATH)create_dialogue.c	\
+		$(DIALOGUE_PATH)destroy_dialogue.c	\
+		$(DIALOGUE_PATH)dialogues_managment.c	\
+		$(DIALOGUE_PATH)dialogue_text.c	\
+		$(DIALOGUE_PATH)globals_dialogue.c	\
+		$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_animation.c	\
 		$(INTRO_PATH)intro_event.c	\
 		$(INTRO_PATH)intro_move.c	\
 		$(INTRO_PATH)intro_text.c	\
 		$(INTRO_PATH)intro_steps.c	\
 		$(INTRO_PATH)intro_steps_2.c	\
+		$(INTRO_PATH)intro_display.c 	\
 		$(INTRO_PATH)intro_steps_3.c	\
 		$(INTRO_PATH)intro_steps_4.c	\
 		$(INTRO_PATH)intro_steps_5.c	\
@@ -62,13 +70,20 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		$(FIGHT_PATH)create_fight.c	\
 		$(FIGHT_PATH)delete_fight.c	\
 		$(FIGHT_PATH)fight.c	\
+		$(FIGHT_PATH)fight_actions.c	\
 		$(FIGHT_PATH)fight_text.c	\
 		$(FIGHT_PATH)fight_events.c	\
 		$(FIGHT_PATH)fight_updates.c	\
+		$(FIGHT_PATH)fight_order.c	\
+		$(FIGHT_PATH)manage_fight.c	\
+		$(FIGHT_PATH)apply_attacks.c	\
+		$(FIGHT_PATH)sort.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
 		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)how_to_play.c	\
+		$(MENU_PATH)init_load.c 	\
 		$(MENU_PATH)load_game.c	\
 		$(MENU_PATH)load_game_event.c	\
 		$(MENU_PATH)menu_display.c	\
@@ -89,10 +104,12 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		characters_animation.c	\
 		characters_interaction.c	\
 		characters_stats.c	\
+		check_obj_display.c \
 		create_house.c	\
 		create_obj.c	\
 		display_utils.c	\
 		fill_map.c	\
+		follower.c 	\
 		free_save.c	\
 		free.c 	\
 		game_display.c	\
@@ -106,6 +123,7 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		map_init.c	\
 		music.c \
 		my_utils.c	\
+		pause.c	\
 		print_map.c	\
 		framebuffer.c 	\
 		put_pixel.c \
@@ -120,7 +138,9 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		inventory/inventory_data.c \
 		inventory/inventory_event.c \
 		inventory/inventory_common.c \
-		inventory/inventory_compute.c
+		inventory/inventory_compute.c \
+		inventory/inventory_files_save.c \
+		inventory/inventory_file_load.c
 
 SRC_LIB	=	inimy \
 			g 	\

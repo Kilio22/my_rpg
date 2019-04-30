@@ -27,10 +27,9 @@ simple_vector_t *init_list(int x, int y)
     return (list);
 }
 
-void modif_list(simple_vector_t *pos, obj_t *obj)
+void modif_list(simple_vector_t *pos, sfVector2f position)
 {
     sfVector2f *current = malloc(sizeof(sfVector2f));
-    sfVector2f position = sfSprite_getPosition(obj->sprite);
 
     if (current == NULL)
         return;

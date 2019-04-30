@@ -44,9 +44,12 @@ void free_obj(obj_t *obj)
 
 void free_objs(obj_t **obj)
 {
-    for (int i = 0; i < 11; i++)
-        if (obj[i] != NULL)
+    for (int i = 0; i < 11; i++) {
+        if (obj[i] != NULL) {
             free_obj(obj[i]);
+            obj[i] = NULL;
+        }
+    }
 }
 
 void free_house(house_t *house)
@@ -58,6 +61,7 @@ void free_house(house_t *house)
     sfTexture_destroy(house->doorTexture);
     for (int j = 0; j < 5; j++)
         sfSprite_destroy(house->tab[j]);
+    sfRectangleShape_destroy(house->door_use_rectangle);
     free(house);
 }
 
