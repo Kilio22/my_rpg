@@ -23,25 +23,25 @@ int check_sprite(layer_t *layers, int x, int y, rpg_t *rpg)
 
 int tilemaping(layer_t *layers, rpg_t *rpg, int y)
 {
-    int l = 0;
+    int lay = 0;
     sfIntRect posRect = {0, 0, 32, 32};
 
     for (int x = 0; x < layers->width; x++) {
         if (layers->map[y][x] == 0)
             continue;
-        while (MAP.gid[l] != NULL && MAP.gid[l]->gid <= layers->map[y][x])
-            l++;
-        l--;
+        while (MAP.gid[lay] != NULL && MAP.gid[lay]->gid <= layers->map[y][x])
+            lay++;
+        lay--;
         posRect.left = RECT_LEFT;
         posRect.top = RECT_TOP;
         if (check_sprite(layers, x, y, rpg) == 0) {
             create_sprite(MAP.sprite,
-MAP.gid[l]->path, layers->map[y][x], posRect);
+MAP.gid[lay]->path, layers->map[y][x], posRect);
             fill_sprite(MAP.sprite, (sfVector2f){x * 32, y * 32});
         }
         if (MAP.sprite == NULL)
             return -1;
-        l = 0;
+        lay = 0;
     }
     return 0;
 }

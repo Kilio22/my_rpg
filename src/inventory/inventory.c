@@ -63,4 +63,3 @@ void inventory_destroy(inventory_t *inv)
     sfTexture_destroy((sfTexture *)sfSprite_getTexture(inv->grid));
     sfSprite_destroy(inv->grid);
 }
-

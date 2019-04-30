@@ -20,9 +20,9 @@
 #define MENU rpg->menu
 #define MAP rpg->map
 #define RECT_LEFT 32 * \
-((layers->map[y][x] - MAP.gid[l]->gid) % MAP.gid[l]->offset)
+((layers->map[y][x] - MAP.gid[lay]->gid) % MAP.gid[lay]->offset)
 #define RECT_TOP 32 * \
-((layers->map[y][x] - MAP.gid[l]->gid) / MAP.gid[l]->offset);
+((layers->map[y][x] - MAP.gid[lay]->gid) / MAP.gid[lay]->offset);
 #define RECT_BASE (sfIntRect){0, 0, 32, 16}
 #define RECT_OBJ (sfIntRect){0, 0, 32, 64}
 #define NB_KEYS 6

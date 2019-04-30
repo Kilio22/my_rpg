@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static sfBool all_world_hitBox_pnj(obj_t **obj, house_t **house,
+static sfBool all_world_hitbox_pnj(obj_t **obj, house_t **house,
 obj_t *obj_solo)
 {
     sfVector2f old_pos = sfRectangleShape_getPosition(obj_solo->rectangle);
@@ -62,7 +62,7 @@ static void moving_pnjs(obj_t **obj, house_t **house, int (*rand)[3])
         choose_pos(&vect.x, &vect.y, rand, i);
         obj[i]->oldPos = sfSprite_getPosition(obj[i]->sprite);
         sfSprite_move(obj[i]->sprite, vect);
-        if (all_world_hitBox_pnj(obj, house, obj[i]) == 1) {
+        if (all_world_hitbox_pnj(obj, house, obj[i]) == 1) {
             vect.x *= -1;
             vect.y *= -1;
             sfSprite_move(obj[i]->sprite, vect);
