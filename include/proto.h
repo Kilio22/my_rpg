@@ -159,7 +159,7 @@ int map_init(rpg_t *rpg);
 
 //list.c
 simple_vector_t *init_list(int x, int y);
-void modif_list(simple_vector_t *pos, obj_t *obj);
+void modif_list(simple_vector_t *pos, sfVector2f position);
 
 //map_init.c
 int create_map(rpg_t *rpg);

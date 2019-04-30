@@ -74,12 +74,12 @@ pos.y < oldpos.y) {
         if (obj[2] != NULL) {
             sfSprite_setPosition(obj[2]->sprite,
 *(sfVector2f*)GAME.follower->start->content);
-            modif_list(GAME.follower, obj[0]);
+            modif_list(GAME.follower, sfSprite_getPosition(obj[0]->sprite));
         }
         if (obj[3] != NULL) {
             sfSprite_setPosition(obj[3]->sprite,
 *(sfVector2f*)GAME.follower2->start->content);
-            modif_list(GAME.follower2, obj[2]);
+            modif_list(GAME.follower2, sfSprite_getPosition(obj[2]->sprite));
         }
     }
     oldpos = sfSprite_getPosition(obj[0]->sprite);
