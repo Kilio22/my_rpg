@@ -33,7 +33,7 @@ extern const int global_damages[6][2];
 extern const char *dial[][2][3];
 extern const char *welcome[][2];
 extern const char *answers[][2][2];
-extern const char *menu_font;
+extern const char menu_font[];
 extern const sfVector2f vect_pause[][3];
 extern const char *pause_str[][3];
 #endif /* !GLOBALS_H_ */
