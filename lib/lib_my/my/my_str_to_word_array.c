@@ -50,9 +50,8 @@ char **my_str_to_word_array(char const *str, char c)
             pos[1]++;
         pos[2] = pos[0];
         return_array[pos[3]] = malloc(sizeof(char) * (pos[1] - pos[2] + 1));
-        for (pos[4] = 0; pos[2] < pos[1]; pos[4]++) {
+        for (pos[4] = 0; pos[2] < pos[1]; pos[4]++)
             return_array[pos[3]][pos[4]] = str[pos[2]++];
-        }
         return_array[pos[3]++][pos[4]] = '\0';
     }
     return_array[pos[3]] = malloc(sizeof(int));

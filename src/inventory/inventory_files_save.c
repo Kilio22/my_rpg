@@ -22,15 +22,16 @@ static ini_line_t *get_line_stock(inventory_t *inv)
 static ini_line_t *get_line_stuff(inventory_t *inv, int i)
 {
     char s[] = {'S', 'T', 'U', 'F', 'F', '0' + i, 0};
-    ini_line_t *l = ini_line_create(s);
+    ini_line_t *line = ini_line_create(s);
 
     for (int j = 0; j < 6; j++) {
         if (!inv->stuff[i][j])
-            double_vector_push_back(l->values, mg_strdup("NULL"));
+            double_vector_push_back(line->values, mg_strdup("NULL"));
         else
-            double_vector_push_back(l->values, mg_itoa(inv->stuff[i][j]->id));
+            double_vector_push_back(line->values,
+mg_itoa(inv->stuff[i][j]->id));
     }
-    return (l);
+    return (line);
 }
 
 void inventory_save(inventory_t *inv, char *path)
