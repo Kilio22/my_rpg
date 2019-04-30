@@ -340,7 +340,8 @@ const sfIntRect door_rects[8] = {
     {0, 0, 96, 64},
 };
 
-void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
+void (* const menu[6])(rpg_t *, obj_t **, house_t **) = 
+{
     menu_new_game,
     menu_load_game,
     menu_settings,
@@ -397,7 +398,7 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) =
     intro_go_auberge20
 };
 
-const char menu_font[] = "assets/menu_font_h.ttf";
+const char *menu_font = "assets/menu_font_h.ttf";
 
 const char *pause_str[][3] = {
     {"REPRENDRE",
