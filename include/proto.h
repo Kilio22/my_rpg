@@ -214,6 +214,10 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
 void print_map(sprite_t **sprites, obj_t **obj, wind_t wind);
 void print_map2(sprite_t **sprites, obj_t **obj, wind_t wind);
 
+
+//obj_display
+void check_obj_display(obj_t **obj, rpg_t *rpg);
+
 //settings_init.c
 settings_t init_settings(rpg_t *rpg);
 void destroy_settings(settings_t *settings, rpg_t *rpg);

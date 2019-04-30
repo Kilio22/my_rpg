@@ -17,7 +17,6 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     if (i == -1)
         return;
     GAME.nb_save = i;
-    //add une réinitialisation du fichier de save choisi
     init_load(rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);

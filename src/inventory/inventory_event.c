@@ -29,7 +29,7 @@ void inventory_event_stuff(inventory_t *inv)
 static int is_under_dragging(inventory_t *inv)
 {
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        if( inv->stock[i] == NULL)
+        if (inv->stock[i] == NULL)
             continue;
         if (dragndrop_isUnderDragging(inv->stock[i]->display))
             return (TRUE);

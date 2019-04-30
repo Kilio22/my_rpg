@@ -104,6 +104,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		characters_animation.c	\
 		characters_interaction.c	\
 		characters_stats.c	\
+		check_obj_display.c \
 		create_house.c	\
 		create_obj.c	\
 		display_utils.c	\

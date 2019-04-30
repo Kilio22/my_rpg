@@ -90,7 +90,7 @@ void pause_game(rpg_t *rpg)
 
     while (sfRenderWindow_isOpen(WIND.wind)) {
         update_time(&frames);
-        while(sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
+        while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             n_val += pause_events(rpg, &pause);
         if (n_val == 1)
             return;
