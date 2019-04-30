@@ -397,3 +397,25 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) = {
 };
 
 const char menu_font[] = "assets/menu_font_h.ttf";
+
+const char *pause_str[][3] = {
+    {"REPRENDRE",
+    "RETOUR AU MENU",
+    "QUITTER"},
+    {"RESUME",
+    "MAIN MENU",
+    "QUIT"}
+};
+
+const sfVector2f vect_pause[][3] = {
+    {
+        {450, 220},
+        {370, 320},
+        {485, 420}
+    },
+    {
+        {530, 220},
+        {490, 320},
+        {580, 420}
+    }
+};

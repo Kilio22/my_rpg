@@ -50,10 +50,12 @@ int fight_event_management(rpg_t *rpg, fight_t *fight)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape
 && fight->life[0] > 0 && fight->life[1] > 0)
-            return 1;
+            pause_game(rpg);
         return manage_other_key_press(WIND.event.key.code, fight);
     }
     if (WIND.event.type == sfEvtClosed)
         sfRenderWindow_close(WIND.wind);
+    if (MENU.menu_on == 0)
+        return 1;
     return 0;
 }

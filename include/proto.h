@@ -293,4 +293,7 @@ void destroy_dialogue(dialogue_t *dialogue);
 int init_stats(obj_t **obj);
 int fight_turn(obj_t **obj, fight_t *fight, int i);
 
+//pause
+void pause_game(rpg_t *rpg);
+
 #endif /* !PROTO_H_ */
