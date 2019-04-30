@@ -19,8 +19,8 @@ sfVector2f oldpos)
     if (pos.y < oldpos.y)
         mul_y = -1;
     for (size_t i = 0; i < rpg->frame; i++) {
-        newPos.x = (newPos.x == pos.x) ? newPos.x + (2 * mul_x) : newPos.x;
-        newPos.y = (newPos.y == pos.y) ? newPos.y + (2 * mul_y) : newPos.y;
+        newPos.x = (newPos.x == pos.x) ? newPos.x : newPos.x + (2 * mul_x);
+        newPos.y = (newPos.y == pos.y) ? newPos.y : newPos.y + (2 * mul_y);
         sfSprite_setPosition(obj[3]->sprite,
 *(sfVector2f *)GAME.follower2->start->content);
         modif_list(GAME.follower2, newPos);
@@ -40,8 +40,8 @@ sfVector2f oldpos)
     if (pos.y < oldpos.y)
         mul_y = -1;
     for (size_t i = 0; i < rpg->frame; i++) {
-        newPos.x = (newPos.x == pos.x) ? newPos.x + (2 * mul_x) : newPos.x;
-        newPos.y = (newPos.y == pos.y) ? newPos.y + (2 * mul_y) : newPos.y;
+        newPos.x = (newPos.x == pos.x) ? newPos.x : newPos.x + (2 * mul_x);
+        newPos.y = (newPos.y == pos.y) ? newPos.y : newPos.y + (2 * mul_y);
         sfSprite_setPosition(obj[2]->sprite,
 *(sfVector2f *)GAME.follower->start->content);
         modif_list(GAME.follower, newPos);
@@ -51,7 +51,7 @@ sfVector2f oldpos)
 
 void follower(obj_t **obj, rpg_t *rpg)
 {
-    static sfVector2f oldpos = {0, 0};
+    static sfVector2f oldpos = {10050, 1570};
     sfVector2f pos = sfSprite_getPosition(obj[0]->sprite);
 
     if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y ||
