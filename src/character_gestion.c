@@ -63,24 +63,3 @@ void character_control(rpg_t *rpg, obj_t **obj, house_t **house)
     if (CONTROLS.bools[KEYY] == 0)
         apply_controls_character(rpg, obj, house);
 }
-
-void follower(obj_t **obj, rpg_t *rpg)
-{
-    static sfVector2f oldpos = {0, 0};
-    sfVector2f pos = sfSprite_getPosition(obj[0]->sprite);
-
-    if (pos.x > oldpos.x || pos.x < oldpos.x || pos.y > oldpos.y ||
-pos.y < oldpos.y) {
-        if (obj[2] != NULL) {
-            sfSprite_setPosition(obj[2]->sprite,
-*(sfVector2f*)GAME.follower->start->content);
-            modif_list(GAME.follower, sfSprite_getPosition(obj[0]->sprite));
-        }
-        if (obj[3] != NULL) {
-            sfSprite_setPosition(obj[3]->sprite,
-*(sfVector2f*)GAME.follower2->start->content);
-            modif_list(GAME.follower2, sfSprite_getPosition(obj[2]->sprite));
-        }
-    }
-    oldpos = sfSprite_getPosition(obj[0]->sprite);
-}

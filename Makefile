@@ -108,6 +108,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		create_obj.c	\
 		display_utils.c	\
 		fill_map.c	\
+		follower.c 	\
 		free_save.c	\
 		free.c 	\
 		game_display.c	\
