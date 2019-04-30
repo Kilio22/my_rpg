@@ -58,7 +58,7 @@ void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 {
     obj[i]->oldPos = sfSprite_getPosition(obj[i]->sprite);
     if (fight->fight_status == 1) {
-        if (obj[i]->pos.x == 13690)
+        if (obj[i]->pos.x <= 13690)
             fight->fight_status++;
         else {
             sfSprite_move(obj[i]->sprite, V2F(-2 * MOVE_N, 0));
