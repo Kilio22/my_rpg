@@ -22,6 +22,8 @@
 #define INVENTORY_SIZE_Y 4
 #define INVENTORY_SIZE (4 * 4)
 
+static const char items_data[] = "assets_data.ini";
+
 enum data_mapping {
     NAME,
     TYPE,
@@ -103,9 +105,11 @@ int inventory_get_id_from_coord(sfRenderWindow *window);
 int inventory_get_stuff_id_from_mouse(sfRenderWindow *window);
 int is_collided_mouse_rect(sfIntRect rect, sfRenderWindow *window);
 
-// inventory_files.c
+// inventory_files_save.c
 void inventory_save(inventory_t *inv, char *path);
-inventory_t *inventory_create_from_file(char *path);
+
+// inventory_file_load.c
+inventory_t *inventory_create_from_file(sfRenderWindow *windown, char *path);
 
 static const sfVector2f stuff_grid[6] = {
 {70, 214}, {145, 68},

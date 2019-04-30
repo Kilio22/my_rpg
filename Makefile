@@ -120,7 +120,9 @@ SRC	=	$(INTRO_PATH)intro.c	\
 		inventory/inventory_data.c \
 		inventory/inventory_event.c \
 		inventory/inventory_common.c \
-		inventory/inventory_compute.c
+		inventory/inventory_compute.c \
+		inventory/inventory_files_save.c \
+		inventory/inventory_file_load.c
 
 SRC_LIB	=	inimy \
 			g 	\
