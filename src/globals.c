@@ -119,23 +119,46 @@ const char *menu_path[][2] = {
     "assets/option_key_en.png"}
 };
 
-const char *menu_str[6] = {
-    " New Game ",
-    " Load Game ",
-    "   Settings ",
-    "How To Play ",
-    "   Credits ",
-    "     Quit "
+const char *menu_str[][6] = {
+    {
+        " Nouvelle Partie ",
+        "Charger une partie",
+        "   Parametres",
+        "    Tutoriel",
+        "    Credits",
+        "     Quitter"
+    },
+    {
+        " New Game ",
+        " Load Game ",
+        "   Settings ",
+        "How To Play ",
+        "   Credits ",
+        "     Quit "
+    }
 };
 
-const char *menu_desc[6] = {
-    "Start a new adventure !",
-    "Load one of the saved adventure and continue it !",
-    "Change your experience by selecting an other language, \nmodify the volume"
-    " of the music, or by define \nyour propers controls !",
-    "Learn how to play to this game !",
-    "View the credits",
-    "Go back to the deskdop"
+const char *menu_desc[][6] = {
+    {
+        "Commencer une nouvelle aventure !",
+        "Charger un partie sauvegardee pour la continuer !",
+        "Changer l'experience de jeu en selectionnant une autre\nlangue"
+        ", en modifiant le volume de la musique, \n"
+        "ou en changeant les controles !",
+        "Apprendre a jouer a ce jeu !",
+        "Regarder les credits du jeu !",
+        "Retourner au bureau"
+    },
+    {
+        "Start a new adventure !",
+        "Load one of the saved adventure and continue it !",
+        "Change your experience by selecting an other language, \n"
+        "modify the volume"
+        " of the music, or by define \nyour propers controls !",
+        "Learn how to play to this game !",
+        "View the credits",
+        "Go back to the deskdop"
+    }
 };
 
 const char *obj_path[] = {
@@ -173,11 +196,19 @@ const sfVector2f settings_spr_pos[5] = {
     {720, 200}
 };
 
-const char *settings_str[4] = {
-    "VOLUME",
-    "NULL",
-    "LANGUAGE",
-    "CONTROLS"
+const char *settings_str[][4] = {
+    {
+        "VOLUME",
+        "NULL",
+        "LANGAGE",
+        "CONTROLES"
+    },
+    {
+        "VOLUME",
+        "NULL",
+        "LANGUAGE",
+        "CONTROLS"
+    }
 };
 
 const sfVector2f settings_pos[4] = {

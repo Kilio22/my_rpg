@@ -56,7 +56,8 @@ void init_controls_menu(rpg_t *rpg)
 {
     int x = 370;
     int y = 80;
-    sfTexture *texture = sfTexture_createFromFile(menu_path[2][GAME.language], NULL);
+    sfTexture *texture =
+sfTexture_createFromFile(menu_path[2][GAME.language], NULL);
     int highlight = 0;
 
     for (int i = 0; i < NB_KEYS; i++) {

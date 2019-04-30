@@ -27,26 +27,36 @@ static void update_rectangle(rpg_t *rpg, int *move, float frame)
     sfRectangleShape_setPosition(MENU.rect, pos);
 }
 
-static void update_text(rpg_t *rpg, size_t frames)
+static void change_text(char **to_print,
+int *print_index, int index, rpg_t *rpg)
+{
+    for (size_t i = 0; (i < rpg->frame || i <= 1) &&
+*print_index < my_strlen(menu_desc[GAME.language][index]); i++) {
+        (*to_print)[*print_index] =
+menu_desc[GAME.language][index][*print_index];
+        (*print_index)++;
+        (*to_print)[*print_index] = '\0';
+    }
+}
+
+static void update_text(rpg_t *rpg)
 {
     static int print_index = 0;
     static int index = 0;
+    static int lang = 0;
     static char *to_print = NULL;
 
-    if (index != MENU.highlight) {
+    if (index != MENU.highlight || lang != GAME.language) {
+        lang = GAME.language;
         index = MENU.highlight;
         print_index = 0;
         free(to_print);
         to_print = my_strdup("");
     }
     if (my_strlen(to_print) == 0)
-        to_print = malloc(sizeof(char) * (my_strlen(menu_desc[index]) + 1));
-    for (size_t i = 0; (i < frames || i <= 1) &&
-print_index < my_strlen(menu_desc[index]); i++) {
-        to_print[print_index] = menu_desc[index][print_index];
-        print_index++;
-        to_print[print_index] = '\0';
-    }
+        to_print = malloc(sizeof(char) *
+(my_strlen(menu_desc[GAME.language][index]) + 1));
+    change_text(&to_print, &print_index, index, rpg);
     sfText_setString(MENU.descr_text, to_print);
 }
 
@@ -74,7 +84,7 @@ void menu_loop(rpg_t *rpg, obj_t **obj, house_t **house)
             menu_event_management(rpg, obj, house, &move_rect);
         rpg->frame = update_time(&frames);
         update_rectangle(rpg, &move_rect, frames);
-        update_text(rpg, frames);
+        update_text(rpg);
         display_menu(rpg);
     }
 }

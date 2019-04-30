@@ -34,7 +34,7 @@ Donne nous ton argent !",
     "Je ne me souviens de rien..",
     "Nathan: Quoi ? Des hommes t'ont attaque ? \n"
     "Et tu ne te souviens plus de rien ?",
-    "Nathan: C'est injuste ! Il faut faire quelque chose pour que tu retrouves"
+    "Nathan: C'est injuste !Il faut faire quelque chose pour que tu retrouves"
     " la memoire !\nAllons voir si on les trouves !",
     "Nathan: Jacques, viens avec nous !\n"
     "Allons voir dans le Sud de la ville",

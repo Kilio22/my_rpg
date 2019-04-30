@@ -60,9 +60,11 @@ void menu_settings(rpg_t *rpg, obj_t **obj, house_t **house)
         while (sfRenderWindow_pollEvent(WIND.wind, &event))
             ret_val += manage_settings_events(rpg, event, &settings);
         manage_other_settings_events(rpg, &settings);
-        if (ret_val == 1)
+        if (ret_val == 1) {
+            destroy_settings(&settings, rpg);
             return;
+        }
         display_settings(rpg, &settings);
     }
-    destroy_settings(&settings);
+    destroy_settings(&settings, rpg);
 }

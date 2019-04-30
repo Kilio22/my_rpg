@@ -30,5 +30,6 @@
 #define NB_HOUSE 15
 #define OBJ_RECT obj[i]->rectangle
 #define MOVE_N (long) update_time(NULL)
+#define SETT settings_str
 
 #endif /* !MACROS_H_ */

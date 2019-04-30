@@ -7,19 +7,29 @@
 
 #include "rpg.h"
 
-const char *welcome[] = {
-    "Bienvenue dans mon auberge, que puis-je faire pour vous ?",
+const char *welcome[][2] = {
+    {"Bienvenue dans mon auberge, que puis-je faire pour vous ?",
+    "Welcome to my inn, what can i do for you ?"}
 };
 
-const char *dial[][3] = {
-    {"Indice Quete",
+const char *dial[][2][3] = {
+    {{"Indice Quete",
     "Sauvegarder",
-    "Retour"}
+    "Retour"},
+    {"Indice",
+    "save",
+    "Return"}}
 };
 
-const char *answers[][2] = {
-    {"Ah c'est vous qui vous etes fait casser la figure, \n"
+const char *answers[][2][2] = {
+    {
+        {"Ah c'est vous qui vous etes fait casser la figure, \n"
     "J'ai entendu dire que l'un d'eux etait sorti de la\n"
-    "ville et avait pris la direction du Sud",
-    "Sauvegarde en cours, veuillez patienter"}
+    "ville et avait pris la direction du Sud.",
+    "Sauvegarde en cours, veuillez patienter..."},
+        {"Oh it is you who got beat up, \n"
+    "I heard that one of them had left the city \n"
+    "and had taken the direction of the South.",
+    "Backup in progress, please wait..."}
+    }
 };

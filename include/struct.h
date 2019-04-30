@@ -241,6 +241,7 @@ typedef struct dialogue_s {
     sfSprite *parch;
     int high;
     int nb_pnj;
+    int language;
 } dialogue_t;
 
 typedef struct rpg_s {
