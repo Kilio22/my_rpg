@@ -31,21 +31,37 @@ sfRectangleShape_getGlobalBounds(obj[5]->rectangle);
     }
 }
 
-void check_obj_display(obj_t **obj, rpg_t *rpg)
+static void check_pos_objs(obj_t **obj, int *n_val)
 {
-    float lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
-    int n_val = 5;
+    float lowest_dist = -1;
 
-    n_val = (obj[5] == NULL ? 6 : 5);
-    if (obj[5] != NULL)
-        lowest_dist = calc_dist(obj[0]->pos, obj[5]->pos);
-    else
-        lowest_dist = calc_dist(obj[0]->pos, obj[6]->pos);
-    for (int i = n_val + 1; i < 9; i++) {
+    for (int i = 5; i < 9; i++) {
+        if (obj[i] == NULL)
+            continue;
+        lowest_dist = calc_dist(obj[0]->pos, obj[i]->pos);
+        *n_val = i;
+        break;
+    }
+    if (lowest_dist == -1)
+        return;
+    for (int i = *n_val + 1; i < 9; i++) {
+        if (obj[i] == NULL)
+            continue;
         if (calc_dist(obj[0]->pos, obj[i]->pos) < lowest_dist) {
-            n_val = i;
+            *n_val = i;
             lowest_dist = calc_dist(obj[0]->pos, obj[i]->pos);
         }
+    }
+}
+
+void check_obj_display(obj_t **obj, rpg_t *rpg)
+{
+    int n_val = -1;
+
+    check_pos_objs(obj, &n_val);
+    if (n_val == -1) {
+        print_reverse_order(obj, rpg);
+        return;
     }
     if (obj[0]->pos.y >= obj[n_val]->pos.y)
         n_val = -1;
@@ -70,13 +86,11 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
 
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        character_control(rpg, obj, house);
-        follower(obj, rpg);
-        move_pnjs(obj, house);
-        all_character_animation(obj);
-    }
-    sfSprite_setPosition(obj[1]->sprite,
+    character_control(rpg, obj, house);
+    follower(obj, rpg);
+    move_pnjs(obj, house);
+    all_character_animation(obj);
+   sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
     house_interaction(obj[HERO_HB], house, rpg);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
@@ -86,9 +100,11 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     sfVector2u windSize = sfRenderWindow_getSize(WIND.wind);
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event)
 && rpg->controls.bools[EVENTLOCK] == 0)
             event_management(rpg);

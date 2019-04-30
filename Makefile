@@ -70,15 +70,20 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(FIGHT_PATH)create_fight.c	\
 		$(FIGHT_PATH)delete_fight.c	\
 		$(FIGHT_PATH)fight.c	\
+		$(FIGHT_PATH)fight_actions.c	\
 		$(FIGHT_PATH)fight_text.c	\
 		$(FIGHT_PATH)fight_events.c	\
 		$(FIGHT_PATH)fight_updates.c	\
 		$(FIGHT_PATH)fight_order.c	\
+		$(FIGHT_PATH)manage_fight.c	\
+		$(FIGHT_PATH)apply_attacks.c	\
 		$(FIGHT_PATH)sort.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
 		$(MENU_PATH)destroy_menu.c	\
+		$(MENU_PATH)how_to_play.c	\
+		$(MENU_PATH)init_load.c 	\
 		$(MENU_PATH)load_game.c	\
 		$(MENU_PATH)load_game_event.c	\
 		$(MENU_PATH)menu_display.c	\
@@ -130,7 +135,9 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		inventory/inventory_data.c \
 		inventory/inventory_event.c \
 		inventory/inventory_common.c \
-		inventory/inventory_compute.c
+		inventory/inventory_compute.c \
+		inventory/inventory_files_save.c \
+		inventory/inventory_file_load.c
 
 SRC_LIB	=	inimy \
 			g 	\

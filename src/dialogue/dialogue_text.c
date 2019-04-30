@@ -10,15 +10,18 @@
 static int set_string(int *print_index, char **oui,
 dialogue_t *dialogue, int *ind)
 {
-    if (*print_index == my_strlen(answers[dialogue->nb_pnj][*ind])
+    if (*print_index == my_strlen(
+answers[dialogue->nb_pnj][dialogue->language][*ind])
 && clock_text_intro(1) == 1) {
         dialogue->quest_status_d = -1;
         *ind = -1;
-        sfText_setString(dialogue->text[0], welcome[dialogue->nb_pnj]);
+        sfText_setString(dialogue->text[0],
+welcome[dialogue->nb_pnj][dialogue->language]);
         return 0;
     } else {
         sfText_setString(dialogue->text[0], *oui);
-        if (*print_index != my_strlen(answers[dialogue->nb_pnj][*ind]))
+        if (*print_index != my_strlen(
+answers[dialogue->nb_pnj][dialogue->language][*ind]))
             clock_text_intro(0);
     }
     return 0;
@@ -42,14 +45,14 @@ char **oui, int *p_ind)
     }
     if (my_strlen(*oui) == 0) {
         *oui = malloc(sizeof(char) *
-(my_strlen(answers[dialogue->nb_pnj][*index]) + 1));
+(my_strlen(answers[dialogue->nb_pnj][dialogue->language][*index]) + 1));
         if (*oui == NULL)
             return -1;
     }
     return 0;
 }
 
-int update_dial_text(size_t frames, dialogue_t *dialogue)
+int update_dial_text(dialogue_t *dialogue)
 {
     static int print_index = 0;
     static int ind = 0;
@@ -57,9 +60,11 @@ int update_dial_text(size_t frames, dialogue_t *dialogue)
 
     if (dial_text_index(&ind, dialogue, &oui, &print_index) == -1)
         return -1;
-    for (size_t i = 0; (i < frames || i <= 1) &&
-print_index < my_strlen(answers[dialogue->nb_pnj][ind]); i++) {
-        oui[print_index] = answers[dialogue->nb_pnj][ind][print_index];
+    for (size_t i = 0; i < update_time(NULL) &&
+print_index < my_strlen(
+answers[dialogue->nb_pnj][dialogue->language][ind]); i++) {
+        oui[print_index] =
+answers[dialogue->nb_pnj][dialogue->language][ind][print_index];
         print_index++;
         oui[print_index] = '\0';
     }

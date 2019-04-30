@@ -13,9 +13,8 @@ static void text_display_dial(rpg_t *rpg, dialogue_t *dialogue)
     if (dialogue->quest_status_d == -1) {
         for (int i = 0; i < 4; i++)
             sfRenderWindow_drawText(WIND.wind, dialogue->text[i], NULL);
-    } else {
+    } else
         sfRenderWindow_drawText(WIND.wind, dialogue->text[0], NULL);
-    }
 }
 
 static void dial_display(rpg_t *rpg, obj_t **obj,
@@ -40,10 +39,12 @@ void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
     dialogue_t dialogue = create_dialogue(rpg, i);
     int ret_val = 0;
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
-    update_dial_text(1, NULL);
+    update_dial_text(NULL);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += dial_event_management(rpg, &dialogue);
         if (ret_val > 0) {

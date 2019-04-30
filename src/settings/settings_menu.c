@@ -51,16 +51,20 @@ void menu_settings(rpg_t *rpg, obj_t **obj, house_t **house)
     settings_t settings = init_settings(rpg);
     sfEvent event;
     int ret_val = 0;
+    size_t frames;
 
     (void) obj;
     (void) house;
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &event))
             ret_val += manage_settings_events(rpg, event, &settings);
         manage_other_settings_events(rpg, &settings);
-        if (ret_val == 1)
+        if (ret_val == 1) {
+            destroy_settings(&settings, rpg);
             return;
+        }
         display_settings(rpg, &settings);
     }
-    destroy_settings(&settings);
+    destroy_settings(&settings, rpg);
 }

@@ -11,17 +11,17 @@ const char *attaques_names[][5] = {
     {"Coup Epee",
     "DuoStumper",
     "Fuir",
-    "JEAN : 100",
+    "ALLIES : 300",
     "ENNEMI : 100"},
     {"Pichnette",
     "Pile ou face",
     "Fuir",
-    "JEAN : 100",
+    "ALLIES : 100",
     "ENNEMI : 100"},
     {"Rate-attak",
     "Coude'bool",
     "Fuir",
-    "JEAN : 100",
+    "ALLIES : 100",
     "ENNEMI : 100"}
 };
 

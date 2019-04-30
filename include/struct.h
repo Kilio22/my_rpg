@@ -225,11 +225,14 @@ typedef struct fight_s {
     int life[2];
     int turn;
     int fight_status;
+    int text_index;
+    int win;
 } fight_t;
 
 typedef struct my_musics_s {
     sfSound *aled;
     sfSound *hurt;
+    sfMusic *fight_music;
 } my_musics_t;
 
 typedef struct dialogue_s {
@@ -238,6 +241,7 @@ typedef struct dialogue_s {
     sfSprite *parch;
     int high;
     int nb_pnj;
+    int language;
 } dialogue_t;
 
 typedef struct rpg_s {
@@ -251,6 +255,7 @@ typedef struct rpg_s {
     int error_code;
     int quest_status;
     int dial_status;
+    size_t frame;
 } rpg_t;
 
 #endif /* !STRUCT_H_ */

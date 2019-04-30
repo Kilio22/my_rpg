@@ -68,7 +68,7 @@ sfRectangleShape_getGlobalBounds(OBJ_RECT);
     }
 }
 
-static void destroy_sounds(rpg_t *rpg)
+void destroy_sounds(rpg_t *rpg)
 {
     sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.aled));
     sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.hurt));
@@ -83,8 +83,6 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
         if (game_create_load(obj) == 84)
             return 84;
     }
-    rpg->music.aled = create_sound("assets/aled.ogg");
-    rpg->music.hurt = create_sound("assets/hurt.ogg");
     create_followers(rpg, obj);
     create_ennemis(obj);
     if (rpg->quest_status == 1 || rpg->quest_status == 26) {
@@ -95,6 +93,5 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
     }
     for (int i = 0; house[i]; i++)
         house[i]->display_house = 1;
-    destroy_sounds(rpg);
     return 1;
 }

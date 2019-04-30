@@ -9,10 +9,11 @@
 
 static void create_text_dialogues(dialogue_t *new, int i, sfVector2f vect)
 {
-    new->text[0] = create_text(MENU_FONT, welcome[i], 19, vect);
+    new->text[0] = create_text(menu_font, welcome[i][new->language], 19, vect);
     vect.y += 40;
     for (int j = 1; j < 4; j++) {
-        new->text[j] = create_text(MENU_FONT, dial[i][j - 1], 19, vect);
+        new->text[j] = create_text(menu_font,
+dial[i][new->language][j - 1], 19, vect);
         vect.x += 180;
     }
     sfText_setColor(new->text[1], sfBlue);
@@ -34,6 +35,7 @@ dialogue_t create_dialogue(rpg_t *rpg, int i)
     new.quest_status_d = -1;
     vect.x += 20;
     vect.y += 15;
+    new.language = GAME.language;
     create_text_dialogues(&new, i, vect);
     new.nb_pnj = i;
     return new;

@@ -35,7 +35,7 @@ void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
 
 //check_save_status.c
-char *check_save_status(int save_nb);
+char *check_save_status(int save_nb, rpg_t *rpg);
 
 //controls_events.c
 int manage_control_events(rpg_t *rpg, int *high);
@@ -128,7 +128,7 @@ void update_fondu_rect(intro_t *intro, rpg_t *rpg);
 void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros);
 
 //intro_text.c
-int update_intro_text(rpg_t *rpg, size_t frames, intro_t *intro);
+int update_intro_text(rpg_t *rpg, intro_t *intro);
 int intro_text_index(int *index, rpg_t *rpg, char **to_print, int *p_ind);
 int clock_text_intro(int i);
 
@@ -140,8 +140,7 @@ void all_character_animation_intro(rpg_t *rpg, obj_t **obj);
 
 //load_game.c
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house);
-void init_text_load(load_game_t *new);
-load_game_t init_load_game(void);
+load_game_t init_load_game(rpg_t *rpg);
 void update_rect_load(load_game_t *load, size_t frame);
 void load_display(rpg_t *rpg, load_game_t *load);
 
@@ -153,8 +152,7 @@ int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
 void check_move_load(rpg_t *rpg, load_game_t *load);
 void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                         house_t **house);
-void update_time(sfTime *current_time, sfTime *old_time, rpg_t *rpg,
-                                                        size_t *frames);
+size_t update_time(size_t *frames);
 
 //layout_init.c
 int map_init(rpg_t *rpg);
@@ -176,6 +174,7 @@ int check_mousepos_butt(rpg_t *rpg);
 void check_button_hovered(rpg_t *rpg, int *move);
 
 //menu_init.c
+void init_load(rpg_t *rpg);
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //music.c
@@ -200,12 +199,11 @@ unsigned int size, sfVector2f pos);
 char *my_ftoa(float value);
 sfSound *create_sound(char const *path);
 int check_pnj_clock_move(void);
+void destroy_sounds(rpg_t *rpg);
 
 //new_game.c
 void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house);
 int check_new_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
-                                                        house_t **house);
-int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                         house_t **house);
 void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                             house_t **house);
@@ -218,7 +216,7 @@ void print_map2(sprite_t **sprites, obj_t **obj, wind_t wind);
 
 //settings_init.c
 settings_t init_settings(rpg_t *rpg);
-void destroy_settings(settings_t *settings);
+void destroy_settings(settings_t *settings, rpg_t *rpg);
 
 //settings_menu.c
 int check_mousepos_butt_set(rpg_t *rpg, settings_t *settings);
@@ -245,9 +243,9 @@ void reset_char(obj_t **obj, rpg_t *rpg, house_t **house);
 void display_char(rpg_t *rpg, obj_t **obj);
 
 //fight
-int update_fight_text(size_t frames, fight_t *fight, int flag);
+int update_fight_text(fight_t *fight, int flag, rpg_t *rpg);
 void fight_action(rpg_t *rpg, obj_t **obj, house_t **house, fight_t *fight);
-int fight_event_management(rpg_t *rpg, fight_t *fight, obj_t **obj);
+int fight_event_management(rpg_t *rpg, fight_t *fight);
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house);
 int fight_text_intro(int i);
 void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag);
@@ -263,6 +261,13 @@ void fight_camera_control(rpg_t *rpg, sfVector2f pos, obj_t **obj);
 void positioning_life_perso(fight_t *new, rpg_t *rpg);
 void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 void sorter(int (*tab)[4], int (*tab_speed)[4]);
+void update_choices(fight_t *fight, int turn, rpg_t *rpg);
+void attack_allies(obj_t **obj, fight_t *fight, int i);
+void attack_ennemi(obj_t **obj, fight_t *fight);
+void apply_attack(obj_t **obj, fight_t *fight, rpg_t *rpg, int turn);
+void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
+void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
+void check_end_pos(fight_t *fight, obj_t **obj, house_t **house, rpg_t *rpg);
 
 //move pnj
 void move_pnjs(obj_t **obj, house_t **house);
@@ -281,7 +286,7 @@ int dial_event_management(rpg_t *rpg, dialogue_t *dialogue);
 void dial_action(rpg_t *rpg, obj_t **obj,
 house_t **house, dialogue_t *dialogue);
 void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);
-int update_dial_text(size_t frames, dialogue_t *dialogue);
+int update_dial_text(dialogue_t *dialogue);
 void destroy_dialogue(dialogue_t *dialogue);
 
 //stats

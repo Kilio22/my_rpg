@@ -56,7 +56,7 @@ static void character_animation(obj_t *obj, int i)
         animation(&obj->sprite_rect, 32, 32, 160);
         obj->frame_animation = 0;
     }
-    obj->frame_animation++;
+    obj->frame_animation += update_time(NULL);
     if (i < 6) {
         obj->oldPos = sfSprite_getPosition(obj->sprite);
         character_orientation(obj);

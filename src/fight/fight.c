@@ -28,14 +28,15 @@ sfView_getCenter(WIND.view));
 
 static void text_display_fight(rpg_t *rpg, fight_t *fight)
 {
-    if (fight->old_i == fight->nb_fight) {
+    if (fight->old_i == fight->nb_fight || fight->quest_status == 9) {
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
         sfRenderWindow_drawText(WIND.wind, fight->text, NULL);
     }
-    if (fight->quest_status > 2)
+    if (fight->quest_status > 2 && fight->life[0] > 0 && fight->life[1] > 0)
         for (int i = 3; i < 5; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
-    if (fight->quest_status > 2 && fight->fight_status == 0 && fight->turn < 6) {
+    if (fight->quest_status > 2 && fight->fight_status == 0 && fight->turn < 6
+&& fight->life[0] > 0 && fight->life[1] > 0) {
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
         for (int i = 0; i < 3; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
@@ -52,6 +53,8 @@ house_t **house, fight_t *fight)
     house_display(rpg, house);
     check_obj_display(obj, rpg);
     print_map2(MAP.sprite, obj, rpg->wind);
+    display_framebuffer(rpg);
+    check_pnj_display(house, obj, rpg);
     text_display_fight(rpg, fight);
     sfRenderWindow_drawRectangleShape(WIND.wind, fight->fondu, NULL);
     sfRenderWindow_display(WIND.wind);
@@ -62,14 +65,16 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
     fight_t fight = create_fight(i, rpg, obj);
     int ret_val = 0;
+    size_t frames;
 
     sfClock_restart(obj[1]->clock);
     fight_text_intro(0);
     choose_fighter(obj, &fight, rpg, 2);
     while (sfRenderWindow_isOpen(WIND.wind)) {
+        rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            ret_val += fight_event_management(rpg, &fight, obj);
-        if (ret_val > 0) {
+            ret_val += fight_event_management(rpg, &fight);
+        if (ret_val > 0 || fight.quest_status == 10) {
             delete_fight(&fight, obj, rpg);
             return;
         }

@@ -7,35 +7,42 @@
 
 #include "rpg.h"
 
-void init_text_load(load_game_t *new)
+static int init_text_load(load_game_t *new, rpg_t *rpg)
 {
     char *line = NULL;
     sfVector2f pos = {640, 260};
+    int size = 1000;
 
     for (int i = 0; i < 3; i++) {
-        line = check_save_status(i);
+        line = check_save_status(i, rpg);
+        if (my_strlen(line) < size)
+            size = my_strlen(line);
         if (line == NULL) {
-            new->text[i].text = create_text(MENU_FONT, "N/A", 60, pos);
+            new->text[i].text = create_text(menu_font, "N/A", 60, pos);
             new->text[i].status = -1;
         }
         else {
-            new->text[i].text = create_text(MENU_FONT, line, 60, pos);
+            new->text[i].text = create_text(menu_font, line, 60, pos);
             new->text[i].status = 1;
         }
         pos.y += 100;
         free(line);
     }
+    return size;
 }
 
-load_game_t init_load_game(void)
+load_game_t init_load_game(rpg_t *rpg)
 {
     load_game_t new;
-    sfTexture *texture = sfTexture_createFromFile(BACK_CTRL, NULL);
+    sfTexture *texture =
+sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
+    int size = 0;
 
     new.back = sfSprite_create();
     sfSprite_setTexture(new.back, texture, sfTrue);
-    init_text_load(&new);
-    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){340, 90});
+    sfSprite_setScale(new.back, V2F(0.7, 0.7));
+    size = init_text_load(&new, rpg);
+    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){30 * size, 90});
     new.high = 0;
     sfText_setColor(new.text[0].text, sfYellow);
     return new;
@@ -70,10 +77,8 @@ void load_display(rpg_t *rpg, load_game_t *load)
 
 void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    load_game_t load = init_load_game();
+    load_game_t load = init_load_game(rpg);
     int ret_val = 0;
-    sfTime old_time = {0};
-    sfTime current_time = {0};
     size_t frames;
 
     while (sfRenderWindow_isOpen(WIND.wind)) {
@@ -81,7 +86,7 @@ void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house)
             ret_val += check_load_game_events(rpg, &load, obj, house);
         if (ret_val == 1)
             return;
-        update_time(&current_time, &old_time, rpg, &frames);
+        rpg->frame = update_time(&frames);
         update_rect_load(&load, frames);
         check_mbutton_press_load(rpg, &load, obj, house);
         load_display(rpg, &load);
