@@ -90,7 +90,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     follower(obj, rpg);
     move_pnjs(obj, house);
     all_character_animation(obj);
-   sfSprite_setPosition(obj[1]->sprite,
+    sfSprite_setPosition(obj[1]->sprite,
     sfSprite_getPosition(obj[HERO_HB]->sprite));
     house_interaction(obj[HERO_HB], house, rpg);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
