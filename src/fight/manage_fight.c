@@ -14,10 +14,8 @@ static void reset_allie_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
             fight->fight_status = 0;
             sfSprite_move(obj[i]->sprite, V2F(4 * update_time(NULL), 0));
             choose_fighter(obj, fight, rpg, 2);
-        } else {
-            printf("%ld\n", update_time(NULL));
+        } else
             sfSprite_move(obj[i]->sprite, V2F(-2 * MOVE_N, 0));
-        }
     }
     obj[0]->pos = sfSprite_getPosition(obj[i]->sprite);
 }
@@ -51,7 +49,7 @@ static void reset_ennemi_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
             sfSprite_move(obj[i]->sprite, V2F(-4 * MOVE_N, 0));
             choose_fighter(obj, fight, rpg, 2);
         } else
-            sfSprite_move(obj[i]->sprite, V2F(2 + update_time(NULL), 0));
+            sfSprite_move(obj[i]->sprite, V2F(2 * update_time(NULL), 0));
     }
     obj[i]->pos = sfSprite_getPosition(obj[i]->sprite);
 }
@@ -90,12 +88,15 @@ void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
     if (i == 2) {
         turn = fight_turn(obj, fight, 0);
         fight->turn = turn;
-        if (turn == fight->nb_fight + 6) {
+        if (turn == fight->nb_fight + 6
+&& fight->life[0] != 0 && fight->life[0] !=0) {
             fight->fight_status = 1;
             return;
         }
         update_choices(fight, turn, rpg);
         return;
     }
-    apply_attack(obj, fight, rpg, turn);
+    if ((fight->life[0] != 0 && fight->life[1] != 0)
+|| fight->fight_status != 0)
+        apply_attack(obj, fight, rpg, turn);
 }

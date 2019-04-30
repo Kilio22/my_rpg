@@ -9,9 +9,7 @@
 
 void dial_action(rpg_t *rpg, obj_t **obj, house_t **house, dialogue_t *dialogue)
 {
-    if (check_characters_clock(obj[1]->clock, 10000.0) == 0) {
-        all_character_animation(obj);
-    }
+    all_character_animation(obj);
     house_interaction(obj[HERO_HB], house, rpg);
     update_all_rect(obj, house);
     if (dialogue->quest_status_d != -1)

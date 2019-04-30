@@ -142,7 +142,7 @@ const char *obj_path[] = {
     "assets/hero_hitbox.png",
     "assets/hero.png",
     "assets/map_hitbox.png",
-    "assets/perso_blanc.png",
+    "assets/ennemi.png",
     "assets/stupid_nathan.png",
     "assets/Aubergiste.png",
     "assets/perso_vert.png"
