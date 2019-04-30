@@ -38,6 +38,11 @@ void inventory_draw_debug(inventory_t *inv)
             draw_item_case(inv->window, x, y);
         }
     }
+    mg_putstr("x: ");
+    mg_putnbr(sfMouse_getPositionRenderWindow(inv->window).x);
+    mg_putstr("  y:");
+    mg_putnbr(sfMouse_getPositionRenderWindow(inv->window).y);
+    mg_putstr("\n");
 }
 
 void inventory_draw_stock(inventory_t *inv)
