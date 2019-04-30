@@ -46,7 +46,7 @@ void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house)
     while (sfRenderWindow_isOpen(WIND.wind)) {
         rpg->frame = update_time(&frames);
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
-            ret_val += dial_event_management(rpg, &dialogue);
+            ret_val += dial_event_management(rpg, &dialogue, obj);
         if (ret_val > 0) {
             return;
         }
