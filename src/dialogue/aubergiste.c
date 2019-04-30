@@ -20,6 +20,7 @@ static void text_display_dial(rpg_t *rpg, dialogue_t *dialogue)
 static void dial_display(rpg_t *rpg, obj_t **obj,
 house_t **house, dialogue_t *dialogue)
 {
+    sfRenderWindow_clear(WIND.wind, sfBlack);
     if (MENU.menu_on == 2)
         return;
     sfRenderWindow_setView(WIND.wind, WIND.view);
@@ -32,7 +33,6 @@ house_t **house, dialogue_t *dialogue)
     check_pnj_display(house, obj, rpg);
     text_display_dial(rpg, dialogue);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house)

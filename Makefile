@@ -122,6 +122,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		map_init.c	\
 		music.c \
 		my_utils.c	\
+		pause.c	\
 		print_map.c	\
 		framebuffer.c 	\
 		put_pixel.c \

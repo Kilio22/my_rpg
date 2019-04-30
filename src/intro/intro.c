@@ -23,6 +23,7 @@ static void check_pnj_intro(obj_t **obj, house_t **house, rpg_t *rpg)
 
 static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
 {
+    sfRenderWindow_clear(WIND.wind, sfBlack);
     if (MENU.menu_on == 2)
         return;
     sfRenderWindow_setView(WIND.wind, WIND.view);
@@ -38,7 +39,6 @@ static void intro_display(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *i)
         sfRenderWindow_drawText(WIND.wind, i->text, NULL);
     update_fondu_rect(i, rpg);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 static intro_t create_struct_intro(rpg_t *rpg, obj_t **obj)

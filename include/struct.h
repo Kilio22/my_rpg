@@ -235,6 +235,13 @@ typedef struct my_musics_s {
     sfMusic *fight_music;
 } my_musics_t;
 
+typedef struct pause_s {
+    sfRectangleShape *rect;
+    sfSprite *back;
+    fields_t field[3];
+    int high;
+} pause_t;
+
 typedef struct dialogue_s {
     int quest_status_d;
     sfText *text[4];

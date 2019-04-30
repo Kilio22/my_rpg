@@ -46,6 +46,7 @@ static void text_display_fight(rpg_t *rpg, fight_t *fight)
 static void fight_display(rpg_t *rpg, obj_t **obj,
 house_t **house, fight_t *fight)
 {
+    sfRenderWindow_clear(WIND.wind, sfBlack);
     if (MENU.menu_on == 2)
         return;
     sfRenderWindow_setView(WIND.wind, WIND.view);
@@ -58,7 +59,6 @@ house_t **house, fight_t *fight)
     text_display_fight(rpg, fight);
     sfRenderWindow_drawRectangleShape(WIND.wind, fight->fondu, NULL);
     sfRenderWindow_display(WIND.wind);
-    sfRenderWindow_clear(WIND.wind, sfBlack);
 }
 
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
