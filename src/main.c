@@ -74,8 +74,10 @@ static int check_flags(int ac, char **av, rpg_t *rpg)
     } else if (ac == 3) {
         if (my_strcmp(av[1], "-d") != 0)
             return 1;
-        if (check_password(av[2], rpg) == 1)
-            return 1;
+        if (check_password(av[2], rpg) == 1) {
+            rpg->debug = 0;
+            return 0;
+        }
     } else
         return 1;
     return 0;
