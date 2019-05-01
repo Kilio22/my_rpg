@@ -14,25 +14,33 @@ sfIntRect f_to_i_rect(sfFloatRect f)
     return i;
 }
 
-sfBool pp_check(pp_t pp_hitbox, const sfUint8* pixA, const sfUint8* pixB)
+sfBool pp_condition(pp_t pp_hitbox, const sfUint8* pixA, const sfUint8* pixB,
+int x)
 {
-    for (int x = pp_hitbox.intersect.left; x < pp_hitbox.xMax; x++)
-    	for (int y = pp_hitbox.intersect.top; y < pp_hitbox.yMax; y++) {
-            pp_hitbox.vecA = sfTransform_transformPoint(
-                &pp_hitbox.inverseA, (sfVector2f){x, y});
-            pp_hitbox.vecB = sfTransform_transformPoint(
-                &pp_hitbox.inverseB, (sfVector2f){x, y});
-            pp_hitbox.idxA = (pp_hitbox.vecA.x +
-            pp_hitbox.vecA.y * pp_hitbox.sizeA.x) * 4 + 3;
-            pp_hitbox.idxB = (pp_hitbox.vecB.x +
-            pp_hitbox.vecB.y * pp_hitbox.sizeB.x) * 4 + 3;
-            if (pp_hitbox.vecA.x >= 0 && pp_hitbox.vecA.y >= 0 &&
+    for (int y = pp_hitbox.intersect.top; y < pp_hitbox.yMax; y++) {
+        pp_hitbox.vecA = sfTransform_transformPoint(
+&pp_hitbox.inverseA, (sfVector2f){x, y});
+        pp_hitbox.vecB = sfTransform_transformPoint(
+&pp_hitbox.inverseB, (sfVector2f){x, y});
+        pp_hitbox.idxA = (pp_hitbox.vecA.x +
+pp_hitbox.vecA.y * pp_hitbox.sizeA.x) * 4 + 3;
+        pp_hitbox.idxB = (pp_hitbox.vecB.x +
+pp_hitbox.vecB.y * pp_hitbox.sizeB.x) * 4 + 3;
+        if (pp_hitbox.vecA.x >= 0 && pp_hitbox.vecA.y >= 0 &&
 pp_hitbox.vecB.x >= 0 && pp_hitbox.vecB.y >= 0 &&
 pp_hitbox.vecA.x < pp_hitbox.sizeA.x && pp_hitbox.vecA.y < pp_hitbox.sizeA.y &&
 pp_hitbox.vecB.x < pp_hitbox.sizeB.x && pp_hitbox.vecB.y < pp_hitbox.sizeB.y &&
 pixA[pp_hitbox.idxA] > 0 && pixB[pp_hitbox.idxB] > 0)
-                return sfTrue;
-        }
+            return sfTrue;
+    }
+    return sfFalse;
+}
+
+sfBool pp_check(pp_t pp_hitbox, const sfUint8* pixA, const sfUint8* pixB)
+{
+    for (int x = pp_hitbox.intersect.left; x < pp_hitbox.xMax; x++)
+    	if (pp_condition(pp_hitbox, pixA, pixB, x) == sfTrue)
+            return sfTrue;
     return sfFalse;
 }
 

@@ -49,6 +49,8 @@ static void choose_pos(float *x, float *y, int (*rand)[3], int i)
     *x += ((*rand)[i - 6] == 1 ? -2 : 0);
     *y += ((*rand)[i - 6] == 2 ? 2 : 0);
     *y += ((*rand)[i - 6] == 3 ? -2 : 0);
+    *x *= MOVE_N;
+    *y *= MOVE_N;
 }
 
 static void moving_pnjs(obj_t **obj, house_t **house, int (*rand)[3])

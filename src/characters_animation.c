@@ -10,44 +10,46 @@
 
 static void character_orientation_pnj(obj_t *obj)
 {
-    if (obj->oldPos.x > obj->pos.x)
+    if (obj->oldPos.x > obj->pos.x) {
         obj->sprite_rect.top = 64;
-    else if (obj->oldPos.x < obj->pos.x)
+        return;
+    }
+    if (obj->oldPos.x < obj->pos.x) {
         obj->sprite_rect.top = 0;
-    else if (obj->oldPos.y < obj->pos.y) {
+        return;
+    }
+    if (obj->oldPos.y < obj->pos.y) {
         obj->sprite_rect.top = 128;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
-    }
-    else if (obj->oldPos.y > obj->pos.y) {
+    } else if (obj->oldPos.y > obj->pos.y) {
         obj->sprite_rect.top = 192;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
-    }
-    else
+    } else
         obj->sprite_rect.left = 0;
-    obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
 static void character_orientation(obj_t *obj)
 {
-    if (obj->oldPos.x < obj->pos.x)
+    if (obj->oldPos.x < obj->pos.x) {
         obj->sprite_rect.top = 64;
-    else if (obj->oldPos.x > obj->pos.x)
+        return;
+    }
+    if (obj->oldPos.x > obj->pos.x) {
         obj->sprite_rect.top = 0;
-    else if (obj->oldPos.y > obj->pos.y) {
+        return;
+    }
+    if (obj->oldPos.y > obj->pos.y) {
         obj->sprite_rect.top = 128;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
-    }
-    else if (obj->oldPos.y < obj->pos.y) {
+    } else if (obj->oldPos.y < obj->pos.y) {
         obj->sprite_rect.top = 192;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
-    }
-    else
+    } else
         obj->sprite_rect.left = 0;
-    obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
 static void character_animation(obj_t *obj, int i)
@@ -65,6 +67,7 @@ static void character_animation(obj_t *obj, int i)
         character_orientation_pnj(obj);
         obj->oldPos = sfSprite_getPosition(obj->sprite);
     }
+    obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
 void all_character_animation(obj_t **obj)
