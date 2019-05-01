@@ -244,9 +244,9 @@ const char *ennemi_text[][2] = {
     "Enemy: Poor fool, you will suffer !"},
     {"Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne.",
     "You died. You were transported to the inn and were healed."},
-    {"Bravo, vous avez vaincu votre adversaire !\n",
-    "Congratulations, you have defeated your opponent !\n"},
-    {"Vous avez gagne un niveau, et un nouvel objet !",
+    {"Bravo, vous avez vaincu votre adversaire !\n"
+    "Vous avez gagne un niveau, et un nouvel objet !",
+    "Congratulations, you have defeated your opponent !\n"
     "You have gained a level, and a new object !"}
 };
 
