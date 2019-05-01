@@ -19,7 +19,7 @@ void manage_other_key_pressed(rpg_t *rpg)
         CONTROLS.bools[KEYINTER] = 1;
     if (WIND.event.key.code == sfKeySpace)
         CONTROLS.bools[KEYSPACE] = 1;
-    if (WIND.event.key.code == sfKeyY) {
+    if (WIND.event.key.code == sfKeyY && rpg->debug == 1) {
         if (CONTROLS.bools[KEYY] == 0)
             CONTROLS.bools[KEYY] = 1;
         else

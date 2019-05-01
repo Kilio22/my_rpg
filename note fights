@@ -1,4 +1,0 @@
-d'abord, check si on parle a un ennemi, faire les collisions
-si on parle a un ennemi -> display son texte, puis fondu en noir TP vers zone de combat
-une fois sur place, le systeme est simple, on se colle a l'ennemi pour le combattre, on appuie sur E ca ouvre un menu, on choisi l'attaque
-une fois notre attaque choisie, l'ennemi attaque instantanemment, ca quite le menu de combat, on peut a nouveau bouger, ect ect si battu -> sang par terre, disparition ennemi, gain xp et item et re TP a l'ancien endroit

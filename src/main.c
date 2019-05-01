@@ -13,7 +13,7 @@
 #include "my_dragndrop.h"
 #include "inventory.h"
 
-int init_main(rpg_t *rpg)
+static int init_main(rpg_t *rpg)
 {
     sfVector2u windowSize;
 
@@ -34,7 +34,7 @@ sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
     return 0;
 }
 
-void destroy_game(rpg_t *rpg, house_t **house, obj_t **obj)
+static void destroy_game(rpg_t *rpg, house_t **house, obj_t **obj)
 {
     sfRenderWindow_destroy(WIND.wind);
     sfMusic_destroy(rpg->game.back_music);
@@ -49,12 +49,46 @@ void destroy_game(rpg_t *rpg, house_t **house, obj_t **obj)
     free(GAME.inv);
 }
 
-int main(void)
+static int check_password(char *pass, rpg_t *rpg)
+{
+    FILE *stream;
+    int password = my_atoi(pass);
+    int our_pass;
+
+    stream = fopen(".mdp", "r");
+    if (stream == NULL)
+        return 1;
+    if (fread(&our_pass, sizeof(int), 1, stream) <= 0)
+        return 1;
+    if (password != our_pass)
+        return 1;
+    rpg->debug = 1;
+    return 0;
+}
+
+static int check_flags(int ac, char **av, rpg_t *rpg)
+{
+    if (ac == 1) {
+        rpg->debug = 0;
+        return 0;
+    } else if (ac == 3) {
+        if (my_strcmp(av[1], "-d") != 0)
+            return 1;
+        if (check_password(av[2], rpg) == 1)
+            return 1;
+    } else
+        return 1;
+    return 0;
+}
+
+int main(int ac, char **av)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
+    if (check_flags(ac, av, &rpg) == 1)
+        return (84);
     if (obj == NULL || house == NULL)
         return (84);
     if (create_houses(house) == -1)
