@@ -25,8 +25,9 @@ const char *attaques_names[][5] = {
     "ENNEMI : 100"}
 };
 
-const int global_damages[6][2] = {
+const int global_damages[7][2] = {
     {7, 14},
+    {0,0},
     {2, 20},
     {5, 15},
     {5, 8},

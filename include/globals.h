@@ -29,7 +29,7 @@ extern const char *obj_path[];
 extern const int fog_off[54][2];
 extern const char *ennemi_text[][2];
 extern const char *attaques_names[][5];
-extern const int global_damages[6][2];
+extern const int global_damages[7][2];
 extern const char *dial[][2][3];
 extern const char *welcome[][2];
 extern const char *answers[][2][2];
