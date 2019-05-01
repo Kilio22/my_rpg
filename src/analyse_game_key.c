@@ -29,6 +29,8 @@ void manage_other_key_pressed(rpg_t *rpg)
         set_music(rpg);
     if (WIND.event.key.code == sfKeyEscape)
         pause_game(rpg);
+    if (WIND.event.key.code == sfKeyF12)
+        screenshot(rpg);
 }
 
 void manage_key_pressed(rpg_t *rpg)

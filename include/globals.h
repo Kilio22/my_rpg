@@ -36,4 +36,5 @@ extern const char *answers[][2][2];
 extern const char *menu_font;
 extern const sfVector2f vect_pause[][3];
 extern const char *pause_str[][3];
+extern const int tab_stats[][6];
 #endif /* !GLOBALS_H_ */

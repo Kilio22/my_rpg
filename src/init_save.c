@@ -30,15 +30,18 @@ int init_controls(rpg_t *rpg)
 
 int init_stats(obj_t **obj)
 {
+    int j = 0;
+
     for (int i = 0; i < 9; i++) {
-        if (i == 4 || i == 5)
+        if (i == 1 || i == 4 || i == 5)
             continue;
-        obj[i]->stats[LEVEL] = 1;
-        obj[i]->stats[XP] = 0;
-        obj[i]->stats[HPS] = 100;
-        obj[i]->stats[ATK] = 10;
-        obj[i]->stats[DEF] = 10;
-        obj[i]->stats[SPEED] = 10;
+        obj[i]->stats[LEVEL] = tab_stats[j][LEVEL];
+        obj[i]->stats[XP] = tab_stats[j][XP];
+        obj[i]->stats[HPS] = tab_stats[j][HPS];
+        obj[i]->stats[ATK] = tab_stats[j][ATK];
+        obj[i]->stats[DEF] = tab_stats[j][DEF];
+        obj[i]->stats[SPEED] = tab_stats[j][SPEED];
+        j++;
     }
     return 0;
 }

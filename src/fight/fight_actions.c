@@ -57,7 +57,7 @@ house_t **house, fight_t *fight)
     if (fight->life[0] == 0 && fight->quest_status == 3) {
         fight->quest_status++;
         fight->win = 1;
-    } else if (fight->life[1] == 0 && fight->quest_status == 3) {
+    } else if (fight->life[1] <= 0 && fight->quest_status == 3) {
         fight->quest_status++;
         fight->win = 2;
     }

@@ -304,4 +304,7 @@ void pause_game(rpg_t *rpg);
 typedef int (* const intro_pointer_t)(obj_t **, int, rpg_t *, house_t **);
 typedef void (* const intro_menu_t)(rpg_t *, obj_t **, house_t **);
 
+//screenshot.c
+void screenshot(rpg_t *rpg);
+
 #endif /* !PROTO_H_ */

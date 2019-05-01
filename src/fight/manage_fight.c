@@ -57,7 +57,7 @@ static void reset_ennemi_pos(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 {
     obj[i]->oldPos = sfSprite_getPosition(obj[i]->sprite);
-    if (fight->fight_status == 1) {
+    if (fight->fight_status == 1 && fight->life[1] != 0) {
         if (obj[i]->pos.x <= 13690)
             fight->fight_status++;
         else {
@@ -96,7 +96,7 @@ void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
         update_choices(fight, turn, rpg);
         return;
     }
-    if ((fight->life[0] != 0 && fight->life[1] != 0)
-|| fight->fight_status != 0)
+    if (((fight->life[0] != 0 && fight->life[1] != 0)
+|| fight->fight_status != 0) && fight->quest_status == 3)
         apply_attack(obj, fight, rpg, turn);
 }

@@ -28,7 +28,7 @@ const char *attaques_names[][5] = {
 const int global_damages[6][2] = {
     {7, 14},
     {2, 20},
-    {5, 10},
+    {5, 15},
     {5, 8},
     {8, 13},
     {12, 18}

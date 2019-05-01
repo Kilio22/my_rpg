@@ -130,6 +130,7 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		pnj_moves.c	\
 		time_gestion.c \
 		item/item.c \
+		screenshot.c \
 		inventory/inventory_core.c \
 		game_create.c			\
 		my_other_utils.c \
