@@ -22,9 +22,8 @@ static void analyse_settings_move(rpg_t *rpg, settings_t *settings)
 {
     int i = check_mousepos_butt_set(rpg, settings);
 
-    if (check_text_settings(settings, i) == 1)
-        return;
-    if (settings->buttons[i].state == 1)
+    if (check_text_settings(settings, i) == 1 ||
+settings->buttons[i].state == 1)
         return;
     if (i < 3 && i > 0 && settings->buttons[i].state == 0) {
         sfSprite_setColor(settings->buttons[settings->high].sprite, sfWhite);

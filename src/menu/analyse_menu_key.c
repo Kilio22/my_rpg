@@ -42,6 +42,8 @@ void analyse_menu_key_pressed(int code, rpg_t *rpg, int *move)
         GAME.nb_save = 1;
     if (code == sfKeyF5)
         set_music(rpg);
+    if (code == sfKeyF12)
+        screenshot(rpg);
     if (code == sfKeyReturn) {
         MENU.buttons[MENU.highlight].status = 1;
         sfText_setColor(MENU.buttons[MENU.highlight].text, sfBlue);

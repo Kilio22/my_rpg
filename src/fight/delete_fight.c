@@ -8,13 +8,28 @@
 #include "inventory.h"
 #include "rpg.h"
 
-static void add_item(rpg_t *rpg, fight_t *fight)
+static void add_item(rpg_t *rpg, fight_t *fight, obj_t **obj)
 {
     item_t *item;
     ini_file_t *ini = ini_file_create_from_file("assets_data.ini");
+    int j = 0;
 
-    item = item_create(0, ini);
+    if (fight->nb_fight == 1)
+        item = item_create(8, ini);
+    else if (fight->nb_fight == 0)
+        item = item_create(11, ini);
+    else
+        item = item_create(12, ini);
     inventory_add_item(GAME.inv, item);
+    for (int i = 0; i < 4; i++) {
+        if (i == 1)
+            continue;
+        obj[i]->stats[HPS] += level_up[fight->nb_fight][j][0];
+        obj[i]->stats[ATK] += level_up[fight->nb_fight][j][1];
+        obj[i]->stats[DEF] += level_up[fight->nb_fight][j][2];
+        obj[i]->stats[SPEED] += level_up[fight->nb_fight][j][3];
+        j++;
+    }
 }
 
 static void reinit_pos(obj_t **obj, fight_t *fight, rpg_t *rpg)
@@ -27,7 +42,7 @@ sfSprite_getPosition(obj[fight->nb_fight + 6]->sprite);
     } else if (fight->win == 2) {
         free_obj(obj[fight->nb_fight + 6]);
         obj[fight->nb_fight + 6] = NULL;
-        add_item(rpg, fight);
+        add_item(rpg, fight, obj);
     } else {
         sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
         sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);

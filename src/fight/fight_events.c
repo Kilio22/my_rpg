@@ -48,6 +48,8 @@ int fight_event_management(rpg_t *rpg, fight_t *fight)
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
+        if (WIND.event.key.code == sfKeyF12)
+            screenshot(rpg);
         if (WIND.event.key.code == sfKeyEscape
 && fight->life[0] > 0 && fight->life[1] > 0)
             pause_game(rpg);

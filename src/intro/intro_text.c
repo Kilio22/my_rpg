@@ -28,6 +28,40 @@ int clock_text_intro(int i)
     return 0;
 }
 
+static void update_en(rpg_t *rpg, char **to_print, int index, int *print_index)
+{
+    for (size_t i = 0; (i < rpg->frame || i <= 1) &&
+(*print_index) < my_strlen(scrpits_en[index]); i++) {
+        (*to_print)[(*print_index)] = scrpits_en[index][(*print_index)];
+        (*print_index)++;
+        (*to_print)[(*print_index)] = '\0';
+    }
+    if ((*print_index) == my_strlen(scrpits_en[index]) &&
+(rpg->quest_status < 2 || (rpg->quest_status >= 6 && rpg->quest_status <= 9) ||
+(rpg->quest_status >= 13 && rpg->quest_status <= 21))
+&& clock_text_intro(1) == 1)
+        rpg->quest_status++;
+    else if ((*print_index) != my_strlen(scrpits_en[index]))
+        clock_text_intro(0);
+}
+
+static void update_fr(rpg_t *rpg, char **to_print, int index, int *print_index)
+{
+    for (size_t i = 0; (i < rpg->frame || i <= 1) &&
+(*print_index) < my_strlen(scrpits[index]); i++) {
+        (*to_print)[*print_index] = scrpits[index][*print_index];
+        (*print_index)++;
+        (*to_print)[*print_index] = '\0';
+    }
+    if ((*print_index) == my_strlen(scrpits[index]) &&
+(rpg->quest_status < 2 || (rpg->quest_status >= 6 && rpg->quest_status <= 9) ||
+(rpg->quest_status >= 13 && rpg->quest_status <= 21))
+&& clock_text_intro(1) == 1)
+        rpg->quest_status++;
+    else if ((*print_index) != my_strlen(scrpits[index]))
+        clock_text_intro(0);
+}
+
 int intro_text_index(int *index, rpg_t *rpg, char **to_print, int *p_ind)
 {
     if (*index != rpg->quest_status) {
@@ -37,8 +71,12 @@ int intro_text_index(int *index, rpg_t *rpg, char **to_print, int *p_ind)
         *to_print = my_strdup("");
     }
     if (my_strlen(*to_print) == 0) {
-        *to_print = malloc(sizeof(char) *
+        if (GAME.language == 0)
+            *to_print = malloc(sizeof(char) *
 (my_strlen(scrpits[*index]) + 1));
+        else
+            *to_print = malloc(sizeof(char) *
+(my_strlen(scrpits_en[*index]) + 1));
         if (*to_print == NULL)
             return -1;
     }
@@ -53,9 +91,9 @@ int update_intro_text(rpg_t *rpg, intro_t *intro)
 
     if (intro_text_index(&index, rpg, &to_print, &print_index) == -1)
         return -1;
-    for (size_t i = 0; (i < rpg->frame || i <= 1) &&
+    /* for (size_t i = 0; (i < rpg->frame || i <= 1) &&
 print_index < my_strlen(scrpits[index]); i++) {
-        to_print[print_index] = scrpits[index][print_index];
+        to_print[print_index] = (GAME.language == 0) ? scrpits[index][print_index] : scrpits_en[index][print_index];
         print_index++;
         to_print[print_index] = '\0';
     }
@@ -65,7 +103,11 @@ print_index < my_strlen(scrpits[index]); i++) {
 && clock_text_intro(1) == 1)
         rpg->quest_status++;
     else if (print_index != my_strlen(scrpits[index]))
-        clock_text_intro(0);
+        clock_text_intro(0); */
+    if (GAME.language == 0)
+        update_fr(rpg, &to_print, index, &print_index);
+    else
+        update_en(rpg, &to_print, index, &print_index);
     sfText_setString(intro->text, to_print);
     return 0;
 }

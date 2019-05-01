@@ -27,8 +27,10 @@ void manage_other_key_pressed(rpg_t *rpg)
     }
     if (WIND.event.key.code == sfKeyF5)
         set_music(rpg);
-    if (WIND.event.key.code == sfKeyEscape)
+    if (WIND.event.key.code == sfKeyEscape) {
         pause_game(rpg);
+        res_bools(rpg);
+    }
     if (WIND.event.key.code == sfKeyF12)
         screenshot(rpg);
 }

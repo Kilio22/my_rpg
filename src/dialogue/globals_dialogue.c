@@ -16,8 +16,8 @@ const char *dial[][2][3] = {
     {{"Indice Quete",
     "Sauvegarder",
     "Retour"},
-    {"Indice",
-    "save",
+    {"Quest clue",
+    "Save",
     "Return"}}
 };
 

@@ -31,5 +31,6 @@
 #define OBJ_RECT obj[i]->rectangle
 #define MOVE_N (long) update_time(NULL)
 #define SETT settings_str
+#define ENTXT1 ennemi_text[fight->text_index][GAME.language]
 
 #endif /* !MACROS_H_ */

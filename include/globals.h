@@ -37,4 +37,7 @@ extern const char *menu_font;
 extern const sfVector2f vect_pause[][3];
 extern const char *pause_str[][3];
 extern const int tab_stats[][6];
+extern const int level_up[][3][6];
+extern const char *scrpits_en[];
+
 #endif /* !GLOBALS_H_ */

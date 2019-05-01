@@ -6,6 +6,7 @@
 */
 
 #include "inventory.h"
+#include "rpg.h"
 
 void inventory_draw(inventory_t *inv)
 {

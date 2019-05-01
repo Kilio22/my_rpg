@@ -10,9 +10,9 @@
 void print_stats(obj_t **obj)
 {
     for (int i = 0; i < 9; i++) {
-        if (i == 1 || i == 4 || i == 5)
+        if (i == 1 || i == 4 || i == 5 || obj[i] == NULL)
             continue;
-        my_printf("Character %d\n", i - 1);
+        my_printf("Character %d\n", i);
         my_printf("Level: %d\n", obj[i]->stats[LEVEL]);
         my_printf("HP: %d\n", obj[i]->stats[HPS]);
         my_printf("ATK: %d\n", obj[i]->stats[ATK]);

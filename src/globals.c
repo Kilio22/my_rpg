@@ -243,7 +243,7 @@ const char *ennemi_text[][2] = {
     {"Ennemi: Pauvre fou, tu vas souffrir !",
     "Enemy: Poor fool, you will suffer !"},
     {"Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne.",
-    "You died. You were transported to the hostel and were healed."},
+    "You died. You were transported to the inn and were healed."},
     {"Bravo, vous avez vaincu votre adversaire !\n",
     "Congratulations, you have defeated your opponent !\n"},
     {"Vous avez gagne un niveau, et un nouvel objet !",
@@ -421,10 +421,28 @@ const sfVector2f vect_pause[][3] = {
 };
 
 const int tab_stats[][6] = {
-        {1, 0, 30, 15, 1, 10},
-        {1, 0, 100, 1, 1, 1},
-        {1, 0, 50, 7, 5, 5},
-        {1, 0, 200, 20, 8, 12},
-        {1, 0, 150, 15, 5, 8},
-        {1, 0, 400, 25, 10, 15}
-    };
+    {1, 0, 30, 15, 1, 10},
+    {1, 0, 100, 1, 1, 2},
+    {1, 0, 50, 7, 5, 5},
+    {1, 0, 200, 20, 8, 12},
+    {1, 0, 150, 15, 5, 8},
+    {1, 0, 400, 25, 10, 15}
+};
+
+const int level_up[][3][6] = {
+    {
+        {10, 1, 2, 1},
+        {2, 1, 1, 1},
+        {3, 2, 2, 0}
+    },
+    {
+        {5, 2, 1, 2},
+        {2, 1, 1, 1},
+        {3, 3, 2, 0}
+    },
+    {
+        {10, 1, 2, 1},
+        {2, 1, 1, 1},
+        {3, 2, 2, 0}
+    }
+};

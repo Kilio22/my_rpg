@@ -45,6 +45,8 @@ void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
         CONTROLS.mousePos.y = WIND.event.mouseMove.y;
     }
     if (WIND.event.type == sfEvtKeyPressed) {
+        if (WIND.event.key.code == sfKeyF12)
+            screenshot(rpg);
         if (WIND.event.key.code == sfKeyF5)
             set_music(rpg);
         if (WIND.event.key.code == sfKeyEscape)
