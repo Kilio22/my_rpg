@@ -10,7 +10,7 @@
 #include <stdio.h>
 #include "rpg.h"
 
-static sfBool all_world_hitBox(obj_t **obj, house_t **house, obj_t *world_hit,
+static sfBool all_world_hitbox(obj_t **obj, house_t **house, obj_t *world_hit,
 rpg_t *rpg)
 {
     if (pp_intersect(obj[0]->sprite, world_hit->sprite,
@@ -32,7 +32,7 @@ void apply_y_control(rpg_t *rpg, obj_t **obj, house_t **house, sfVector2f pos)
     if (CONTROLS.bools[KEYDOWN] == 1)
         pos.y += 2 * rpg->frame;
     sfSprite_move(obj[0]->sprite, pos);
-    if (all_world_hitBox(obj, house, obj[4], rpg) == 1) {
+    if (all_world_hitbox(obj, house, obj[4], rpg) == 1) {
         pos.y *= -1;
         sfSprite_move(obj[0]->sprite, pos);
     }
@@ -48,7 +48,7 @@ void apply_controls_character(rpg_t *rpg, obj_t **obj, house_t **house)
     if (CONTROLS.bools[KEYRIGHT] == 1)
         newPos.x += 2 * rpg->frame;
     sfSprite_move(obj[0]->sprite, newPos);
-    if (all_world_hitBox(obj, house, obj[4], rpg) == 1) {
+    if (all_world_hitbox(obj, house, obj[4], rpg) == 1) {
         newPos.x *= -1;
         sfSprite_move(obj[0]->sprite, newPos);
     }

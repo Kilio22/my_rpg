@@ -7,16 +7,16 @@
 
 #include "my_dragndrop.h"
 
-my_bool_t dragndrop_isClicked(dragndrop_t *drag, sfRenderWindow *window)
+my_bool_t dragndrop_is_clicked(dragndrop_t *drag, sfRenderWindow *window)
 {
-    if (dragndrop_isHover(drag, window)) {
+    if (dragndrop_is_hover(drag, window)) {
         if (sfMouse_isButtonPressed(sfMouseLeft))
             return (TRUE);
     }
     return (FALSE);
 }
 
-my_bool_t dragndrop_isHover(dragndrop_t *drag, sfRenderWindow *window)
+my_bool_t dragndrop_is_hover(dragndrop_t *drag, sfRenderWindow *window)
 {
     sfVector2i pos = sfMouse_getPositionRenderWindow(window);
     sfFloatRect rect = sfSprite_getGlobalBounds(drag->state_img[0]);
@@ -28,7 +28,7 @@ my_bool_t dragndrop_isHover(dragndrop_t *drag, sfRenderWindow *window)
     return (FALSE);
 }
 
-my_bool_t dragndrop_isUnderDragging(dragndrop_t *drag)
+my_bool_t dragndrop_isunderdragging(dragndrop_t *drag)
 {
     if (drag->state == DRAGGED)
         return (TRUE);
@@ -41,7 +41,7 @@ void dragndrop_event(dragndrop_t *drag, sfRenderWindow *window)
 
     if (current != NULL && drag != current)
         return;
-    if (drag->state == IDLE_DRAG && dragndrop_isClicked(drag, window)) {
+    if (drag->state == IDLE_DRAG && dragndrop_is_clicked(drag, window)) {
         current = drag;
         drag->state = DRAGGED;
     }

@@ -7,14 +7,14 @@
 
 #include "my_dragndrop.h"
 
-my_bool_t dragndrop_ispendingDrag(dragndrop_t *drag)
+my_bool_t dragndrop_ispendingdrag(dragndrop_t *drag)
 {
     if (drag->last_pos_released.x != -1)
         return (TRUE);
     return (FALSE);
 }
 
-sfVector2i dragndrop_getpendingDrag(dragndrop_t *drag)
+sfVector2i dragndrop_getpendingdrag(dragndrop_t *drag)
 {
     sfVector2i pos = {drag->last_pos_released.x, drag->last_pos_released.y};
 

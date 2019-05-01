@@ -23,7 +23,7 @@ static void do_dop_stock(item_t *item, inventory_t *inv, int from)
 {
     int id = inventory_get_id_from_coord(inv->window);
 
-    dragndrop_getpendingDrag(item->display);
+    dragndrop_getpendingdrag(item->display);
     if (id == -1) {
         do_op_stock_to_stuff(item, inv, from);
         return;
@@ -42,7 +42,7 @@ void inventory_compute_stock_released(inventory_t *inv)
         if (!inv->stock[i])
             continue;
         current = inv->stock[i]->display;
-        if (!dragndrop_ispendingDrag(current))
+        if (!dragndrop_ispendingdrag(current))
             continue;
         do_dop_stock(inv->stock[i], inv, i);
     }
@@ -52,7 +52,7 @@ static void do_op_stuff(item_t *item, inventory_t *inv, int from)
 {
     int id = inventory_get_id_from_coord(inv->window);
 
-    dragndrop_getpendingDrag(item->display);
+    dragndrop_getpendingdrag(item->display);
     if (id == -1)
         return;
     if (inv->stock[id] != NULL)
@@ -69,7 +69,7 @@ void inventory_compute_stuff_released(inventory_t *inv)
         if (!inv->stuff[inv->state][i])
             continue;
         current = inv->stuff[inv->state][i]->display;
-        if (!dragndrop_ispendingDrag(current))
+        if (!dragndrop_ispendingdrag(current))
             continue;
         do_op_stuff(inv->stuff[inv->state][i], inv, i);
     }

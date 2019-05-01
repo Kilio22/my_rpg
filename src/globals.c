@@ -340,7 +340,7 @@ const sfIntRect door_rects[8] = {
     {0, 0, 96, 64},
 };
 
-void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
+intro_menu_t menu[6] = {
     menu_new_game,
     menu_load_game,
     menu_settings,
@@ -349,8 +349,7 @@ void (* const menu[6])(rpg_t *, obj_t **, house_t **) = {
     menu_close_window
 };
 
-int (* const intro[])(obj_t **, int, rpg_t *, house_t **) =
-{
+intro_pointer_t intro[] = {
     intro_control,
     intro_control,
     intro_ennemi_ctrl,
@@ -397,7 +396,7 @@ int (* const intro[])(obj_t **, int, rpg_t *, house_t **) =
     intro_go_auberge20
 };
 
-const char menu_font[] = "assets/menu_font_h.ttf";
+const char *menu_font = "assets/menu_font_h.ttf";
 
 const char *pause_str[][3] = {
     {"REPRENDRE",

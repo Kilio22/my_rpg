@@ -32,12 +32,12 @@ typedef struct my_button my_button_t;
 my_button_t *my_button_create(sfTexture *idle, sfTexture *hover,
                             sfTexture *clicked);
 void my_button_destroy(my_button_t *button);
-void sfRenderWindow_drawButton(sfRenderWindow *window, my_button_t *button);
+void window_draw_button(sfRenderWindow *window, my_button_t *button);
 
 // button events
 my_bool_t my_button_is_hover(my_button_t *button, sfRenderWindow *relative);
 my_bool_t my_button_is_clicked(my_button_t *button, sfRenderWindow *relative);
-my_bool_t my_button_is_hoverOnce(my_button_t *button, sfRenderWindow *rel);
-my_bool_t my_button_is_clickedOnce(my_button_t *button, sfRenderWindow *rel);
+my_bool_t my_button_is_hoveronce(my_button_t *button, sfRenderWindow *rel);
+my_bool_t my_button_is_clickedonce(my_button_t *button, sfRenderWindow *rel);
 
 #endif /* !MY_BUTTON_H_ */

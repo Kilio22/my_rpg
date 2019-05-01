@@ -28,7 +28,7 @@ my_bool_t my_button_is_clicked(my_button_t *button, sfRenderWindow *relative)
     return (FALSE);
 }
 
-my_bool_t my_button_is_hoverOnce(my_button_t *button, sfRenderWindow *rel)
+my_bool_t my_button_is_hoveronce(my_button_t *button, sfRenderWindow *rel)
 {
     if (my_button_is_hover(button, rel) && !button->hover_released) {
         button->hover_released = TRUE;
@@ -37,7 +37,7 @@ my_bool_t my_button_is_hoverOnce(my_button_t *button, sfRenderWindow *rel)
     return (FALSE);
 }
 
-my_bool_t my_button_is_clickedOnce(my_button_t *button, sfRenderWindow *rel)
+my_bool_t my_button_is_clickedonce(my_button_t *button, sfRenderWindow *rel)
 {
     if (my_button_is_clicked(button, rel) && !button->click_released) {
         button->click_released = TRUE;

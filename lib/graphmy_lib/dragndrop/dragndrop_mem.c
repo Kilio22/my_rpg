@@ -34,7 +34,7 @@ void dragndrop_destroy(dragndrop_t *drag)
     free(drag);
 }
 
-void sfRenderWindow_drawDragndrop(sfRenderWindow *window, dragndrop_t *drag)
+void window_draw_dragndrop(sfRenderWindow *window, dragndrop_t *drag)
 {
     sfVector2i pos = sfMouse_getPositionRenderWindow(window);
     sfVector2f pos_f = (sfVector2f){pos.x, pos.y};
