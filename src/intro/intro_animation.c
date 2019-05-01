@@ -9,13 +9,15 @@
 
 static void character_orientation_intro(obj_t *obj)
 {
-    obj->oldPos = sfSprite_getPosition(obj->sprite);
-
-    if (obj->oldPos.x < obj->pos.x)
+    if (obj->oldPos.x < obj->pos.x) {
         obj->sprite_rect.top = 64;
-    else if (obj->oldPos.x > obj->pos.x)
+        return;
+    }
+    if (obj->oldPos.x > obj->pos.x) {
         obj->sprite_rect.top = 0;
-    else if (obj->oldPos.y > obj->pos.y) {
+        return;
+    }
+    if (obj->oldPos.y > obj->pos.y) {
         obj->sprite_rect.top = 128;
         if (obj->sprite_rect.left >= 128)
             obj->sprite_rect.left = 0;
@@ -27,7 +29,6 @@ static void character_orientation_intro(obj_t *obj)
     }
     else
         obj->sprite_rect.left = 0;
-    obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
 static void character_animation_intro(obj_t *obj)
@@ -37,7 +38,9 @@ static void character_animation_intro(obj_t *obj)
         obj->frame_animation = 0;
     }
     obj->frame_animation += update_time(NULL);
+    obj->oldPos = sfSprite_getPosition(obj->sprite);
     character_orientation_intro(obj);
+    obj->pos = sfSprite_getPosition(obj->sprite);
 }
 
 void all_character_animation_intro(rpg_t *rpg, obj_t **obj)

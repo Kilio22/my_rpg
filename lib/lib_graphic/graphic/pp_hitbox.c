@@ -39,7 +39,7 @@ pixA[pp_hitbox.idxA] > 0 && pixB[pp_hitbox.idxB] > 0)
 sfBool pp_check(pp_t pp_hitbox, const sfUint8* pixA, const sfUint8* pixB)
 {
     for (int x = pp_hitbox.intersect.left; x < pp_hitbox.xMax; x++)
-    	if (pp_condition(pp_hitbox, pixA, pixB, x) == sfTrue)
+        if (pp_condition(pp_hitbox, pixA, pixB, x) == sfTrue)
             return sfTrue;
     return sfFalse;
 }
