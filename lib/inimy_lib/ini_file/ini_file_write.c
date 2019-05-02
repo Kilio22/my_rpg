@@ -5,9 +5,7 @@
 ** ini_file_write
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
+#include "windows.h"
 #include "my_ini.h"
 
 static int file_str_size(ini_file_t *file)

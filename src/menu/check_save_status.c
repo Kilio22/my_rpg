@@ -5,11 +5,9 @@
 ** check_save_status
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <fcntl.h>
 #include <stdio.h>
+#include "windows.h"
 #include "rpg.h"
 #include "my_ini.h"
 

@@ -5,10 +5,8 @@
 ** screenshot
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <stdio.h>
+#include "windows.h"
 #include "rpg.h"
 
 static char *get_name(void)

@@ -5,10 +5,8 @@
 ** read an entire file and put it in an str
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <stdio.h>
+#include "windows.h"
 #include "my_file.h"
 
 static int mg_strlen(char const *str)

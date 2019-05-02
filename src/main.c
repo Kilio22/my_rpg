@@ -5,14 +5,12 @@
 ** main
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "rpg.h"
+#include "windows.h"
 #include "my_dragndrop.h"
 #include "inventory.h"
 
