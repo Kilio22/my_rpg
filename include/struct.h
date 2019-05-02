@@ -264,6 +264,7 @@ typedef struct rpg_s {
     int quest_status;
     int dial_status;
     int debug;
+    bool killed[3];
     size_t frame;
 } rpg_t;
 
