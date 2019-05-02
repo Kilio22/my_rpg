@@ -55,5 +55,6 @@ char *my_file_readall(char const *filepath)
         if (size)
             my_strcat(&buff, (char[]){c, '\0'});
     } while (size);
+    close(fd);
     return (buff);
 }
