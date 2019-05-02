@@ -307,4 +307,6 @@ typedef void (* const intro_menu_t)(rpg_t *, obj_t **, house_t **);
 //screenshot.c
 void screenshot(rpg_t *rpg);
 
+void check_end_game(rpg_t *rpg, obj_t **obj, house_t **house);
+
 #endif /* !PROTO_H_ */

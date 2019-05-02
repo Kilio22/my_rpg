@@ -11,11 +11,11 @@ static int init_text_load(load_game_t *new, rpg_t *rpg)
 {
     char *line = NULL;
     sfVector2f pos = {640, 260};
-    int size = 1000;
+    int size = 0;
 
     for (int i = 0; i < 3; i++) {
         line = check_save_status(i, rpg);
-        if (my_strlen(line) < size)
+        if (my_strlen(line) > size)
             size = my_strlen(line);
         if (line == NULL) {
             new->text[i].text = create_text(menu_font, "N/A", 60, pos);
@@ -42,7 +42,7 @@ sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
     sfSprite_setTexture(new.back, texture, sfTrue);
     sfSprite_setScale(new.back, V2F(0.7, 0.7));
     size = init_text_load(&new, rpg);
-    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){30 * size, 90});
+    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){25 * size, 90});
     new.high = 0;
     sfText_setColor(new.text[0].text, sfYellow);
     return new;

@@ -252,6 +252,15 @@ typedef struct dialogue_s {
     int language;
 } dialogue_t;
 
+typedef struct end_game_s {
+    sfSprite *back;
+    sfSprite *parch;
+    sfText *text;
+    sfRectangleShape *rect;
+    int language;
+    int end_status;
+} end_game_t;
+
 typedef struct rpg_s {
     controls_t controls;
     game_t game;

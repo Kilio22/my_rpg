@@ -446,3 +446,10 @@ const int level_up[][3][6] = {
         {3, 2, 2, 0}
     }
 };
+
+const char *end_text[][2] = {
+    {"J'aime bien le chocolat",
+    "et les petits lapin lindt'or"},
+    {"I like chocolate",
+    "and little lindt'or's rabits"}
+};
