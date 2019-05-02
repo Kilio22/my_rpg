@@ -14,17 +14,24 @@
 
 char *check_save_status(int save_nb, rpg_t *rpg)
 {
-    char *line = NULL;
-    size_t size;
+    char *line;
+    char *name;
     FILE *stream = fopen(save_path[save_nb], "r");
 
     if (stream == NULL)
         return NULL;
-    getline(&line, &size, stream);
+    name = get_next_line(stream);
+    if (name == NULL)
+        return NULL;
+    line = get_next_line(stream);
+    while (line != NULL) {
+        free(line);
+        line = get_next_line(stream);
+    }
     fclose(stream);
     if (GAME.language == 0)
-        line = my_realloc_str("Nom : ", line);
+        name = my_realloc_str("Nom : ", name);
     else
-        line = my_realloc_str("Name : ", line);
-    return line;
+        name = my_realloc_str("Name : ", name);
+    return name;
 }

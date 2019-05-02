@@ -33,16 +33,16 @@ INCLUDE_PATH	=	../../include
 
 SRC_MY	=	src/my_char_is.c \
 		src/my_line_lenght.c \
-		src/my_revstr.c \
+		src/my_revstr_g.c \
 		src/my_strcat.c \
-		src/my_strcmp.c \
-		src/my_strcpy.c \
-		src/my_strdup.c \
+		src/my_strcmp_g.c \
+		src/my_strcpy_g.c \
+		src/my_strdup_g.c \
 		src/my_str_isnum.c \
-		src/my_strlen.c \
+		src/my_strlen_g.c \
 		src/my_strreplace.c \
-		src/my_atoi.c \
-		src/my_itoa.c \
+		src/my_atoi_g.c \
+		src/my_itoa_g.c \
 		src/my_strtok.c
 
 CFLAGS	=	-Wall \

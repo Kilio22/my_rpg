@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "../../../include/my.h"
+#include "my.h"
 
 char const BASE_DECIMAL[11] = "0123456789";
 

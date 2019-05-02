@@ -14,7 +14,7 @@ int check_sprite(layer_t *layers, int x, int y, rpg_t *rpg)
 
     for (int j = 0; MAP.sprite[j] != NULL; j++) {
         if (layers->map[y][x] == MAP.sprite[j]->id) {
-            add_vector(MAP.sprite[j], (sfVector2f){pos_x, pos_y}, MAP.sprite);
+            add_vector(MAP.sprite[j], (sfVector2f){pos_x, pos_y});
             return 1;
         }
     }

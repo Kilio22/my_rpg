@@ -57,7 +57,7 @@ sfBool centered);
 void destroy_load(load_game_t *load);
 
 //fill_map.c
-void add_vector(sprite_t *sprites, sfVector2f pos, sprite_t **sprite);
+void add_vector(sprite_t *sprites, sfVector2f pos);
 void fill_sprite(sprite_t **oui, sfVector2f pos);
 int create_sprite(sprite_t **sprites, char *path, int id, sfIntRect rect);
 

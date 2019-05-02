@@ -46,7 +46,6 @@ SRC	=	my_putstr.c					\
 		my_strcmp.c					\
 		my_int_to_char.c			\
 		get_next_line.c				\
-		my_strcat.c					\
 		my_strncat.c				\
 		my_strncmp.c				\
 		my_strxdup.c				\
@@ -72,7 +71,7 @@ SRC	=	my_putstr.c					\
 		print_unsig.c				\
 		print_str_s.c				\
 		print_char.c				\
-		list.c						\
+		listlib.c					\
 		putstr_s.c					\
 		octal2.c
 
