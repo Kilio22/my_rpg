@@ -13,7 +13,7 @@
 #include "rpg.h"
 #include "my_ini.h"
 
-char *check_save_status(int save_nb, rpg_t *rpg)
+char *check_save_status(int save_nb)
 {
     char *save_path = mg_strdup("saves/savex.ini");
     ini_file_t *ini;

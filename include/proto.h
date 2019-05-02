@@ -35,7 +35,7 @@ void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
 
 //check_save_status.c
-char *check_save_status(int save_nb, rpg_t *rpg);
+char *check_save_status(int save_nb);
 
 //controls_events.c
 int manage_control_events(rpg_t *rpg, int *high);

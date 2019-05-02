@@ -14,7 +14,7 @@ static int init_text_load(load_game_t *new, rpg_t *rpg)
     int size = 0;
 
     for (int i = 0; i < 3; i++) {
-        line = check_save_status(i, rpg);
+        line = check_save_status(i);
         if (my_strlen(line) > size)
             size = my_strlen(line);
         if (line == NULL) {
