@@ -74,6 +74,8 @@ static int check_password(char *pass, rpg_t *rpg)
 
 static int check_flags(int ac, char **av, rpg_t *rpg)
 {
+    if (check_files() == -1)
+        return 1;
     if (ac == 1) {
         rpg->debug = 0;
         return 0;

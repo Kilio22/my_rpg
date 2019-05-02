@@ -129,6 +129,7 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(SETTINGS_PATH)settings_init.c	\
 		$(SETTINGS_PATH)settings_menu.c	\
 		$(SETTINGS_PATH)settings_utils.c	\
+		check_files.c	\
 		camera_gestion.c	\
 		create_house.c	\
 		create_obj.c	\

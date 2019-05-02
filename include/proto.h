@@ -318,4 +318,7 @@ end_game_t init_end_game(rpg_t *rpg);
 void credit_display(rpg_t *rpg, credit_t *credit);
 int check_credit_events(rpg_t *rpg);
 
+//load
+int check_files(void);
+
 #endif /* !PROTO_H_ */
