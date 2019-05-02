@@ -35,7 +35,7 @@ sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
         rpg->controls.bools[i] = 0;
     rpg->error_code = 0;
     for (int i = 0; i < 3; i++)
-        rpg->killed[i] = 1;
+        rpg->killed[i] = 0;
     create_music(rpg);
     return 0;
 }
