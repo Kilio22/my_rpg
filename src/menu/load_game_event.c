@@ -14,6 +14,7 @@ static void load_save(rpg_t *rpg, obj_t **obj, house_t **house)
     load(rpg, obj);
     init_game(rpg, obj, house);
     rpg->quest_status = 0;
+    MENU.menu_on = 0;
 }
 
 void check_mbutton_press_load(rpg_t *rpg, load_game_t *load_s, obj_t **obj,
@@ -25,12 +26,13 @@ void check_mbutton_press_load(rpg_t *rpg, load_game_t *load_s, obj_t **obj,
         return;
     if (i == -1)
         return;
+    if (load_s->text[load_s->high].status == -1)
+        return;
     GAME.nb_save = i;
     init_load(rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
     load_save(rpg, obj, house);
-    MENU.menu_on = 0;
 }
 
 void check_move_load(rpg_t *rpg, load_game_t *load)
@@ -58,12 +60,13 @@ int check_button_pressed_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
         sfText_setColor(load->text[i].text, sfRed);
     sfText_setColor(load->text[load->high].text, sfYellow);
     if (WIND.event.key.code == sfKeyReturn) {
+        if (load->text[load->high].status == -1)
+            return 0;
         GAME.nb_save = load->high;
         init_load(rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
         load_save(rpg, obj, house);
-        return 1;
     }
     return 0;
 }
