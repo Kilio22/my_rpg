@@ -23,6 +23,7 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     rpg->quest_status = 0;
     init_game(rpg, obj, house);
     rpg->quest_status = 0;
+    MENU.menu_on = 1;
 }
 
 static int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
