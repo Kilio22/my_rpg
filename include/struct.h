@@ -260,6 +260,7 @@ typedef struct dialogue_s {
 
 typedef struct end_game_s {
     sfSprite *back;
+    sfSprite *o_back;
     sfSprite *parch;
     sfText *text;
     sfRectangleShape *rect;

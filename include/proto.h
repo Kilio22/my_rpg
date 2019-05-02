@@ -308,10 +308,11 @@ typedef void (* const intro_menu_t)(rpg_t *, obj_t **, house_t **);
 void screenshot(rpg_t *rpg);
 
 //end game
-void check_end_game(rpg_t *rpg);
+void check_end_game(rpg_t *rpg, int flag);
 void update_rect_end(end_game_t *end, int flag);
 int end_game_event(rpg_t *rpg);
 int update_end_text(end_game_t *end);
+end_game_t init_end_game(rpg_t *rpg);
 
 //credit_menu.c
 void credit_display(rpg_t *rpg, credit_t *credit);

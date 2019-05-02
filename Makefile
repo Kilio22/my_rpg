@@ -64,6 +64,7 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(DIALOGUE_PATH)dialogue_text.c	\
 		$(DIALOGUE_PATH)globals_dialogue.c	\
 		$(END_GAME_PATH)check_end_game.c	\
+		$(END_GAME_PATH)end_game_init.c	\
 		$(END_GAME_PATH)end_game_text.c	\
 		$(END_GAME_PATH)end_game_updates.c	\
 		$(INTRO_PATH)intro.c	\
