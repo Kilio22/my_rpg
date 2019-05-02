@@ -16,12 +16,13 @@ char *check_save_status(int save_nb, rpg_t *rpg)
 {
     char *line;
     char *name;
-    size_t size;
     FILE *stream = fopen(save_path[save_nb], "r");
 
     if (stream == NULL)
         return NULL;
     name = get_next_line(stream);
+    if (name == NULL)
+        return NULL;
     line = get_next_line(stream);
     while (line != NULL) {
         free(line);
