@@ -8,7 +8,6 @@
 #ifndef MY_RIGHTS_H_
 #define MY_RIGHTS_H_
 
-#include <sys/stat.h>
 #include <sys/types.h>
 #include <stdlib.h>
 

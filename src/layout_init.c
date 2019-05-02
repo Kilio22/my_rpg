@@ -9,7 +9,6 @@
     #define _CRT_SECURE_NO_WARNINGS
 #endif
 #include <sys/types.h>
-#include <sys/stat.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include "printf.h"
