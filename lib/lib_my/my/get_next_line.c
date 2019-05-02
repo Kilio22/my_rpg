@@ -6,7 +6,6 @@
 */
 
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include "get_next_line.h"
@@ -52,12 +51,12 @@ static char *my_strncat(char *dest, char *str, int n)
     return (new_str);
 }
 
-static char *read_file(int fd, char *str, char **readed)
+static char *read_file(FILE *stream, char *str, char **readed)
 {
     char buf[READ_SIZE + 1] = {0};
     int read_value;
 
-    read_value = read(fd, buf, READ_SIZE);
+    read_value = fread(buf, sizeof(char), READ_SIZE, stream);
     if (read_value == -1 || str == NULL)
         return (NULL);
     buf[read_value] = '\0';
@@ -72,10 +71,10 @@ static char *read_file(int fd, char *str, char **readed)
         return (NULL);
     if (read_value != READ_SIZE)
         return (my_strncat(str, buf, read_value));
-    return (read_file(fd, my_strncat(str, buf, -1), readed));
+    return (read_file(stream, my_strncat(str, buf, -1), readed));
 }
 
-char *get_next_line(int fd)
+char *get_next_line(FILE *stream)
 {
     static char *readed = NULL;
     char *str;
@@ -96,5 +95,5 @@ char *get_next_line(int fd)
             return (str);
         }
     }
-    return (read_file(fd, str, &readed));
+    return (read_file(stream, str, &readed));
 }

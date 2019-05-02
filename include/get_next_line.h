@@ -11,7 +11,6 @@
 
 #ifndef GETNEXTLINE_H_
 #define GETNEXTLINE_H_
-#include <stdio.h>
 
 char *get_next_line(FILE *stream);
 
