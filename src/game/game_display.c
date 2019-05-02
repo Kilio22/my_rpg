@@ -47,7 +47,7 @@ void display(rpg_t *rpg, obj_t **obj, house_t **house)
 
 static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
 {
-    static int i = 0;
+    static int frames = 0;
 
     character_control(rpg, obj, house);
     follower(obj, rpg);
@@ -58,10 +58,10 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     house_interaction(obj[HERO_HB], house, rpg);
     camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
-    if (i > 9)
-        check_end_game(rpg, obj, house);
-    if (i < 10)
-        i++;
+    if (frames > 9)
+        check_end_game(rpg);
+    if (frames < 10)
+        frames += update_time(NULL);
 }
 
 void game_loop(rpg_t *rpg, obj_t **obj, house_t **house)

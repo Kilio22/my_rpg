@@ -45,7 +45,7 @@ void update_fondu_rect_fight(fight_t *fight, rpg_t *rpg, int flag)
 static void check_end_pos_lose(fight_t *fight,
 obj_t **obj, rpg_t *rpg)
 {
-    if (fight->quest_status == 6 && fight->win == 1) {
+    if (fight->quest_status == 6 && fight->win == 2) {
         sfSprite_move(obj[0]->sprite, V2F(2, 0));
         sfSprite_move(obj[2]->sprite, V2F(2, 0));
         sfSprite_move(obj[3]->sprite, V2F(2, 0));
@@ -54,7 +54,7 @@ obj_t **obj, rpg_t *rpg)
         GAME.follower2 = init_list(obj[0]->pos.x - 100, obj[0]->pos.y);
         fight->quest_status++;
     }
-    if (fight->quest_status == 5 && fight->win == 2) {
+    if (fight->quest_status == 5 && fight->win == 1) {
         sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
         sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);
         sfSprite_setPosition(obj[3]->sprite, fight->old_pos[2]);
@@ -65,8 +65,7 @@ obj_t **obj, rpg_t *rpg)
 
 void check_end_pos(fight_t *fight, obj_t **obj, house_t **house, rpg_t *rpg)
 {
-    if (fight->quest_status == 5 && fight->life[0] == 0
-&& fight->fight_status == 0 && fight->win == 1) {
+    if (fight->quest_status == 5 && fight->life[0] == 0 && fight->win == 2) {
         sfSprite_setPosition(obj[0]->sprite, V2F(10048, 1472));
         obj[0]->pos = sfSprite_getPosition(obj[0]->sprite);
         sfSprite_setPosition(obj[2]->sprite, V2F(9998, 1472));
