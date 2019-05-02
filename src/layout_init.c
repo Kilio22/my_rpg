@@ -6,7 +6,7 @@
 */
 
 #ifdef _WIN32
-    #define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #endif
 #include <sys/types.h>
 #include <stdlib.h>
@@ -91,7 +91,8 @@ int map_init(rpg_t *rpg)
         line = get_next_line(stream);
     }
     while (line) {
-        if (add_layer(&line[my_equal_len(line) + 1], MAP.layers, stream) == NULL)
+        if (add_layer(&line[my_equal_len(line) + 1],
+MAP.layers, stream) == NULL)
             return -1;
         line = get_next_line(stream);
     }
