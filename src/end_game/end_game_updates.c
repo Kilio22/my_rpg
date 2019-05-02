@@ -32,7 +32,7 @@ static void check_updates(end_game_t *end, int *alpha)
     if ((end->end_status == 3)
 && clock_text_intro(0) == 1) {
         sfRectangleShape_setFillColor(end->rect, (sfColor){0, 0, 0, *alpha});
-        if (*alpha > 120)
+        if (*alpha > 190)
             *alpha -= 5;
         else
             end->end_status++;
