@@ -119,6 +119,11 @@ const char *menu_path[][2] = {
     "assets/option_key_en.png"}
 };
 
+const char *credit_path[2] = {
+    "assets/credit_en.png",
+    "assets/credit_en.png"
+};
+
 const char *menu_str[][6] = {
     {
         " Nouvelle Partie ",
@@ -445,4 +450,11 @@ const int level_up[][3][6] = {
         {2, 1, 1, 1},
         {3, 2, 2, 0}
     }
+};
+
+const char *end_text[][2] = {
+    {"J'aime bien le chocolat",
+    "et les petits lapin lindt'or"},
+    {"I like chocolate",
+    "and little lindt'or's rabits"}
 };

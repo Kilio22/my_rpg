@@ -175,6 +175,12 @@ typedef struct load_game_s {
     int high;
 } load_game_t;
 
+typedef struct credit_s {
+    sfSprite *back;
+    sfSprite *cred;
+    sfRectangleShape *rect;
+} credit_t;
+
 typedef struct menu_s {
     sfClock *clock;
     int menu_on;
@@ -251,6 +257,15 @@ typedef struct dialogue_s {
     int nb_pnj;
     int language;
 } dialogue_t;
+
+typedef struct end_game_s {
+    sfSprite *back;
+    sfSprite *parch;
+    sfText *text;
+    sfRectangleShape *rect;
+    int language;
+    int end_status;
+} end_game_t;
 
 typedef struct rpg_s {
     controls_t controls;

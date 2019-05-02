@@ -35,7 +35,7 @@ void character_control(rpg_t *rpg, obj_t **obj, house_t **house);
 int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house);
 
 //check_save_status.c
-char *check_save_status(int save_nb, rpg_t *rpg);
+char *check_save_status(int save_nb);
 
 //controls_events.c
 int manage_control_events(rpg_t *rpg, int *high);
@@ -306,5 +306,15 @@ typedef void (* const intro_menu_t)(rpg_t *, obj_t **, house_t **);
 
 //screenshot.c
 void screenshot(rpg_t *rpg);
+
+//end game
+void check_end_game(rpg_t *rpg);
+void update_rect_end(end_game_t *end, int flag);
+int end_game_event(rpg_t *rpg);
+int update_end_text(end_game_t *end);
+
+//credit_menu.c
+void credit_display(rpg_t *rpg, credit_t *credit);
+int check_credit_events(rpg_t *rpg);
 
 #endif /* !PROTO_H_ */
