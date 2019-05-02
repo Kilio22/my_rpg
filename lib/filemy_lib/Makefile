@@ -32,12 +32,7 @@ COLOR_THEME	=	$(YELLO_C)
 SRC_PATH	=	./
 INCLUDE_PATH	=	../../include
 
-SRC	=	my_file/my_file_readall.c \
-		my_file/my_file_size.c \
-		my_rights/common_rights.c \
-		my_rights/exec_rights.c \
-		my_rights/read_rights.c \
-		my_rights/write_rights.c
+SRC	=	my_file/my_file_readall.c
 
 CFLAGS	=	-Wall \
 			-Wextra \

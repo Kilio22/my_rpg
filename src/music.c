@@ -8,7 +8,6 @@
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include "rpg.h"
 
 void set_volume(rpg_t *rpg, int high, settings_t *settings)

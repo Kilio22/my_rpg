@@ -129,6 +129,7 @@ typedef struct framebuffer
 
 typedef struct game_s {
     int nb_save;
+    char *name_save;
     int auberge;
     int language;
     int objectiv;
@@ -263,6 +264,7 @@ typedef struct rpg_s {
     int quest_status;
     int dial_status;
     int debug;
+    bool killed[3];
     size_t frame;
 } rpg_t;
 

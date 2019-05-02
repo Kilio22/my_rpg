@@ -5,8 +5,6 @@
 ** returns number sent to the fonction as a string
 */
 
-#include <unistd.h>
-
 int my_getnbr(char const *str)
 {
     long long p = 0;

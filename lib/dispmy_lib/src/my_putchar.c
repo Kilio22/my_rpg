@@ -5,9 +5,10 @@
 ** display an char
 */
 
+#include <stdio.h>
 #include "my_display.h"
 
 void mg_putchar(char c)
 {
-    write(1, &c, 1);
+    fwrite(&c, sizeof(char), 1, stdout);
 }

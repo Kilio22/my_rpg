@@ -9,9 +9,8 @@
 
 void attack_allies(obj_t **obj, fight_t *fight, int i)
 {
-    int damages;
+    int damages = 0;
 
-    i = (i == 0) ? 0 : i - 1;
     if (fight->high == 0)
         damages = global_damages[i][0] +
 (rand() % (obj[i]->stats[ATK] + 1));

@@ -5,6 +5,9 @@
 ** main
 */
 
+#ifdef _WIN32
+    #define _CRT_SECURE_NO_WARNINGS
+#endif
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
 #include <stdlib.h>
@@ -22,14 +25,17 @@ static int init_main(rpg_t *rpg)
     rpg->wind.view =
 sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
     rpg->game.nb_save = 0;
+    rpg->game.name_save = mg_strdup("antoine");
     rpg->game.language = 0;
-    rpg->game.inv = inventory_create_from_file(rpg->wind.wind, "inv.ini");
+    rpg->game.inv = inventory_create(rpg->wind.wind);
     rpg->controls.bools = malloc(sizeof(sfBool) * 10);
     if (rpg->controls.bools == NULL)
         return (84);
     for (int i = 0; i < 10; i++)
         rpg->controls.bools[i] = 0;
     rpg->error_code = 0;
+    for (int i = 0; i < 3; i++)
+        rpg->killed[i] = 0;
     create_music(rpg);
     return 0;
 }

@@ -5,7 +5,7 @@
 ** display the number of characters found in a string
 */
 
-#include <unistd.h>
+#include <stddef.h>
 
 void my_putchar(char c);
 

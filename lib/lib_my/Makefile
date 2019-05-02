@@ -32,8 +32,7 @@ COLOR_THEME	=	$(YELLO_C)
 SRC_PATH	=	./my
 INCLUDE_PATH	=	../../include
 
-SRC	=	my_swap.c					\
-		my_putstr.c					\
+SRC	=	my_putstr.c					\
 		my_strlen.c					\
 		my_getnbr.c					\
 		my_strcpy.c					\
@@ -45,31 +44,15 @@ SRC	=	my_swap.c					\
 		my_strdup.c					\
 		my_strncpy.c				\
 		my_strcmp.c					\
-		my_strlowcase.c				\
-		my_get_one_nbr.c			\
 		my_int_to_char.c			\
 		get_next_line.c				\
-		my_str_to_word_array.c		\
-		my_str_isalpha.c			\
-		my_str_islower.c			\
-		my_str_isprintable.c		\
-		my_str_isupper.c			\
 		my_strcat.c					\
 		my_strncat.c				\
 		my_strncmp.c				\
-		my_strstr.c					\
-		my_strupcase.c				\
 		my_strxdup.c				\
-		my_swap.c					\
-		my_compute_power_rec.c		\
-		my_compute_square_root.c	\
-		my_is_prime.c				\
-		my_isneg.c					\
+		my_str_to_word_array.c		\
 		my_tab_len.c				\
 		my_put_err.c				\
-		my_str_isnum.c				\
-		my_is_alpha_num.c			\
-		randomiser.c				\
 		my_realloc.c				\
 		my_itoa.c 					\
 		my_atoi.c					\

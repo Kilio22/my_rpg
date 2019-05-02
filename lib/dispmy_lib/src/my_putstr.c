@@ -5,6 +5,7 @@
 ** function for display an entire str
 */
 
+#include <stdio.h>
 #include "my_display.h"
 
 static int s_strlen(char const *str)
@@ -18,5 +19,5 @@ static int s_strlen(char const *str)
 
 void mg_putstr(char const *str)
 {
-    write(1, str, s_strlen(str));
+    fwrite(str, sizeof(char), s_strlen(str), stdout);
 }

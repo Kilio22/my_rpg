@@ -20,6 +20,8 @@ static int manage_enter(dialogue_t *dialogue, rpg_t *rpg, obj_t **obj)
 {
     if (dialogue->high == 3)
         return 1;
+    if (dialogue->high == 2 && dialogue->nb_pnj == 0)
+        save(rpg, obj);
     clock_text_intro(0);
     dialogue->quest_status_d = dialogue->high - 1;
     return 0;

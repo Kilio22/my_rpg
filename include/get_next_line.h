@@ -12,6 +12,6 @@
 #ifndef GETNEXTLINE_H_
 #define GETNEXTLINE_H_
 
-char *get_next_line(int fd);
+char *get_next_line(FILE *stream);
 
 #endif /* !GETNEXTLINE_H_ */

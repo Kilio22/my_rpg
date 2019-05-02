@@ -91,19 +91,6 @@ int update_intro_text(rpg_t *rpg, intro_t *intro)
 
     if (intro_text_index(&index, rpg, &to_print, &print_index) == -1)
         return -1;
-    /* for (size_t i = 0; (i < rpg->frame || i <= 1) &&
-print_index < my_strlen(scrpits[index]); i++) {
-        to_print[print_index] = (GAME.language == 0) ? scrpits[index][print_index] : scrpits_en[index][print_index];
-        print_index++;
-        to_print[print_index] = '\0';
-    }
-    if (print_index == my_strlen(scrpits[index]) &&
-(rpg->quest_status < 2 || (rpg->quest_status >= 6 && rpg->quest_status <= 9) ||
-(rpg->quest_status >= 13 && rpg->quest_status <= 21))
-&& clock_text_intro(1) == 1)
-        rpg->quest_status++;
-    else if (print_index != my_strlen(scrpits[index]))
-        clock_text_intro(0); */
     if (GAME.language == 0)
         update_fr(rpg, &to_print, index, &print_index);
     else
