@@ -18,6 +18,7 @@ void menu_new_game(rpg_t *rpg, obj_t **obj, house_t **house)
             ret_val += check_new_game_events(rpg, &load, obj, house);
         if (ret_val == 1 || MENU.menu_on == 0) {
             destroy_load(&load);
+            MENU.menu_on = 1;
             return;
         }
         rpg->frame = update_time(&frames);

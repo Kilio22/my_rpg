@@ -119,6 +119,11 @@ const char *menu_path[][2] = {
     "assets/option_key_en.png"}
 };
 
+const char *credit_path[2] = {
+    "assets/credit_en.png",
+    "assets/credit_en.png"
+};
+
 const char *menu_str[][6] = {
     {
         " Nouvelle Partie ",

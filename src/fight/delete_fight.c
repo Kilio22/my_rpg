@@ -34,16 +34,17 @@ static void add_item(rpg_t *rpg, fight_t *fight, obj_t **obj)
 
 static void reinit_pos(obj_t **obj, fight_t *fight, rpg_t *rpg)
 {
-    if (fight->win == 1) {
+    if (fight->win == 2) {
         sfSprite_setPosition(obj[fight->nb_fight + 6]->sprite,
 fight->old_pos[3]);
         obj[fight->nb_fight + 6]->pos =
 sfSprite_getPosition(obj[fight->nb_fight + 6]->sprite);
-    } else if (fight->win == 2) {
+    } else if (fight->win == 1) {
         free_obj(obj[fight->nb_fight + 6]);
         obj[fight->nb_fight + 6] = NULL;
         rpg->killed[fight->nb_fight] = 1;
         add_item(rpg, fight, obj);
+        rpg->killed[fight->nb_fight] = 1;
     } else {
         sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
         sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);

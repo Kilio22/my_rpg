@@ -6,7 +6,7 @@
 */
 
 #ifdef _WIN32
-    #define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #endif
 #include <SFML/Graphics.h>
 #include <SFML/Audio.h>
@@ -72,8 +72,10 @@ static int check_password(char *pass, rpg_t *rpg)
     return 0;
 }
 
-static int check_flags(int ac, char **av, rpg_t *rpg)
+static int check_flags(int ac, char **av, rpg_t *rpg, char **env)
 {
+    if (check_files(env) == -1)
+        return 1;
     if (ac == 1) {
         rpg->debug = 0;
         return 0;
@@ -89,13 +91,13 @@ static int check_flags(int ac, char **av, rpg_t *rpg)
     return 0;
 }
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     rpg_t rpg;
     obj_t **obj = malloc(sizeof(obj_t *) * 11);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
-    if (check_flags(ac, av, &rpg) == 1)
+    if (check_flags(ac, av, &rpg, env) == 1)
         return (84);
     if (obj == NULL || house == NULL)
         return (84);
