@@ -147,7 +147,6 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 
 SRC_LIB	=	inimy \
 			g 	\
-			list \
 			graphmy \
 			filemy \
 			chainmy \
@@ -155,7 +154,6 @@ SRC_LIB	=	inimy \
 			dispmy \
 			my \
 			graphic \
-			list	\
 			csfml-graphics \
 			csfml-window \
 			csfml-system \
