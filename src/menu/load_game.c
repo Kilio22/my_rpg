@@ -85,6 +85,7 @@ void menu_load_game(rpg_t *rpg, obj_t **obj, house_t **house)
         while (sfRenderWindow_pollEvent(WIND.wind, &WIND.event))
             ret_val += check_load_game_events(rpg, &load, obj, house);
         if (ret_val == 1 || MENU.menu_on == 0) {
+            MENU.menu_on = 1;
             destroy_load(&load);
             return;
         }

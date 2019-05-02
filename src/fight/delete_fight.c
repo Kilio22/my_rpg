@@ -44,6 +44,7 @@ sfSprite_getPosition(obj[fight->nb_fight + 6]->sprite);
         obj[fight->nb_fight + 6] = NULL;
         rpg->killed[fight->nb_fight] = 1;
         add_item(rpg, fight, obj);
+        rpg->killed[fight->nb_fight] = 1;
     } else {
         sfSprite_setPosition(obj[HERO_HB]->sprite, fight->old_pos[0]);
         sfSprite_setPosition(obj[2]->sprite, fight->old_pos[1]);

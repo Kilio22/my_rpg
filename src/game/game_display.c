@@ -59,7 +59,7 @@ static void game_action(rpg_t *rpg, obj_t **obj, house_t **house)
     camera_control(rpg, obj[HERO_HB]->pos, obj);
     update_all_rect(obj, house);
     if (frames > 9)
-        check_end_game(rpg);
+        check_end_game(rpg, 0);
     if (frames < 10)
         frames += update_time(NULL);
 }
