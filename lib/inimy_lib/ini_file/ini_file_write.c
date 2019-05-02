@@ -51,6 +51,7 @@ void ini_file_write(ini_file_t *file)
 
     write(fd, buff, mg_strlen(buff));
     free(buff);
+    close(fd);
 }
 
 void ini_file_write_path(ini_file_t *file, char *path)
@@ -60,4 +61,5 @@ void ini_file_write_path(ini_file_t *file, char *path)
 
     write(fd, buff, mg_strlen(buff));
     free(buff);
+    close(fd);
 }
