@@ -4,6 +4,8 @@
 ** File description:
 ** put an str on the standard err output
 */
+
+#include <stdio.h>
 #include "my_display.h"
 
 static int s_strlen(char const *str)
@@ -17,5 +19,5 @@ static int s_strlen(char const *str)
 
 void mg_put_errstr(char const *str)
 {
-    write(2, str, s_strlen(str));
+    fwrite(str, sizeof(char), s_strlen(str), stderr);
 }

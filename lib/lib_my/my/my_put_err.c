@@ -5,11 +5,12 @@
 ** my_put_err
 */
 
+#include <stdio.h>
 #include "my.h"
 
 void my_put_error(char *str)
 {
     int i = my_strlen(str);
 
-    write(2, str, i);
+    fwrite(str, sizeof(char), i, stderr);
 }

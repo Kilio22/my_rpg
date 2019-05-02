@@ -5,10 +5,10 @@
 ** display a char
 */
 
-#include <unistd.h>
+#include <stdio.h>
 
 int my_putchar(char c)
 {
-    write(1, &c, 1);
+    fwrite(&c, sizeof(char), 1, stdout);
     return 1;
 }

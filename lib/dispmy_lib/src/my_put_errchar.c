@@ -5,9 +5,10 @@
 ** display an char on err output
 */
 
+#include <stdio.h>
 #include "my_display.h"
 
 void mg_put_errchar(char c)
 {
-    write(2, &c, 1);
+    fwrite(&c, sizeof(char), 1, stderr);
 }
