@@ -164,7 +164,6 @@ SRC_LIB	=	inimy \
 
 LIB_PATHS	=	lib/lib_my \
 				lib/lib_graphic \
-				lib/lib_list \
 				lib/graphmy_lib \
 				lib/stringmy_lib \
 				lib/chainmy_lib \

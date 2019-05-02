@@ -33,10 +33,10 @@ INCLUDE_PATH	=	../../include
 
 SRC_MY	=	src/my_put_errchar.c \
 			src/my_put_errstr.c \
-			src/my_putchar.c \
+			src/my_putchar_g.c \
 			src/my_putfloat.c \
 			src/my_putnbr.c \
-			src/my_putstr.c
+			src/my_putstr_g.c
 
 CFLAGS	=	-Wall \
 			-Wextra \
