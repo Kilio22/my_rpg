@@ -32,5 +32,7 @@
 #define MOVE_N (long) update_time(NULL)
 #define SETT settings_str
 #define ENTXT1 ennemi_text[fight->text_index][GAME.language]
+#define ENDTXT end_text[end->language][index]
+#define ENDTXT2 end_text[end->language][end->end_status]
 
 #endif /* !MACROS_H_ */

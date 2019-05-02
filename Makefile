@@ -46,6 +46,7 @@ SETTINGS_PATH	=	settings/
 INTRO_PATH	=	intro/
 FIGHT_PATH	=	fight/
 DIALOGUE_PATH	=	dialogue/
+END_GAME_PATH	=	end_game/
 
 SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(DIALOGUE_PATH)create_dialogue.c	\
@@ -53,6 +54,9 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(DIALOGUE_PATH)dialogues_managment.c	\
 		$(DIALOGUE_PATH)dialogue_text.c	\
 		$(DIALOGUE_PATH)globals_dialogue.c	\
+		$(END_GAME_PATH)check_end_game.c	\
+		$(END_GAME_PATH)end_game_text.c	\
+		$(END_GAME_PATH)end_game_updates.c	\
 		$(INTRO_PATH)intro.c	\
 		$(INTRO_PATH)intro_animation.c	\
 		$(INTRO_PATH)intro_event.c	\
@@ -105,7 +109,6 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		characters_interaction.c	\
 		characters_stats.c	\
 		check_obj_display.c \
-		check_end_game.c	\
 		create_house.c	\
 		create_obj.c	\
 		display_utils.c	\

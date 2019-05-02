@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-static int init_text_load(load_game_t *new, rpg_t *rpg)
+static int init_text_load(load_game_t *new)
 {
     char *line = NULL;
     sfVector2f pos = {640, 260};
@@ -41,7 +41,7 @@ sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
     new.back = sfSprite_create();
     sfSprite_setTexture(new.back, texture, sfTrue);
     sfSprite_setScale(new.back, V2F(0.7, 0.7));
-    size = init_text_load(&new, rpg);
+    size = init_text_load(&new);
     new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){25 * size, 90});
     new.high = 0;
     sfText_setColor(new.text[0].text, sfYellow);

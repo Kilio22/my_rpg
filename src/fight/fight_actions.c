@@ -13,7 +13,7 @@ static void update_text_pos(fight_t *fight, rpg_t *rpg)
 (sfVector2i){0, 558}, WIND.view);
 
     if (fight->quest_status == 8) {
-        fight->text_index = (fight->win == 1) ? 3 : 4;
+        fight->text_index = (fight->win == 1) ? 4 : 3;
         update_fight_text(fight, 1, rpg);
         fight->quest_status++;
     }
@@ -56,10 +56,10 @@ house_t **house, fight_t *fight)
     choose_fighter(obj, fight, rpg, 3);
     if (fight->life[0] == 0 && fight->quest_status == 3) {
         fight->quest_status++;
-        fight->win = 1;
+        fight->win = 2;
     } else if (fight->life[1] == 0 && fight->quest_status == 3) {
         fight->quest_status++;
-        fight->win = 2;
+        fight->win = 1;
     }
     check_end_pos(fight, obj, house, rpg);
     for (int i = 0; i < 5; i++)
