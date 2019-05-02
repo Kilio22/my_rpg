@@ -25,6 +25,8 @@
 
 static const char items_data[] = "assets_data.ini";
 
+#define DATA_MAPPING_SIZE 5
+
 enum data_mapping {
     NAME,
     TYPE,
