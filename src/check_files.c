@@ -62,7 +62,16 @@ static int check_open(char **tab)
     return 0;
 }
 
-int check_files(void)
+static int check_env(char **env)
+{
+    for (size_t i = 0; env[i]; i++) {
+        if (my_strncmp(env[i], "DISPLAY", 7) == 0)
+            return 0;
+    }
+    return -1;
+}
+
+int check_files(char **env)
 {
     DIR *dir = opendir("./assets");
     char **tab = NULL;
@@ -79,6 +88,8 @@ int check_files(void)
     if (!tab)
         return -1;
     if (check_open(tab) == -1)
+        return -1;
+    if (check_env(env) == -1)
         return -1;
     return 0;
 }

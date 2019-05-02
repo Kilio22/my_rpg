@@ -319,6 +319,6 @@ void credit_display(rpg_t *rpg, credit_t *credit);
 int check_credit_events(rpg_t *rpg);
 
 //load
-int check_files(void);
+int check_files(char **env);
 
 #endif /* !PROTO_H_ */
