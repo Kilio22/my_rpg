@@ -6,6 +6,7 @@
 */
 
 #include "rpg.h"
+#include "save.h"
 
 size_t update_time(size_t *frames)
 {
@@ -32,10 +33,10 @@ size_t update_time(size_t *frames)
     return frame;
 }
 
-void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
+void check_mbutton_press_load(rpg_t *rpg, load_game_t *load_s, obj_t **obj,
                                                             house_t **house)
 {
-    int i = check_mousepos_intersect(rpg, load->text, 3);
+    int i = check_mousepos_intersect(rpg, load_s->text, 3);
 
     if (!sfMouse_isButtonPressed(0))
         return;
@@ -46,6 +47,7 @@ void check_mbutton_press_load(rpg_t *rpg, load_game_t *load, obj_t **obj,
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
     rpg->quest_status = 1;
+    load(rpg, obj);
     init_game(rpg, obj, house);
     rpg->quest_status = 0;
 }

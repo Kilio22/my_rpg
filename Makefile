@@ -142,7 +142,8 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		inventory/inventory_compute.c \
 		inventory/inventory_files_save.c \
 		inventory/inventory_file_load.c \
-		save/save_core.c
+		save/save_core.c \
+		save/open_core.c
 
 SRC_LIB	=	inimy \
 			g 	\

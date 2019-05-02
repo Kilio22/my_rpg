@@ -110,7 +110,7 @@ int is_collided_mouse_rect(sfIntRect rect, sfRenderWindow *window);
 void inventory_save(inventory_t *inv, char *path);
 
 // inventory_file_load.c
-inventory_t *inventory_create_from_file(sfRenderWindow *windown, char *path);
+inventory_t *inventory_create_from_file(sfRenderWindow *window, char *path);
 
 static const sfVector2f stuff_grid[6] = {
 {70, 214}, {145, 68},
