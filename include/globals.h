@@ -40,5 +40,6 @@ extern const int tab_stats[][6];
 extern const int level_up[][3][6];
 extern const char *scrpits_en[];
 extern const char *end_text[][2];
+extern const char *credit_path[2];
 
 #endif /* !GLOBALS_H_ */

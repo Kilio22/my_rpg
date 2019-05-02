@@ -313,4 +313,8 @@ void update_rect_end(end_game_t *end, int flag);
 int end_game_event(rpg_t *rpg);
 int update_end_text(end_game_t *end);
 
+//credit_menu.c
+void credit_display(rpg_t *rpg, credit_t *credit);
+int check_credit_events(rpg_t *rpg);
+
 #endif /* !PROTO_H_ */

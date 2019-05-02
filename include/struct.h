@@ -175,6 +175,12 @@ typedef struct load_game_s {
     int high;
 } load_game_t;
 
+typedef struct credit_s {
+    sfSprite *back;
+    sfSprite *cred;
+    sfRectangleShape *rect;
+} credit_t;
+
 typedef struct menu_s {
     sfClock *clock;
     int menu_on;

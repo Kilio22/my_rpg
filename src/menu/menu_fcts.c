@@ -19,13 +19,6 @@ sfRectangleShape *create_rect(sfVector2f pos, sfVector2f size)
     return new;
 }
 
-void menu_credit(rpg_t *rpg, obj_t **obj, house_t **house)
-{
-    (void) rpg;
-    (void) obj;
-    (void) house;
-}
-
 void menu_close_window(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     (void) obj;

@@ -117,6 +117,8 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(MENU_PATH)menu_display.c	\
 		$(MENU_PATH)menu_event.c 	\
 		$(MENU_PATH)menu_fcts.c	\
+		$(MENU_PATH)credits.c	\
+		$(MENU_PATH)credits_event.c	\
 		$(MENU_PATH)menu_init.c	\
 		$(MENU_PATH)new_game.c	\
 		$(MENU_PATH)new_game_event.c	\
