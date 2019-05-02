@@ -44,7 +44,7 @@ static char **load_file(FILE *stream)
             return NULL;
         i++;
     }
-    if (i != 85)
+    if (i != 86)
         return NULL;
     return tab;
 }

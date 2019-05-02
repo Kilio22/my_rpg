@@ -83,3 +83,4 @@ assets/TileD_exterior3.png
 assets/TileD_interior.png
 assets/up_vol.png
 assets/Water_things.png
+assets_data.ini
