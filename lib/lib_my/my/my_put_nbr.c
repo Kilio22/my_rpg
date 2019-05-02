@@ -5,8 +5,6 @@
 ** display every numbers of an int
 */
 
-#include <unistd.h>
-
 void my_putchar(char c);
 
 int my_put_nbr(int nb)

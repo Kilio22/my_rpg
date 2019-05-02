@@ -5,7 +5,6 @@
 ** display one by one the characters of a string
 */
 
-#include <unistd.h>
 #include "my.h"
 #include "printf.h"
 

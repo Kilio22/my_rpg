@@ -5,8 +5,6 @@
 ** copy a string into an other
 */
 
-#include <unistd.h>
-
 void my_putchar(char c);
 
 char *my_strcpy(char *dest, char const *src)

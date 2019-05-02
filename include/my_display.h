@@ -8,7 +8,6 @@
 #ifndef mg_DISPLAY_H
 #define mg_DISPLAY_H
 
-#include <unistd.h>
 #include <stdlib.h>
 
 //  put char & strings  //

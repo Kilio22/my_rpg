@@ -5,8 +5,6 @@
 ** fonction that copy n characters from a string into an other
 */
 
-#include <unistd.h>
-
 char *my_strncpy(char *dest, char const *src, int n)
 {
     int i = 0;
