@@ -47,8 +47,17 @@ INTRO_PATH	=	intro/
 FIGHT_PATH	=	fight/
 DIALOGUE_PATH	=	dialogue/
 END_GAME_PATH	=	end_game/
+GAME_PATH	=	game/
+CHAR_PATH	=	characters/
+MAP_PATH	=	map/
 
-SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
+SRC	=	$(CHAR_PATH)character_gestion.c	\
+		$(CHAR_PATH)characters_animation.c	\
+		$(CHAR_PATH)characters_interaction.c	\
+		$(CHAR_PATH)characters_stats.c	\
+		$(CHAR_PATH)follower.c	\
+		$(CHAR_PATH)pnj_moves.c	\
+		$(DIALOGUE_PATH)aubergiste.c	\
 		$(DIALOGUE_PATH)create_dialogue.c	\
 		$(DIALOGUE_PATH)destroy_dialogue.c	\
 		$(DIALOGUE_PATH)dialogues_managment.c	\
@@ -82,6 +91,21 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(FIGHT_PATH)manage_fight.c	\
 		$(FIGHT_PATH)apply_attacks.c	\
 		$(FIGHT_PATH)sort.c	\
+		$(GAME_PATH)analyse_game_key.c	\
+		$(GAME_PATH)check_obj_display.c	\
+		$(GAME_PATH)display_utils.c	\
+		$(GAME_PATH)framebuffer.c	\
+		$(GAME_PATH)game_create.c	\
+		$(GAME_PATH)game_display.c	\
+		$(GAME_PATH)game_event.c	\
+		$(GAME_PATH)game_init.c	\
+		$(GAME_PATH)globals.c	\
+		$(GAME_PATH)house_display.c	\
+		$(GAME_PATH)pause.c	\
+		$(MAP_PATH)fill_map.c	\
+		$(MAP_PATH)layout_init.c	\
+		$(MAP_PATH)map_init.c	\
+		$(MAP_PATH)print_map.c	\
 		$(MENU_PATH)analyse_menu_key.c	\
 		$(MENU_PATH)analyse_menu_mouse.c	\
 		$(MENU_PATH)check_save_status.c	\
@@ -102,41 +126,20 @@ SRC	=	$(DIALOGUE_PATH)aubergiste.c	\
 		$(SETTINGS_PATH)settings_init.c	\
 		$(SETTINGS_PATH)settings_menu.c	\
 		$(SETTINGS_PATH)settings_utils.c	\
-		analyse_game_key.c	\
 		camera_gestion.c	\
-		character_gestion.c \
-		characters_animation.c	\
-		characters_interaction.c	\
-		characters_stats.c	\
-		check_obj_display.c \
 		create_house.c	\
 		create_obj.c	\
-		display_utils.c	\
-		fill_map.c	\
-		follower.c 	\
 		free_save.c	\
 		free.c 	\
-		game_display.c	\
-		game_event.c	\
-		game_init.c \
-		globals.c	\
-		house_display.c	\
 		init_save.c	\
-		layout_init.c 	\
 		list.c 	\
-		map_init.c	\
 		music.c \
 		my_utils.c	\
-		pause.c	\
-		print_map.c	\
-		framebuffer.c 	\
 		put_pixel.c \
-		pnj_moves.c	\
 		time_gestion.c \
 		item/item.c \
 		screenshot.c \
 		inventory/inventory_core.c \
-		game_create.c			\
 		my_other_utils.c \
 		inventory/inventory.c \
 		inventory/inventory_draw.c \
