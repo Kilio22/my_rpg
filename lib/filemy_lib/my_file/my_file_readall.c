@@ -5,6 +5,7 @@
 ** read an entire file and put it in an str
 */
 
+#include <stdio.h>
 #include "my_file.h"
 
 static int mg_strlen(char const *str)
@@ -45,16 +46,16 @@ char *my_file_readall(char const *filepath)
     char *buff = malloc(sizeof(char));
     int size = 0;
     char c;
-    int fd = open(filepath, O_RDONLY);
+    FILE *stream = fopen(filepath, "r");
 
     buff[0] = '\0';
-    if (fd == -1)
+    if (stream == NULL)
         return (NULL);
     do {
-        size = read(fd, &c, 1);
-        if (size)
+        size = fread(&c, sizeof(char), 1, stream);
+        if (size > 0)
             my_strcat(&buff, (char[]){c, '\0'});
-    } while (size);
-    close(fd);
+    } while (size > 0);
+    fclose(stream);
     return (buff);
 }
