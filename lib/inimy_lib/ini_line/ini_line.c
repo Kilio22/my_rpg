@@ -24,7 +24,7 @@ ini_line_t *ini_line_create_from_str(char *str)
 
     while (str[size_key] != '[' && str[size_key] != '\0')
         size_key++;
-    if (str[size_key] == '\0')
+    if (str[size_key] == '\0' || str[mg_strlen(str) - 1] != ']')
         return (NULL);
     line = ini_line_create(mg_strndup(str, size_key));
     if (mg_strlen(str) - size_key - 2 == 0)

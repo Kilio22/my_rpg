@@ -22,7 +22,7 @@ char *check_save_status(int save_nb)
     if (!ini)
         return (NULL);
     name = ini_file_get_from_key(ini, "NAME");
-    if (!name)
+    if (!name || name->values->size == 0)
         return (NULL);
     return (mg_strdup(ini_line_get_value_from_col(name, 0)));
 }

@@ -15,7 +15,7 @@ static int inventory_fill_stuff(inventory_t *inv, ini_file_t *file, int i)
     item_t *buff_item;
     ini_file_t *items = ini_file_create_from_file(mg_strdup(items_data));
 
-    if (!ini)
+    if (!ini || !items)
         return (0);
     for (int j = 0; j < 6; j++) {
         buff = ini_line_get_value_from_col(ini, j);
@@ -34,12 +34,13 @@ static int inventory_fill_stock(inventory_t *inv, ini_file_t *file)
     item_t *buff_item;
     char *buff;
 
-    if (!line)
+    if (!line || !items)
         return (0);
     for (int i = 0; i < line->values->size; i++) {
         buff = ini_line_get_value_from_col(line, i);
         buff_item = item_create(mg_atoi(buff), items);
-        inventory_add_item(inv, buff_item);
+        if (buff_item)
+            inventory_add_item(inv, buff_item);
     }
     return (1);
 }

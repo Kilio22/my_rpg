@@ -20,10 +20,13 @@ ini_file_t *ini_file_create_from_str(char *str)
 {
     ini_file_t *file = ini_file_create();
     char **arr = mg_strtok(str, "\n");
+    ini_line_t *buff;
     int i = 0;
 
     while (arr[i]) {
-        double_vector_push_back(file->lines, ini_line_create_from_str(arr[i]));
+        buff = ini_line_create_from_str(arr[i]);
+        if (buff)
+            double_vector_push_back(file->lines, buff);
         i++;
     }
     return (file);

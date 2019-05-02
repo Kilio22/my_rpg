@@ -7,19 +7,19 @@
 
 #include "rpg.h"
 
-static int init_text_load(load_game_t *new)
+static void init_text_load(load_game_t *new, int *size)
 {
     char *line = NULL;
     sfVector2f pos = {640, 260};
-    int size = 0;
 
     for (int i = 0; i < 3; i++) {
         line = check_save_status(i);
-        if (my_strlen(line) > size)
-            size = my_strlen(line);
+        if (my_strlen(line) > *size)
+            *size = my_strlen(line);
         if (line == NULL) {
             new->text[i].text = create_text(menu_font, "N/A", 60, pos);
             new->text[i].status = -1;
+            my_strlen("N/A") > *size ? *size = my_strlen("N/A") : 0;
         }
         else {
             new->text[i].text = create_text(menu_font, line, 60, pos);
@@ -28,7 +28,6 @@ static int init_text_load(load_game_t *new)
         pos.y += 100;
         free(line);
     }
-    return size;
 }
 
 load_game_t init_load_game(rpg_t *rpg)
@@ -41,8 +40,8 @@ sfTexture_createFromFile(menu_path[0][GAME.language], NULL);
     new.back = sfSprite_create();
     sfSprite_setTexture(new.back, texture, sfTrue);
     sfSprite_setScale(new.back, V2F(0.7, 0.7));
-    size = init_text_load(&new);
-    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){25 * size, 90});
+    init_text_load(&new, &size);
+    new.rect = create_rect((sfVector2f){640, 260}, (sfVector2f){27 * size, 90});
     new.high = 0;
     sfText_setColor(new.text[0].text, sfYellow);
     return new;
