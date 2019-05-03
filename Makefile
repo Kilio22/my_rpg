@@ -54,7 +54,6 @@ MAP_PATH	=	map/
 SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(CHAR_PATH)characters_animation.c	\
 		$(CHAR_PATH)characters_interaction.c	\
-		$(CHAR_PATH)characters_stats.c	\
 		$(CHAR_PATH)follower.c	\
 		$(CHAR_PATH)pnj_moves.c	\
 		$(DIALOGUE_PATH)aubergiste.c	\
