@@ -38,6 +38,8 @@ static int inventory_fill_stock(inventory_t *inv, ini_file_t *file)
         return (0);
     for (int i = 0; i < line->values->size; i++) {
         buff = ini_line_get_value_from_col(line, i);
+        if (!mg_str_isint(buff))
+            continue;
         buff_item = item_create(mg_atoi(buff), items);
         if (buff_item)
             inventory_add_item(inv, buff_item);
