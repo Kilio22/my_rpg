@@ -32,8 +32,12 @@ int init_stats(obj_t **obj)
     int j = 0;
 
     for (int i = 0; i < 9; i++) {
-        if (i == 1 || i == 4 || i == 5 || !obj[i])
+        if (i == 1 || i == 4 || i == 5)
             continue;
+        if (!obj[i]) {
+            j++;
+            continue;
+        }
         obj[i]->stats[LEVEL] = tab_stats[j][LEVEL];
         obj[i]->stats[XP] = tab_stats[j][XP];
         obj[i]->stats[HPS] = tab_stats[j][HPS];
