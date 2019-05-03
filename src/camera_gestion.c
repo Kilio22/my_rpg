@@ -15,7 +15,7 @@ static void zoom_gestion(rpg_t *rpg)
         CONTROLS.bools[ZOOM] = 0;
     }
     if (CONTROLS.bools[DEZOOM] == 1) {
-        if (WIND.zoom > 0) {
+        if (WIND.zoom > 0 || rpg->debug == 1) {
             sfView_zoom(WIND.view,
 ((powf(0.9, (WIND.zoom - 1)) / (powf(0.9, WIND.zoom)))));
             WIND.zoom--;

@@ -32,13 +32,14 @@ int intro_nathan(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
     return opt;
 }
 
-int intro_port(obj_t **obj, int opt, rpg_t *rpg, house_t **house)
+int intro_port(obj_t **obj, int opt, rpg_t *rpg,
+house_t **house __attribute__((unused)))
 {
     sfVector2f new_pos = {0, 0};
 
-    (void)house;
     if (opt == 5 && rpg->quest_status == 3) {
-        sfSound_play(rpg->music.hurt);
+        if (sfMusic_getStatus(GAME.back_music) == sfPlaying)
+            sfSound_play(rpg->music.hurt);
         new_pos.x = 12196;
         new_pos.y = 1442;
         sfSprite_setPosition(obj[0]->sprite, new_pos);

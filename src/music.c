@@ -10,6 +10,15 @@
 #include <stdlib.h>
 #include "rpg.h"
 
+void set_sound_volume(rpg_t *rpg)
+{
+    float volume = sfMusic_getVolume(GAME.back_music);
+
+    sfSound_setVolume(rpg->music.aled, volume);
+    sfSound_setVolume(rpg->music.hurt, volume);
+    sfMusic_setVolume(rpg->music.fight_music, volume);
+}
+
 void set_volume(rpg_t *rpg, int high, settings_t *settings)
 {
     if (high == 1 && settings->volume < 100) {
