@@ -50,6 +50,7 @@ END_GAME_PATH	=	end_game/
 GAME_PATH	=	game/
 CHAR_PATH	=	characters/
 MAP_PATH	=	map/
+INVENTORY_PATH	=	inventory/
 
 SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(CHAR_PATH)characters_animation.c	\
@@ -128,6 +129,18 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		$(SETTINGS_PATH)settings_init.c	\
 		$(SETTINGS_PATH)settings_menu.c	\
 		$(SETTINGS_PATH)settings_utils.c	\
+		$(INVENTORY_PATH)inventory_core.c \
+		$(INVENTORY_PATH)inventory.c \
+		$(INVENTORY_PATH)inventory_draw.c \
+		$(INVENTORY_PATH)inventory_data.c \
+		$(INVENTORY_PATH)inventory_compute_stats.c \
+		$(INVENTORY_PATH)inventory_event.c \
+		$(INVENTORY_PATH)inventory_common.c \
+		$(INVENTORY_PATH)inventory_compute.c \
+		$(INVENTORY_PATH)inventory_files_save.c \
+		$(INVENTORY_PATH)inventory_file_load.c \
+		$(INVENTORY_PATH)inventory_stats.c \
+		$(INVENTORY_PATH)inventory_update_stats.c \
 		check_files.c	\
 		camera_gestion.c	\
 		create_house.c	\
@@ -141,19 +154,7 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		time_gestion.c \
 		item/item.c \
 		screenshot.c \
-		inventory/inventory_core.c \
 		my_other_utils.c \
-		inventory/inventory.c \
-		inventory/inventory_draw.c \
-		inventory/inventory_data.c \
-		inventory/inventory_compute_stats.c \
-		inventory/inventory_event.c \
-		inventory/inventory_common.c \
-		inventory/inventory_compute.c \
-		inventory/inventory_files_save.c \
-		inventory/inventory_file_load.c \
-		inventory/inventory_stats.c \
-		inventory/inventory_update_stats.c \
 		save/save_core.c \
 		save/open_core.c
 
