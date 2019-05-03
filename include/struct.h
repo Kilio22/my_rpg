@@ -87,6 +87,7 @@ typedef struct wind_s {
     sfVector2u windSize;
     sfVector2f mouse_pos;
     bool click;
+    int zoom;
     sfEvent event;
     sfView *view;
 } wind_t;

@@ -10,11 +10,16 @@
 static void zoom_gestion(rpg_t *rpg)
 {
     if (CONTROLS.bools[ZOOM] == 1) {
+        WIND.zoom++;
         sfView_zoom(WIND.view, 0.9);
         CONTROLS.bools[ZOOM] = 0;
     }
     if (CONTROLS.bools[DEZOOM] == 1) {
-        sfView_zoom(WIND.view, 1.1);
+        if (WIND.zoom > 0) {
+            sfView_zoom(WIND.view,
+((powf(0.9, (WIND.zoom - 1)) / (powf(0.9, WIND.zoom)))));
+            WIND.zoom--;
+        }
         CONTROLS.bools[DEZOOM] = 0;
     }
 }

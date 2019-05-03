@@ -18,12 +18,15 @@
 #include "mg_str.h"
 #include "my_ini.h"
 #include "my_display.h"
+#include "my.h"
 
 #define INVENTORY_SIZE_X 4
 #define INVENTORY_SIZE_Y 4
 #define INVENTORY_SIZE (4 * 4)
 
 static const char items_data[] = "assets_data.ini";
+
+#define DATA_MAPPING_SIZE 5
 
 enum data_mapping {
     NAME,
@@ -60,10 +63,13 @@ struct inventory {
     item_t *item_dragging;
     int state;
     int should_exit;
+    int stats[3][4];
+    int key_leave;
     sfSprite *grid;
     sfSprite *inv_widget[3];
 
     sfRenderWindow *window;
+    sfFont *font;
 };
 typedef struct inventory inventory_t;
 
@@ -101,6 +107,9 @@ void inventory_event_select(inventory_t *inv);
 void inventory_compute_stock_released(inventory_t *inv);
 void inventory_compute_stuff_released(inventory_t *inv);
 
+// inventory_stats.c
+void inventory_draw_stats(inventory_t *inv);
+
 // inventory_common.c
 int inventory_get_id_from_coord(sfRenderWindow *window);
 int inventory_get_stuff_id_from_mouse(sfRenderWindow *window);
@@ -111,6 +120,10 @@ void inventory_save(inventory_t *inv, char *path);
 
 // inventory_file_load.c
 inventory_t *inventory_create_from_file(sfRenderWindow *window, char *path);
+
+//inventory_stats.c
+int compute_attack_stat(inventory_t *inv, int nb_char);
+int compute_health_stat(inventory_t *inv, int nb_char);
 
 static const sfVector2f stuff_grid[6] = {
 {70, 214}, {145, 68},

@@ -77,9 +77,10 @@ void house_display(rpg_t *rpg, house_t **house);
 void check_obj_display(obj_t **obj, rpg_t *rpg);
 
 //game_event.c
-void event_management(rpg_t *rpg);
+void event_management(rpg_t *rpg, obj_t **obj);
 void manage_key_released(rpg_t *rpg);
-void manage_key_pressed(rpg_t *rpg);
+void manage_key_pressed(rpg_t *rpg, obj_t **obj);
+void update_inventory_stats(rpg_t *rpg, obj_t **obj);
 
 //game_init.c
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
@@ -266,7 +267,7 @@ void positioning_life_perso(fight_t *new, rpg_t *rpg);
 void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 void sorter(int (*tab)[4], int (*tab_speed)[4]);
 void update_choices(fight_t *fight, int turn, rpg_t *rpg);
-void attack_allies(obj_t **obj, fight_t *fight, int i);
+void attack_allies(obj_t **obj, fight_t *fight, int i, rpg_t *rpg);
 void attack_ennemi(obj_t **obj, fight_t *fight);
 void apply_attack(obj_t **obj, fight_t *fight, rpg_t *rpg, int turn);
 void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
@@ -317,5 +318,12 @@ end_game_t init_end_game(rpg_t *rpg);
 //credit_menu.c
 void credit_display(rpg_t *rpg, credit_t *credit);
 int check_credit_events(rpg_t *rpg);
+
+//load
+int check_files(char **env);
+
+//stats
+int compute_attack_stat(inventory_t *inv, int nb_char);
+int compute_health_stat(inventory_t *inv, int nb_char);
 
 #endif /* !PROTO_H_ */

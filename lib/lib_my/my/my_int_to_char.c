@@ -17,7 +17,7 @@ char *my_int_to_char(int nb)
     if (nb <= 0) {
         new[0] = '0';
         new[1] = '\0';
-        return (new);
+        return nb == 0 ? "0" : "-1";
     }
     while (nb / i > 0)
         i = i * 10;

@@ -17,7 +17,9 @@ char *my_strdup(char const *src)
 
     if (src == NULL)
         return (NULL);
-    dest = malloc(sizeof(char) * f + 1);
+    dest = malloc(sizeof(char) * (f + 1));
+    if (!dest)
+        return NULL;
     while (src[i] != '\0') {
         dest[i] = src[i];
         i++;

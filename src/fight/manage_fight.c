@@ -35,7 +35,7 @@ void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
     if (fight->fight_status != 3 && fight->fight_status > 0)
         clock_text_intro(0);
     if (fight->fight_status == 3 && clock_text_intro(1) == 1) {
-        attack_allies(obj, fight, i);
+        attack_allies(obj, fight, i, rpg);
         fight->fight_status++;
     }
     reset_allie_pos(obj, fight, rpg, i);

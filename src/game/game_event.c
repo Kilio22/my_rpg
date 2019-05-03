@@ -17,7 +17,7 @@ void mouse_wheel_management(rpg_t *rpg)
         CONTROLS.bools[DEZOOM] = 1;
 }
 
-void event_management(rpg_t *rpg)
+void event_management(rpg_t *rpg, obj_t **obj)
 {
     if (WIND.event.type == sfEvtMouseWheelMoved)
         mouse_wheel_management(rpg);
@@ -26,7 +26,7 @@ void event_management(rpg_t *rpg)
         CONTROLS.mousePos.y = WIND.event.mouseMove.y;
     }
     if (WIND.event.type == sfEvtKeyPressed)
-        manage_key_pressed(rpg);
+        manage_key_pressed(rpg, obj);
     if (WIND.event.type == sfEvtKeyReleased)
         manage_key_released(rpg);
     if (WIND.event.type == sfEvtClosed)

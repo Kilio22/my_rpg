@@ -5,12 +5,10 @@
 ** map_init
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <sys/types.h>
 #include <stdlib.h>
 #include <fcntl.h>
+#include "windows.h"
 #include "printf.h"
 #include "my.h"
 #include "struct.h"

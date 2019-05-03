@@ -5,10 +5,9 @@
 ** read an entire file and put it in an str
 */
 
-#ifdef _WIN32
-#define _CRT_SECURE_NO_WARNINGS
-#endif
 #include <stdio.h>
+#include "get_next_line.h"
+#include "windows.h"
 #include "my_file.h"
 
 static int mg_strlen(char const *str)
@@ -44,21 +43,26 @@ static char *my_strcat(char **s1, char const *s2)
     return (new_str);
 }
 
-char *my_file_readall(char const *filepath)
+char *my_file_readall(char const *filepath, int nb)
 {
     char *buff = malloc(sizeof(char));
-    int size = 0;
-    char c;
+    int i = 0;
+    char *line = NULL;
     FILE *stream = fopen(filepath, "r");
 
     buff[0] = '\0';
     if (stream == NULL)
         return (NULL);
-    do {
-        size = fread(&c, sizeof(char), 1, stream);
-        if (size > 0)
-            my_strcat(&buff, (char[]){c, '\0'});
-    } while (size > 0);
+    while ((line = get_next_line(stream)) != NULL && i != nb) {
+        if (i++ < nb)
+            my_strcat(&line, "\n");
+        my_strcat(&buff, line);
+        free(line);
+    }
     fclose(stream);
+    free(line);
+    if (i != nb)
+        return NULL;
+    get_next_line(NULL);
     return (buff);
 }
