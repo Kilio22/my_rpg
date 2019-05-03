@@ -126,8 +126,8 @@ int compute_attack_stat(inventory_t *inv, int nb_char);
 int compute_health_stat(inventory_t *inv, int nb_char);
 
 static const sfVector2f stuff_grid[6] = {
-{70, 214}, {145, 68},
-{145, 142}, {145, 214},
-{145, 287}, {218, 214}};
+{68, 214}, {143, 68},
+{143, 142}, {143, 214},
+{143, 287}, {216, 214}};
 
 #endif /* !INVENTORY_H_ */

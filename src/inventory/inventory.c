@@ -23,7 +23,7 @@ static void inventory_load_assets(inventory_t *inv)
     sfSprite_setTexture(inv->inv_widget[2], d, sfTrue);
     for (int i = 0; i < 3; i++)
         sfSprite_setPosition(inv->inv_widget[i], (sfVector2f){40, 40});
-    sfSprite_setPosition(inv->grid, (sfVector2f){450, 20});
+    sfSprite_setPosition(inv->grid, (sfVector2f){310, 377});
 }
 
 inventory_t *inventory_create(sfRenderWindow *window)
