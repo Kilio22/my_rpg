@@ -41,5 +41,6 @@ extern const int level_up[][3][6];
 extern const char *scrpits_en[];
 extern const char *end_text[][2];
 extern const char *credit_path[2];
+extern const char *ennemi_name[];
 
 #endif /* !GLOBALS_H_ */

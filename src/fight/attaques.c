@@ -34,3 +34,10 @@ const int global_damages[7][2] = {
     {8, 13},
     {12, 18}
 };
+
+const char *ennemi_name[] = {
+    "JEAN",
+    "",
+    "NATHAN",
+    "JACQUES"
+};
