@@ -456,9 +456,9 @@ const int level_up[][3][6] = {
 
 const char *end_text[][2] = {
     {"Vous avez vaincu les 3 inconnus qui s'en sont pris a vous.",
-    "Vous vous souvenez alors de votre vie passee,\
+    "Vous vous souvenez alors de votre vie passee, \
 et tout rentre dans l'ordre."},
     {"You defeated the 3 unknowns who attacked you.",
-    "You remember then your past life,\
+    "You remember then your past life, \
 and everything comes back in order"}
 };

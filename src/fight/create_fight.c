@@ -25,7 +25,7 @@ void positioning_life_perso(fight_t *new, rpg_t *rpg)
     sfText_setString(new->attacks[4], str);
     sfText_setPosition(new->attacks[3], v1);
     sfText_setPosition(new->attacks[4], v2);
-    v1.y += 370;
+    v1.y += 380;
     v1.x += 30;
     sfText_setPosition(new->turn_n, v1);
 }

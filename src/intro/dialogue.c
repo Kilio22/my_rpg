@@ -70,7 +70,7 @@ Give us your money!",
     "Nathan: What? Some people attacked you? \n"
     "And you don't remember anything?",
     "Nathan: That's not fair! We need to do something to find back yours"
-    " memory!\nLet's see if we find them!",
+    " memory! \nLet's see if we find them!",
     "Nathan: Jacques, come with us!\n"
     "Let's see in the South of the city!",
     " ",
