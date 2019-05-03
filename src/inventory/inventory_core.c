@@ -31,13 +31,23 @@ void inventory_compute(inventory_t *inv)
 
 static void window_event(inventory_t *inv)
 {
+    static int i = 0;
     sfEvent event;
 
+    if (i < 45)
+        i++;
     while (sfRenderWindow_pollEvent(inv->window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(inv->window);
-        if (event.type == sfEvtKeyReleased && event.key.code == sfKeyEscape)
+        if (event.type == sfEvtKeyReleased && event.key.code == sfKeyEscape) {
+            i = 0;
             inv->should_exit = 1;
+        }
+        if (event.type == sfEvtKeyReleased && event.key.code == inv->key_leave
+&& i == 45) {
+            i = 0;
+            inv->should_exit = 1;
+        }
     }
 }
 

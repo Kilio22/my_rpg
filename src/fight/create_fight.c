@@ -5,8 +5,8 @@
 ** create_fight
 */
 
-#include "my.h"
 #include "rpg.h"
+#include "inventory.h"
 
 void positioning_life_perso(fight_t *new, rpg_t *rpg)
 {
@@ -47,6 +47,13 @@ static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
     new->fight_status = 0;
 }
 
+static void init_life(rpg_t *rpg, fight_t *new)
+{
+    new->life[0] += compute_health_stat(GAME.inv, 0);
+    new->life[0] += compute_health_stat(GAME.inv, 1);
+    new->life[0] += compute_health_stat(GAME.inv, 2);
+}
+
 fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)
 {
     fight_t new;
@@ -58,6 +65,7 @@ fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)
     sfSprite_setTexture(new.parch, texture, sfTrue);
     sfSprite_setScale(new.parch, V2F(0.6, 0.6));
     init_fight_var(i, vect, obj, &new);
+    init_life(rpg, &new);
     for (int i = 0; i < 5; i++) {
         new.attacks[i] = create_text(menu_font,
 attaques_names[0][i], 19, V2F(0, 0));

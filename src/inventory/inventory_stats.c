@@ -19,41 +19,46 @@ static void draw_text(inventory_t *inv, char *text, sfVector2f pos)
     sfText_destroy(t);
 }
 
-static int compute_attack_stat(inventory_t *inv)
+static char *get_name(int state)
 {
-    int attack = 0;
-
-    for (int i = 0; i < 6; i++) {
-        if (inv->stuff[inv->state][i] == NULL)
-            continue;
-        attack += inv->stuff[inv->state][i]->attack;
-    }
-    return (attack);
+    if (state == 0)
+        return mg_strdup("Jean");
+    else if (state == 1)
+        return mg_strdup("Nathan");
+    else
+        return mg_strdup("Jacques");
+    return NULL;
 }
 
-static int compute_health_stat(inventory_t *inv)
+static void inventory_draw_stats_speed(inventory_t *inv, char **buff)
 {
-    int health = 0;
+    char *buff2 = mg_itoa(inv->stats[inv->state][2]);
 
-    for (int i = 0; i < 6; i++) {
-        if (inv->stuff[inv->state][i] == NULL)
-            continue;
-        health += inv->stuff[inv->state][i]->hp;
-    }
-    return (health);
+    buff2 = mg_itoa(inv->stats[inv->state][2]);
+    mg_strcat(buff, buff2);
+    free(buff2);
+    mg_strcat(buff, "\nspeed: ");
+    buff2 = mg_itoa(inv->stats[inv->state][3]);
+    mg_strcat(buff, buff2);
+    free(buff2);
+    draw_text(inv, (*buff), (sfVector2f){100, 400});
+    free((*buff));
 }
 
 void inventory_draw_stats(inventory_t *inv)
 {
-    char *buff = mg_strdup("hp: ");
-    char *buff2 = mg_itoa(compute_health_stat(inv));
+    char *buff = get_name(inv->state);
+    char *buff2 = mg_itoa(inv->stats[inv->state][0] +
+compute_health_stat(inv, inv->state));
 
+    mg_strcat(&buff, "\nhp: ");
     mg_strcat(&buff, buff2);
     free(buff2);
     mg_strcat(&buff, "\nattack: ");
-    buff2 = mg_itoa(compute_attack_stat(inv));
+    buff2 = mg_itoa(inv->stats[inv->state][1] +
+compute_attack_stat(inv, inv->state));
     mg_strcat(&buff, buff2);
     free(buff2);
-    draw_text(inv, buff, (sfVector2f){100, 400});
-    free(buff);
+    mg_strcat(&buff, "\ndef: ");
+    inventory_draw_stats_speed(inv, &buff);
 }
