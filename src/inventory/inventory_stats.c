@@ -54,6 +54,6 @@ void inventory_draw_stats(inventory_t *inv)
     buff2 = mg_itoa(compute_attack_stat(inv));
     mg_strcat(&buff, buff2);
     free(buff2);
-    draw_text(inv, buff, (sfVector2f){100i, 400});
+    draw_text(inv, buff, (sfVector2f){100, 400});
     free(buff);
 }
