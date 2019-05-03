@@ -250,9 +250,11 @@ const char *ennemi_text[][2] = {
     {"Vous etes mort. Vous avez ete transporte a l'auberge et avez ete soigne.",
     "You died. You were transported to the inn and were healed."},
     {"Bravo, vous avez vaincu votre adversaire !\n"
-    "Vous avez gagne un niveau, et un nouvel objet !",
+    "Vous avez gagne un niveau, et un nouvel objet !\n"
+    "Votre memoire semble s'eclaircir peu a peu.",
     "Congratulations, you have defeated your opponent !\n"
-    "You have gained a level, and a new object !"}
+    "You have gained a level, and a new object !\n"
+    "Your memory seems to clear up little by little."}
 };
 
 const sfIntRect house_rects[8] = {
