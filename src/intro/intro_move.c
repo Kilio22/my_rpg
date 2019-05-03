@@ -37,7 +37,8 @@ void intro_fcts(rpg_t *rpg, obj_t **obj, house_t **house, intro_t *intros)
         return;
     }
     if (rpg->quest_status == 20)
-        sfSound_play(rpg->music.aled);
+        if (sfMusic_getStatus(GAME.back_music) == sfPlaying)
+            sfSound_play(rpg->music.aled);
     opt = intro[opt](obj, opt, rpg, house);
     intros->opt = opt;
 }
