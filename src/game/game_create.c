@@ -47,17 +47,20 @@ static void create_followers(rpg_t *rpg, obj_t **obj)
     }
 }
 
-static void create_ennemis(obj_t **obj)
+static void create_ennemis(obj_t **obj, rpg_t *rpg)
 {
     sfVector2f vects[] = {{8368, 2610}, {10844, 2222}, {11952, 636}};
     for (int i = 6; i < 9; i++) {
-        if (obj[i] == NULL) {
+        if (obj[i] == NULL && rpg->killed[i - 6] == 0) {
             obj[i] = create_object(obj_path[3], vects[i - 6],
 RECT_OBJ, sfFalse);
             sfSprite_setOrigin(obj[i]->sprite, V2F(16, 60));
-        }
+        } else
+            obj[i] = NULL;
     }
     for (int i = 6; i < 9; i++) {
+        if (!obj[i])
+            continue;
         OBJ_RECT = sfRectangleShape_create();
         sfRectangleShape_setSize(OBJ_RECT, V2F(32, 16));
         sfRectangleShape_setOrigin(OBJ_RECT, V2F(16, 8));
@@ -84,7 +87,7 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
             return 84;
     }
     create_followers(rpg, obj);
-    create_ennemis(obj);
+    create_ennemis(obj, rpg);
     if (rpg->quest_status == 1 || rpg->quest_status == 26) {
         create_framebuffer(rpg);
         if (init_stats(obj) == -1)
