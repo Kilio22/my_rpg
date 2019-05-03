@@ -31,7 +31,7 @@ void attack_allies(obj_t **obj, fight_t *fight, int i, rpg_t *rpg)
         else
             damages = global_damages[i][1] +
 (rand() % my_attack(rpg, obj, i));
-        fight->life[0] -= 5;
+        fight->life[0] = (fight->life[0] < 5) ? 0 : fight->life[0] - 5;
     }
     damages -= rand() % (obj[fight->nb_fight + 6]->stats[DEF] + 1);
     damages = (damages < 0) ? 0 : damages;
