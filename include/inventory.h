@@ -64,6 +64,7 @@ struct inventory {
     int state;
     int should_exit;
     int stats[3][4];
+    int key_leave;
     sfSprite *grid;
     sfSprite *inv_widget[3];
 
@@ -119,6 +120,10 @@ void inventory_save(inventory_t *inv, char *path);
 
 // inventory_file_load.c
 inventory_t *inventory_create_from_file(sfRenderWindow *window, char *path);
+
+//inventory_stats.c
+int compute_attack_stat(inventory_t *inv, int nb_char);
+int compute_health_stat(inventory_t *inv, int nb_char);
 
 static const sfVector2f stuff_grid[6] = {
 {70, 214}, {145, 68},

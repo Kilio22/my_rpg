@@ -20,4 +20,5 @@ void update_inventory_stats(rpg_t *rpg, obj_t **obj)
         GAME.inv->stats[j][3] = obj[i]->stats[SPEED];
         j++;
     }
+    GAME.inv->key_leave = CONTROLS.keys[INV];
 }

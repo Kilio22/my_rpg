@@ -322,4 +322,8 @@ int check_credit_events(rpg_t *rpg);
 //load
 int check_files(char **env);
 
+//stats
+int compute_attack_stat(inventory_t *inv, int nb_char);
+int compute_health_stat(inventory_t *inv, int nb_char);
+
 #endif /* !PROTO_H_ */

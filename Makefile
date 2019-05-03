@@ -148,12 +148,14 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		inventory/inventory.c \
 		inventory/inventory_draw.c \
 		inventory/inventory_data.c \
+		inventory/inventory_compute_stats.c \
 		inventory/inventory_event.c \
 		inventory/inventory_common.c \
 		inventory/inventory_compute.c \
 		inventory/inventory_files_save.c \
 		inventory/inventory_file_load.c \
 		inventory/inventory_stats.c \
+		inventory/inventory_update_stats.c \
 		save/save_core.c \
 		save/open_core.c
 
