@@ -76,6 +76,8 @@ void destroy_sounds(rpg_t *rpg)
     sfSoundBuffer_destroy((sfSoundBuffer *)sfSound_getBuffer(rpg->music.hurt));
     sfSound_destroy(rpg->music.aled);
     sfSound_destroy(rpg->music.hurt);
+    sfMusic_destroy(rpg->music.fight_music);
+    sfMusic_destroy(rpg->game.back_music);
 }
 
 int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
