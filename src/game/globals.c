@@ -453,8 +453,10 @@ const int level_up[][3][6] = {
 };
 
 const char *end_text[][2] = {
-    {"J'aime bien le chocolat",
-    "et les petits lapin lindt'or"},
-    {"I like chocolate",
-    "and little lindt'or's rabits"}
+    {"Vous avez vaincu les 3 inconnus qui s'en sont pris a vous.",
+    "Vous vous souvenez alors de votre vie passee,\
+et tout rentre dans l'ordre."},
+    {"You defeated the 3 unknowns who attacked you.",
+    "You remember then your past life,\
+and everything comes back in order"}
 };
