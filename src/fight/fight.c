@@ -32,12 +32,14 @@ static void text_display_fight(rpg_t *rpg, fight_t *fight)
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
         sfRenderWindow_drawText(WIND.wind, fight->text, NULL);
     }
-    if (fight->quest_status > 2 && fight->life[0] > 0 && fight->life[1] > 0)
+    if (fight->quest_status > 2 && fight->life[0] > 0 && fight->life[1] > 0) {
         for (int i = 3; i < 5; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
+    }
     if (fight->quest_status > 2 && fight->fight_status == 0 && fight->turn < 6
 && fight->life[0] > 0 && fight->life[1] > 0) {
         sfRenderWindow_drawSprite(WIND.wind, fight->parch, NULL);
+        sfRenderWindow_drawText(WIND.wind, fight->turn_n, NULL);
         for (int i = 0; i < 3; i++)
             sfRenderWindow_drawText(WIND.wind, fight->attacks[i], NULL);
     }

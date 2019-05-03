@@ -22,7 +22,6 @@ char *my_revstr(char *str);
 int my_strcmp(char const *s1, char const *s2);
 int my_strncmp(char const *s1, char const *s2, int n);
 char *my_strcat(char *dest, char const *src);
-char *my_strncat(char *dest, char *str, int n);
 char *my_strdup(char const *src);
 char *check2(char *nb11, char *nb22);
 char *my_strxdup(char const *src, int n);
@@ -36,5 +35,6 @@ char *my_itoa(int nb, char *str);
 char *my_realloc(char *input_str, int nb);
 char *my_realloc_str(char *f, char *b);
 char **my_str_to_word_array(char const *str, char c);
+char *my_strncat(char *dest, char *str, int n);
 
 #endif /* !MY_H_ */

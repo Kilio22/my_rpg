@@ -24,7 +24,7 @@
 #define INVENTORY_SIZE_Y 4
 #define INVENTORY_SIZE (4 * 4)
 
-static const char items_data[] = "assets_data.ini";
+static const char items_data[] = "assets/assets_data.ini";
 
 #define DATA_MAPPING_SIZE 5
 

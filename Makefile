@@ -133,7 +133,6 @@ SRC	=	$(CHAR_PATH)character_gestion.c	\
 		camera_gestion.c	\
 		create_house.c	\
 		create_obj.c	\
-		free_save.c	\
 		free.c 	\
 		init_save.c	\
 		list.c 	\

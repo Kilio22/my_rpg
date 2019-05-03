@@ -17,6 +17,7 @@ void analyse_menu_mouse_released(rpg_t *rpg, int key, obj_t **obj, house_t **h)
         MENU.buttons[MENU.highlight].status = 0;
         sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
         menu[MENU.highlight](rpg, obj, h);
+        MENU.menu_on = 1;
     }
 }
 

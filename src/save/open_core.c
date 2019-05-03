@@ -13,7 +13,7 @@ static void killed_init_default(rpg_t *rpg)
         rpg->killed[i] = 0;
 }
 
-static void restore_killed(rpg_t *rpg, ini_file_t *file)
+void restore_killed(rpg_t *rpg, ini_file_t *file)
 {
     ini_line_t *line = ini_file_get_from_key(file, "KILLED");
     char *buff;
@@ -32,7 +32,7 @@ static void restore_killed(rpg_t *rpg, ini_file_t *file)
     }
 }
 
-void load(rpg_t *rpg, obj_t **objs)
+void load(rpg_t *rpg)
 {
     char *save_path = mg_strdup("saves/savex.ini");
     ini_file_t *file;

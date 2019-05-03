@@ -79,6 +79,13 @@ void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
     reset_ennemi_pos(obj, fight, rpg, i);
 }
 
+const char *ennemi_name[] = {
+    "JEAN",
+    "",
+    "NATHAN",
+    "JACQUES"
+};
+
 void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
 {
     static int turn = -1;
@@ -95,6 +102,8 @@ void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
             fight->fight_status = 1;
             return;
         }
+        sfText_setString(fight->turn_n, ennemi_name[turn]);
+        printf("oui\n");
         update_choices(fight, turn, rpg);
         return;
     }

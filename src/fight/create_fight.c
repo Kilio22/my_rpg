@@ -25,6 +25,9 @@ void positioning_life_perso(fight_t *new, rpg_t *rpg)
     sfText_setString(new->attacks[4], str);
     sfText_setPosition(new->attacks[3], v1);
     sfText_setPosition(new->attacks[4], v2);
+    v1.y += 370;
+    v1.x += 30;
+    sfText_setPosition(new->turn_n, v1);
 }
 
 static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
@@ -49,9 +52,13 @@ static void init_fight_var(int i, sfVector2f vect, obj_t **obj, fight_t *new)
 
 static void init_life(rpg_t *rpg, fight_t *new)
 {
+    sfVector2f vect = sfRenderWindow_mapPixelToCoords(WIND.wind,
+(sfVector2i){100, 100}, WIND.view);
+
     new->life[0] += compute_health_stat(GAME.inv, 0);
     new->life[0] += compute_health_stat(GAME.inv, 1);
     new->life[0] += compute_health_stat(GAME.inv, 2);
+    new->turn_n = create_text(menu_font, " ", 19, vect);
 }
 
 fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)

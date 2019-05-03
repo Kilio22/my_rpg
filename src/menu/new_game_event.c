@@ -7,6 +7,25 @@
 
 #include "rpg.h"
 
+static void load_init(rpg_t *rpg)
+{
+    char *save_path = mg_strdup("assets/inv.ini");
+    ini_file_t *file;
+
+    rpg->game.inv = inventory_create_from_file(rpg->wind.wind, save_path);
+    file = ini_file_create_from_file(save_path, 6);
+    restore_killed(rpg, file);
+}
+
+static void load_save(rpg_t *rpg, obj_t **obj, house_t **house)
+{
+    rpg->quest_status = 0;
+    load_init(rpg);
+    save(rpg);
+    init_game(rpg, obj, house);
+    rpg->quest_status = 0;
+}
+
 void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
                                                             house_t **house)
 {
@@ -20,10 +39,7 @@ void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
     init_load(rpg);
     sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
     sfRenderWindow_display(WIND.wind);
-    rpg->quest_status = 0;
-    init_game(rpg, obj, house);
-    rpg->quest_status = 0;
-    MENU.menu_on = 1;
+    load_save(rpg, obj, house);
 }
 
 static int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
@@ -43,9 +59,7 @@ static int check_button_pressed_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
         init_load(rpg);
         sfRenderWindow_drawSprite(WIND.wind, MENU.menu_sprite[LOAD], NULL);
         sfRenderWindow_display(WIND.wind);
-        rpg->quest_status = 0;
-        init_game(rpg, obj, house);
-        rpg->quest_status = 0;
+        load_save(rpg, obj, house);
         return 1;
     }
     return 0;
