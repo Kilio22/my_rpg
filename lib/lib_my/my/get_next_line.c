@@ -27,7 +27,7 @@ static char *my_strndup(char *str, int n)
     return (new_str);
 }
 
-static char *my_strncat(char *dest, char *str, int n)
+char *my_strncat(char *dest, char *str, int n)
 {
     char *new_str;
     int str_len = 0;

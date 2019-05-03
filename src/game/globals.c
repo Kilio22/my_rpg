@@ -433,7 +433,7 @@ const int tab_stats[][6] = {
     {1, 0, 50, 7, 5, 5},
     {1, 0, 200, 20, 8, 12},
     {1, 0, 150, 15, 5, 8},
-    {1, 0, 300, 25, 10, 15}
+    {1, 0, 260, 25, 10, 15}
 };
 
 const int level_up[][3][6] = {
@@ -456,9 +456,9 @@ const int level_up[][3][6] = {
 
 const char *end_text[][2] = {
     {"Vous avez vaincu les 3 inconnus qui s'en sont pris a vous.",
-    "Vous vous souvenez alors de votre vie passee,\
+    "Vous vous souvenez alors de votre vie passee, \
 et tout rentre dans l'ordre."},
     {"You defeated the 3 unknowns who attacked you.",
-    "You remember then your past life,\
+    "You remember then your past life, \
 and everything comes back in order"}
 };

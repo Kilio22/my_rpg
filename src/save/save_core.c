@@ -29,7 +29,7 @@ static void save_killed(ini_file_t *ini, rpg_t *rpg)
     double_vector_push_back(ini->lines, line);
 }
 
-void save(rpg_t *rpg, obj_t **objs)
+void save(rpg_t *rpg)
 {
     char *save_path = mg_strdup("saves/savex.ini");
     ini_file_t *ini;

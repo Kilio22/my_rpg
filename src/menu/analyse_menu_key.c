@@ -13,6 +13,7 @@ void analyse_menu_key_released(int code, rpg_t *rpg, obj_t **obj, house_t **h)
         MENU.buttons[MENU.highlight].status = 0;
         sfText_setColor(MENU.buttons[MENU.highlight].text, sfYellow);
         menu[MENU.highlight](rpg, obj, h);
+        MENU.menu_on = 1;
     }
 }
 

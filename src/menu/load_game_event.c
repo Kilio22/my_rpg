@@ -11,7 +11,7 @@
 static void load_save(rpg_t *rpg, obj_t **obj, house_t **house)
 {
     rpg->quest_status = 1;
-    load(rpg, obj);
+    load(rpg);
     init_game(rpg, obj, house);
     rpg->quest_status = 0;
     MENU.menu_on = 0;

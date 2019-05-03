@@ -46,7 +46,6 @@ SRC	=	my_putstr.c					\
 		my_strcmp.c					\
 		my_int_to_char.c			\
 		get_next_line.c				\
-		my_strncat.c				\
 		my_strncmp.c				\
 		my_strxdup.c				\
 		my_str_to_word_array.c		\

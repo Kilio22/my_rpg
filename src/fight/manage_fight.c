@@ -91,10 +91,11 @@ void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
         turn = fight_turn(obj, fight, 0);
         fight->turn = turn;
         if (turn == fight->nb_fight + 6
-&& fight->life[0] != 0 && fight->life[0] !=0) {
+&& fight->life[0] != 0 && fight->life[0] != 0) {
             fight->fight_status = 1;
             return;
         }
+        sfText_setString(fight->turn_n, ennemi_name[turn]);
         update_choices(fight, turn, rpg);
         return;
     }

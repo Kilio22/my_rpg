@@ -229,6 +229,7 @@ typedef struct fight_s {
     sfSprite *parch;
     sfVector2f old_pos[4];
     sfText *attacks[5];
+    sfText *turn_n;
     int high;
     int life[2];
     int turn;

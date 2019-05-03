@@ -61,9 +61,6 @@ void add_vector(sprite_t *sprites, sfVector2f pos);
 void fill_sprite(sprite_t **oui, sfVector2f pos);
 int create_sprite(sprite_t **sprites, char *path, int id, sfIntRect rect);
 
-//free_save.c
-void free_save(obj_t **obj, rpg_t *rpg);
-
 //free.c
 void free_map(map_t map);
 void free_obj(obj_t *obj);
@@ -234,9 +231,6 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings);
 //settings_utils.c
 int check_high_controls(int i);
 
-//stats.c
-void print_stats(obj_t **obj);
-
 //time_gestion.c
 int clock_door(void);
 int check_characters_clock(sfClock *clock, float limit);
@@ -288,7 +282,7 @@ unsigned int line);
 
 //dialogues
 dialogue_t create_dialogue(rpg_t *rpg, int i);
-int dial_event_management(rpg_t *rpg, dialogue_t *dialogue, obj_t **obj);
+int dial_event_management(rpg_t *rpg, dialogue_t *dialogue);
 void dial_action(rpg_t *rpg, obj_t **obj,
 house_t **house, dialogue_t *dialogue);
 void aubergiste_dial(obj_t **obj, rpg_t *rpg, int i, house_t **house);

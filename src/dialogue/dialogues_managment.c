@@ -16,19 +16,18 @@ void dial_action(rpg_t *rpg, obj_t **obj, house_t **house, dialogue_t *dialogue)
         update_dial_text(dialogue);
 }
 
-static int manage_enter(dialogue_t *dialogue, rpg_t *rpg, obj_t **obj)
+static int manage_enter(dialogue_t *dialogue, rpg_t *rpg)
 {
     if (dialogue->high == 3)
         return 1;
     if (dialogue->high == 2 && dialogue->nb_pnj == 0)
-        save(rpg, obj);
+        save(rpg);
     clock_text_intro(0);
     dialogue->quest_status_d = dialogue->high - 1;
     return 0;
 }
 
-static int manage_other_key_press(int code, dialogue_t *dialogue, rpg_t *rpg,
-obj_t **obj)
+static int manage_other_key_press(int code, dialogue_t *dialogue, rpg_t *rpg)
 {
     if (dialogue->quest_status_d != -1)
         return 0;
@@ -43,11 +42,11 @@ obj_t **obj)
         sfText_setColor(dialogue->text[dialogue->high], sfBlue);
     }
     if (code == sfKeyReturn)
-        return manage_enter(dialogue, rpg, obj);
+        return manage_enter(dialogue, rpg);
     return 0;
 }
 
-int dial_event_management(rpg_t *rpg, dialogue_t *dialogue, obj_t **obj)
+int dial_event_management(rpg_t *rpg, dialogue_t *dialogue)
 {
     if (WIND.event.type == sfEvtMouseMoved) {
         CONTROLS.mousePos.x = WIND.event.mouseMove.x;
@@ -59,7 +58,7 @@ int dial_event_management(rpg_t *rpg, dialogue_t *dialogue, obj_t **obj)
         if (WIND.event.key.code == sfKeyEscape)
             pause_game(rpg);
         if (manage_other_key_press(WIND.event.key.code,
-dialogue, rpg, obj) == 1)
+dialogue, rpg) == 1)
             return 1;
     }
     if (WIND.event.type == sfEvtClosed)
