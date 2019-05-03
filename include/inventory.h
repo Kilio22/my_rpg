@@ -63,6 +63,7 @@ struct inventory {
     item_t *item_dragging;
     int state;
     int should_exit;
+    int stats[3][4];
     sfSprite *grid;
     sfSprite *inv_widget[3];
 

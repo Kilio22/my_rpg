@@ -35,7 +35,7 @@ void manage_other_key_pressed(rpg_t *rpg)
         screenshot(rpg);
 }
 
-void manage_key_pressed(rpg_t *rpg)
+void manage_key_pressed(rpg_t *rpg, obj_t **obj)
 {
     if (WIND.event.key.code == CONTROLS.keys[UP])
         CONTROLS.bools[KEYUP] = 1;
@@ -46,6 +46,7 @@ void manage_key_pressed(rpg_t *rpg)
     if (WIND.event.key.code == CONTROLS.keys[RIGHT])
         CONTROLS.bools[KEYRIGHT] = 1;
     if (WIND.event.key.code == CONTROLS.keys[INV]) {
+        update_inventory_stats(rpg, obj);
         inventory_loop(rpg->game.inv);
         res_bools(rpg);
     }

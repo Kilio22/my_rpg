@@ -77,9 +77,10 @@ void house_display(rpg_t *rpg, house_t **house);
 void check_obj_display(obj_t **obj, rpg_t *rpg);
 
 //game_event.c
-void event_management(rpg_t *rpg);
+void event_management(rpg_t *rpg, obj_t **obj);
 void manage_key_released(rpg_t *rpg);
-void manage_key_pressed(rpg_t *rpg);
+void manage_key_pressed(rpg_t *rpg, obj_t **obj);
+void update_inventory_stats(rpg_t *rpg, obj_t **obj);
 
 //game_init.c
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house);
