@@ -20,7 +20,7 @@ void inventory_add_item(inventory_t *inv, item_t *item)
 {
     int id = inventory_get_empty_case(inv);
 
-    if (id == -1)
+    if (id == -1 || !item)
         return;
     inv->stock[id] = item;
 }

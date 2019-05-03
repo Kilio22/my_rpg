@@ -40,6 +40,8 @@ int mg_atoi(char const *str)
     int size = mg_strlen(str) - neg_flag;
     int result = 0;
 
+    if (!mg_str_isint(str))
+        return (0);
     for (int i = 1; i < size + 1; i++){
         char c = str[size - i + neg_flag];
         int nb = (c - '0') * s_pow(10, i - 1);

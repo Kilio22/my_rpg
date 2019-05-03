@@ -11,10 +11,11 @@ item_t *item_create(int id, ini_file_t *data)
 {
     item_t *new = malloc(sizeof(item_t));
     ini_line_t *line = ini_file_get_from_key(data, mg_itoa(id));
-    char *path = mg_strdup(ini_line_get_value_from_col(line, ASSET));
+    char *path;
 
-    if (new == NULL || line == NULL || line->values->size != DATA_MAPPING_SIZE)
+    if (!new || !line || line->values->size != DATA_MAPPING_SIZE)
         return (NULL);
+    path = mg_strdup(ini_line_get_value_from_col(line, ASSET));
     new->name = mg_strdup(ini_line_get_value_from_col(line, NAME));
     new->id = id;
     new->type = mg_atoi(ini_line_get_value_from_col(line, TYPE));
