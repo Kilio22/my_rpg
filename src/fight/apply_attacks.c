@@ -5,21 +5,32 @@
 ** apply_attacks
 */
 
+#include "inventory.h"
 #include "rpg.h"
 
-void attack_allies(obj_t **obj, fight_t *fight, int i)
+static int my_attack(rpg_t *rpg, obj_t **obj, int i)
+{
+    int attack = 0;
+
+    attack += obj[i]->stats[ATK];
+    i = (i == 0) ? 0 : i - 1;
+    attack += compute_attack_stat(GAME.inv, i);
+    return (attack + 1);
+}
+
+void attack_allies(obj_t **obj, fight_t *fight, int i, rpg_t *rpg)
 {
     int damages = 0;
 
     if (fight->high == 0)
         damages = global_damages[i][0] +
-(rand() % (obj[i]->stats[ATK] + 1));
+(rand() % my_attack(rpg, obj, i));
     else {
         if (i == 2)
             damages = ((rand() % 2) == 0) ? 0 : global_damages[i][1];
         else
             damages = global_damages[i][1] +
-(rand() % (obj[i]->stats[ATK] + 1));
+(rand() % my_attack(rpg, obj, i));
         fight->life[0] -= 5;
     }
     damages -= rand() % (obj[fight->nb_fight + 6]->stats[DEF] + 1);

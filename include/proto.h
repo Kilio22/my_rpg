@@ -267,7 +267,7 @@ void positioning_life_perso(fight_t *new, rpg_t *rpg);
 void choose_fighter(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
 void sorter(int (*tab)[4], int (*tab_speed)[4]);
 void update_choices(fight_t *fight, int turn, rpg_t *rpg);
-void attack_allies(obj_t **obj, fight_t *fight, int i);
+void attack_allies(obj_t **obj, fight_t *fight, int i, rpg_t *rpg);
 void attack_ennemi(obj_t **obj, fight_t *fight);
 void apply_attack(obj_t **obj, fight_t *fight, rpg_t *rpg, int turn);
 void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i);
