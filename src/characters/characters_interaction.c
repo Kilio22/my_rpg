@@ -7,14 +7,27 @@
 
 #include "rpg.h"
 
+static void reset_zoom(rpg_t *rpg)
+{
+    while (WIND.zoom > 0) {
+        sfView_zoom(WIND.view,
+((powf(0.9, (WIND.zoom - 1)) / (powf(0.9, WIND.zoom)))));
+        WIND.zoom--;
+    }
+}
+
 static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
     if (obj[i] == NULL)
         return;
-    if (i >= 6 && i <= 9)
+    if (i >= 6 && i <= 9) {
+        reset_zoom(rpg);
         fight(obj, rpg, i - 6, house);
-    if (i == 5)
+    }
+    if (i == 5) {
+        reset_zoom(rpg);
         aubergiste_dial(obj, rpg, i - 5, house);
+    }
     for (int i = 0; i < 10; i++)
         CONTROLS.bools[i] = 0;
 }

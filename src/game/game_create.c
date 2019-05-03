@@ -92,6 +92,7 @@ int game_create(rpg_t *rpg, obj_t **obj, house_t **house)
         if (init_stats(obj) == -1)
             return 84;
         check_end_game(rpg, 1);
+        rpg->wind.zoom = 0;
         game_loop(rpg, obj, house);
     }
     for (int i = 0; house[i]; i++)
