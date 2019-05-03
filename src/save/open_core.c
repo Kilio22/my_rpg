@@ -9,7 +9,7 @@
 
 static void restore_killed(rpg_t *rpg, ini_file_t *file)
 {
-
+    
 }
 
 void load(rpg_t *rpg, obj_t **objs)

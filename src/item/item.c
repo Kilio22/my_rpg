@@ -10,7 +10,9 @@
 item_t *item_create(int id, ini_file_t *data)
 {
     item_t *new = malloc(sizeof(item_t));
-    ini_line_t *line = ini_file_get_from_key(data, mg_itoa(id));
+    mg_putstr(my_int_to_char(id));
+    mg_putchar('\n');
+    ini_line_t *line = ini_file_get_from_key(data, my_int_to_char(id));
     char *path;
 
     if (!new || !line || line->values->size != DATA_MAPPING_SIZE)

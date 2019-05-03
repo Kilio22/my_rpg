@@ -18,6 +18,7 @@
 #include "mg_str.h"
 #include "my_ini.h"
 #include "my_display.h"
+#include "my.h"
 
 #define INVENTORY_SIZE_X 4
 #define INVENTORY_SIZE_Y 4
