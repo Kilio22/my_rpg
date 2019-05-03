@@ -55,8 +55,7 @@ static void create_ennemis(obj_t **obj, rpg_t *rpg)
             obj[i] = create_object(obj_path[3], vects[i - 6],
 RECT_OBJ, sfFalse);
             sfSprite_setOrigin(obj[i]->sprite, V2F(16, 60));
-        } else
-            obj[i] = NULL;
+        }
     }
     for (int i = 6; i < 9; i++) {
         if (!obj[i])
