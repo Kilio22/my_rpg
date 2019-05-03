@@ -83,8 +83,8 @@ void move_pnjs(obj_t **obj, house_t **house)
 
     if (nb_moves >= 0) {
         moving_pnjs(obj, house, &oui);
-        nb_moves++;
-        if (nb_moves == 20)
+        nb_moves += update_time(NULL);
+        if (nb_moves >= 20)
             nb_moves = -1;
         return;
     }
