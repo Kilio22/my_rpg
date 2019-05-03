@@ -51,10 +51,10 @@ void inventory_event_select(inventory_t *inv)
         return;
     if (!sfMouse_isButtonPressed(sfMouseLeft))
         return;
-    if (p.x > 285 && p.x < 360 && p.y > 200 && p.y < 261)
+    if (p.x > 300 && p.x < 370 && p.y > 80 && p.y < 135)
         inv->state = 0;
-    if (p.x > 286 && p.x < 360 && p.y > 295 && p.y < 360)
+    if (p.x > 300 && p.x < 370 && p.y > 160 && p.y < 200)
         inv->state = 1;
-    if (p.x > 286 && p.x < 360 && p.y > 360 && p.y < 415)
+    if (p.x > 300 && p.x < 370 && p.y > 230 && p.y < 290)
         inv->state = 2;
 }

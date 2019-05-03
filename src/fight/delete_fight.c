@@ -15,11 +15,11 @@ static void add_item(rpg_t *rpg, fight_t *fight, obj_t **obj)
     int j = 0;
 
     if (fight->nb_fight == 1)
-        item = item_create(8, ini);
+        item = item_create(rand() % 12, ini);
     else if (fight->nb_fight == 0)
-        item = item_create(11, ini);
+        item = item_create(rand() % 12, ini);
     else
-        item = item_create(12, ini);
+        item = item_create(rand() % 12, ini);
     inventory_add_item(GAME.inv, item);
     for (int i = 0; i < 4; i++) {
         if (i == 1)

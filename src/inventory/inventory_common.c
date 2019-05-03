@@ -25,8 +25,8 @@ int inventory_get_id_from_coord(sfRenderWindow *window)
     rect.height = 50;
     rect.width = 50;
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        rect.left = 481 + i % INVENTORY_SIZE_X * 73;
-        rect.top = 50 + i / INVENTORY_SIZE_X * 73;
+        rect.left = 340 + i % INVENTORY_SIZE_X * 73;
+        rect.top = 410 + i / INVENTORY_SIZE_X * 73;
         if (is_collided_mouse_rect(rect, window))
             return (i);
     }

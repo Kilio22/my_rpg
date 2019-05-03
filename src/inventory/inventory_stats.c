@@ -15,6 +15,7 @@ static void draw_text(inventory_t *inv, char *text, sfVector2f pos)
     sfText_setColor(t, sfBlack);
     sfText_setString(t, text);
     sfText_setPosition(t, pos);
+    sfText_setCharacterSize(t, 52);
     sfRenderWindow_drawText(inv->window, t, NULL);
     sfText_destroy(t);
 }
@@ -22,7 +23,7 @@ static void draw_text(inventory_t *inv, char *text, sfVector2f pos)
 static char *get_name(int state)
 {
     if (state == 0)
-        return mg_strdup("Jean");
+        return mg_strdup(" Jean");
     else if (state == 1)
         return mg_strdup("Nathan");
     else
@@ -37,11 +38,11 @@ static void inventory_draw_stats_speed(inventory_t *inv, char **buff)
     buff2 = mg_itoa(inv->stats[inv->state][2]);
     mg_strcat(buff, buff2);
     free(buff2);
-    mg_strcat(buff, "\nspeed: ");
+    mg_strcat(buff, "\n    ");
     buff2 = mg_itoa(inv->stats[inv->state][3]);
     mg_strcat(buff, buff2);
     free(buff2);
-    draw_text(inv, (*buff), (sfVector2f){100, 400});
+    draw_text(inv, (*buff), (sfVector2f){80, 345});
     free((*buff));
 }
 
@@ -51,14 +52,14 @@ void inventory_draw_stats(inventory_t *inv)
     char *buff2 = mg_itoa(inv->stats[inv->state][0] +
 compute_health_stat(inv, inv->state));
 
-    mg_strcat(&buff, "\nhp: ");
+    mg_strcat(&buff, "\n    ");
     mg_strcat(&buff, buff2);
     free(buff2);
-    mg_strcat(&buff, "\nattack: ");
+    mg_strcat(&buff, "\n    ");
     buff2 = mg_itoa(inv->stats[inv->state][1] +
 compute_attack_stat(inv, inv->state));
     mg_strcat(&buff, buff2);
     free(buff2);
-    mg_strcat(&buff, "\ndef: ");
+    mg_strcat(&buff, "\n    ");
     inventory_draw_stats_speed(inv, &buff);
 }
