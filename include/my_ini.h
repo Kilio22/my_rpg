@@ -39,7 +39,7 @@ char *ini_line_get_value_from_col(ini_line_t *line, int col);
 // ini_file.c
 ini_file_t *ini_file_create(void);
 ini_file_t *ini_file_create_from_str(char *str);
-ini_file_t *ini_file_create_from_file(char *path);
+ini_file_t *ini_file_create_from_file(char *path, int nb);
 void ini_file_destroy(ini_file_t *file);
 
 // ini_file_write.c

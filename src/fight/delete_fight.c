@@ -11,7 +11,7 @@
 static void add_item(rpg_t *rpg, fight_t *fight, obj_t **obj)
 {
     item_t *item;
-    ini_file_t *ini = ini_file_create_from_file("assets_data.ini");
+    ini_file_t *ini = ini_file_create_from_file("assets_data.ini", 13);
     int j = 0;
 
     if (fight->nb_fight == 1)

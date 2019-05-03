@@ -74,17 +74,28 @@ static char *read_file(FILE *stream, char *str, char **readed)
     return (read_file(stream, my_strncat(str, buf, -1), readed));
 }
 
+static char *check_init(char **str, char **readed, FILE *stream)
+{
+    if (stream == NULL) {
+        (*readed) = NULL;
+        return NULL;
+    }
+    if ((*readed) != NULL) {
+        (*str) = my_strncat((*readed), "", -1);
+        free((*readed));
+    }
+    else
+        (*str) = my_strncat("", "", -1);
+    return (*str);
+}
+
 char *get_next_line(FILE *stream)
 {
     static char *readed = NULL;
     char *str;
 
-    if (readed != NULL) {
-        str = my_strncat(readed, "", -1);
-        free(readed);
-    }
-    else
-        str = my_strncat("", "", -1);
+    if (check_init(&str, &readed, stream) == NULL)
+        return NULL;
     readed = NULL;
     if (str == NULL)
         return (NULL);

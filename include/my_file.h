@@ -27,6 +27,6 @@ typedef int fd_t;
 int my_file_size(char const *filepath);
 
 //read functions
-char *my_file_readall(char const *filepath); //return 0 if err
+char *my_file_readall(char const *filepath, int nb); //return 0 if err
 
 #endif /* !MY_FS_H_ */

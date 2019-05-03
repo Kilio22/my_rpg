@@ -13,7 +13,7 @@ static int inventory_fill_stuff(inventory_t *inv, ini_file_t *file, int i)
     ini_line_t *ini = ini_file_get_from_key(file, s);
     char *buff;
     item_t *buff_item;
-    ini_file_t *items = ini_file_create_from_file(mg_strdup(items_data));
+    ini_file_t *items = ini_file_create_from_file(mg_strdup(items_data), 13);
 
     if (!ini || !items || ini->values->size != 6)
         return (0);
@@ -30,7 +30,7 @@ static int inventory_fill_stuff(inventory_t *inv, ini_file_t *file, int i)
 static int inventory_fill_stock(inventory_t *inv, ini_file_t *file)
 {
     ini_line_t *line = ini_file_get_from_key(file, "STOCK");
-    ini_file_t *items = ini_file_create_from_file(mg_strdup(items_data));
+    ini_file_t *items = ini_file_create_from_file(mg_strdup(items_data), 13);
     item_t *buff_item;
     char *buff;
 
@@ -49,7 +49,7 @@ static int inventory_fill_stock(inventory_t *inv, ini_file_t *file)
 
 inventory_t *inventory_create_from_file(sfRenderWindow *window, char *path)
 {
-    ini_file_t *ini = ini_file_create_from_file(path);
+    ini_file_t *ini = ini_file_create_from_file(path, 6);
     inventory_t *inv = inventory_create(window);
 
     if (!ini)

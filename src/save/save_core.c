@@ -36,7 +36,9 @@ void save(rpg_t *rpg, obj_t **objs)
 
     save_path[10] = '0' + rpg->game.nb_save;
     inventory_save(rpg->game.inv, save_path);
-    ini = ini_file_create_from_file(save_path);
+    ini = ini_file_create_from_file(save_path, 4);
+    if (!ini)
+        return;
     save_name(ini, rpg);
     save_killed(ini, rpg);
     ini_file_write_path(ini, save_path);

@@ -39,6 +39,6 @@ void load(rpg_t *rpg, obj_t **objs)
 
     save_path[10] = '0' + rpg->game.nb_save;
     rpg->game.inv = inventory_create_from_file(rpg->wind.wind, save_path);
-    file = ini_file_create_from_file(save_path);
+    file = ini_file_create_from_file(save_path, 6);
     restore_killed(rpg, file);
 }
