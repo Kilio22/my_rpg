@@ -36,6 +36,7 @@ inventory_t *inventory_create(sfRenderWindow *window)
     new->window = window;
     new->state = 0;
     new->should_exit = 0;
+    new->font = sfFont_createFromFile("assets/menu_font.ttf");
     for (int i = 0; i < INVENTORY_SIZE_X * INVENTORY_SIZE_Y; i++)
         new->stock[i] = NULL;
     for (int i = 0; i < 3; i++) {

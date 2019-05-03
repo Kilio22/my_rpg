@@ -66,6 +66,7 @@ struct inventory {
     sfSprite *inv_widget[3];
 
     sfRenderWindow *window;
+    sfFont *font;
 };
 typedef struct inventory inventory_t;
 
@@ -102,6 +103,9 @@ void inventory_event_select(inventory_t *inv);
 // inventory_compute.c
 void inventory_compute_stock_released(inventory_t *inv);
 void inventory_compute_stuff_released(inventory_t *inv);
+
+// inventory_stats.c
+void inventory_draw_stats(inventory_t *inv);
 
 // inventory_common.c
 int inventory_get_id_from_coord(sfRenderWindow *window);
