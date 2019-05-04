@@ -7,42 +7,67 @@
 
 #include "rpg.h"
 
-static void check_pos_objs(obj_t **obj, int *n_val)
+static int loop_min(obj_t **obj, int display[12])
 {
-    float lowest_dist = -1;
+    int min = -1;
 
-    for (int i = 5; i < 9; i++) {
-        if (obj[i] == NULL)
+    for (int i = 0; i < 12; i++) {
+        if (is_in_display(i, display) == 1)
             continue;
-        lowest_dist = calc_dist(obj[0]->pos, obj[i]->pos);
-        *n_val = i;
-        break;
+        if (min == -1 || obj[i]->pos.y < obj[min]->pos.y)
+            min = i;
     }
-    if (lowest_dist == -1)
+    return min;
+}
+
+static void full_display_order(obj_t **obj, int display[12])
+{
+    int index = free_display(display);
+    int min = -1;
+
+    while (index != -1) {
+        min = loop_min(obj, display);
+        display[index] = min;
+        index = free_display(display);
+    }
+}
+
+static void full_display(obj_t **obj, int display[12])
+{
+    int index;
+
+    for (int i = 0; i < 12; i++) {
+        index = free_display(display);
+        if (index == -1)
+            return;
+        if (obj[i] == NULL)
+            display[index] = i;
+    }
+    index = free_display(display);
+    if (index == -1)
         return;
-    for (int i = *n_val + 1; i < 9; i++) {
-        if (obj[i] == NULL)
-            continue;
-        if (calc_dist(obj[0]->pos, obj[i]->pos) < lowest_dist) {
-            *n_val = i;
-            lowest_dist = calc_dist(obj[0]->pos, obj[i]->pos);
-        }
-    }
+    display[index] = 0;
+    index = free_display(display);
+    if (index == -1)
+        return;
+    display[index] = 4;
+    full_display_order(obj, display);
 }
 
 void check_obj_display(obj_t **obj, rpg_t *rpg)
 {
-    int n_val = -1;
+    int display[12];
+    int index;
 
-    check_pos_objs(obj, &n_val);
-    if (n_val == -1) {
-        print_reverse_order(obj, rpg);
-        return;
+    for (int i = 0; i < 12; i++)
+        display[i] = -1;
+    full_display(obj, display);
+    for (int i = 0; i < 12; i++) {
+        index = display[i];
+        if (index == 0 || index == 4 || index == -1)
+            continue;
+        if (obj[index] == NULL)
+            continue;
+        sfRenderWindow_drawSprite(WIND.wind, obj[display[i]]->sprite, NULL);
     }
-    if (obj[0]->pos.y >= obj[n_val]->pos.y)
-        n_val = -1;
-    if (n_val > 0)
-        print_reverse_order(obj, rpg);
-    else
-        print_base_order(obj, rpg);
 }
