@@ -18,7 +18,7 @@ static int init_main(rpg_t *rpg)
 {
     sfVector2u windowSize;
 
-    rpg->wind.wind = create_window("Nuck Fathan", 10);
+    rpg->wind.wind = create_window("Lost Mind", 10);
     windowSize = sfRenderWindow_getSize(rpg->wind.wind);
     rpg->wind.view =
 sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
