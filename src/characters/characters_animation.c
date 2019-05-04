@@ -72,14 +72,14 @@ static void character_animation(obj_t *obj, int i)
 
 void all_character_animation(obj_t **obj)
 {
-    for (int i = 1; i < 11; i++)
+    for (int i = 1; i < 12; i++)
         if (obj[i] != NULL)
             character_animation(obj[i], i);
 }
 
 void update_all_rect(obj_t **obj, house_t **house)
 {
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < 12; i++)
         if (obj[i] != NULL)
             sfSprite_setTextureRect(obj[i]->sprite, obj[i]->sprite_rect);
     for (int i = 0; house[i] != NULL; i++)

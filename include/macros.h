@@ -34,5 +34,6 @@
 #define ENTXT1 ennemi_text[fight->text_index][GAME.language]
 #define ENDTXT end_text[end->language][index]
 #define ENDTXT2 end_text[end->language][end->end_status]
+#define GLOB_RECT(x) sfRectangleShape_getGlobalBounds(x)
 
 #endif /* !MACROS_H_ */

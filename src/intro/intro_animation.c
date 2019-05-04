@@ -45,7 +45,7 @@ static void character_animation_intro(obj_t *obj)
 
 void all_character_animation_intro(rpg_t *rpg, obj_t **obj)
 {
-    for (int i = 1; i < 11; i++) {
+    for (int i = 1; i < 12; i++) {
         if (i == 9 && rpg->quest_status < 3)
             continue;
         if (obj[i] != NULL)

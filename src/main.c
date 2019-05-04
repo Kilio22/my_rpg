@@ -91,7 +91,7 @@ static int check_flags(int ac, char **av, rpg_t *rpg, char **env)
 int main(int ac, char **av, char **env)
 {
     rpg_t rpg;
-    obj_t **obj = malloc(sizeof(obj_t *) * 11);
+    obj_t **obj = malloc(sizeof(obj_t *) * 12);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
     if (check_flags(ac, av, &rpg, env) == 1)

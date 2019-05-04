@@ -173,7 +173,8 @@ const char *obj_path[] = {
     "assets/ennemi.png",
     "assets/stupid_nathan.png",
     "assets/Aubergiste.png",
-    "assets/perso_vert.png"
+    "assets/perso_vert.png",
+    "assets/Forgeron.png"
 };
 
 const sfVector2f menu_pos[6] = {
