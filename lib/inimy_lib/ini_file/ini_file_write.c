@@ -60,6 +60,8 @@ void ini_file_write_path(ini_file_t *file, char *path)
     char *buff = ini_file_to_str(file);
     FILE *stream = fopen(path, "w+");
 
+    if (!stream)
+        return;
     fwrite(buff, sizeof(char), mg_strlen(buff), stream);
     free(buff);
     fclose(stream);
