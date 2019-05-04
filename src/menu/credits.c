@@ -40,7 +40,7 @@ static int update_rect_credit(credit_t *credits, size_t frame)
 {
     sfVector2f pos = sfSprite_getPosition(credits->cred);
 
-    if (pos.y < -6200)
+    if (pos.y < -6870)
         return 1;
     for (size_t i = 0; i < frame; i++)
         pos.y -= 1;

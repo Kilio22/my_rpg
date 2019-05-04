@@ -44,7 +44,7 @@ void free_obj(obj_t *obj)
 
 void free_objs(obj_t **obj)
 {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < 12; i++) {
         if (obj[i] != NULL) {
             free_obj(obj[i]);
             obj[i] = NULL;

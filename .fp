@@ -85,3 +85,4 @@ assets/up_vol.png
 assets/Water_things.png
 assets/assets_data.ini
 assets/inv.ini
+assets/Forgeron.png

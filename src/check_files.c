@@ -44,7 +44,7 @@ static char **load_file(FILE *stream)
             return NULL;
         i++;
     }
-    if (i != 87)
+    if (i != 88)
         return NULL;
     return tab;
 }
@@ -74,10 +74,11 @@ static int check_env(char **env)
 int check_files(char **env)
 {
     DIR *dir = opendir("./assets");
+    DIR *dir2 = opendir("./saves");
     char **tab = NULL;
     FILE *stream;
 
-    if (!dir)
+    if (!dir || !dir2)
         return -1;
     closedir(dir);
     stream = fopen(".fp", "r");

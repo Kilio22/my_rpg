@@ -18,7 +18,7 @@ static int init_main(rpg_t *rpg)
 {
     sfVector2u windowSize;
 
-    rpg->wind.wind = create_window("Nuck Fathan", 10);
+    rpg->wind.wind = create_window("Lost Mind", 10);
     windowSize = sfRenderWindow_getSize(rpg->wind.wind);
     rpg->wind.view =
 sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
@@ -91,7 +91,7 @@ static int check_flags(int ac, char **av, rpg_t *rpg, char **env)
 int main(int ac, char **av, char **env)
 {
     rpg_t rpg;
-    obj_t **obj = malloc(sizeof(obj_t *) * 11);
+    obj_t **obj = malloc(sizeof(obj_t *) * 12);
     house_t **house = malloc(sizeof(house_t *) * (NB_HOUSE + 1));
 
     if (check_flags(ac, av, &rpg, env) == 1)

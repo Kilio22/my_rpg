@@ -7,12 +7,24 @@
 
 #include "rpg.h"
 
+void init_forgeron(obj_t **obj, sfVector2f pos)
+{
+    obj[11] = create_object(obj_path[7], pos, RECT_OBJ, sfTrue);
+    obj[11]->rectangle = sfRectangleShape_create();
+    sfSprite_setOrigin(obj[11]->sprite, V2F(16, 60));
+    sfRectangleShape_setSize(obj[11]->rectangle, V2F(32, 16));
+    sfRectangleShape_setOrigin(obj[11]->rectangle, V2F(16, 8));
+    sfRectangleShape_setPosition(obj[11]->rectangle, obj[11]->pos);
+    obj[11]->rectangle_bound =
+sfRectangleShape_getGlobalBounds(obj[11]->rectangle);
+}
+
 void init_objs(obj_t **obj)
 {
     sfVector2f vects[] = {{10934, 2860}, {10934, 2860}, {0, 0}, {10834, 1996},
-{10868, 2016}, {10802, 2016}, {11768, 1396}, {10926, 2840}};
+{10868, 2016}, {10802, 2016}, {11768, 1396}, {10926, 2840}, {10242, 1426}};
 
-    for (int i = 0; i < 11; i++)
+    for (int i = 0; i < 12; i++)
         obj[i] = NULL;
     obj[0] = create_object(obj_path[0], vects[0], RECT_BASE, sfTrue);
     obj[0]->rectangle = sfRectangleShape_create();
@@ -27,9 +39,9 @@ void init_objs(obj_t **obj)
     obj[8] = create_object(obj_path[4], vects[6], RECT_OBJ, sfTrue);
     obj[9] = create_object("assets/bato.png", vects[7],
 (sfIntRect){0, 0, 118, 204}, sfTrue);
+    init_forgeron(obj, vects[8]);
     sfSprite_setOrigin(obj[1]->sprite, (sfVector2f){16, 60});
-    obj[0]->rectangle_bound =
-sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
+    obj[0]->rectangle_bound = GLOB_RECT(obj[0]->rectangle);
 }
 
 int init_game(rpg_t *rpg, obj_t **obj, house_t **house)

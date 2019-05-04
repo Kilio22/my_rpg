@@ -28,6 +28,10 @@ static void do_interact(obj_t **obj, rpg_t *rpg, int i, house_t **house)
         reset_zoom(rpg);
         aubergiste_dial(obj, rpg, i - 5, house);
     }
+    if (i == 11) {
+        reset_zoom(rpg);
+        aubergiste_dial(obj, rpg, 1, house);
+    }
     for (int i = 0; i < 10; i++)
         CONTROLS.bools[i] = 0;
 }
@@ -58,7 +62,7 @@ int character_hitbox(obj_t **obj, rpg_t *rpg, house_t **house)
     sfRectangleShape_setPosition(obj[0]->rectangle, obj[0]->pos);
     obj[0]->rectangle_bound =
 sfRectangleShape_getGlobalBounds(obj[0]->rectangle);
-    for (i = 5; i < 9; i++) {
+    for (i = 5; i < 12; i++) {
         if (obj[i] == NULL)
             continue;
         obj[i]->rectangle_bound =
