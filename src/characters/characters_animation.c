@@ -59,11 +59,11 @@ static void character_animation(obj_t *obj, int i)
         obj->frame_animation = 0;
     }
     obj->frame_animation += update_time(NULL);
-    if (i < 6) {
+    if (i < 6 || i == 11) {
         obj->oldPos = sfSprite_getPosition(obj->sprite);
         character_orientation(obj);
     }
-    if (i >= 6) {
+    if (i >= 6 && i != 11) {
         character_orientation_pnj(obj);
         obj->oldPos = sfSprite_getPosition(obj->sprite);
     }
