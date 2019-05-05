@@ -8,7 +8,7 @@
 #include "rpg.h"
 
 const char *attaques_names[][5] = {
-    {"Coup Epee",
+    {"Mouli norme",
     "DuoStumper",
     "Fuir",
     "ALLIES : 300",
