@@ -176,7 +176,7 @@ void init_load(rpg_t *rpg);
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //music.c
-void set_music(rpg_t *rpg);
+void set_music(sfMusic *music);
 void create_music(rpg_t *rpg);
 void set_sound_volume(rpg_t *rpg);
 void set_volume(rpg_t *rpg, int high, settings_t *settings);

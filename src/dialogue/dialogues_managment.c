@@ -54,7 +54,7 @@ int dial_event_management(rpg_t *rpg, dialogue_t *dialogue)
     }
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(GAME.back_music);
         if (WIND.event.key.code == sfKeyEscape)
             pause_game(rpg);
         if (manage_other_key_press(WIND.event.key.code,

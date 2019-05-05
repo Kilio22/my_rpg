@@ -63,6 +63,16 @@ house_t **house, fight_t *fight)
     sfRenderWindow_display(WIND.wind);
 }
 
+static void fight_music(rpg_t *rpg)
+{
+    sfSoundStatus status = sfMusic_getStatus(GAME.back_music);
+
+    if (status == sfPlaying) {
+        set_music(GAME.back_music);
+        sfMusic_play(rpg->music.fight_music);
+    }
+}
+
 void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
 {
     fight_t fight = create_fight(i, rpg, obj);
@@ -70,6 +80,7 @@ void fight(obj_t **obj, rpg_t *rpg, int i, house_t **house)
     size_t frames;
 
     sfClock_restart(obj[1]->clock);
+    fight_music(rpg);
     fight_text_intro(0);
     choose_fighter(obj, &fight, rpg, 2);
     while (sfRenderWindow_isOpen(WIND.wind)) {

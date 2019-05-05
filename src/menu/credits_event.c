@@ -15,7 +15,7 @@ int check_credit_events(rpg_t *rpg)
         sfRenderWindow_close(WIND.wind);
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(GAME.back_music);
         if (WIND.event.key.code == sfKeyF6)
             return 1;
         if (WIND.event.key.code == sfKeyEscape)

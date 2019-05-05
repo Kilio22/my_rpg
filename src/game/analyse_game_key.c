@@ -26,7 +26,7 @@ void manage_other_key_pressed(rpg_t *rpg)
             CONTROLS.bools[KEYY] = 0;
     }
     if (WIND.event.key.code == sfKeyF5)
-        set_music(rpg);
+        set_music(GAME.back_music);
     if (WIND.event.key.code == sfKeyEscape) {
         pause_game(rpg);
         res_bools(rpg);

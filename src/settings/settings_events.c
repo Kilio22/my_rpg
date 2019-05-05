@@ -87,7 +87,7 @@ int manage_settings_events(rpg_t *rpg, sfEvent event, settings_t *settings)
         sfRenderWindow_close(WIND.wind);
     if (event.type == sfEvtKeyPressed) {
         if (event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(GAME.back_music);
         if (event.key.code == sfKeyEscape)
             return 1;
     }

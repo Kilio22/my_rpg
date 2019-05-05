@@ -73,4 +73,8 @@ void delete_fight(fight_t *fight, obj_t **obj, rpg_t *rpg)
     }
     choose_fighter(NULL, NULL, NULL, 0);
     fight_turn(NULL, NULL, 1);
+    if (sfMusic_getStatus(rpg->music.fight_music) == sfPlaying) {
+        sfMusic_stop(rpg->music.fight_music);
+        sfMusic_play(GAME.back_music);
+    }
 }
