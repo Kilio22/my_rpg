@@ -312,7 +312,7 @@ end_game_t init_end_game(rpg_t *rpg);
 
 //credit_menu.c
 void credit_display(rpg_t *rpg, credit_t *credit);
-int check_credit_events(rpg_t *rpg);
+int check_credit_events(rpg_t *rpg, credit_t *credits);
 
 //load
 int check_files(char **env);

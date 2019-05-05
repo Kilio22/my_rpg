@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-int check_credit_events(rpg_t *rpg)
+int check_credit_events(rpg_t *rpg, credit_t *credits)
 {
     int ret_val = 0;
 
@@ -15,7 +15,7 @@ int check_credit_events(rpg_t *rpg)
         sfRenderWindow_close(WIND.wind);
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
-            set_music(GAME.back_music);
+            set_music(credits->credits_m);
         if (WIND.event.key.code == sfKeyF6)
             return 1;
         if (WIND.event.key.code == sfKeyEscape)
