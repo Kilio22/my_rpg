@@ -180,6 +180,7 @@ typedef struct credit_s {
     sfSprite *back;
     sfSprite *cred;
     sfRectangleShape *rect;
+    sfMusic *credits_m;
 } credit_t;
 
 typedef struct menu_s {

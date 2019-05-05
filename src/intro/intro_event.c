@@ -48,7 +48,7 @@ void intro_event_management(rpg_t *rpg, obj_t **obj, house_t **house)
         if (WIND.event.key.code == sfKeyF12)
             screenshot(rpg);
         if (WIND.event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(GAME.back_music);
         if (WIND.event.key.code == sfKeyEscape)
             pause_game(rpg);
         if (WIND.event.key.code == sfKeyF6) {

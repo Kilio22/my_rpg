@@ -47,7 +47,7 @@ int fight_event_management(rpg_t *rpg, fight_t *fight)
     }
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(rpg->music.fight_music);
         if (WIND.event.key.code == sfKeyF12)
             screenshot(rpg);
         if (WIND.event.key.code == sfKeyEscape

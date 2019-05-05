@@ -38,7 +38,7 @@ void analyse_menu_key_pressed(int code, rpg_t *rpg, int *move)
     if (code == sfKeyEscape)
         sfRenderWindow_close(WIND.wind);
     if (code == sfKeyF5)
-        set_music(rpg);
+        set_music(GAME.back_music);
     if (code == sfKeyF12)
         screenshot(rpg);
     if (code == sfKeyReturn) {

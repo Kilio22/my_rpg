@@ -85,7 +85,7 @@ int check_load_game_events(rpg_t *rpg, load_game_t *load, obj_t **obj,
     }
     if (WIND.event.type == sfEvtKeyPressed) {
         if (WIND.event.key.code == sfKeyF5)
-            set_music(rpg);
+            set_music(GAME.back_music);
         else
             ret_val += check_button_pressed_load(rpg, load, obj, house);
     }

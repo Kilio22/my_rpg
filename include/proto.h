@@ -176,7 +176,7 @@ void init_load(rpg_t *rpg);
 void init_menu(rpg_t *rpg, obj_t **obj, house_t **house);
 
 //music.c
-void set_music(rpg_t *rpg);
+void set_music(sfMusic *music);
 void create_music(rpg_t *rpg);
 void set_sound_volume(rpg_t *rpg);
 void set_volume(rpg_t *rpg, int high, settings_t *settings);
@@ -312,7 +312,7 @@ end_game_t init_end_game(rpg_t *rpg);
 
 //credit_menu.c
 void credit_display(rpg_t *rpg, credit_t *credit);
-int check_credit_events(rpg_t *rpg);
+int check_credit_events(rpg_t *rpg, credit_t *credits);
 
 //load
 int check_files(char **env);

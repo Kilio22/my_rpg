@@ -34,24 +34,25 @@ my_int_to_char(settings->volume));
     sfMusic_setVolume(GAME.back_music, settings->volume);
 }
 
-void set_music(rpg_t *rpg)
+void set_music(sfMusic *music)
 {
-    sfSoundStatus status = sfMusic_getStatus(GAME.back_music);
+    sfSoundStatus status = sfMusic_getStatus(music);
 
     if (status == sfStopped)
-        sfMusic_play(GAME.back_music);
+        sfMusic_play(music);
     else if (status == sfPaused)
-        sfMusic_play(GAME.back_music);
+        sfMusic_play(music);
     else
-        sfMusic_pause(GAME.back_music);
+        sfMusic_pause(music);
 }
 
 void create_music(rpg_t *rpg)
 {
     GAME.back_music = sfMusic_createFromFile("assets/back_music.ogg");
-    rpg->music.fight_music = sfMusic_createFromFile("assets/back_music.ogg");
+    rpg->music.fight_music = sfMusic_createFromFile("assets/fight.ogg");
     sfMusic_setLoop(GAME.back_music, sfTrue);
-    set_music(rpg);
+    sfMusic_setLoop(rpg->music.fight_music, sfTrue);
+    set_music(GAME.back_music);
     rpg->music.aled = create_sound("assets/aled.ogg");
     rpg->music.hurt = create_sound("assets/hurt.ogg");
 }
