@@ -36,7 +36,7 @@ static void manage_key_pressed_ctrl(rpg_t *rpg, int code)
 {
     if (code == -1 || CONTROLS.wait_key == -1 || code == sfKeyF6
 || code == sfKeyF12 || code == sfKeyF5 ||
-code == sfKeyEscape || code == sfKeyReturn)
+code == sfKeyEscape || code == sfKeyReturn || code >= 101)
         return;
     check_already_ctrl(rpg, code);
     CONTROLS.keys[CONTROLS.wait_key] = code;
