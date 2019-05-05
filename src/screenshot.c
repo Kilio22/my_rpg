@@ -6,7 +6,6 @@
 */
 
 #include <stdio.h>
-#include "windows.h"
 #include "rpg.h"
 
 static char *get_name(void)

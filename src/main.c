@@ -10,7 +10,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "rpg.h"
-#include "windows.h"
 #include "my_dragndrop.h"
 #include "inventory.h"
 

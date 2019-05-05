@@ -8,7 +8,6 @@
 #include <sys/types.h>
 #include <stdlib.h>
 #include <fcntl.h>
-#include "windows.h"
 #include "printf.h"
 #include "my.h"
 #include "struct.h"

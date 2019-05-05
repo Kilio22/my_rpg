@@ -7,7 +7,6 @@
 
 #include <fcntl.h>
 #include <stdio.h>
-#include "windows.h"
 #include "rpg.h"
 #include "my_ini.h"
 
