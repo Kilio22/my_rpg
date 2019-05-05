@@ -5,7 +5,6 @@
 ** ini_file_write
 */
 
-#include "windows.h"
 #include "my_ini.h"
 
 static int file_str_size(ini_file_t *file)

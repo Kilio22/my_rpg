@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include "get_next_line.h"
-#include "windows.h"
 #include "my_file.h"
 
 static int mg_strlen(char const *str)
