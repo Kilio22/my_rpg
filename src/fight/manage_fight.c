@@ -29,7 +29,7 @@ void manage_fight_allies(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
             sfSprite_move(obj[i]->sprite, V2F(2 * update_time(NULL), 0));
     }
     if (fight->fight_status == 2) {
-        if (sfMusic_getStatus(GAME.back_music) == sfPlaying)
+        if (sfMusic_getStatus(rpg->music.fight_music) == sfPlaying)
             sfSound_play(rpg->music.hurt);
         fight->fight_status++;
     }
@@ -66,7 +66,7 @@ void manage_fight_ennemis(obj_t **obj, fight_t *fight, rpg_t *rpg, int i)
         }
     }
     if (fight->fight_status == 2) {
-        if (sfMusic_getStatus(GAME.back_music) == sfPlaying)
+        if (sfMusic_getStatus(rpg->music.fight_music) == sfPlaying)
             sfSound_play(rpg->music.hurt);
         fight->fight_status++;
     }
