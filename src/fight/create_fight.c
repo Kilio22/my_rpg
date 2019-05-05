@@ -60,6 +60,8 @@ static void init_life(rpg_t *rpg, fight_t *new)
     new->life[0] += compute_health_stat(GAME.inv, 2);
     new->turn_n = create_text(menu_font, " ", 19, vect);
     sfText_setColor(new->turn_n, sfBlack);
+    if (rpg->debug == 1)
+        new->life[1] = 20;
 }
 
 fight_t create_fight(int i, rpg_t *rpg, obj_t **obj)
