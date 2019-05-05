@@ -23,7 +23,7 @@ static int init_main(rpg_t *rpg)
     rpg->wind.view =
 sfView_createFromRect((sfFloatRect){0, 0, windowSize.x, windowSize.y});
     rpg->game.nb_save = 0;
-    rpg->game.name_save = mg_strdup("antoine");
+    rpg->game.name_save = mg_strdup("New save");
     rpg->game.language = 0;
     rpg->game.inv = inventory_create(rpg->wind.wind);
     rpg->controls.bools = malloc(sizeof(sfBool) * 10);
