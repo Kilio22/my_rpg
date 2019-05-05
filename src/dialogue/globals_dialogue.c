@@ -48,7 +48,7 @@ const char *answers[][2][2] = {
     "des epees pour les plus valeureux combattans de la ville"},
         {"I heard about your story ..., \n"
     "I think I saw one of them coming out of the\n"
-    "city ​​and go to the North West.",
+    "city and go to the North West.",
     "I manage this smithy since my youth! Here, I make swords\n"
     "for the bravest fighters of the city"}
     }
