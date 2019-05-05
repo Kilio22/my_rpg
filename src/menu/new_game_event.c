@@ -24,6 +24,7 @@ static void load_save(rpg_t *rpg, obj_t **obj, house_t **house)
     save(rpg);
     init_game(rpg, obj, house);
     rpg->quest_status = 0;
+    MENU.menu_on = 0;
 }
 
 void check_mbutton_press_new(rpg_t *rpg, load_game_t *load, obj_t **obj,
