@@ -34,19 +34,19 @@ your game.
 ## AUTHORIZED FUNCTIONS
 
 - CSFML library
-    All functions
+    - All functions
 - Math library
-    All functions
+    - All functions
 - C library
-  malloc
-  free
-  memset
-  (s)rand
-  getline
-  (f)open
-  (f)read
-  (f)close
-  (f)write
-  opendir
-  readdir
-  closedir
+  - malloc
+  - free
+  - memset
+  - (s)rand
+  - getline
+  - (f)open
+  - (f)read
+  - (f)close
+  - (f)write
+  - opendir
+  - readdir
+  - closedir
