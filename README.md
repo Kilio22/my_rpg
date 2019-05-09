@@ -11,10 +11,10 @@ This project is the most important one in C_Graphical programming during first y
 
 
 
-This project is one of the freest project of your first year. Create your own **RPG**.
+This project is one of the freest project of your first year. Create your own **RPG**.  
 Your main challenge for this game will be to create a complete product using everything that you and your
-team know.
-Your game must follow the following rules:
+team know.  
+Your game must follow the following rules:  
 • The player needs to have characteristics which you can find in the status menu.  
 • The player can fight enemies, statistics will impact the fights results.  
 • There must be NPC in your game.  
