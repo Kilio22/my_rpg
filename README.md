@@ -51,7 +51,7 @@ your game.
   - readdir
   - closedir
 
-## What does it looks like ?
+## What does it look like ?
 ![alt](https://github.com/Kilio22/my_rpg/blob/master/demo1.png?raw=true)
 ![alt](https://github.com/Kilio22/my_rpg/blob/master/demo2.png?raw=true)
 ![alt](https://github.com/Kilio22/my_rpg/blob/master/demo3.png?raw=true)
